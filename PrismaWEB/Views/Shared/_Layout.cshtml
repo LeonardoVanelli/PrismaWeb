@@ -46,7 +46,26 @@
                         </li>
                     </ul>
                 </li>
-
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-file"></i>
+                        <span class="nav-link-text">Example Pages</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+                        <li>
+                            <a href="login.html">Login Page</a>
+                        </li>
+                        <li>
+                            <a href="register.html">Registration Page</a>
+                        </li>
+                        <li>
+                            <a href="forgot-password.html">Forgot Password Page</a>
+                        </li>
+                        <li>
+                            @RenderBody()
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
                         <i class="fa fa-fw fa-sitemap"></i>
@@ -77,6 +96,12 @@
                             </ul>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-fw fa-link"></i>
+                        <span class="nav-link-text">Link</span>
+                    </a>
                 </li>
             </ul>
             <ul class="navbar-nav sidenav-toggler">
@@ -200,7 +225,8 @@
             </ol>
             <div class="row">
                 <div class="col-12">
-                    @RenderBody()
+                    <h1>Blank</h1>
+                    <p>This is an example of a blank page that you can use as a starting point for creating new ones.</p>
                 </div>
             </div>
         </div>

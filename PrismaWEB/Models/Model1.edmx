@@ -1,0 +1,767 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LocadoraCarrosDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Aluguels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataHoraRetirada" Type="datetime" Nullable="false" />
+          <Property Name="DataHoraDevolucao" Type="datetime" Nullable="false" />
+          <Property Name="CarroId" Type="int" Nullable="false" />
+          <Property Name="ClienteId" Type="int" Nullable="false" />
+          <Property Name="ProtecaoId" Type="int" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Carroes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Placa" Type="nvarchar(max)" />
+          <Property Name="Descricao" Type="nvarchar(max)" />
+          <Property Name="PrecoDia" Type="float" Nullable="false" />
+          <Property Name="ModeloId" Type="int" Nullable="false" />
+          <Property Name="Imagem" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Classes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar(max)" />
+          <Property Name="Descricao" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cpf" Type="nvarchar(max)" />
+          <Property Name="Nome" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Login" Type="nvarchar(max)" />
+          <Property Name="Senha" Type="nvarchar(max)" />
+          <Property Name="Telefone" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Funcaos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar(max)" />
+          <Property Name="Descricao" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Funcionarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cpf" Type="nvarchar(max)" />
+          <Property Name="Nome" Type="nvarchar(max)" />
+          <Property Name="DataNascimento" Type="datetime" Nullable="false" />
+          <Property Name="FuncaoId" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" />
+          <Property Name="Senha" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Marcas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Modeloes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="MarcaId" Type="int" Nullable="false" />
+          <Property Name="Descricao" Type="nvarchar(max)" />
+          <Property Name="ClasseId" Type="int" />
+        </EntityType>
+        <EntityType Name="Protecaos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar(max)" />
+          <Property Name="Descricao" Type="nvarchar(max)" />
+          <Property Name="PrecoDia" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar(max)" />
+          <Property Name="Descricao" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_dbo_Aluguels_dbo_Carroes_CarroId">
+          <End Role="Carroes" Type="Self.Carroes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Aluguels" Type="Self.Aluguels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carroes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aluguels">
+              <PropertyRef Name="CarroId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Aluguels_dbo_Clientes_ClienteId">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Aluguels" Type="Self.Aluguels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aluguels">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Aluguels_dbo_Protecaos_ProtecaoId">
+          <End Role="Protecaos" Type="Self.Protecaos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Aluguels" Type="Self.Aluguels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Protecaos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aluguels">
+              <PropertyRef Name="ProtecaoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Aluguels_dbo_Status_StatusId">
+          <End Role="Status" Type="Self.Status" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Aluguels" Type="Self.Aluguels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aluguels">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Carroes_dbo_Modeloes_Modelo_Id">
+          <End Role="Modeloes" Type="Self.Modeloes" Multiplicity="1" />
+          <End Role="Carroes" Type="Self.Carroes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modeloes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Carroes">
+              <PropertyRef Name="ModeloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Carroes_dbo_Modeloes_ModeloId">
+          <End Role="Modeloes" Type="Self.Modeloes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Carroes" Type="Self.Carroes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modeloes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Carroes">
+              <PropertyRef Name="ModeloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Funcionarios_dbo_Funcaos_FuncaoId">
+          <End Role="Funcaos" Type="Self.Funcaos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Funcionarios" Type="Self.Funcionarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcaos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Funcionarios">
+              <PropertyRef Name="FuncaoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Modeloes_dbo_Classes_Classe_Id">
+          <End Role="Classes" Type="Self.Classes" Multiplicity="0..1" />
+          <End Role="Modeloes" Type="Self.Modeloes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modeloes">
+              <PropertyRef Name="ClasseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Modeloes_dbo_Marcas_Marca_Id">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="Modeloes" Type="Self.Modeloes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modeloes">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Modeloes_dbo_Marcas_MarcaId">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Modeloes" Type="Self.Modeloes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modeloes">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LocadoraCarrosDBModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Aluguels" EntityType="Self.Aluguels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carroes" EntityType="Self.Carroes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Funcaos" EntityType="Self.Funcaos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Funcionarios" EntityType="Self.Funcionarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marcas" EntityType="Self.Marcas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modeloes" EntityType="Self.Modeloes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Protecaos" EntityType="Self.Protecaos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Aluguels_dbo_Carroes_CarroId" Association="Self.FK_dbo_Aluguels_dbo_Carroes_CarroId">
+            <End Role="Carroes" EntitySet="Carroes" />
+            <End Role="Aluguels" EntitySet="Aluguels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Aluguels_dbo_Clientes_ClienteId" Association="Self.FK_dbo_Aluguels_dbo_Clientes_ClienteId">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Aluguels" EntitySet="Aluguels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Aluguels_dbo_Protecaos_ProtecaoId" Association="Self.FK_dbo_Aluguels_dbo_Protecaos_ProtecaoId">
+            <End Role="Protecaos" EntitySet="Protecaos" />
+            <End Role="Aluguels" EntitySet="Aluguels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Aluguels_dbo_Status_StatusId" Association="Self.FK_dbo_Aluguels_dbo_Status_StatusId">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Aluguels" EntitySet="Aluguels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Carroes_dbo_Modeloes_Modelo_Id" Association="Self.FK_dbo_Carroes_dbo_Modeloes_Modelo_Id">
+            <End Role="Modeloes" EntitySet="Modeloes" />
+            <End Role="Carroes" EntitySet="Carroes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Carroes_dbo_Modeloes_ModeloId" Association="Self.FK_dbo_Carroes_dbo_Modeloes_ModeloId">
+            <End Role="Modeloes" EntitySet="Modeloes" />
+            <End Role="Carroes" EntitySet="Carroes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Funcionarios_dbo_Funcaos_FuncaoId" Association="Self.FK_dbo_Funcionarios_dbo_Funcaos_FuncaoId">
+            <End Role="Funcaos" EntitySet="Funcaos" />
+            <End Role="Funcionarios" EntitySet="Funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Modeloes_dbo_Classes_Classe_Id" Association="Self.FK_dbo_Modeloes_dbo_Classes_Classe_Id">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="Modeloes" EntitySet="Modeloes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Modeloes_dbo_Marcas_Marca_Id" Association="Self.FK_dbo_Modeloes_dbo_Marcas_Marca_Id">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Modeloes" EntitySet="Modeloes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Modeloes_dbo_Marcas_MarcaId" Association="Self.FK_dbo_Modeloes_dbo_Marcas_MarcaId">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Modeloes" EntitySet="Modeloes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LocadoraCarrosDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Aluguels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataHoraRetirada" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataHoraDevolucao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CarroId" Type="Int32" Nullable="false" />
+          <Property Name="ClienteId" Type="Int32" Nullable="false" />
+          <Property Name="ProtecaoId" Type="Int32" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Carroes" Relationship="Self.FK_dbo_Aluguels_dbo_Carroes_CarroId" FromRole="Aluguels" ToRole="Carroes" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK_dbo_Aluguels_dbo_Clientes_ClienteId" FromRole="Aluguels" ToRole="Clientes" />
+          <NavigationProperty Name="Protecaos" Relationship="Self.FK_dbo_Aluguels_dbo_Protecaos_ProtecaoId" FromRole="Aluguels" ToRole="Protecaos" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_dbo_Aluguels_dbo_Status_StatusId" FromRole="Aluguels" ToRole="Status" />
+        </EntityType>
+        <EntityType Name="Carroes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Placa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrecoDia" Type="Double" Nullable="false" />
+          <Property Name="ModeloId" Type="Int32" Nullable="false" />
+          <Property Name="Imagem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Aluguels" Relationship="Self.FK_dbo_Aluguels_dbo_Carroes_CarroId" FromRole="Carroes" ToRole="Aluguels" />
+          <NavigationProperty Name="Modeloes" Relationship="Self.FK_dbo_Carroes_dbo_Modeloes_Modelo_Id" FromRole="Carroes" ToRole="Modeloes" />
+          <NavigationProperty Name="Modeloes1" Relationship="Self.FK_dbo_Carroes_dbo_Modeloes_ModeloId" FromRole="Carroes" ToRole="Modeloes" />
+        </EntityType>
+        <EntityType Name="Classes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Modeloes" Relationship="Self.FK_dbo_Modeloes_dbo_Classes_Classe_Id" FromRole="Classes" ToRole="Modeloes" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cpf" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Senha" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Telefone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Aluguels" Relationship="Self.FK_dbo_Aluguels_dbo_Clientes_ClienteId" FromRole="Clientes" ToRole="Aluguels" />
+        </EntityType>
+        <EntityType Name="Funcaos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Funcionarios" Relationship="Self.FK_dbo_Funcionarios_dbo_Funcaos_FuncaoId" FromRole="Funcaos" ToRole="Funcionarios" />
+        </EntityType>
+        <EntityType Name="Funcionarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cpf" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataNascimento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FuncaoId" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Senha" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Funcaos" Relationship="Self.FK_dbo_Funcionarios_dbo_Funcaos_FuncaoId" FromRole="Funcionarios" ToRole="Funcaos" />
+        </EntityType>
+        <EntityType Name="Marcas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Modeloes" Relationship="Self.FK_dbo_Modeloes_dbo_Marcas_Marca_Id" FromRole="Marcas" ToRole="Modeloes" />
+          <NavigationProperty Name="Modeloes1" Relationship="Self.FK_dbo_Modeloes_dbo_Marcas_MarcaId" FromRole="Marcas" ToRole="Modeloes" />
+        </EntityType>
+        <EntityType Name="Modeloes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MarcaId" Type="Int32" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClasseId" Type="Int32" />
+          <NavigationProperty Name="Carroes" Relationship="Self.FK_dbo_Carroes_dbo_Modeloes_Modelo_Id" FromRole="Modeloes" ToRole="Carroes" />
+          <NavigationProperty Name="Carroes1" Relationship="Self.FK_dbo_Carroes_dbo_Modeloes_ModeloId" FromRole="Modeloes" ToRole="Carroes" />
+          <NavigationProperty Name="Classes" Relationship="Self.FK_dbo_Modeloes_dbo_Classes_Classe_Id" FromRole="Modeloes" ToRole="Classes" />
+          <NavigationProperty Name="Marcas" Relationship="Self.FK_dbo_Modeloes_dbo_Marcas_Marca_Id" FromRole="Modeloes" ToRole="Marcas" />
+          <NavigationProperty Name="Marcas1" Relationship="Self.FK_dbo_Modeloes_dbo_Marcas_MarcaId" FromRole="Modeloes" ToRole="Marcas" />
+        </EntityType>
+        <EntityType Name="Protecaos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrecoDia" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Aluguels" Relationship="Self.FK_dbo_Aluguels_dbo_Protecaos_ProtecaoId" FromRole="Protecaos" ToRole="Aluguels" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Aluguels" Relationship="Self.FK_dbo_Aluguels_dbo_Status_StatusId" FromRole="Status" ToRole="Aluguels" />
+        </EntityType>
+        <Association Name="FK_dbo_Aluguels_dbo_Carroes_CarroId">
+          <End Role="Carroes" Type="Self.Carroes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Aluguels" Type="Self.Aluguels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carroes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aluguels">
+              <PropertyRef Name="CarroId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Aluguels_dbo_Clientes_ClienteId">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Aluguels" Type="Self.Aluguels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aluguels">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Aluguels_dbo_Protecaos_ProtecaoId">
+          <End Role="Protecaos" Type="Self.Protecaos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Aluguels" Type="Self.Aluguels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Protecaos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aluguels">
+              <PropertyRef Name="ProtecaoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Aluguels_dbo_Status_StatusId">
+          <End Role="Status" Type="Self.Status" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Aluguels" Type="Self.Aluguels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aluguels">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Carroes_dbo_Modeloes_Modelo_Id">
+          <End Role="Modeloes" Type="Self.Modeloes" Multiplicity="1" />
+          <End Role="Carroes" Type="Self.Carroes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modeloes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Carroes">
+              <PropertyRef Name="ModeloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Carroes_dbo_Modeloes_ModeloId">
+          <End Role="Modeloes" Type="Self.Modeloes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Carroes" Type="Self.Carroes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modeloes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Carroes">
+              <PropertyRef Name="ModeloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Modeloes_dbo_Classes_Classe_Id">
+          <End Role="Classes" Type="Self.Classes" Multiplicity="0..1" />
+          <End Role="Modeloes" Type="Self.Modeloes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modeloes">
+              <PropertyRef Name="ClasseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Funcionarios_dbo_Funcaos_FuncaoId">
+          <End Role="Funcaos" Type="Self.Funcaos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Funcionarios" Type="Self.Funcionarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcaos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Funcionarios">
+              <PropertyRef Name="FuncaoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Modeloes_dbo_Marcas_Marca_Id">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="Modeloes" Type="Self.Modeloes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modeloes">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Modeloes_dbo_Marcas_MarcaId">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Modeloes" Type="Self.Modeloes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modeloes">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LocadoraCarrosDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Aluguels" EntityType="Self.Aluguels" />
+          <EntitySet Name="Carroes" EntityType="Self.Carroes" />
+          <EntitySet Name="Classes" EntityType="Self.Classes" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="Funcaos" EntityType="Self.Funcaos" />
+          <EntitySet Name="Funcionarios" EntityType="Self.Funcionarios" />
+          <EntitySet Name="Marcas" EntityType="Self.Marcas" />
+          <EntitySet Name="Modeloes" EntityType="Self.Modeloes" />
+          <EntitySet Name="Protecaos" EntityType="Self.Protecaos" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <AssociationSet Name="FK_dbo_Aluguels_dbo_Carroes_CarroId" Association="Self.FK_dbo_Aluguels_dbo_Carroes_CarroId">
+            <End Role="Carroes" EntitySet="Carroes" />
+            <End Role="Aluguels" EntitySet="Aluguels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Aluguels_dbo_Clientes_ClienteId" Association="Self.FK_dbo_Aluguels_dbo_Clientes_ClienteId">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Aluguels" EntitySet="Aluguels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Aluguels_dbo_Protecaos_ProtecaoId" Association="Self.FK_dbo_Aluguels_dbo_Protecaos_ProtecaoId">
+            <End Role="Protecaos" EntitySet="Protecaos" />
+            <End Role="Aluguels" EntitySet="Aluguels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Aluguels_dbo_Status_StatusId" Association="Self.FK_dbo_Aluguels_dbo_Status_StatusId">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Aluguels" EntitySet="Aluguels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Carroes_dbo_Modeloes_Modelo_Id" Association="Self.FK_dbo_Carroes_dbo_Modeloes_Modelo_Id">
+            <End Role="Modeloes" EntitySet="Modeloes" />
+            <End Role="Carroes" EntitySet="Carroes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Carroes_dbo_Modeloes_ModeloId" Association="Self.FK_dbo_Carroes_dbo_Modeloes_ModeloId">
+            <End Role="Modeloes" EntitySet="Modeloes" />
+            <End Role="Carroes" EntitySet="Carroes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Modeloes_dbo_Classes_Classe_Id" Association="Self.FK_dbo_Modeloes_dbo_Classes_Classe_Id">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="Modeloes" EntitySet="Modeloes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Funcionarios_dbo_Funcaos_FuncaoId" Association="Self.FK_dbo_Funcionarios_dbo_Funcaos_FuncaoId">
+            <End Role="Funcaos" EntitySet="Funcaos" />
+            <End Role="Funcionarios" EntitySet="Funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Modeloes_dbo_Marcas_Marca_Id" Association="Self.FK_dbo_Modeloes_dbo_Marcas_Marca_Id">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Modeloes" EntitySet="Modeloes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Modeloes_dbo_Marcas_MarcaId" Association="Self.FK_dbo_Modeloes_dbo_Marcas_MarcaId">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Modeloes" EntitySet="Modeloes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LocadoraCarrosDBModelStoreContainer" CdmEntityContainer="LocadoraCarrosDBEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="LocadoraCarrosDBModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Aluguels">
+            <EntityTypeMapping TypeName="LocadoraCarrosDBModel.Aluguels">
+              <MappingFragment StoreEntitySet="Aluguels">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DataHoraRetirada" ColumnName="DataHoraRetirada" />
+                <ScalarProperty Name="DataHoraDevolucao" ColumnName="DataHoraDevolucao" />
+                <ScalarProperty Name="CarroId" ColumnName="CarroId" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="ProtecaoId" ColumnName="ProtecaoId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carroes">
+            <EntityTypeMapping TypeName="LocadoraCarrosDBModel.Carroes">
+              <MappingFragment StoreEntitySet="Carroes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="PrecoDia" ColumnName="PrecoDia" />
+                <ScalarProperty Name="ModeloId" ColumnName="ModeloId" />
+                <ScalarProperty Name="Imagem" ColumnName="Imagem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="LocadoraCarrosDBModel.Classes">
+              <MappingFragment StoreEntitySet="Classes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="LocadoraCarrosDBModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Cpf" ColumnName="Cpf" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Funcaos">
+            <EntityTypeMapping TypeName="LocadoraCarrosDBModel.Funcaos">
+              <MappingFragment StoreEntitySet="Funcaos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Funcionarios">
+            <EntityTypeMapping TypeName="LocadoraCarrosDBModel.Funcionarios">
+              <MappingFragment StoreEntitySet="Funcionarios">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Cpf" ColumnName="Cpf" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+                <ScalarProperty Name="FuncaoId" ColumnName="FuncaoId" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marcas">
+            <EntityTypeMapping TypeName="LocadoraCarrosDBModel.Marcas">
+              <MappingFragment StoreEntitySet="Marcas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modeloes">
+            <EntityTypeMapping TypeName="LocadoraCarrosDBModel.Modeloes">
+              <MappingFragment StoreEntitySet="Modeloes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="ClasseId" ColumnName="ClasseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Protecaos">
+            <EntityTypeMapping TypeName="LocadoraCarrosDBModel.Protecaos">
+              <MappingFragment StoreEntitySet="Protecaos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="PrecoDia" ColumnName="PrecoDia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="LocadoraCarrosDBModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

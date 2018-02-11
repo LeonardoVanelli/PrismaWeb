@@ -15,6 +15,14 @@
     <link href="~/Content/SB admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
     <link href="~/Content/SB admin/css/sb-admin.css" rel="stylesheet">
+    <!-- JqueryUi -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <!-- ComboBox -->
+    <script src="~/Content/js/helper/ComboBox.js"></script>
+    <link href="~/Content/css/helper/ComboBox.css" rel="stylesheet" />
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -26,10 +34,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                <!--ItemLateral-->
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="~/Aluguels">
                         <i class="fa fa-fw fa-dashboard"></i>
-                        <span class="nav-link-text">Dashboard</span>
+                        <span class="nav-link-text">Alugueis</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <a class="nav-link" href="~/Status">
+                        <i class="fa fa-fw fa-dashboard"></i>
+                        <span class="nav-link-text">Status</span>
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
@@ -241,6 +256,7 @@
         <!-- Custom scripts for all pages-->
         <script src="~/Content/SB admin/js/sb-admin.min.js"></script>
     </div>
+    @Scripts.Render("~/bundles/jqueryui");
 </body>
 
 </html>

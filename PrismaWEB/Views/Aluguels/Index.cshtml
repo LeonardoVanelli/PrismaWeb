@@ -1,0 +1,63 @@
+﻿@model IEnumerable<PrismaWEB.Models.Aluguels>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DataHoraRetirada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataHoraDevolucao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Carroes.Placa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clientes.Cpf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Protecaos.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataHoraRetirada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataHoraDevolucao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Carroes.Placa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clientes.Cpf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Protecaos.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

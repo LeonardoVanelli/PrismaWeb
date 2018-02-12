@@ -4,28 +4,35 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d53c5647fff14b3d8ee7ea08ba983cae" Name="Diagram1">
-        <EntityTypeShape EntityType="LocadoraCarrosDBModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LocadoraCarrosDBModel.Aluguels" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="LocadoraCarrosDBModel.Carroes" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LocadoraCarrosDBModel.Classes" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LocadoraCarrosDBModel.Clientes" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="LocadoraCarrosDBModel.Funcaos" Width="1.5" PointX="7.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LocadoraCarrosDBModel.Funcionarios" Width="1.5" PointX="10" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="LocadoraCarrosDBModel.Marcas" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LocadoraCarrosDBModel.Modeloes" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LocadoraCarrosDBModel.Protecaos" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LocadoraCarrosDBModel.Status" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
-        <AssociationConnector Association="LocadoraCarrosDBModel.FK_dbo_Aluguels_dbo_Carroes_CarroId" ManuallyRouted="false" />
-        <AssociationConnector Association="LocadoraCarrosDBModel.FK_dbo_Aluguels_dbo_Clientes_ClienteId" ManuallyRouted="false" />
-        <AssociationConnector Association="LocadoraCarrosDBModel.FK_dbo_Aluguels_dbo_Protecaos_ProtecaoId" ManuallyRouted="false" />
-        <AssociationConnector Association="LocadoraCarrosDBModel.FK_dbo_Aluguels_dbo_Status_StatusId" ManuallyRouted="false" />
-        <AssociationConnector Association="LocadoraCarrosDBModel.FK_dbo_Carroes_dbo_Modeloes_Modelo_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="LocadoraCarrosDBModel.FK_dbo_Carroes_dbo_Modeloes_ModeloId" ManuallyRouted="false" />
-        <AssociationConnector Association="LocadoraCarrosDBModel.FK_dbo_Modeloes_dbo_Classes_Classe_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="LocadoraCarrosDBModel.FK_dbo_Funcionarios_dbo_Funcaos_FuncaoId" ManuallyRouted="false" />
-        <AssociationConnector Association="LocadoraCarrosDBModel.FK_dbo_Modeloes_dbo_Marcas_Marca_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="LocadoraCarrosDBModel.FK_dbo_Modeloes_dbo_Marcas_MarcaId" ManuallyRouted="false" />
+      <Diagram DiagramId="16373f964aa849028f9f5e88d3c60043" Name="Diagram1">
+        <EntityTypeShape EntityType="TesteDBModel.BuildVersion" Width="1.5" PointX="2.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesteDBModel.ErrorLog" Width="1.5" PointX="8.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesteDBModel.Address" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesteDBModel.Customer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesteDBModel.CustomerAddress" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesteDBModel.Product" Width="1.5" PointX="6" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesteDBModel.ProductCategory" Width="1.5" PointX="3.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesteDBModel.ProductDescription" Width="1.5" PointX="3.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesteDBModel.ProductModel" Width="1.5" PointX="3.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesteDBModel.ProductModelProductDescription" Width="1.5" PointX="6" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesteDBModel.SalesOrderDetail" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesteDBModel.SalesOrderHeader" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesteDBModel.vGetAllCategories" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesteDBModel.vProductAndDescription" Width="1.5" PointX="8.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesteDBModel.vProductModelCatalogDescription" Width="1.5" PointX="10.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TesteDBModel.database_firewall_rules" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="TesteDBModel.FK_CustomerAddress_Address_AddressID" ManuallyRouted="false" />
+        <AssociationConnector Association="TesteDBModel.FK_SalesOrderHeader_Address_BillTo_AddressID" ManuallyRouted="false" />
+        <AssociationConnector Association="TesteDBModel.FK_SalesOrderHeader_Address_ShipTo_AddressID" ManuallyRouted="false" />
+        <AssociationConnector Association="TesteDBModel.FK_CustomerAddress_Customer_CustomerID" ManuallyRouted="false" />
+        <AssociationConnector Association="TesteDBModel.FK_SalesOrderHeader_Customer_CustomerID" ManuallyRouted="false" />
+        <AssociationConnector Association="TesteDBModel.FK_Product_ProductCategory_ProductCategoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="TesteDBModel.FK_Product_ProductModel_ProductModelID" ManuallyRouted="false" />
+        <AssociationConnector Association="TesteDBModel.FK_SalesOrderDetail_Product_ProductID" ManuallyRouted="false" />
+        <AssociationConnector Association="TesteDBModel.FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="TesteDBModel.FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID" ManuallyRouted="false" />
+        <AssociationConnector Association="TesteDBModel.FK_ProductModelProductDescription_ProductModel_ProductModelID" ManuallyRouted="false" />
+        <AssociationConnector Association="TesteDBModel.FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

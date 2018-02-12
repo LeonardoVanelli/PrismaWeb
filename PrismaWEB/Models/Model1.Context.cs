@@ -12,11 +12,13 @@ namespace PrismaWEB.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
-    public partial class LocadoraCarrosDBEntities : DbContext
+    public partial class TesteDBEntities : DbContext
     {
-        public LocadoraCarrosDBEntities()
-            : base("name=LocadoraCarrosDBEntities")
+        public TesteDBEntities()
+            : base("name=TesteDBEntities")
         {
         }
     
@@ -25,16 +27,47 @@ namespace PrismaWEB.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-        public virtual DbSet<Aluguels> Aluguels { get; set; }
-        public virtual DbSet<Carroes> Carroes { get; set; }
-        public virtual DbSet<Classes> Classes { get; set; }
-        public virtual DbSet<Clientes> Clientes { get; set; }
-        public virtual DbSet<Funcaos> Funcaos { get; set; }
-        public virtual DbSet<Funcionarios> Funcionarios { get; set; }
-        public virtual DbSet<Marcas> Marcas { get; set; }
-        public virtual DbSet<Modeloes> Modeloes { get; set; }
-        public virtual DbSet<Protecaos> Protecaos { get; set; }
-        public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<BuildVersion> BuildVersion { get; set; }
+        public virtual DbSet<ErrorLog> ErrorLog { get; set; }
+        public virtual DbSet<Address> Address { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
+        public virtual DbSet<CustomerAddress> CustomerAddress { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<ProductCategory> ProductCategory { get; set; }
+        public virtual DbSet<ProductDescription> ProductDescription { get; set; }
+        public virtual DbSet<ProductModel> ProductModel { get; set; }
+        public virtual DbSet<ProductModelProductDescription> ProductModelProductDescription { get; set; }
+        public virtual DbSet<SalesOrderDetail> SalesOrderDetail { get; set; }
+        public virtual DbSet<SalesOrderHeader> SalesOrderHeader { get; set; }
+        public virtual DbSet<vGetAllCategories> vGetAllCategories { get; set; }
+        public virtual DbSet<vProductAndDescription> vProductAndDescription { get; set; }
+        public virtual DbSet<vProductModelCatalogDescription> vProductModelCatalogDescription { get; set; }
+        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
+    
+        [DbFunction("TesteDBEntities", "ufnGetAllCategories")]
+        public virtual IQueryable<ufnGetAllCategories_Result> ufnGetAllCategories()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ufnGetAllCategories_Result>("[TesteDBEntities].[ufnGetAllCategories]()");
+        }
+    
+        [DbFunction("TesteDBEntities", "ufnGetCustomerInformation")]
+        public virtual IQueryable<ufnGetCustomerInformation_Result> ufnGetCustomerInformation(Nullable<int> customerID)
+        {
+            var customerIDParameter = customerID.HasValue ?
+                new ObjectParameter("CustomerID", customerID) :
+                new ObjectParameter("CustomerID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ufnGetCustomerInformation_Result>("[TesteDBEntities].[ufnGetCustomerInformation](@CustomerID)", customerIDParameter);
+        }
+    
+        public virtual int uspLogError(ObjectParameter errorLogID)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspLogError", errorLogID);
+        }
+    
+        public virtual int uspPrintError()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspPrintError");
+        }
     }
 }

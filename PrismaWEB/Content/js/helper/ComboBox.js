@@ -48,7 +48,7 @@
 
             $("<a>")
                 .attr("tabIndex", -1)
-                .attr("title", "Show All Items")
+                .attr("title", "Mostrar todos os itens")
                 .tooltip()
                 .appendTo(this.wrapper)
                 .button({

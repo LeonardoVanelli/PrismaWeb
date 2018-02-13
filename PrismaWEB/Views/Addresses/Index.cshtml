@@ -18,9 +18,6 @@
                             @Html.DisplayNameFor(model => model.AddressLine1)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.AddressLine2)
-                        </th>
-                        <th>
                             @Html.DisplayNameFor(model => model.City)
                         </th>
                         <th>
@@ -29,7 +26,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.CountryRegion)
                         </th>
-                        <th></th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -38,9 +35,6 @@
                             @Html.DisplayNameFor(model => model.AddressLine1)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.AddressLine2)
-                        </th>
-                        <th>
                             @Html.DisplayNameFor(model => model.City)
                         </th>
                         <th>
@@ -49,7 +43,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.CountryRegion)
                         </th>
-                        <th></th>
+                        <th>Ações</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -58,10 +52,9 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.AddressLine1)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.AddressLine2)
+                                <a href="@Url.Action("Details", new { id = item.AddressID })" class="removeAzul">
+                                    @Html.DisplayFor(modelItem => item.AddressLine1)
+                                </a>
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.City)
@@ -76,7 +69,7 @@
                                 <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", new { id = item.AddressID })" aria-label="Delete">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </a>
-                                <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", new { id = item.AddressID })" aria-label="Delete">
+                                <a class="btn btn-danger btn-sm" href="@Url.Action("Edit", new { id = item.AddressID })" aria-label="Delete">
                                     <i class="fa fa-minus" aria-hidden="true"></i>
                                 </a>
                             </td>

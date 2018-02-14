@@ -52,7 +52,7 @@
                     {
                         <tr>
                             <td>
-                                <a href="@Url.Action("Details", new { id = item.AddressID })" class="removeAzul">
+                                <a href="@Url.Action("Details", new { id = item.AddressID })" class="removeAzulLink">
                                     @Html.DisplayFor(modelItem => item.AddressLine1)
                                 </a>
                             </td>
@@ -66,10 +66,10 @@
                                 @Html.DisplayFor(modelItem => item.CountryRegion)
                             </td>
                             <td>
-                                <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", new { id = item.AddressID })" aria-label="Delete">
+                                <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", new { id = item.AddressID })" data-toggle="tooltip" title="Editar">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </a>
-                                <a class="btn btn-danger btn-sm" href="@Url.Action("Edit", new { id = item.AddressID })" aria-label="Delete">
+                                <a class="btn btn-danger btn-sm" href="@Url.Action("Edit", new { id = item.AddressID })" data-toggle="tooltip" title="Deletar">
                                     <i class="fa fa-minus" aria-hidden="true"></i>
                                 </a>
                             </td>

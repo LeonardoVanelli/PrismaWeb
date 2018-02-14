@@ -232,6 +232,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\helper\ComboBox.css" />
     <Content Include="Content\js\helper\ComboBox.js" />
+    <Content Include="Content\js\helper\DisableCampos.js" />
     <Content Include="Content\SB admin\css\sb-admin.css" />
     <Content Include="Content\SB admin\css\sb-admin.min.css" />
     <Content Include="Content\SB admin\js\sb-admin-charts.js" />

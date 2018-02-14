@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
+    <title>@ViewBag.Title - PrismaWEB</title>
     <!-- Bootstrap core CSS-->
     <link href="~/Content/SB admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -21,7 +21,6 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
     <!-- ComboBox -->
     <script src="~/Content/js/helper/ComboBox.js"></script>
     <link href="~/Content/css/helper/ComboBox.css" rel="stylesheet" />
@@ -188,7 +187,7 @@
                 <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2">
                         <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Search for...">
+                            <input class="form-control" type="text" placeholder="@Url.Action()">
                             <span class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fa fa-search"></i>
@@ -210,9 +209,11 @@
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="index.html">Dashboard</a>
+                    <a href="~/Home" class="removeAzulLink">PrismaWEB</a>
                 </li>
-                <li class="breadcrumb-item active">Blank Page</li>
+                <li class="breadcrumb-item active">
+                    <a href="~/Addresses" class="removeAzulLink">Addresses</a>
+                </li>
             </ol>
             <div class="row">
                 <div class="col-12">
@@ -251,9 +252,6 @@
                 </div>
             </div>
         </div>
-        <!-- Bootstrap core JavaScript-->
-        <script src="~/Content/SB admin/vendor/jquery/jquery.min.js"></script>
-
         <script src="~/Content/SB admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Core plugin JavaScript-->
         <script src="~/Content/SB admin/vendor/jquery-easing/jquery.easing.min.js"></script>

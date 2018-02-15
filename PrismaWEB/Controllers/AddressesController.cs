@@ -52,7 +52,7 @@ namespace PrismaWEB.Controllers
             {
                 db.Address.Add(address);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details/"+address.AddressID);
             }
 
             return View(address);

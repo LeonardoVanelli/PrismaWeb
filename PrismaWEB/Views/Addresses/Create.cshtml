@@ -12,8 +12,8 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Salvar" class="btn btn-success" />
-                <input type="submit" value="Salvar/Novo" class="btn btn-info" />
+                <input type="submit" value="Salvar" class="btn btn-success" />                
+                <input id="SaveAndNew" type="submit" value="Salvar/Novo" class="btn btn-info" />
                 <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
             </div>
         </div>

@@ -15,10 +15,10 @@ namespace PrismaWEB.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class TesteDBEntities : DbContext
+    public partial class TesteDBEntities1 : DbContext
     {
-        public TesteDBEntities()
-            : base("name=TesteDBEntities")
+        public TesteDBEntities1()
+            : base("name=TesteDBEntities1")
         {
         }
     
@@ -29,6 +29,8 @@ namespace PrismaWEB.Models
     
         public virtual DbSet<BuildVersion> BuildVersion { get; set; }
         public virtual DbSet<ErrorLog> ErrorLog { get; set; }
+        public virtual DbSet<Pessoa> Pessoa { get; set; }
+        public virtual DbSet<Teste> Teste { get; set; }
         public virtual DbSet<Address> Address { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<CustomerAddress> CustomerAddress { get; set; }
@@ -44,20 +46,20 @@ namespace PrismaWEB.Models
         public virtual DbSet<vProductModelCatalogDescription> vProductModelCatalogDescription { get; set; }
         public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     
-        [DbFunction("TesteDBEntities", "ufnGetAllCategories")]
+        [DbFunction("TesteDBEntities1", "ufnGetAllCategories")]
         public virtual IQueryable<ufnGetAllCategories_Result> ufnGetAllCategories()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ufnGetAllCategories_Result>("[TesteDBEntities].[ufnGetAllCategories]()");
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ufnGetAllCategories_Result>("[TesteDBEntities1].[ufnGetAllCategories]()");
         }
     
-        [DbFunction("TesteDBEntities", "ufnGetCustomerInformation")]
+        [DbFunction("TesteDBEntities1", "ufnGetCustomerInformation")]
         public virtual IQueryable<ufnGetCustomerInformation_Result> ufnGetCustomerInformation(Nullable<int> customerID)
         {
             var customerIDParameter = customerID.HasValue ?
                 new ObjectParameter("CustomerID", customerID) :
                 new ObjectParameter("CustomerID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ufnGetCustomerInformation_Result>("[TesteDBEntities].[ufnGetCustomerInformation](@CustomerID)", customerIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ufnGetCustomerInformation_Result>("[TesteDBEntities1].[ufnGetCustomerInformation](@CustomerID)", customerIDParameter);
         }
     
         public virtual int uspLogError(ObjectParameter errorLogID)

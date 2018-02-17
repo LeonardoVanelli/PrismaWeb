@@ -28,6 +28,26 @@
           <Property Name="ErrorLine" Type="int" />
           <Property Name="ErrorMessage" Type="nvarchar" MaxLength="4000" Nullable="false" />
         </EntityType>
+        <EntityType Name="Pessoa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="nchar" MaxLength="60" Nullable="false" />
+          <Property Name="Cpf" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="DataNascimento" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teste">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Pessoa" Type="int" />
+          <Property Name="HeCarro" Type="int" />
+          <Property Name="DataCriacao" Type="datetime" Nullable="false" />
+          <Property Name="DataNascimeno" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="AddressID" />
@@ -403,6 +423,18 @@ warning 6002: The table/view 'TesteDB.sys.database_firewall_rules' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Teste_Pessoa">
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
+          <End Role="Teste" Type="Self.Teste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teste">
+              <PropertyRef Name="Pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="ufnGetAllCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <ReturnType>
             <CollectionType>
@@ -436,6 +468,8 @@ warning 6002: The table/view 'TesteDB.sys.database_firewall_rules' does not have
         <EntityContainer Name="TesteDBModelStoreContainer">
           <EntitySet Name="BuildVersion" EntityType="Self.BuildVersion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pessoa" EntityType="Self.Pessoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teste" EntityType="Self.Teste" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Address" EntityType="Self.Address" Schema="SalesLT" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="SalesLT" store:Type="Tables" />
           <EntitySet Name="CustomerAddress" EntityType="Self.CustomerAddress" Schema="SalesLT" store:Type="Tables" />
@@ -549,6 +583,10 @@ warning 6002: The table/view 'TesteDB.sys.database_firewall_rules' does not have
             <End Role="Customer" EntitySet="Customer" />
             <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
           </AssociationSet>
+          <AssociationSet Name="FK_Teste_Pessoa" Association="Self.FK_Teste_Pessoa">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Teste" EntitySet="Teste" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -587,6 +625,28 @@ warning 6002: The table/view 'TesteDB.sys.database_firewall_rules' does not have
           <Property Name="ErrorProcedure" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
           <Property Name="ErrorLine" Type="Int32" />
           <Property Name="ErrorMessage" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pessoa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Cpf" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DataNascimento" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Teste" Relationship="Self.FK_Teste_Pessoa" FromRole="Pessoa" ToRole="Teste" />
+        </EntityType>
+        <EntityType Name="Teste">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pessoa" Type="Int32" />
+          <Property Name="HeCarro" Type="Int32" />
+          <Property Name="DataCriacao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataNascimeno" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Pessoa1" Relationship="Self.FK_Teste_Pessoa" FromRole="Teste" ToRole="Pessoa" />
         </EntityType>
         <EntityType Name="Address">
           <Key>
@@ -833,6 +893,18 @@ warning 6002: The table/view 'TesteDB.sys.database_firewall_rules' does not have
           <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <Association Name="FK_Teste_Pessoa">
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
+          <End Role="Teste" Type="Self.Teste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teste">
+              <PropertyRef Name="Pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CustomerAddress_Address_AddressID">
           <End Role="Address" Type="Self.Address" Multiplicity="1" />
           <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
@@ -979,9 +1051,11 @@ warning 6002: The table/view 'TesteDB.sys.database_firewall_rules' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TesteDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TesteDBEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BuildVersion" EntityType="Self.BuildVersion" />
           <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" />
+          <EntitySet Name="Pessoa" EntityType="Self.Pessoa" />
+          <EntitySet Name="Teste" EntityType="Self.Teste" />
           <EntitySet Name="Address" EntityType="Self.Address" />
           <EntitySet Name="Customer" EntityType="Self.Customer" />
           <EntitySet Name="CustomerAddress" EntityType="Self.CustomerAddress" />
@@ -996,6 +1070,10 @@ warning 6002: The table/view 'TesteDB.sys.database_firewall_rules' does not have
           <EntitySet Name="vProductAndDescription" EntityType="Self.vProductAndDescription" />
           <EntitySet Name="vProductModelCatalogDescription" EntityType="Self.vProductModelCatalogDescription" />
           <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+          <AssociationSet Name="FK_Teste_Pessoa" Association="Self.FK_Teste_Pessoa">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Teste" EntitySet="Teste" />
+          </AssociationSet>
           <AssociationSet Name="FK_CustomerAddress_Address_AddressID" Association="Self.FK_CustomerAddress_Address_AddressID">
             <End Role="Address" EntitySet="Address" />
             <End Role="CustomerAddress" EntitySet="CustomerAddress" />
@@ -1058,7 +1136,7 @@ warning 6002: The table/view 'TesteDB.sys.database_firewall_rules' does not have
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TesteDBModelStoreContainer" CdmEntityContainer="TesteDBEntities">
+        <EntityContainerMapping StorageEntityContainer="TesteDBModelStoreContainer" CdmEntityContainer="TesteDBEntities1">
           <EntitySetMapping Name="BuildVersion">
             <EntityTypeMapping TypeName="TesteDBModel.BuildVersion">
               <MappingFragment StoreEntitySet="BuildVersion">
@@ -1081,6 +1159,28 @@ warning 6002: The table/view 'TesteDB.sys.database_firewall_rules' does not have
                 <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
                 <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
                 <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pessoa">
+            <EntityTypeMapping TypeName="TesteDBModel.Pessoa">
+              <MappingFragment StoreEntitySet="Pessoa">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Cpf" ColumnName="Cpf" />
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teste">
+            <EntityTypeMapping TypeName="TesteDBModel.Teste">
+              <MappingFragment StoreEntitySet="Teste">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Pessoa" ColumnName="Pessoa" />
+                <ScalarProperty Name="HeCarro" ColumnName="HeCarro" />
+                <ScalarProperty Name="DataCriacao" ColumnName="DataCriacao" />
+                <ScalarProperty Name="DataNascimeno" ColumnName="DataNascimeno" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -10,107 +10,107 @@ using PrismaWEB.Models;
 
 namespace PrismaWEB.Controllers
 {
-    public class AddressesController : Controller
+    public class PessoasController : Controller
     {
         private TesteDBEntities1 db = new TesteDBEntities1();
 
-        // GET: Addresses
+        // GET: Pessoas
         public ActionResult Index()
         {
-            return View(db.Address.ToList());
+            return View(db.Pessoa.ToList());
         }
 
-        // GET: Addresses/Details/5
+        // GET: Pessoas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Address address = db.Address.Find(id);
-            if (address == null)
+            Pessoa pessoa = db.Pessoa.Find(id);
+            if (pessoa == null)
             {
                 return HttpNotFound();
             }
-            return View(address);
+            return View(pessoa);
         }
 
-        // GET: Addresses/Create
+        // GET: Pessoas/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Addresses/Create
+        // POST: Pessoas/Create
         // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AddressID,AddressLine1,AddressLine2,City,StateProvince,CountryRegion,PostalCode,rowguid,ModifiedDate")] Address address)
+        public ActionResult Create([Bind(Include = "Id,Nome,Cpf,DataNascimento")] Pessoa pessoa)
         {
             if (ModelState.IsValid)
             {
-                db.Address.Add(address);
+                db.Pessoa.Add(pessoa);
                 db.SaveChanges();
-                return RedirectToAction("Details/"+address.AddressID);
+                return RedirectToAction("Index");
             }
 
-            return View(address);
+            return View(pessoa);
         }
 
-        // GET: Addresses/Edit/5
+        // GET: Pessoas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Address address = db.Address.Find(id);
-            if (address == null)
+            Pessoa pessoa = db.Pessoa.Find(id);
+            if (pessoa == null)
             {
                 return HttpNotFound();
             }
-            return View(address);
+            return View(pessoa);
         }
 
-        // POST: Addresses/Edit/5
+        // POST: Pessoas/Edit/5
         // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AddressID,AddressLine1,AddressLine2,City,StateProvince,CountryRegion,PostalCode,rowguid,ModifiedDate")] Address address)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Cpf,DataNascimento")] Pessoa pessoa)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(address).State = EntityState.Modified;
+                db.Entry(pessoa).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(address);
+            return View(pessoa);
         }
 
-        // GET: Addresses/Delete/5
+        // GET: Pessoas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Address address = db.Address.Find(id);
-            if (address == null)
+            Pessoa pessoa = db.Pessoa.Find(id);
+            if (pessoa == null)
             {
                 return HttpNotFound();
             }
-            return View(address);
+            return View(pessoa);
         }
 
-        // POST: Addresses/Delete/5
+        // POST: Pessoas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Address address = db.Address.Find(id);
-            db.Address.Remove(address);
+            Pessoa pessoa = db.Pessoa.Find(id);
+            db.Pessoa.Remove(pessoa);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

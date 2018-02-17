@@ -36,14 +36,9 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
     Layout = null;
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
     <meta name="viewport" content="width=device-width" />
     <title><#= ViewName #></title>
-</head>
-<body>
+
 <#
     PushIndent("    ");
 }
@@ -54,8 +49,6 @@ if (ReferenceScriptLibraries) {
 <#
     if (!IsLayoutPageSelected && IsBundleConfigPresent) {
 #>
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/jqueryval")
 
 <#
     }
@@ -63,9 +56,6 @@ if (ReferenceScriptLibraries) {
 <#
     else if (!IsLayoutPageSelected) {
 #>
-<script src="~/Scripts/jquery-<#= JQueryVersion #>.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
 <#
     }
@@ -79,8 +69,7 @@ if (ReferenceScriptLibraries) {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4><#= ViewDataTypeShortName #></h4>
-        <hr />
+
 <# 
     if (isControlHtmlAttributesSupported) {
 #>
@@ -98,6 +87,14 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
         if (property.IsPrimaryKey) {
 #>
         @Html.HiddenFor(model => model.<#= property.PropertyName #>)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-success" />
+                <input type="submit" value="Salvar/Novo" class="btn btn-info" />
+                <a href="@Url.Action("Details", new { Id = Model.Id })" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </div>
 
 <#
         } else if (!property.IsReadOnly) {
@@ -122,7 +119,12 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 <# 
             if (isControlHtmlAttributesSupported) {
 #>
-                @Html.DropDownList("<#= property.PropertyName #>", null, htmlAttributes: new { @class = "form-control" })
+                <select class="form-control" id="combobox" name="<#= property.PropertyName #>">
+                    @foreach (var item in ViewBag.<#= property.PropertyName #>)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
 <#
             } else {
 #>
@@ -184,22 +186,16 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 #>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Salvar" class="btn btn-default" />
+                <input type="submit" value="Salvar" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Voltar para Lista", "Index")
-</div>
 <#
 if(IsLayoutPageSelected && ReferenceScriptLibraries && IsBundleConfigPresent) {
 #>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
 <#
 }
 #>
@@ -207,9 +203,6 @@ if(IsLayoutPageSelected && ReferenceScriptLibraries && IsBundleConfigPresent) {
 else if(IsLayoutPageSelected && ReferenceScriptLibraries) {
 #>
 
-<script src="~/Scripts/jquery-<#= JQueryVersion #>.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <#
 }
 #>
@@ -220,8 +213,7 @@ else if(IsLayoutPageSelected && ReferenceScriptLibraries) {
 if(!IsPartialView && !IsLayoutPageSelected) {
     ClearIndent();
 #>
-</body>
-</html>
+
 <#
 }
 #>

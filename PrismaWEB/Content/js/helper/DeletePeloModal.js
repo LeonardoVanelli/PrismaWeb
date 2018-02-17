@@ -1,7 +1,7 @@
-﻿function DeletarItem(token, pryEmpId) {
+﻿function DeletarItem(token, pryEmpId, url) {
     if (pryEmpId != '') {
         $.ajax({
-            url: '/PrismaWEB/Addresses/Delete/' + pryEmpId,
+            url: url +'/'+ pryEmpId,
             type: 'Post',
             data: { __RequestVerificationToken: token },
             success: function (data) {

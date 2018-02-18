@@ -117,7 +117,7 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 <# 
             if (isControlHtmlAttributesSupported) {
 #>
-                    <select class="form-control" id="combobox" name="<#= property.PropertyName #>">
+                    <select id="gender-select" class="ui fluid search selection dropdown" name="<#= property.PropertyName #>">
                         @foreach (var item in ViewBag.<#= property.PropertyName #>)
                         {
                             <option value="@item.Value">@item.Text</option>

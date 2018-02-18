@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Pessoa, "Pessoa", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select class="form-control" id="combobox" name="Pessoa">
+                <select id="gender-select" class="ui fluid search selection dropdown" name="Pessoa">
                     @foreach (var item in ViewBag.Pessoa)
                     {
                         <option value="@item.Value">@item.Text</option>

@@ -4,1425 +4,1322 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TesteDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="BuildVersion">
-          <Key>
-            <PropertyRef Name="SystemInformationID" />
-          </Key>
-          <Property Name="SystemInformationID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Database Version" Type="nvarchar" MaxLength="25" Nullable="false" />
-          <Property Name="VersionDate" Type="datetime" Nullable="false" />
-          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ErrorLog">
-          <Key>
-            <PropertyRef Name="ErrorLogID" />
-          </Key>
-          <Property Name="ErrorLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ErrorTime" Type="datetime" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="ErrorNumber" Type="int" Nullable="false" />
-          <Property Name="ErrorSeverity" Type="int" />
-          <Property Name="ErrorState" Type="int" />
-          <Property Name="ErrorProcedure" Type="nvarchar" MaxLength="126" />
-          <Property Name="ErrorLine" Type="int" />
-          <Property Name="ErrorMessage" Type="nvarchar" MaxLength="4000" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Pessoa">
+      <Schema Namespace="PrismaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BAIRROS">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Nome" Type="nchar" MaxLength="60" Nullable="false" />
-          <Property Name="Cpf" Type="nchar" MaxLength="11" Nullable="false" />
-          <Property Name="DataNascimento" Type="date" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Pais_Id" Type="int" Nullable="false" />
+          <Property Name="Estado_Id" Type="int" Nullable="false" />
+          <Property Name="Municipio_Id" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Teste">
+        <EntityType Name="CANDIDATOCARGO">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Nome" Type="nvarchar" MaxLength="60" Nullable="false" />
-          <Property Name="Pessoa" Type="int" />
-          <Property Name="HeCarro" Type="int" />
+          <Property Name="Candidato_Id" Type="int" Nullable="false" />
+          <Property Name="Cargo_Id" Type="int" Nullable="false" />
           <Property Name="DataCriacao" Type="datetime" Nullable="false" />
-          <Property Name="DataNascimeno" Type="date" Nullable="false" />
         </EntityType>
-        <EntityType Name="Address">
+        <EntityType Name="CARGOS">
           <Key>
-            <PropertyRef Name="AddressID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AddressLine1" Type="nvarchar" MaxLength="60" Nullable="false" />
-          <Property Name="AddressLine2" Type="nvarchar" MaxLength="60" />
-          <Property Name="City" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="StateProvince" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CountryRegion" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="PostalCode" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Descricao" Type="varchar(max)" />
+          <Property Name="DataCraicao" Type="datetime" Nullable="false" />
+          <Property Name="DataAlteracao" Type="datetime" />
         </EntityType>
-        <EntityType Name="Customer">
+        <EntityType Name="ESTADOS">
           <Key>
-            <PropertyRef Name="CustomerID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameStyle" Type="bit" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="8" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Suffix" Type="nvarchar" MaxLength="10" />
-          <Property Name="CompanyName" Type="nvarchar" MaxLength="128" />
-          <Property Name="SalesPerson" Type="nvarchar" MaxLength="256" />
-          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="25" />
-          <Property Name="PasswordHash" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="PasswordSalt" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Pais_Id" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="CustomerAddress">
+        <EntityType Name="FAVORIOS">
           <Key>
-            <PropertyRef Name="CustomerID" />
-            <PropertyRef Name="AddressID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="CustomerID" Type="int" Nullable="false" />
-          <Property Name="AddressID" Type="int" Nullable="false" />
-          <Property Name="AddressType" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Usuario_Id" Type="int" Nullable="false" />
+          <Property Name="Candidato_Id" Type="int" Nullable="false" />
+          <Property Name="DataCriacao" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="Product">
+        <EntityType Name="LEIS">
           <Key>
-            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ProductNumber" Type="nvarchar" MaxLength="25" Nullable="false" />
-          <Property Name="Color" Type="nvarchar" MaxLength="15" />
-          <Property Name="StandardCost" Type="money" Nullable="false" />
-          <Property Name="ListPrice" Type="money" Nullable="false" />
-          <Property Name="Size" Type="nvarchar" MaxLength="5" />
-          <Property Name="Weight" Type="decimal" Precision="8" Scale="2" />
-          <Property Name="ProductCategoryID" Type="int" />
-          <Property Name="ProductModelID" Type="int" />
-          <Property Name="SellStartDate" Type="datetime" Nullable="false" />
-          <Property Name="SellEndDate" Type="datetime" />
-          <Property Name="DiscontinuedDate" Type="datetime" />
-          <Property Name="ThumbNailPhoto" Type="varbinary(max)" />
-          <Property Name="ThumbnailPhotoFileName" Type="nvarchar" MaxLength="50" />
-          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Numero" Type="varchar" MaxLength="11" />
+          <Property Name="Nome" Type="varchar" MaxLength="60" />
+          <Property Name="Descricao" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="ProductCategory">
+        <EntityType Name="LOGRADOUROS">
           <Key>
-            <PropertyRef Name="ProductCategoryID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ProductCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ParentProductCategoryID" Type="int" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Pais_Id" Type="int" Nullable="false" />
+          <Property Name="Estado_Id" Type="int" Nullable="false" />
+          <Property Name="Municipio_Id" Type="int" Nullable="false" />
+          <Property Name="Bairro_Id" Type="int" Nullable="false" />
+          <Property Name="Cep" Type="varchar" MaxLength="8" />
         </EntityType>
-        <EntityType Name="ProductDescription">
+        <EntityType Name="MUNICIPIOS">
           <Key>
-            <PropertyRef Name="ProductDescriptionID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ProductDescriptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="400" Nullable="false" />
-          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Pais_Id" Type="int" Nullable="false" />
+          <Property Name="Estado_Id" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="ProductModel">
+        <EntityType Name="PAISES">
           <Key>
-            <PropertyRef Name="ProductModelID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ProductModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CatalogDescription" Type="xml" />
-          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="60" Nullable="false" />
         </EntityType>
-        <EntityType Name="ProductModelProductDescription">
+        <EntityType Name="PESSOAS">
           <Key>
-            <PropertyRef Name="ProductModelID" />
-            <PropertyRef Name="ProductDescriptionID" />
-            <PropertyRef Name="Culture" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ProductModelID" Type="int" Nullable="false" />
-          <Property Name="ProductDescriptionID" Type="int" Nullable="false" />
-          <Property Name="Culture" Type="nchar" MaxLength="6" Nullable="false" />
-          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="60" />
+          <Property Name="DataNascimento" Type="datetime" />
+          <Property Name="Cpf" Type="varchar" MaxLength="11" />
+          <Property Name="Foto" Type="varchar(max)" />
+          <Property Name="DataCriacao" Type="datetime" />
+          <Property Name="DataAlteracao" Type="datetime" />
+          <Property Name="Ativo" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="60" />
+          <Property Name="TelefoneFixo" Type="varchar" MaxLength="12" />
+          <Property Name="TelefoneMovel" Type="varchar" MaxLength="12" />
+          <Property Name="Endereco" Type="varchar" MaxLength="60" />
+          <Property Name="Pais_Id" Type="int" />
+          <Property Name="Estado_Id" Type="int" />
+          <Property Name="Municipio_Id" Type="int" />
+          <Property Name="Bairro_Id" Type="int" />
+          <Property Name="Logradouro_Id" Type="int" />
+          <Property Name="Cep" Type="nvarchar" MaxLength="8" />
+          <Property Name="Numero" Type="nvarchar" MaxLength="8" />
+          <Property Name="Complemento" Type="nvarchar" MaxLength="60" />
         </EntityType>
-        <EntityType Name="SalesOrderDetail">
+        <EntityType Name="PRESIDENTES">
           <Key>
-            <PropertyRef Name="SalesOrderID" />
-            <PropertyRef Name="SalesOrderDetailID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="SalesOrderID" Type="int" Nullable="false" />
-          <Property Name="SalesOrderDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderQty" Type="smallint" Nullable="false" />
-          <Property Name="ProductID" Type="int" Nullable="false" />
-          <Property Name="UnitPrice" Type="money" Nullable="false" />
-          <Property Name="UnitPriceDiscount" Type="money" Nullable="false" />
-          <Property Name="LineTotal" Type="numeric" Precision="38" Scale="6" StoreGeneratedPattern="Computed" Nullable="false" />
-          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Candidato_Id" Type="int" Nullable="false" />
+          <Property Name="Vice_Id" Type="int" Nullable="false" />
+          <Property Name="DataCriacao" Type="datetime" Nullable="false" />
+          <Property Name="DataAlteracao" Type="datetime" />
         </EntityType>
-        <EntityType Name="SalesOrderHeader">
+        <EntityType Name="VOTOCANDIDATOLEI">
           <Key>
-            <PropertyRef Name="SalesOrderID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="SalesOrderID" Type="int" Nullable="false" />
-          <Property Name="RevisionNumber" Type="tinyint" Nullable="false" />
-          <Property Name="OrderDate" Type="datetime" Nullable="false" />
-          <Property Name="DueDate" Type="datetime" Nullable="false" />
-          <Property Name="ShipDate" Type="datetime" />
-          <Property Name="Status" Type="tinyint" Nullable="false" />
-          <Property Name="OnlineOrderFlag" Type="bit" Nullable="false" />
-          <Property Name="SalesOrderNumber" Type="nvarchar" MaxLength="25" StoreGeneratedPattern="Computed" Nullable="false" />
-          <Property Name="PurchaseOrderNumber" Type="nvarchar" MaxLength="25" />
-          <Property Name="AccountNumber" Type="nvarchar" MaxLength="15" />
-          <Property Name="CustomerID" Type="int" Nullable="false" />
-          <Property Name="ShipToAddressID" Type="int" />
-          <Property Name="BillToAddressID" Type="int" />
-          <Property Name="ShipMethod" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CreditCardApprovalCode" Type="varchar" MaxLength="15" />
-          <Property Name="SubTotal" Type="money" Nullable="false" />
-          <Property Name="TaxAmt" Type="money" Nullable="false" />
-          <Property Name="Freight" Type="money" Nullable="false" />
-          <Property Name="TotalDue" Type="money" StoreGeneratedPattern="Computed" Nullable="false" />
-          <Property Name="Comment" Type="nvarchar(max)" />
-          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Candidato_Id" Type="int" Nullable="false" />
+          <Property Name="Lei_Id" Type="int" Nullable="false" />
+          <Property Name="Votou" Type="int" Nullable="false" />
+          <Property Name="DataCriacao" Type="datetime" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TesteDB.SalesLT.vGetAllCategories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vGetAllCategories">
+        <EntityType Name="VOTOS">
           <Key>
-            <PropertyRef Name="ParentProductCategoryName" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ParentProductCategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ProductCategoryName" Type="nvarchar" MaxLength="50" />
-          <Property Name="ProductCategoryID" Type="int" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Usuario_Id" Type="int" Nullable="false" />
+          <Property Name="Candidato_Id" Type="int" Nullable="false" />
+          <Property Name="DataCriacao" Type="datetime" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TesteDB.SalesLT.vProductAndDescription' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vProductAndDescription">
-          <Key>
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="ProductModel" />
-            <PropertyRef Name="Culture" />
-            <PropertyRef Name="Description" />
-          </Key>
-          <Property Name="ProductID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ProductModel" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Culture" Type="nchar" MaxLength="6" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="400" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TesteDB.SalesLT.vProductModelCatalogDescription' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vProductModelCatalogDescription">
-          <Key>
-            <PropertyRef Name="ProductModelID" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="rowguid" />
-            <PropertyRef Name="ModifiedDate" />
-          </Key>
-          <Property Name="ProductModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Summary" Type="nvarchar(max)" />
-          <Property Name="Manufacturer" Type="nvarchar(max)" />
-          <Property Name="Copyright" Type="nvarchar" MaxLength="30" />
-          <Property Name="ProductURL" Type="nvarchar" MaxLength="256" />
-          <Property Name="WarrantyPeriod" Type="nvarchar" MaxLength="256" />
-          <Property Name="WarrantyDescription" Type="nvarchar" MaxLength="256" />
-          <Property Name="NoOfYears" Type="nvarchar" MaxLength="256" />
-          <Property Name="MaintenanceDescription" Type="nvarchar" MaxLength="256" />
-          <Property Name="Wheel" Type="nvarchar" MaxLength="256" />
-          <Property Name="Saddle" Type="nvarchar" MaxLength="256" />
-          <Property Name="Pedal" Type="nvarchar" MaxLength="256" />
-          <Property Name="BikeFrame" Type="nvarchar(max)" />
-          <Property Name="Crankset" Type="nvarchar" MaxLength="256" />
-          <Property Name="PictureAngle" Type="nvarchar" MaxLength="256" />
-          <Property Name="PictureSize" Type="nvarchar" MaxLength="256" />
-          <Property Name="ProductPhotoID" Type="nvarchar" MaxLength="256" />
-          <Property Name="Material" Type="nvarchar" MaxLength="256" />
-          <Property Name="Color" Type="nvarchar" MaxLength="256" />
-          <Property Name="ProductLine" Type="nvarchar" MaxLength="256" />
-          <Property Name="Style" Type="nvarchar" MaxLength="256" />
-          <Property Name="RiderExperience" Type="nvarchar" MaxLength="1024" />
-          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TesteDB.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="database_firewall_rules">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="name" />
-            <PropertyRef Name="start_ip_address" />
-            <PropertyRef Name="end_ip_address" />
-            <PropertyRef Name="create_date" />
-            <PropertyRef Name="modify_date" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="create_date" Type="datetime" Nullable="false" />
-          <Property Name="modify_date" Type="datetime" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_CustomerAddress_Address_AddressID">
-          <End Role="Address" Type="Self.Address" Multiplicity="1" />
-          <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
+        <Association Name="FK_BAIRROS_ESTADOS">
+          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="1" />
+          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="AddressID" />
-            </Principal>
-            <Dependent Role="CustomerAddress">
-              <PropertyRef Name="AddressID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CustomerAddress_Customer_CustomerID">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-          <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="CustomerID" />
-            </Principal>
-            <Dependent Role="CustomerAddress">
-              <PropertyRef Name="CustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_ProductCategory_ProductCategoryID">
-          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductCategory">
-              <PropertyRef Name="ProductCategoryID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="ProductCategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_ProductModel_ProductModelID">
-          <End Role="ProductModel" Type="Self.ProductModel" Multiplicity="0..1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductModel">
-              <PropertyRef Name="ProductModelID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="ProductModelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID">
-          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
-          <End Role="ProductCategory1" Type="Self.ProductCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductCategory">
-              <PropertyRef Name="ProductCategoryID" />
-            </Principal>
-            <Dependent Role="ProductCategory1">
-              <PropertyRef Name="ParentProductCategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID">
-          <End Role="ProductDescription" Type="Self.ProductDescription" Multiplicity="1" />
-          <End Role="ProductModelProductDescription" Type="Self.ProductModelProductDescription" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductDescription">
-              <PropertyRef Name="ProductDescriptionID" />
-            </Principal>
-            <Dependent Role="ProductModelProductDescription">
-              <PropertyRef Name="ProductDescriptionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductModelProductDescription_ProductModel_ProductModelID">
-          <End Role="ProductModel" Type="Self.ProductModel" Multiplicity="1" />
-          <End Role="ProductModelProductDescription" Type="Self.ProductModelProductDescription" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductModel">
-              <PropertyRef Name="ProductModelID" />
-            </Principal>
-            <Dependent Role="ProductModelProductDescription">
-              <PropertyRef Name="ProductModelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SalesOrderDetail_Product_ProductID">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
-            </Principal>
-            <Dependent Role="SalesOrderDetail">
-              <PropertyRef Name="ProductID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID">
-          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SalesOrderHeader">
-              <PropertyRef Name="SalesOrderID" />
-            </Principal>
-            <Dependent Role="SalesOrderDetail">
-              <PropertyRef Name="SalesOrderID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SalesOrderHeader_Address_BillTo_AddressID">
-          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
-          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="AddressID" />
-            </Principal>
-            <Dependent Role="SalesOrderHeader">
-              <PropertyRef Name="BillToAddressID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SalesOrderHeader_Address_ShipTo_AddressID">
-          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
-          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="AddressID" />
-            </Principal>
-            <Dependent Role="SalesOrderHeader">
-              <PropertyRef Name="ShipToAddressID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SalesOrderHeader_Customer_CustomerID">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="CustomerID" />
-            </Principal>
-            <Dependent Role="SalesOrderHeader">
-              <PropertyRef Name="CustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Teste_Pessoa">
-          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
-          <End Role="Teste" Type="Self.Teste" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pessoa">
+            <Principal Role="ESTADOS">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Teste">
-              <PropertyRef Name="Pessoa" />
+            <Dependent Role="BAIRROS">
+              <PropertyRef Name="Estado_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="ufnGetAllCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="ParentProductCategoryName" Type="nvarchar" MaxLength="50" />
-                <Property Name="ProductCategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
-                <Property Name="ProductCategoryID" Type="int" Nullable="false" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="ufnGetCustomerInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="CustomerID" Type="int" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="CustomerID" Type="int" Nullable="false" />
-                <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-                <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="ufnGetSalesOrderStatusText" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
-          <Parameter Name="Status" Type="tinyint" Mode="In" />
-        </Function>
-        <Function Name="uspLogError" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ErrorLogID" Type="int" Mode="InOut" />
-        </Function>
-        <Function Name="uspPrintError" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="TesteDBModelStoreContainer">
-          <EntitySet Name="BuildVersion" EntityType="Self.BuildVersion" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Pessoa" EntityType="Self.Pessoa" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Teste" EntityType="Self.Teste" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Address" EntityType="Self.Address" Schema="SalesLT" store:Type="Tables" />
-          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="SalesLT" store:Type="Tables" />
-          <EntitySet Name="CustomerAddress" EntityType="Self.CustomerAddress" Schema="SalesLT" store:Type="Tables" />
-          <EntitySet Name="Product" EntityType="Self.Product" Schema="SalesLT" store:Type="Tables" />
-          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="SalesLT" store:Type="Tables" />
-          <EntitySet Name="ProductDescription" EntityType="Self.ProductDescription" Schema="SalesLT" store:Type="Tables" />
-          <EntitySet Name="ProductModel" EntityType="Self.ProductModel" Schema="SalesLT" store:Type="Tables" />
-          <EntitySet Name="ProductModelProductDescription" EntityType="Self.ProductModelProductDescription" Schema="SalesLT" store:Type="Tables" />
-          <EntitySet Name="SalesOrderDetail" EntityType="Self.SalesOrderDetail" Schema="SalesLT" store:Type="Tables" />
-          <EntitySet Name="SalesOrderHeader" EntityType="Self.SalesOrderHeader" Schema="SalesLT" store:Type="Tables" />
-          <EntitySet Name="vGetAllCategories" EntityType="Self.vGetAllCategories" store:Type="Views" store:Schema="SalesLT">
-            <DefiningQuery>SELECT 
-    [vGetAllCategories].[ParentProductCategoryName] AS [ParentProductCategoryName], 
-    [vGetAllCategories].[ProductCategoryName] AS [ProductCategoryName], 
-    [vGetAllCategories].[ProductCategoryID] AS [ProductCategoryID]
-    FROM [SalesLT].[vGetAllCategories] AS [vGetAllCategories]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vProductAndDescription" EntityType="Self.vProductAndDescription" store:Type="Views" store:Schema="SalesLT">
-            <DefiningQuery>SELECT 
-    [vProductAndDescription].[ProductID] AS [ProductID], 
-    [vProductAndDescription].[Name] AS [Name], 
-    [vProductAndDescription].[ProductModel] AS [ProductModel], 
-    [vProductAndDescription].[Culture] AS [Culture], 
-    [vProductAndDescription].[Description] AS [Description]
-    FROM [SalesLT].[vProductAndDescription] AS [vProductAndDescription]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vProductModelCatalogDescription" EntityType="Self.vProductModelCatalogDescription" store:Type="Views" store:Schema="SalesLT">
-            <DefiningQuery>SELECT 
-    [vProductModelCatalogDescription].[ProductModelID] AS [ProductModelID], 
-    [vProductModelCatalogDescription].[Name] AS [Name], 
-    [vProductModelCatalogDescription].[Summary] AS [Summary], 
-    [vProductModelCatalogDescription].[Manufacturer] AS [Manufacturer], 
-    [vProductModelCatalogDescription].[Copyright] AS [Copyright], 
-    [vProductModelCatalogDescription].[ProductURL] AS [ProductURL], 
-    [vProductModelCatalogDescription].[WarrantyPeriod] AS [WarrantyPeriod], 
-    [vProductModelCatalogDescription].[WarrantyDescription] AS [WarrantyDescription], 
-    [vProductModelCatalogDescription].[NoOfYears] AS [NoOfYears], 
-    [vProductModelCatalogDescription].[MaintenanceDescription] AS [MaintenanceDescription], 
-    [vProductModelCatalogDescription].[Wheel] AS [Wheel], 
-    [vProductModelCatalogDescription].[Saddle] AS [Saddle], 
-    [vProductModelCatalogDescription].[Pedal] AS [Pedal], 
-    [vProductModelCatalogDescription].[BikeFrame] AS [BikeFrame], 
-    [vProductModelCatalogDescription].[Crankset] AS [Crankset], 
-    [vProductModelCatalogDescription].[PictureAngle] AS [PictureAngle], 
-    [vProductModelCatalogDescription].[PictureSize] AS [PictureSize], 
-    [vProductModelCatalogDescription].[ProductPhotoID] AS [ProductPhotoID], 
-    [vProductModelCatalogDescription].[Material] AS [Material], 
-    [vProductModelCatalogDescription].[Color] AS [Color], 
-    [vProductModelCatalogDescription].[ProductLine] AS [ProductLine], 
-    [vProductModelCatalogDescription].[Style] AS [Style], 
-    [vProductModelCatalogDescription].[RiderExperience] AS [RiderExperience], 
-    [vProductModelCatalogDescription].[rowguid] AS [rowguid], 
-    [vProductModelCatalogDescription].[ModifiedDate] AS [ModifiedDate]
-    FROM [SalesLT].[vProductModelCatalogDescription] AS [vProductModelCatalogDescription]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
-            <DefiningQuery>SELECT 
-    [database_firewall_rules].[id] AS [id], 
-    [database_firewall_rules].[name] AS [name], 
-    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
-    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
-    [database_firewall_rules].[create_date] AS [create_date], 
-    [database_firewall_rules].[modify_date] AS [modify_date]
-    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK_CustomerAddress_Address_AddressID" Association="Self.FK_CustomerAddress_Address_AddressID">
-            <End Role="Address" EntitySet="Address" />
-            <End Role="CustomerAddress" EntitySet="CustomerAddress" />
+        <Association Name="FK_BAIRROS_MUNICIPIOS">
+          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="1" />
+          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUNICIPIOS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BAIRROS">
+              <PropertyRef Name="Municipio_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BAIRROS_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
+          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BAIRROS">
+              <PropertyRef Name="Pais_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CANDIDATOCARGO_CARGOS">
+          <End Role="CARGOS" Type="Self.CARGOS" Multiplicity="1" />
+          <End Role="CANDIDATOCARGO" Type="Self.CANDIDATOCARGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARGOS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CANDIDATOCARGO">
+              <PropertyRef Name="Cargo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CANDIDATOCARGO_PESSOAS">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="CANDIDATOCARGO" Type="Self.CANDIDATOCARGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CANDIDATOCARGO">
+              <PropertyRef Name="Candidato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ESTADOS_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
+          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ESTADOS">
+              <PropertyRef Name="Pais_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FAVORIOS_PESSOASCANDIDATO">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="FAVORIOS" Type="Self.FAVORIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FAVORIOS">
+              <PropertyRef Name="Candidato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FAVORIOS_PESSOASUSUARIO">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="FAVORIOS" Type="Self.FAVORIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FAVORIOS">
+              <PropertyRef Name="Usuario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOGRADOUROS_BAIRROS">
+          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="1" />
+          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BAIRROS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LOGRADOUROS">
+              <PropertyRef Name="Bairro_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOGRADOUROS_ESTADOS">
+          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="1" />
+          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADOS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LOGRADOUROS">
+              <PropertyRef Name="Estado_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOGRADOUROS_MUNICIPIOS">
+          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="1" />
+          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUNICIPIOS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LOGRADOUROS">
+              <PropertyRef Name="Municipio_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOGRADOUROS_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
+          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LOGRADOUROS">
+              <PropertyRef Name="Pais_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MUNICIPIOS_ESTADOS">
+          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="1" />
+          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADOS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MUNICIPIOS">
+              <PropertyRef Name="Estado_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MUNICIPIOS_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
+          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MUNICIPIOS">
+              <PropertyRef Name="Pais_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PESSOAS_BAIRROS">
+          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="0..1" />
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BAIRROS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PESSOAS">
+              <PropertyRef Name="Bairro_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PESSOAS_ESTATOS">
+          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="0..1" />
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADOS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PESSOAS">
+              <PropertyRef Name="Estado_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PESSOAS_LOGRADOUROS">
+          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="0..1" />
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOGRADOUROS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PESSOAS">
+              <PropertyRef Name="Logradouro_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PESSOAS_MUNICIPIOS">
+          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="0..1" />
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUNICIPIOS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PESSOAS">
+              <PropertyRef Name="Municipio_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PESSOAS_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="0..1" />
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PESSOAS">
+              <PropertyRef Name="Pais_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRESIDENTES_PESSOASCANDIDATO">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="PRESIDENTES" Type="Self.PRESIDENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PRESIDENTES">
+              <PropertyRef Name="Candidato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRESIDENTES_PESSOASVICE">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="PRESIDENTES" Type="Self.PRESIDENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PRESIDENTES">
+              <PropertyRef Name="Vice_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VOTOCANDIDATOLEI_LEIS">
+          <End Role="LEIS" Type="Self.LEIS" Multiplicity="1" />
+          <End Role="VOTOCANDIDATOLEI" Type="Self.VOTOCANDIDATOLEI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEIS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VOTOCANDIDATOLEI">
+              <PropertyRef Name="Lei_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VOTOCANDIDATOLEI_PESSOAS">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="VOTOCANDIDATOLEI" Type="Self.VOTOCANDIDATOLEI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VOTOCANDIDATOLEI">
+              <PropertyRef Name="Candidato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VOTOS_PESSOASCANDIDATO">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="VOTOS" Type="Self.VOTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VOTOS">
+              <PropertyRef Name="Candidato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VOTOS_PESSOASUSUARIO">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="VOTOS" Type="Self.VOTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VOTOS">
+              <PropertyRef Name="Usuario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PrismaModelStoreContainer">
+          <EntitySet Name="BAIRROS" EntityType="Self.BAIRROS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CANDIDATOCARGO" EntityType="Self.CANDIDATOCARGO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CARGOS" EntityType="Self.CARGOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ESTADOS" EntityType="Self.ESTADOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAVORIOS" EntityType="Self.FAVORIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LEIS" EntityType="Self.LEIS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOGRADOUROS" EntityType="Self.LOGRADOUROS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MUNICIPIOS" EntityType="Self.MUNICIPIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAISES" EntityType="Self.PAISES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PESSOAS" EntityType="Self.PESSOAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRESIDENTES" EntityType="Self.PRESIDENTES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VOTOCANDIDATOLEI" EntityType="Self.VOTOCANDIDATOLEI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VOTOS" EntityType="Self.VOTOS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BAIRROS_ESTADOS" Association="Self.FK_BAIRROS_ESTADOS">
+            <End Role="ESTADOS" EntitySet="ESTADOS" />
+            <End Role="BAIRROS" EntitySet="BAIRROS" />
           </AssociationSet>
-          <AssociationSet Name="FK_CustomerAddress_Customer_CustomerID" Association="Self.FK_CustomerAddress_Customer_CustomerID">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="CustomerAddress" EntitySet="CustomerAddress" />
+          <AssociationSet Name="FK_BAIRROS_MUNICIPIOS" Association="Self.FK_BAIRROS_MUNICIPIOS">
+            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+            <End Role="BAIRROS" EntitySet="BAIRROS" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product_ProductCategory_ProductCategoryID" Association="Self.FK_Product_ProductCategory_ProductCategoryID">
-            <End Role="ProductCategory" EntitySet="ProductCategory" />
-            <End Role="Product" EntitySet="Product" />
+          <AssociationSet Name="FK_BAIRROS_PAISES" Association="Self.FK_BAIRROS_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="BAIRROS" EntitySet="BAIRROS" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product_ProductModel_ProductModelID" Association="Self.FK_Product_ProductModel_ProductModelID">
-            <End Role="ProductModel" EntitySet="ProductModel" />
-            <End Role="Product" EntitySet="Product" />
+          <AssociationSet Name="FK_CANDIDATOCARGO_CARGOS" Association="Self.FK_CANDIDATOCARGO_CARGOS">
+            <End Role="CARGOS" EntitySet="CARGOS" />
+            <End Role="CANDIDATOCARGO" EntitySet="CANDIDATOCARGO" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID" Association="Self.FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID">
-            <End Role="ProductCategory" EntitySet="ProductCategory" />
-            <End Role="ProductCategory1" EntitySet="ProductCategory" />
+          <AssociationSet Name="FK_CANDIDATOCARGO_PESSOAS" Association="Self.FK_CANDIDATOCARGO_PESSOAS">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="CANDIDATOCARGO" EntitySet="CANDIDATOCARGO" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID" Association="Self.FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID">
-            <End Role="ProductDescription" EntitySet="ProductDescription" />
-            <End Role="ProductModelProductDescription" EntitySet="ProductModelProductDescription" />
+          <AssociationSet Name="FK_ESTADOS_PAISES" Association="Self.FK_ESTADOS_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="ESTADOS" EntitySet="ESTADOS" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductModelProductDescription_ProductModel_ProductModelID" Association="Self.FK_ProductModelProductDescription_ProductModel_ProductModelID">
-            <End Role="ProductModel" EntitySet="ProductModel" />
-            <End Role="ProductModelProductDescription" EntitySet="ProductModelProductDescription" />
+          <AssociationSet Name="FK_FAVORIOS_PESSOASCANDIDATO" Association="Self.FK_FAVORIOS_PESSOASCANDIDATO">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="FAVORIOS" EntitySet="FAVORIOS" />
           </AssociationSet>
-          <AssociationSet Name="FK_SalesOrderDetail_Product_ProductID" Association="Self.FK_SalesOrderDetail_Product_ProductID">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="SalesOrderDetail" EntitySet="SalesOrderDetail" />
+          <AssociationSet Name="FK_FAVORIOS_PESSOASUSUARIO" Association="Self.FK_FAVORIOS_PESSOASUSUARIO">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="FAVORIOS" EntitySet="FAVORIOS" />
           </AssociationSet>
-          <AssociationSet Name="FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID" Association="Self.FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID">
-            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
-            <End Role="SalesOrderDetail" EntitySet="SalesOrderDetail" />
+          <AssociationSet Name="FK_LOGRADOUROS_BAIRROS" Association="Self.FK_LOGRADOUROS_BAIRROS">
+            <End Role="BAIRROS" EntitySet="BAIRROS" />
+            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
           </AssociationSet>
-          <AssociationSet Name="FK_SalesOrderHeader_Address_BillTo_AddressID" Association="Self.FK_SalesOrderHeader_Address_BillTo_AddressID">
-            <End Role="Address" EntitySet="Address" />
-            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
+          <AssociationSet Name="FK_LOGRADOUROS_ESTADOS" Association="Self.FK_LOGRADOUROS_ESTADOS">
+            <End Role="ESTADOS" EntitySet="ESTADOS" />
+            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
           </AssociationSet>
-          <AssociationSet Name="FK_SalesOrderHeader_Address_ShipTo_AddressID" Association="Self.FK_SalesOrderHeader_Address_ShipTo_AddressID">
-            <End Role="Address" EntitySet="Address" />
-            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
+          <AssociationSet Name="FK_LOGRADOUROS_MUNICIPIOS" Association="Self.FK_LOGRADOUROS_MUNICIPIOS">
+            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
           </AssociationSet>
-          <AssociationSet Name="FK_SalesOrderHeader_Customer_CustomerID" Association="Self.FK_SalesOrderHeader_Customer_CustomerID">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
+          <AssociationSet Name="FK_LOGRADOUROS_PAISES" Association="Self.FK_LOGRADOUROS_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
           </AssociationSet>
-          <AssociationSet Name="FK_Teste_Pessoa" Association="Self.FK_Teste_Pessoa">
-            <End Role="Pessoa" EntitySet="Pessoa" />
-            <End Role="Teste" EntitySet="Teste" />
+          <AssociationSet Name="FK_MUNICIPIOS_ESTADOS" Association="Self.FK_MUNICIPIOS_ESTADOS">
+            <End Role="ESTADOS" EntitySet="ESTADOS" />
+            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MUNICIPIOS_PAISES" Association="Self.FK_MUNICIPIOS_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PESSOAS_BAIRROS" Association="Self.FK_PESSOAS_BAIRROS">
+            <End Role="BAIRROS" EntitySet="BAIRROS" />
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PESSOAS_ESTATOS" Association="Self.FK_PESSOAS_ESTATOS">
+            <End Role="ESTADOS" EntitySet="ESTADOS" />
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PESSOAS_LOGRADOUROS" Association="Self.FK_PESSOAS_LOGRADOUROS">
+            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PESSOAS_MUNICIPIOS" Association="Self.FK_PESSOAS_MUNICIPIOS">
+            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PESSOAS_PAISES" Association="Self.FK_PESSOAS_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRESIDENTES_PESSOASCANDIDATO" Association="Self.FK_PRESIDENTES_PESSOASCANDIDATO">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="PRESIDENTES" EntitySet="PRESIDENTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRESIDENTES_PESSOASVICE" Association="Self.FK_PRESIDENTES_PESSOASVICE">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="PRESIDENTES" EntitySet="PRESIDENTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VOTOCANDIDATOLEI_LEIS" Association="Self.FK_VOTOCANDIDATOLEI_LEIS">
+            <End Role="LEIS" EntitySet="LEIS" />
+            <End Role="VOTOCANDIDATOLEI" EntitySet="VOTOCANDIDATOLEI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VOTOCANDIDATOLEI_PESSOAS" Association="Self.FK_VOTOCANDIDATOLEI_PESSOAS">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="VOTOCANDIDATOLEI" EntitySet="VOTOCANDIDATOLEI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VOTOS_PESSOASCANDIDATO" Association="Self.FK_VOTOS_PESSOASCANDIDATO">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="VOTOS" EntitySet="VOTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VOTOS_PESSOASUSUARIO" Association="Self.FK_VOTOS_PESSOASUSUARIO">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="VOTOS" EntitySet="VOTOS" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TesteDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <ComplexType Name="ufnGetAllCategories_Result">
-          <Property Name="ParentProductCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ProductCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProductCategoryID" Type="Int32" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="ufnGetCustomerInformation_Result">
-          <Property Name="CustomerID" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-        </ComplexType>
-        <EntityType Name="BuildVersion">
-          <Key>
-            <PropertyRef Name="SystemInformationID" />
-          </Key>
-          <Property Name="SystemInformationID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Database_Version" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="VersionDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="ErrorLog">
-          <Key>
-            <PropertyRef Name="ErrorLogID" />
-          </Key>
-          <Property Name="ErrorLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ErrorTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ErrorNumber" Type="Int32" Nullable="false" />
-          <Property Name="ErrorSeverity" Type="Int32" />
-          <Property Name="ErrorState" Type="Int32" />
-          <Property Name="ErrorProcedure" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
-          <Property Name="ErrorLine" Type="Int32" />
-          <Property Name="ErrorMessage" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Pessoa">
+      <Schema Namespace="PrismaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BAIRROS">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Cpf" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="DataNascimento" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Teste" Relationship="Self.FK_Teste_Pessoa" FromRole="Pessoa" ToRole="Teste" />
+          <Property Name="Nome" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pais_Id" Type="Int32" Nullable="false" />
+          <Property Name="Estado_Id" Type="Int32" Nullable="false" />
+          <Property Name="Municipio_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ESTADOS" Relationship="Self.FK_BAIRROS_ESTADOS" FromRole="BAIRROS" ToRole="ESTADOS" />
+          <NavigationProperty Name="MUNICIPIOS" Relationship="Self.FK_BAIRROS_MUNICIPIOS" FromRole="BAIRROS" ToRole="MUNICIPIOS" />
+          <NavigationProperty Name="PAISES" Relationship="Self.FK_BAIRROS_PAISES" FromRole="BAIRROS" ToRole="PAISES" />
+          <NavigationProperty Name="LOGRADOUROS" Relationship="Self.FK_LOGRADOUROS_BAIRROS" FromRole="BAIRROS" ToRole="LOGRADOUROS" />
+          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_PESSOAS_BAIRROS" FromRole="BAIRROS" ToRole="PESSOAS" />
         </EntityType>
-        <EntityType Name="Teste">
+        <EntityType Name="CANDIDATOCARGO">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Pessoa" Type="Int32" />
-          <Property Name="HeCarro" Type="Int32" />
+          <Property Name="Candidato_Id" Type="Int32" Nullable="false" />
+          <Property Name="Cargo_Id" Type="Int32" Nullable="false" />
           <Property Name="DataCriacao" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DataNascimeno" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Pessoa1" Relationship="Self.FK_Teste_Pessoa" FromRole="Teste" ToRole="Pessoa" />
+          <NavigationProperty Name="CARGOS" Relationship="Self.FK_CANDIDATOCARGO_CARGOS" FromRole="CANDIDATOCARGO" ToRole="CARGOS" />
+          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_CANDIDATOCARGO_PESSOAS" FromRole="CANDIDATOCARGO" ToRole="PESSOAS" />
         </EntityType>
-        <EntityType Name="Address">
+        <EntityType Name="CARGOS">
           <Key>
-            <PropertyRef Name="AddressID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AddressLine1" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AddressLine2" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StateProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CountryRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PostalCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="rowguid" Type="Guid" Nullable="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="CustomerAddress" Relationship="Self.FK_CustomerAddress_Address_AddressID" FromRole="Address" ToRole="CustomerAddress" />
-          <NavigationProperty Name="SalesOrderHeader" Relationship="Self.FK_SalesOrderHeader_Address_BillTo_AddressID" FromRole="Address" ToRole="SalesOrderHeader" />
-          <NavigationProperty Name="SalesOrderHeader1" Relationship="Self.FK_SalesOrderHeader_Address_ShipTo_AddressID" FromRole="Address" ToRole="SalesOrderHeader" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DataCraicao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataAlteracao" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CANDIDATOCARGO" Relationship="Self.FK_CANDIDATOCARGO_CARGOS" FromRole="CARGOS" ToRole="CANDIDATOCARGO" />
         </EntityType>
-        <EntityType Name="Customer">
+        <EntityType Name="ESTADOS">
           <Key>
-            <PropertyRef Name="CustomerID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameStyle" Type="Boolean" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Suffix" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CompanyName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="SalesPerson" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="PasswordHash" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PasswordSalt" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="rowguid" Type="Guid" Nullable="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="CustomerAddress" Relationship="Self.FK_CustomerAddress_Customer_CustomerID" FromRole="Customer" ToRole="CustomerAddress" />
-          <NavigationProperty Name="SalesOrderHeader" Relationship="Self.FK_SalesOrderHeader_Customer_CustomerID" FromRole="Customer" ToRole="SalesOrderHeader" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pais_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BAIRROS" Relationship="Self.FK_BAIRROS_ESTADOS" FromRole="ESTADOS" ToRole="BAIRROS" />
+          <NavigationProperty Name="PAISES" Relationship="Self.FK_ESTADOS_PAISES" FromRole="ESTADOS" ToRole="PAISES" />
+          <NavigationProperty Name="LOGRADOUROS" Relationship="Self.FK_LOGRADOUROS_ESTADOS" FromRole="ESTADOS" ToRole="LOGRADOUROS" />
+          <NavigationProperty Name="MUNICIPIOS" Relationship="Self.FK_MUNICIPIOS_ESTADOS" FromRole="ESTADOS" ToRole="MUNICIPIOS" />
+          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_PESSOAS_ESTATOS" FromRole="ESTADOS" ToRole="PESSOAS" />
         </EntityType>
-        <EntityType Name="CustomerAddress">
+        <EntityType Name="FAVORIOS">
           <Key>
-            <PropertyRef Name="CustomerID" />
-            <PropertyRef Name="AddressID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="CustomerID" Type="Int32" Nullable="false" />
-          <Property Name="AddressID" Type="Int32" Nullable="false" />
-          <Property Name="AddressType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="rowguid" Type="Guid" Nullable="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Address" Relationship="Self.FK_CustomerAddress_Address_AddressID" FromRole="CustomerAddress" ToRole="Address" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK_CustomerAddress_Customer_CustomerID" FromRole="CustomerAddress" ToRole="Customer" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Usuario_Id" Type="Int32" Nullable="false" />
+          <Property Name="Candidato_Id" Type="Int32" Nullable="false" />
+          <Property Name="DataCriacao" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_FAVORIOS_PESSOASCANDIDATO" FromRole="FAVORIOS" ToRole="PESSOAS" />
+          <NavigationProperty Name="PESSOAS1" Relationship="Self.FK_FAVORIOS_PESSOASUSUARIO" FromRole="FAVORIOS" ToRole="PESSOAS" />
         </EntityType>
-        <EntityType Name="Product">
+        <EntityType Name="LEIS">
           <Key>
-            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProductNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Color" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="StandardCost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="ListPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Size" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="Weight" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="ProductCategoryID" Type="Int32" />
-          <Property Name="ProductModelID" Type="Int32" />
-          <Property Name="SellStartDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SellEndDate" Type="DateTime" Precision="3" />
-          <Property Name="DiscontinuedDate" Type="DateTime" Precision="3" />
-          <Property Name="ThumbNailPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="ThumbnailPhotoFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="rowguid" Type="Guid" Nullable="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Product_ProductCategory_ProductCategoryID" FromRole="Product" ToRole="ProductCategory" />
-          <NavigationProperty Name="ProductModel" Relationship="Self.FK_Product_ProductModel_ProductModelID" FromRole="Product" ToRole="ProductModel" />
-          <NavigationProperty Name="SalesOrderDetail" Relationship="Self.FK_SalesOrderDetail_Product_ProductID" FromRole="Product" ToRole="SalesOrderDetail" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Numero" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VOTOCANDIDATOLEI" Relationship="Self.FK_VOTOCANDIDATOLEI_LEIS" FromRole="LEIS" ToRole="VOTOCANDIDATOLEI" />
         </EntityType>
-        <EntityType Name="ProductCategory">
+        <EntityType Name="LOGRADOUROS">
           <Key>
-            <PropertyRef Name="ProductCategoryID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ProductCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ParentProductCategoryID" Type="Int32" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="rowguid" Type="Guid" Nullable="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_ProductCategory_ProductCategoryID" FromRole="ProductCategory" ToRole="Product" />
-          <NavigationProperty Name="ProductCategory1" Relationship="Self.FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID" FromRole="ProductCategory" ToRole="ProductCategory1" />
-          <NavigationProperty Name="ProductCategory2" Relationship="Self.FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID" FromRole="ProductCategory1" ToRole="ProductCategory" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pais_Id" Type="Int32" Nullable="false" />
+          <Property Name="Estado_Id" Type="Int32" Nullable="false" />
+          <Property Name="Municipio_Id" Type="Int32" Nullable="false" />
+          <Property Name="Bairro_Id" Type="Int32" Nullable="false" />
+          <Property Name="Cep" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BAIRROS" Relationship="Self.FK_LOGRADOUROS_BAIRROS" FromRole="LOGRADOUROS" ToRole="BAIRROS" />
+          <NavigationProperty Name="ESTADOS" Relationship="Self.FK_LOGRADOUROS_ESTADOS" FromRole="LOGRADOUROS" ToRole="ESTADOS" />
+          <NavigationProperty Name="MUNICIPIOS" Relationship="Self.FK_LOGRADOUROS_MUNICIPIOS" FromRole="LOGRADOUROS" ToRole="MUNICIPIOS" />
+          <NavigationProperty Name="PAISES" Relationship="Self.FK_LOGRADOUROS_PAISES" FromRole="LOGRADOUROS" ToRole="PAISES" />
+          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_PESSOAS_LOGRADOUROS" FromRole="LOGRADOUROS" ToRole="PESSOAS" />
         </EntityType>
-        <EntityType Name="ProductDescription">
+        <EntityType Name="MUNICIPIOS">
           <Key>
-            <PropertyRef Name="ProductDescriptionID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ProductDescriptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="rowguid" Type="Guid" Nullable="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="ProductModelProductDescription" Relationship="Self.FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID" FromRole="ProductDescription" ToRole="ProductModelProductDescription" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pais_Id" Type="Int32" Nullable="false" />
+          <Property Name="Estado_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BAIRROS" Relationship="Self.FK_BAIRROS_MUNICIPIOS" FromRole="MUNICIPIOS" ToRole="BAIRROS" />
+          <NavigationProperty Name="ESTADOS" Relationship="Self.FK_MUNICIPIOS_ESTADOS" FromRole="MUNICIPIOS" ToRole="ESTADOS" />
+          <NavigationProperty Name="LOGRADOUROS" Relationship="Self.FK_LOGRADOUROS_MUNICIPIOS" FromRole="MUNICIPIOS" ToRole="LOGRADOUROS" />
+          <NavigationProperty Name="PAISES" Relationship="Self.FK_MUNICIPIOS_PAISES" FromRole="MUNICIPIOS" ToRole="PAISES" />
+          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_PESSOAS_MUNICIPIOS" FromRole="MUNICIPIOS" ToRole="PESSOAS" />
         </EntityType>
-        <EntityType Name="ProductModel">
+        <EntityType Name="PAISES">
           <Key>
-            <PropertyRef Name="ProductModelID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ProductModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CatalogDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="rowguid" Type="Guid" Nullable="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_ProductModel_ProductModelID" FromRole="ProductModel" ToRole="Product" />
-          <NavigationProperty Name="ProductModelProductDescription" Relationship="Self.FK_ProductModelProductDescription_ProductModel_ProductModelID" FromRole="ProductModel" ToRole="ProductModelProductDescription" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BAIRROS" Relationship="Self.FK_BAIRROS_PAISES" FromRole="PAISES" ToRole="BAIRROS" />
+          <NavigationProperty Name="ESTADOS" Relationship="Self.FK_ESTADOS_PAISES" FromRole="PAISES" ToRole="ESTADOS" />
+          <NavigationProperty Name="LOGRADOUROS" Relationship="Self.FK_LOGRADOUROS_PAISES" FromRole="PAISES" ToRole="LOGRADOUROS" />
+          <NavigationProperty Name="MUNICIPIOS" Relationship="Self.FK_MUNICIPIOS_PAISES" FromRole="PAISES" ToRole="MUNICIPIOS" />
+          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_PESSOAS_PAISES" FromRole="PAISES" ToRole="PESSOAS" />
         </EntityType>
-        <EntityType Name="ProductModelProductDescription">
+        <EntityType Name="PESSOAS">
           <Key>
-            <PropertyRef Name="ProductModelID" />
-            <PropertyRef Name="ProductDescriptionID" />
-            <PropertyRef Name="Culture" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ProductModelID" Type="Int32" Nullable="false" />
-          <Property Name="ProductDescriptionID" Type="Int32" Nullable="false" />
-          <Property Name="Culture" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="rowguid" Type="Guid" Nullable="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="ProductDescription" Relationship="Self.FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID" FromRole="ProductModelProductDescription" ToRole="ProductDescription" />
-          <NavigationProperty Name="ProductModel" Relationship="Self.FK_ProductModelProductDescription_ProductModel_ProductModelID" FromRole="ProductModelProductDescription" ToRole="ProductModel" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="DataNascimento" Type="DateTime" Precision="3" />
+          <Property Name="Cpf" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DataCriacao" Type="DateTime" Precision="3" />
+          <Property Name="DataAlteracao" Type="DateTime" Precision="3" />
+          <Property Name="Ativo" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="TelefoneFixo" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="TelefoneMovel" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Endereco" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Pais_Id" Type="Int32" />
+          <Property Name="Estado_Id" Type="Int32" />
+          <Property Name="Municipio_Id" Type="Int32" />
+          <Property Name="Bairro_Id" Type="Int32" />
+          <Property Name="Logradouro_Id" Type="Int32" />
+          <Property Name="Cep" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Numero" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Complemento" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BAIRROS" Relationship="Self.FK_PESSOAS_BAIRROS" FromRole="PESSOAS" ToRole="BAIRROS" />
+          <NavigationProperty Name="CANDIDATOCARGO" Relationship="Self.FK_CANDIDATOCARGO_PESSOAS" FromRole="PESSOAS" ToRole="CANDIDATOCARGO" />
+          <NavigationProperty Name="ESTADOS" Relationship="Self.FK_PESSOAS_ESTATOS" FromRole="PESSOAS" ToRole="ESTADOS" />
+          <NavigationProperty Name="FAVORIOS" Relationship="Self.FK_FAVORIOS_PESSOASCANDIDATO" FromRole="PESSOAS" ToRole="FAVORIOS" />
+          <NavigationProperty Name="FAVORIOS1" Relationship="Self.FK_FAVORIOS_PESSOASUSUARIO" FromRole="PESSOAS" ToRole="FAVORIOS" />
+          <NavigationProperty Name="LOGRADOUROS" Relationship="Self.FK_PESSOAS_LOGRADOUROS" FromRole="PESSOAS" ToRole="LOGRADOUROS" />
+          <NavigationProperty Name="MUNICIPIOS" Relationship="Self.FK_PESSOAS_MUNICIPIOS" FromRole="PESSOAS" ToRole="MUNICIPIOS" />
+          <NavigationProperty Name="PAISES" Relationship="Self.FK_PESSOAS_PAISES" FromRole="PESSOAS" ToRole="PAISES" />
+          <NavigationProperty Name="PRESIDENTES" Relationship="Self.FK_PRESIDENTES_PESSOASCANDIDATO" FromRole="PESSOAS" ToRole="PRESIDENTES" />
+          <NavigationProperty Name="PRESIDENTES1" Relationship="Self.FK_PRESIDENTES_PESSOASVICE" FromRole="PESSOAS" ToRole="PRESIDENTES" />
+          <NavigationProperty Name="VOTOCANDIDATOLEI" Relationship="Self.FK_VOTOCANDIDATOLEI_PESSOAS" FromRole="PESSOAS" ToRole="VOTOCANDIDATOLEI" />
+          <NavigationProperty Name="VOTOS" Relationship="Self.FK_VOTOS_PESSOASCANDIDATO" FromRole="PESSOAS" ToRole="VOTOS" />
+          <NavigationProperty Name="VOTOS1" Relationship="Self.FK_VOTOS_PESSOASUSUARIO" FromRole="PESSOAS" ToRole="VOTOS" />
         </EntityType>
-        <EntityType Name="SalesOrderDetail">
+        <EntityType Name="PRESIDENTES">
           <Key>
-            <PropertyRef Name="SalesOrderID" />
-            <PropertyRef Name="SalesOrderDetailID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="SalesOrderID" Type="Int32" Nullable="false" />
-          <Property Name="SalesOrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderQty" Type="Int16" Nullable="false" />
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="UnitPriceDiscount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="LineTotal" Type="Decimal" Precision="38" Scale="6" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="rowguid" Type="Guid" Nullable="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_SalesOrderDetail_Product_ProductID" FromRole="SalesOrderDetail" ToRole="Product" />
-          <NavigationProperty Name="SalesOrderHeader" Relationship="Self.FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID" FromRole="SalesOrderDetail" ToRole="SalesOrderHeader" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Candidato_Id" Type="Int32" Nullable="false" />
+          <Property Name="Vice_Id" Type="Int32" Nullable="false" />
+          <Property Name="DataCriacao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataAlteracao" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_PRESIDENTES_PESSOASCANDIDATO" FromRole="PRESIDENTES" ToRole="PESSOAS" />
+          <NavigationProperty Name="PESSOAS1" Relationship="Self.FK_PRESIDENTES_PESSOASVICE" FromRole="PRESIDENTES" ToRole="PESSOAS" />
         </EntityType>
-        <EntityType Name="SalesOrderHeader">
+        <EntityType Name="VOTOCANDIDATOLEI">
           <Key>
-            <PropertyRef Name="SalesOrderID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="SalesOrderID" Type="Int32" Nullable="false" />
-          <Property Name="RevisionNumber" Type="Byte" Nullable="false" />
-          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ShipDate" Type="DateTime" Precision="3" />
-          <Property Name="Status" Type="Byte" Nullable="false" />
-          <Property Name="OnlineOrderFlag" Type="Boolean" Nullable="false" />
-          <Property Name="SalesOrderNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="PurchaseOrderNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="AccountNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerID" Type="Int32" Nullable="false" />
-          <Property Name="ShipToAddressID" Type="Int32" />
-          <Property Name="BillToAddressID" Type="Int32" />
-          <Property Name="ShipMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CreditCardApprovalCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="TaxAmt" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Freight" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="TotalDue" Type="Decimal" Precision="19" Scale="4" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="rowguid" Type="Guid" Nullable="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Address" Relationship="Self.FK_SalesOrderHeader_Address_BillTo_AddressID" FromRole="SalesOrderHeader" ToRole="Address" />
-          <NavigationProperty Name="Address1" Relationship="Self.FK_SalesOrderHeader_Address_ShipTo_AddressID" FromRole="SalesOrderHeader" ToRole="Address" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK_SalesOrderHeader_Customer_CustomerID" FromRole="SalesOrderHeader" ToRole="Customer" />
-          <NavigationProperty Name="SalesOrderDetail" Relationship="Self.FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID" FromRole="SalesOrderHeader" ToRole="SalesOrderDetail" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Candidato_Id" Type="Int32" Nullable="false" />
+          <Property Name="Lei_Id" Type="Int32" Nullable="false" />
+          <Property Name="Votou" Type="Int32" Nullable="false" />
+          <Property Name="DataCriacao" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="LEIS" Relationship="Self.FK_VOTOCANDIDATOLEI_LEIS" FromRole="VOTOCANDIDATOLEI" ToRole="LEIS" />
+          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_VOTOCANDIDATOLEI_PESSOAS" FromRole="VOTOCANDIDATOLEI" ToRole="PESSOAS" />
         </EntityType>
-        <EntityType Name="vGetAllCategories">
+        <EntityType Name="VOTOS">
           <Key>
-            <PropertyRef Name="ParentProductCategoryName" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ParentProductCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProductCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ProductCategoryID" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Usuario_Id" Type="Int32" Nullable="false" />
+          <Property Name="Candidato_Id" Type="Int32" Nullable="false" />
+          <Property Name="DataCriacao" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_VOTOS_PESSOASCANDIDATO" FromRole="VOTOS" ToRole="PESSOAS" />
+          <NavigationProperty Name="PESSOAS1" Relationship="Self.FK_VOTOS_PESSOASUSUARIO" FromRole="VOTOS" ToRole="PESSOAS" />
         </EntityType>
-        <EntityType Name="vProductAndDescription">
-          <Key>
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="ProductModel" />
-            <PropertyRef Name="Culture" />
-            <PropertyRef Name="Description" />
-          </Key>
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProductModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Culture" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="vProductModelCatalogDescription">
-          <Key>
-            <PropertyRef Name="ProductModelID" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="rowguid" />
-            <PropertyRef Name="ModifiedDate" />
-          </Key>
-          <Property Name="ProductModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Manufacturer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Copyright" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="ProductURL" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="WarrantyPeriod" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="WarrantyDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="NoOfYears" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="MaintenanceDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Wheel" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Saddle" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Pedal" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="BikeFrame" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Crankset" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="PictureAngle" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="PictureSize" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="ProductPhotoID" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Material" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Color" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="ProductLine" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Style" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="RiderExperience" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
-          <Property Name="rowguid" Type="Guid" Nullable="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="database_firewall_rules">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="name" />
-            <PropertyRef Name="start_ip_address" />
-            <PropertyRef Name="end_ip_address" />
-            <PropertyRef Name="create_date" />
-            <PropertyRef Name="modify_date" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <Association Name="FK_Teste_Pessoa">
-          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
-          <End Role="Teste" Type="Self.Teste" Multiplicity="*" />
+        <Association Name="FK_BAIRROS_ESTADOS">
+          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="1" />
+          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Pessoa">
+            <Principal Role="ESTADOS">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Teste">
-              <PropertyRef Name="Pessoa" />
+            <Dependent Role="BAIRROS">
+              <PropertyRef Name="Estado_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CustomerAddress_Address_AddressID">
-          <End Role="Address" Type="Self.Address" Multiplicity="1" />
-          <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
+        <Association Name="FK_BAIRROS_MUNICIPIOS">
+          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="1" />
+          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="AddressID" />
+            <Principal Role="MUNICIPIOS">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="CustomerAddress">
-              <PropertyRef Name="AddressID" />
+            <Dependent Role="BAIRROS">
+              <PropertyRef Name="Municipio_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SalesOrderHeader_Address_BillTo_AddressID">
-          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
-          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="*" />
+        <Association Name="FK_BAIRROS_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
+          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="AddressID" />
+            <Principal Role="PAISES">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="SalesOrderHeader">
-              <PropertyRef Name="BillToAddressID" />
+            <Dependent Role="BAIRROS">
+              <PropertyRef Name="Pais_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SalesOrderHeader_Address_ShipTo_AddressID">
-          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
-          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="*" />
+        <Association Name="FK_LOGRADOUROS_BAIRROS">
+          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="1" />
+          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="AddressID" />
+            <Principal Role="BAIRROS">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="SalesOrderHeader">
-              <PropertyRef Name="ShipToAddressID" />
+            <Dependent Role="LOGRADOUROS">
+              <PropertyRef Name="Bairro_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CustomerAddress_Customer_CustomerID">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-          <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
+        <Association Name="FK_PESSOAS_BAIRROS">
+          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="0..1" />
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="CustomerID" />
+            <Principal Role="BAIRROS">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="CustomerAddress">
-              <PropertyRef Name="CustomerID" />
+            <Dependent Role="PESSOAS">
+              <PropertyRef Name="Bairro_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SalesOrderHeader_Customer_CustomerID">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="*" />
+        <Association Name="FK_CANDIDATOCARGO_CARGOS">
+          <End Role="CARGOS" Type="Self.CARGOS" Multiplicity="1" />
+          <End Role="CANDIDATOCARGO" Type="Self.CANDIDATOCARGO" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="CustomerID" />
+            <Principal Role="CARGOS">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="SalesOrderHeader">
-              <PropertyRef Name="CustomerID" />
+            <Dependent Role="CANDIDATOCARGO">
+              <PropertyRef Name="Cargo_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Product_ProductCategory_ProductCategoryID">
-          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+        <Association Name="FK_CANDIDATOCARGO_PESSOAS">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="CANDIDATOCARGO" Type="Self.CANDIDATOCARGO" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ProductCategory">
-              <PropertyRef Name="ProductCategoryID" />
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="ProductCategoryID" />
+            <Dependent Role="CANDIDATOCARGO">
+              <PropertyRef Name="Candidato_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Product_ProductModel_ProductModelID">
-          <End Role="ProductModel" Type="Self.ProductModel" Multiplicity="0..1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+        <Association Name="FK_ESTADOS_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
+          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ProductModel">
-              <PropertyRef Name="ProductModelID" />
+            <Principal Role="PAISES">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="ProductModelID" />
+            <Dependent Role="ESTADOS">
+              <PropertyRef Name="Pais_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SalesOrderDetail_Product_ProductID">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="*" />
+        <Association Name="FK_LOGRADOUROS_ESTADOS">
+          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="1" />
+          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
+            <Principal Role="ESTADOS">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="SalesOrderDetail">
-              <PropertyRef Name="ProductID" />
+            <Dependent Role="LOGRADOUROS">
+              <PropertyRef Name="Estado_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID">
-          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
-          <End Role="ProductCategory1" Type="Self.ProductCategory" Multiplicity="*" />
+        <Association Name="FK_MUNICIPIOS_ESTADOS">
+          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="1" />
+          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ProductCategory">
-              <PropertyRef Name="ProductCategoryID" />
+            <Principal Role="ESTADOS">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ProductCategory1">
-              <PropertyRef Name="ParentProductCategoryID" />
+            <Dependent Role="MUNICIPIOS">
+              <PropertyRef Name="Estado_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID">
-          <End Role="ProductDescription" Type="Self.ProductDescription" Multiplicity="1" />
-          <End Role="ProductModelProductDescription" Type="Self.ProductModelProductDescription" Multiplicity="*" />
+        <Association Name="FK_PESSOAS_ESTATOS">
+          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="0..1" />
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ProductDescription">
-              <PropertyRef Name="ProductDescriptionID" />
+            <Principal Role="ESTADOS">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ProductModelProductDescription">
-              <PropertyRef Name="ProductDescriptionID" />
+            <Dependent Role="PESSOAS">
+              <PropertyRef Name="Estado_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductModelProductDescription_ProductModel_ProductModelID">
-          <End Role="ProductModel" Type="Self.ProductModel" Multiplicity="1" />
-          <End Role="ProductModelProductDescription" Type="Self.ProductModelProductDescription" Multiplicity="*" />
+        <Association Name="FK_FAVORIOS_PESSOASCANDIDATO">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="FAVORIOS" Type="Self.FAVORIOS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ProductModel">
-              <PropertyRef Name="ProductModelID" />
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ProductModelProductDescription">
-              <PropertyRef Name="ProductModelID" />
+            <Dependent Role="FAVORIOS">
+              <PropertyRef Name="Candidato_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID">
-          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="*" />
+        <Association Name="FK_FAVORIOS_PESSOASUSUARIO">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="FAVORIOS" Type="Self.FAVORIOS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SalesOrderHeader">
-              <PropertyRef Name="SalesOrderID" />
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="SalesOrderDetail">
-              <PropertyRef Name="SalesOrderID" />
+            <Dependent Role="FAVORIOS">
+              <PropertyRef Name="Usuario_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TesteDBEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="BuildVersion" EntityType="Self.BuildVersion" />
-          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" />
-          <EntitySet Name="Pessoa" EntityType="Self.Pessoa" />
-          <EntitySet Name="Teste" EntityType="Self.Teste" />
-          <EntitySet Name="Address" EntityType="Self.Address" />
-          <EntitySet Name="Customer" EntityType="Self.Customer" />
-          <EntitySet Name="CustomerAddress" EntityType="Self.CustomerAddress" />
-          <EntitySet Name="Product" EntityType="Self.Product" />
-          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" />
-          <EntitySet Name="ProductDescription" EntityType="Self.ProductDescription" />
-          <EntitySet Name="ProductModel" EntityType="Self.ProductModel" />
-          <EntitySet Name="ProductModelProductDescription" EntityType="Self.ProductModelProductDescription" />
-          <EntitySet Name="SalesOrderDetail" EntityType="Self.SalesOrderDetail" />
-          <EntitySet Name="SalesOrderHeader" EntityType="Self.SalesOrderHeader" />
-          <EntitySet Name="vGetAllCategories" EntityType="Self.vGetAllCategories" />
-          <EntitySet Name="vProductAndDescription" EntityType="Self.vProductAndDescription" />
-          <EntitySet Name="vProductModelCatalogDescription" EntityType="Self.vProductModelCatalogDescription" />
-          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
-          <AssociationSet Name="FK_Teste_Pessoa" Association="Self.FK_Teste_Pessoa">
-            <End Role="Pessoa" EntitySet="Pessoa" />
-            <End Role="Teste" EntitySet="Teste" />
+        <Association Name="FK_VOTOCANDIDATOLEI_LEIS">
+          <End Role="LEIS" Type="Self.LEIS" Multiplicity="1" />
+          <End Role="VOTOCANDIDATOLEI" Type="Self.VOTOCANDIDATOLEI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEIS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VOTOCANDIDATOLEI">
+              <PropertyRef Name="Lei_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOGRADOUROS_MUNICIPIOS">
+          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="1" />
+          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUNICIPIOS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LOGRADOUROS">
+              <PropertyRef Name="Municipio_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOGRADOUROS_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
+          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LOGRADOUROS">
+              <PropertyRef Name="Pais_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PESSOAS_LOGRADOUROS">
+          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="0..1" />
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOGRADOUROS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PESSOAS">
+              <PropertyRef Name="Logradouro_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MUNICIPIOS_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
+          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MUNICIPIOS">
+              <PropertyRef Name="Pais_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PESSOAS_MUNICIPIOS">
+          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="0..1" />
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUNICIPIOS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PESSOAS">
+              <PropertyRef Name="Municipio_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PESSOAS_PAISES">
+          <End Role="PAISES" Type="Self.PAISES" Multiplicity="0..1" />
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAISES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PESSOAS">
+              <PropertyRef Name="Pais_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRESIDENTES_PESSOASCANDIDATO">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="PRESIDENTES" Type="Self.PRESIDENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PRESIDENTES">
+              <PropertyRef Name="Candidato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRESIDENTES_PESSOASVICE">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="PRESIDENTES" Type="Self.PRESIDENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PRESIDENTES">
+              <PropertyRef Name="Vice_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VOTOCANDIDATOLEI_PESSOAS">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="VOTOCANDIDATOLEI" Type="Self.VOTOCANDIDATOLEI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VOTOCANDIDATOLEI">
+              <PropertyRef Name="Candidato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VOTOS_PESSOASCANDIDATO">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="VOTOS" Type="Self.VOTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VOTOS">
+              <PropertyRef Name="Candidato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VOTOS_PESSOASUSUARIO">
+          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
+          <End Role="VOTOS" Type="Self.VOTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PESSOAS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VOTOS">
+              <PropertyRef Name="Usuario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PrismaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BAIRROS" EntityType="Self.BAIRROS" />
+          <EntitySet Name="CANDIDATOCARGO" EntityType="Self.CANDIDATOCARGO" />
+          <EntitySet Name="CARGOS" EntityType="Self.CARGOS" />
+          <EntitySet Name="ESTADOS" EntityType="Self.ESTADOS" />
+          <EntitySet Name="FAVORIOS" EntityType="Self.FAVORIOS" />
+          <EntitySet Name="LEIS" EntityType="Self.LEIS" />
+          <EntitySet Name="LOGRADOUROS" EntityType="Self.LOGRADOUROS" />
+          <EntitySet Name="MUNICIPIOS" EntityType="Self.MUNICIPIOS" />
+          <EntitySet Name="PAISES" EntityType="Self.PAISES" />
+          <EntitySet Name="PESSOAS" EntityType="Self.PESSOAS" />
+          <EntitySet Name="PRESIDENTES" EntityType="Self.PRESIDENTES" />
+          <EntitySet Name="VOTOCANDIDATOLEI" EntityType="Self.VOTOCANDIDATOLEI" />
+          <EntitySet Name="VOTOS" EntityType="Self.VOTOS" />
+          <AssociationSet Name="FK_BAIRROS_ESTADOS" Association="Self.FK_BAIRROS_ESTADOS">
+            <End Role="ESTADOS" EntitySet="ESTADOS" />
+            <End Role="BAIRROS" EntitySet="BAIRROS" />
           </AssociationSet>
-          <AssociationSet Name="FK_CustomerAddress_Address_AddressID" Association="Self.FK_CustomerAddress_Address_AddressID">
-            <End Role="Address" EntitySet="Address" />
-            <End Role="CustomerAddress" EntitySet="CustomerAddress" />
+          <AssociationSet Name="FK_BAIRROS_MUNICIPIOS" Association="Self.FK_BAIRROS_MUNICIPIOS">
+            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+            <End Role="BAIRROS" EntitySet="BAIRROS" />
           </AssociationSet>
-          <AssociationSet Name="FK_SalesOrderHeader_Address_BillTo_AddressID" Association="Self.FK_SalesOrderHeader_Address_BillTo_AddressID">
-            <End Role="Address" EntitySet="Address" />
-            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
+          <AssociationSet Name="FK_BAIRROS_PAISES" Association="Self.FK_BAIRROS_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="BAIRROS" EntitySet="BAIRROS" />
           </AssociationSet>
-          <AssociationSet Name="FK_SalesOrderHeader_Address_ShipTo_AddressID" Association="Self.FK_SalesOrderHeader_Address_ShipTo_AddressID">
-            <End Role="Address" EntitySet="Address" />
-            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
+          <AssociationSet Name="FK_LOGRADOUROS_BAIRROS" Association="Self.FK_LOGRADOUROS_BAIRROS">
+            <End Role="BAIRROS" EntitySet="BAIRROS" />
+            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
           </AssociationSet>
-          <AssociationSet Name="FK_CustomerAddress_Customer_CustomerID" Association="Self.FK_CustomerAddress_Customer_CustomerID">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="CustomerAddress" EntitySet="CustomerAddress" />
+          <AssociationSet Name="FK_PESSOAS_BAIRROS" Association="Self.FK_PESSOAS_BAIRROS">
+            <End Role="BAIRROS" EntitySet="BAIRROS" />
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
           </AssociationSet>
-          <AssociationSet Name="FK_SalesOrderHeader_Customer_CustomerID" Association="Self.FK_SalesOrderHeader_Customer_CustomerID">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
+          <AssociationSet Name="FK_CANDIDATOCARGO_CARGOS" Association="Self.FK_CANDIDATOCARGO_CARGOS">
+            <End Role="CARGOS" EntitySet="CARGOS" />
+            <End Role="CANDIDATOCARGO" EntitySet="CANDIDATOCARGO" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product_ProductCategory_ProductCategoryID" Association="Self.FK_Product_ProductCategory_ProductCategoryID">
-            <End Role="ProductCategory" EntitySet="ProductCategory" />
-            <End Role="Product" EntitySet="Product" />
+          <AssociationSet Name="FK_CANDIDATOCARGO_PESSOAS" Association="Self.FK_CANDIDATOCARGO_PESSOAS">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="CANDIDATOCARGO" EntitySet="CANDIDATOCARGO" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product_ProductModel_ProductModelID" Association="Self.FK_Product_ProductModel_ProductModelID">
-            <End Role="ProductModel" EntitySet="ProductModel" />
-            <End Role="Product" EntitySet="Product" />
+          <AssociationSet Name="FK_ESTADOS_PAISES" Association="Self.FK_ESTADOS_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="ESTADOS" EntitySet="ESTADOS" />
           </AssociationSet>
-          <AssociationSet Name="FK_SalesOrderDetail_Product_ProductID" Association="Self.FK_SalesOrderDetail_Product_ProductID">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="SalesOrderDetail" EntitySet="SalesOrderDetail" />
+          <AssociationSet Name="FK_LOGRADOUROS_ESTADOS" Association="Self.FK_LOGRADOUROS_ESTADOS">
+            <End Role="ESTADOS" EntitySet="ESTADOS" />
+            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID" Association="Self.FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID">
-            <End Role="ProductCategory" EntitySet="ProductCategory" />
-            <End Role="ProductCategory1" EntitySet="ProductCategory" />
+          <AssociationSet Name="FK_MUNICIPIOS_ESTADOS" Association="Self.FK_MUNICIPIOS_ESTADOS">
+            <End Role="ESTADOS" EntitySet="ESTADOS" />
+            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID" Association="Self.FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID">
-            <End Role="ProductDescription" EntitySet="ProductDescription" />
-            <End Role="ProductModelProductDescription" EntitySet="ProductModelProductDescription" />
+          <AssociationSet Name="FK_PESSOAS_ESTATOS" Association="Self.FK_PESSOAS_ESTATOS">
+            <End Role="ESTADOS" EntitySet="ESTADOS" />
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductModelProductDescription_ProductModel_ProductModelID" Association="Self.FK_ProductModelProductDescription_ProductModel_ProductModelID">
-            <End Role="ProductModel" EntitySet="ProductModel" />
-            <End Role="ProductModelProductDescription" EntitySet="ProductModelProductDescription" />
+          <AssociationSet Name="FK_FAVORIOS_PESSOASCANDIDATO" Association="Self.FK_FAVORIOS_PESSOASCANDIDATO">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="FAVORIOS" EntitySet="FAVORIOS" />
           </AssociationSet>
-          <AssociationSet Name="FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID" Association="Self.FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID">
-            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
-            <End Role="SalesOrderDetail" EntitySet="SalesOrderDetail" />
+          <AssociationSet Name="FK_FAVORIOS_PESSOASUSUARIO" Association="Self.FK_FAVORIOS_PESSOASUSUARIO">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="FAVORIOS" EntitySet="FAVORIOS" />
           </AssociationSet>
-          <FunctionImport Name="ufnGetAllCategories" IsComposable="true" ReturnType="Collection(TesteDBModel.ufnGetAllCategories_Result)" />
-          <FunctionImport Name="ufnGetCustomerInformation" IsComposable="true" ReturnType="Collection(TesteDBModel.ufnGetCustomerInformation_Result)">
-            <Parameter Name="CustomerID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="uspLogError">
-            <Parameter Name="ErrorLogID" Mode="InOut" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="uspPrintError" />
+          <AssociationSet Name="FK_VOTOCANDIDATOLEI_LEIS" Association="Self.FK_VOTOCANDIDATOLEI_LEIS">
+            <End Role="LEIS" EntitySet="LEIS" />
+            <End Role="VOTOCANDIDATOLEI" EntitySet="VOTOCANDIDATOLEI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOGRADOUROS_MUNICIPIOS" Association="Self.FK_LOGRADOUROS_MUNICIPIOS">
+            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOGRADOUROS_PAISES" Association="Self.FK_LOGRADOUROS_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PESSOAS_LOGRADOUROS" Association="Self.FK_PESSOAS_LOGRADOUROS">
+            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MUNICIPIOS_PAISES" Association="Self.FK_MUNICIPIOS_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PESSOAS_MUNICIPIOS" Association="Self.FK_PESSOAS_MUNICIPIOS">
+            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PESSOAS_PAISES" Association="Self.FK_PESSOAS_PAISES">
+            <End Role="PAISES" EntitySet="PAISES" />
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRESIDENTES_PESSOASCANDIDATO" Association="Self.FK_PRESIDENTES_PESSOASCANDIDATO">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="PRESIDENTES" EntitySet="PRESIDENTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRESIDENTES_PESSOASVICE" Association="Self.FK_PRESIDENTES_PESSOASVICE">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="PRESIDENTES" EntitySet="PRESIDENTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VOTOCANDIDATOLEI_PESSOAS" Association="Self.FK_VOTOCANDIDATOLEI_PESSOAS">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="VOTOCANDIDATOLEI" EntitySet="VOTOCANDIDATOLEI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VOTOS_PESSOASCANDIDATO" Association="Self.FK_VOTOS_PESSOASCANDIDATO">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="VOTOS" EntitySet="VOTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VOTOS_PESSOASUSUARIO" Association="Self.FK_VOTOS_PESSOASUSUARIO">
+            <End Role="PESSOAS" EntitySet="PESSOAS" />
+            <End Role="VOTOS" EntitySet="VOTOS" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TesteDBModelStoreContainer" CdmEntityContainer="TesteDBEntities1">
-          <EntitySetMapping Name="BuildVersion">
-            <EntityTypeMapping TypeName="TesteDBModel.BuildVersion">
-              <MappingFragment StoreEntitySet="BuildVersion">
-                <ScalarProperty Name="SystemInformationID" ColumnName="SystemInformationID" />
-                <ScalarProperty Name="Database_Version" ColumnName="Database Version" />
-                <ScalarProperty Name="VersionDate" ColumnName="VersionDate" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ErrorLog">
-            <EntityTypeMapping TypeName="TesteDBModel.ErrorLog">
-              <MappingFragment StoreEntitySet="ErrorLog">
-                <ScalarProperty Name="ErrorLogID" ColumnName="ErrorLogID" />
-                <ScalarProperty Name="ErrorTime" ColumnName="ErrorTime" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
-                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
-                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
-                <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
-                <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
-                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pessoa">
-            <EntityTypeMapping TypeName="TesteDBModel.Pessoa">
-              <MappingFragment StoreEntitySet="Pessoa">
+        <EntityContainerMapping StorageEntityContainer="PrismaModelStoreContainer" CdmEntityContainer="PrismaEntities">
+          <EntitySetMapping Name="BAIRROS">
+            <EntityTypeMapping TypeName="PrismaModel.BAIRROS">
+              <MappingFragment StoreEntitySet="BAIRROS">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Cpf" ColumnName="Cpf" />
-                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+                <ScalarProperty Name="Pais_Id" ColumnName="Pais_Id" />
+                <ScalarProperty Name="Estado_Id" ColumnName="Estado_Id" />
+                <ScalarProperty Name="Municipio_Id" ColumnName="Municipio_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Teste">
-            <EntityTypeMapping TypeName="TesteDBModel.Teste">
-              <MappingFragment StoreEntitySet="Teste">
+          <EntitySetMapping Name="CANDIDATOCARGO">
+            <EntityTypeMapping TypeName="PrismaModel.CANDIDATOCARGO">
+              <MappingFragment StoreEntitySet="CANDIDATOCARGO">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Pessoa" ColumnName="Pessoa" />
-                <ScalarProperty Name="HeCarro" ColumnName="HeCarro" />
+                <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
+                <ScalarProperty Name="Cargo_Id" ColumnName="Cargo_Id" />
                 <ScalarProperty Name="DataCriacao" ColumnName="DataCriacao" />
-                <ScalarProperty Name="DataNascimeno" ColumnName="DataNascimeno" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Address">
-            <EntityTypeMapping TypeName="TesteDBModel.Address">
-              <MappingFragment StoreEntitySet="Address">
-                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
-                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
-                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="StateProvince" ColumnName="StateProvince" />
-                <ScalarProperty Name="CountryRegion" ColumnName="CountryRegion" />
-                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
-                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <EntitySetMapping Name="CARGOS">
+            <EntityTypeMapping TypeName="PrismaModel.CARGOS">
+              <MappingFragment StoreEntitySet="CARGOS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="DataCraicao" ColumnName="DataCraicao" />
+                <ScalarProperty Name="DataAlteracao" ColumnName="DataAlteracao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Customer">
-            <EntityTypeMapping TypeName="TesteDBModel.Customer">
-              <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="NameStyle" ColumnName="NameStyle" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="SalesPerson" ColumnName="SalesPerson" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
-                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <EntitySetMapping Name="ESTADOS">
+            <EntityTypeMapping TypeName="PrismaModel.ESTADOS">
+              <MappingFragment StoreEntitySet="ESTADOS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Pais_Id" ColumnName="Pais_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CustomerAddress">
-            <EntityTypeMapping TypeName="TesteDBModel.CustomerAddress">
-              <MappingFragment StoreEntitySet="CustomerAddress">
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
-                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
-                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <EntitySetMapping Name="FAVORIOS">
+            <EntityTypeMapping TypeName="PrismaModel.FAVORIOS">
+              <MappingFragment StoreEntitySet="FAVORIOS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+                <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
+                <ScalarProperty Name="DataCriacao" ColumnName="DataCriacao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="TesteDBModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ProductNumber" ColumnName="ProductNumber" />
-                <ScalarProperty Name="Color" ColumnName="Color" />
-                <ScalarProperty Name="StandardCost" ColumnName="StandardCost" />
-                <ScalarProperty Name="ListPrice" ColumnName="ListPrice" />
-                <ScalarProperty Name="Size" ColumnName="Size" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
-                <ScalarProperty Name="ProductModelID" ColumnName="ProductModelID" />
-                <ScalarProperty Name="SellStartDate" ColumnName="SellStartDate" />
-                <ScalarProperty Name="SellEndDate" ColumnName="SellEndDate" />
-                <ScalarProperty Name="DiscontinuedDate" ColumnName="DiscontinuedDate" />
-                <ScalarProperty Name="ThumbNailPhoto" ColumnName="ThumbNailPhoto" />
-                <ScalarProperty Name="ThumbnailPhotoFileName" ColumnName="ThumbnailPhotoFileName" />
-                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <EntitySetMapping Name="LEIS">
+            <EntityTypeMapping TypeName="PrismaModel.LEIS">
+              <MappingFragment StoreEntitySet="LEIS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductCategory">
-            <EntityTypeMapping TypeName="TesteDBModel.ProductCategory">
-              <MappingFragment StoreEntitySet="ProductCategory">
-                <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
-                <ScalarProperty Name="ParentProductCategoryID" ColumnName="ParentProductCategoryID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <EntitySetMapping Name="LOGRADOUROS">
+            <EntityTypeMapping TypeName="PrismaModel.LOGRADOUROS">
+              <MappingFragment StoreEntitySet="LOGRADOUROS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Pais_Id" ColumnName="Pais_Id" />
+                <ScalarProperty Name="Estado_Id" ColumnName="Estado_Id" />
+                <ScalarProperty Name="Municipio_Id" ColumnName="Municipio_Id" />
+                <ScalarProperty Name="Bairro_Id" ColumnName="Bairro_Id" />
+                <ScalarProperty Name="Cep" ColumnName="Cep" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductDescription">
-            <EntityTypeMapping TypeName="TesteDBModel.ProductDescription">
-              <MappingFragment StoreEntitySet="ProductDescription">
-                <ScalarProperty Name="ProductDescriptionID" ColumnName="ProductDescriptionID" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <EntitySetMapping Name="MUNICIPIOS">
+            <EntityTypeMapping TypeName="PrismaModel.MUNICIPIOS">
+              <MappingFragment StoreEntitySet="MUNICIPIOS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Pais_Id" ColumnName="Pais_Id" />
+                <ScalarProperty Name="Estado_Id" ColumnName="Estado_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductModel">
-            <EntityTypeMapping TypeName="TesteDBModel.ProductModel">
-              <MappingFragment StoreEntitySet="ProductModel">
-                <ScalarProperty Name="ProductModelID" ColumnName="ProductModelID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CatalogDescription" ColumnName="CatalogDescription" />
-                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <EntitySetMapping Name="PAISES">
+            <EntityTypeMapping TypeName="PrismaModel.PAISES">
+              <MappingFragment StoreEntitySet="PAISES">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductModelProductDescription">
-            <EntityTypeMapping TypeName="TesteDBModel.ProductModelProductDescription">
-              <MappingFragment StoreEntitySet="ProductModelProductDescription">
-                <ScalarProperty Name="ProductModelID" ColumnName="ProductModelID" />
-                <ScalarProperty Name="ProductDescriptionID" ColumnName="ProductDescriptionID" />
-                <ScalarProperty Name="Culture" ColumnName="Culture" />
-                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <EntitySetMapping Name="PESSOAS">
+            <EntityTypeMapping TypeName="PrismaModel.PESSOAS">
+              <MappingFragment StoreEntitySet="PESSOAS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+                <ScalarProperty Name="Cpf" ColumnName="Cpf" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="DataCriacao" ColumnName="DataCriacao" />
+                <ScalarProperty Name="DataAlteracao" ColumnName="DataAlteracao" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TelefoneFixo" ColumnName="TelefoneFixo" />
+                <ScalarProperty Name="TelefoneMovel" ColumnName="TelefoneMovel" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="Pais_Id" ColumnName="Pais_Id" />
+                <ScalarProperty Name="Estado_Id" ColumnName="Estado_Id" />
+                <ScalarProperty Name="Municipio_Id" ColumnName="Municipio_Id" />
+                <ScalarProperty Name="Bairro_Id" ColumnName="Bairro_Id" />
+                <ScalarProperty Name="Logradouro_Id" ColumnName="Logradouro_Id" />
+                <ScalarProperty Name="Cep" ColumnName="Cep" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Complemento" ColumnName="Complemento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SalesOrderDetail">
-            <EntityTypeMapping TypeName="TesteDBModel.SalesOrderDetail">
-              <MappingFragment StoreEntitySet="SalesOrderDetail">
-                <ScalarProperty Name="SalesOrderID" ColumnName="SalesOrderID" />
-                <ScalarProperty Name="SalesOrderDetailID" ColumnName="SalesOrderDetailID" />
-                <ScalarProperty Name="OrderQty" ColumnName="OrderQty" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="UnitPriceDiscount" ColumnName="UnitPriceDiscount" />
-                <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
-                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <EntitySetMapping Name="PRESIDENTES">
+            <EntityTypeMapping TypeName="PrismaModel.PRESIDENTES">
+              <MappingFragment StoreEntitySet="PRESIDENTES">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
+                <ScalarProperty Name="Vice_Id" ColumnName="Vice_Id" />
+                <ScalarProperty Name="DataCriacao" ColumnName="DataCriacao" />
+                <ScalarProperty Name="DataAlteracao" ColumnName="DataAlteracao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SalesOrderHeader">
-            <EntityTypeMapping TypeName="TesteDBModel.SalesOrderHeader">
-              <MappingFragment StoreEntitySet="SalesOrderHeader">
-                <ScalarProperty Name="SalesOrderID" ColumnName="SalesOrderID" />
-                <ScalarProperty Name="RevisionNumber" ColumnName="RevisionNumber" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
-                <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="OnlineOrderFlag" ColumnName="OnlineOrderFlag" />
-                <ScalarProperty Name="SalesOrderNumber" ColumnName="SalesOrderNumber" />
-                <ScalarProperty Name="PurchaseOrderNumber" ColumnName="PurchaseOrderNumber" />
-                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="ShipToAddressID" ColumnName="ShipToAddressID" />
-                <ScalarProperty Name="BillToAddressID" ColumnName="BillToAddressID" />
-                <ScalarProperty Name="ShipMethod" ColumnName="ShipMethod" />
-                <ScalarProperty Name="CreditCardApprovalCode" ColumnName="CreditCardApprovalCode" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="TaxAmt" ColumnName="TaxAmt" />
-                <ScalarProperty Name="Freight" ColumnName="Freight" />
-                <ScalarProperty Name="TotalDue" ColumnName="TotalDue" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <EntitySetMapping Name="VOTOCANDIDATOLEI">
+            <EntityTypeMapping TypeName="PrismaModel.VOTOCANDIDATOLEI">
+              <MappingFragment StoreEntitySet="VOTOCANDIDATOLEI">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
+                <ScalarProperty Name="Lei_Id" ColumnName="Lei_Id" />
+                <ScalarProperty Name="Votou" ColumnName="Votou" />
+                <ScalarProperty Name="DataCriacao" ColumnName="DataCriacao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vGetAllCategories">
-            <EntityTypeMapping TypeName="TesteDBModel.vGetAllCategories">
-              <MappingFragment StoreEntitySet="vGetAllCategories">
-                <ScalarProperty Name="ParentProductCategoryName" ColumnName="ParentProductCategoryName" />
-                <ScalarProperty Name="ProductCategoryName" ColumnName="ProductCategoryName" />
-                <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
+          <EntitySetMapping Name="VOTOS">
+            <EntityTypeMapping TypeName="PrismaModel.VOTOS">
+              <MappingFragment StoreEntitySet="VOTOS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+                <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
+                <ScalarProperty Name="DataCriacao" ColumnName="DataCriacao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vProductAndDescription">
-            <EntityTypeMapping TypeName="TesteDBModel.vProductAndDescription">
-              <MappingFragment StoreEntitySet="vProductAndDescription">
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ProductModel" ColumnName="ProductModel" />
-                <ScalarProperty Name="Culture" ColumnName="Culture" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vProductModelCatalogDescription">
-            <EntityTypeMapping TypeName="TesteDBModel.vProductModelCatalogDescription">
-              <MappingFragment StoreEntitySet="vProductModelCatalogDescription">
-                <ScalarProperty Name="ProductModelID" ColumnName="ProductModelID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Summary" ColumnName="Summary" />
-                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
-                <ScalarProperty Name="Copyright" ColumnName="Copyright" />
-                <ScalarProperty Name="ProductURL" ColumnName="ProductURL" />
-                <ScalarProperty Name="WarrantyPeriod" ColumnName="WarrantyPeriod" />
-                <ScalarProperty Name="WarrantyDescription" ColumnName="WarrantyDescription" />
-                <ScalarProperty Name="NoOfYears" ColumnName="NoOfYears" />
-                <ScalarProperty Name="MaintenanceDescription" ColumnName="MaintenanceDescription" />
-                <ScalarProperty Name="Wheel" ColumnName="Wheel" />
-                <ScalarProperty Name="Saddle" ColumnName="Saddle" />
-                <ScalarProperty Name="Pedal" ColumnName="Pedal" />
-                <ScalarProperty Name="BikeFrame" ColumnName="BikeFrame" />
-                <ScalarProperty Name="Crankset" ColumnName="Crankset" />
-                <ScalarProperty Name="PictureAngle" ColumnName="PictureAngle" />
-                <ScalarProperty Name="PictureSize" ColumnName="PictureSize" />
-                <ScalarProperty Name="ProductPhotoID" ColumnName="ProductPhotoID" />
-                <ScalarProperty Name="Material" ColumnName="Material" />
-                <ScalarProperty Name="Color" ColumnName="Color" />
-                <ScalarProperty Name="ProductLine" ColumnName="ProductLine" />
-                <ScalarProperty Name="Style" ColumnName="Style" />
-                <ScalarProperty Name="RiderExperience" ColumnName="RiderExperience" />
-                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="database_firewall_rules">
-            <EntityTypeMapping TypeName="TesteDBModel.database_firewall_rules">
-              <MappingFragment StoreEntitySet="database_firewall_rules">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
-                <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
-                <ScalarProperty Name="create_date" ColumnName="create_date" />
-                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionName="TesteDBModel.Store.ufnGetAllCategories" FunctionImportName="ufnGetAllCategories">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="TesteDBModel.ufnGetAllCategories_Result">
-                <ScalarProperty Name="ParentProductCategoryName" ColumnName="ParentProductCategoryName" />
-                <ScalarProperty Name="ProductCategoryName" ColumnName="ProductCategoryName" />
-                <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="TesteDBModel.Store.ufnGetCustomerInformation" FunctionImportName="ufnGetCustomerInformation">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="TesteDBModel.ufnGetCustomerInformation_Result">
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="uspLogError" FunctionName="TesteDBModel.Store.uspLogError" />
-          <FunctionImportMapping FunctionImportName="uspPrintError" FunctionName="TesteDBModel.Store.uspPrintError" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

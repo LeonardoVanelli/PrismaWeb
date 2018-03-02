@@ -65,14 +65,14 @@ if (ReferenceScriptLibraries) {
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
+    <div class="form-row">
 <# 
     if (isControlHtmlAttributesSupported) {
 #>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+        <div class="form-group col-md-12">
+            <div class="col-md-offset-2">
                 <input type="submit" value="Salvar" class="btn btn-success" />                
                 <input id="SaveAndNew" type="submit" value="Salvar/Novo" class="btn btn-info" />
                 <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
@@ -96,94 +96,91 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 
 #>
 
-        <div class="form-group">
+        <div class="form-group col-md-12">
 <#
         if (property.IsForeignKey) {
 #>
-            @Html.LabelFor(model => model.<#= property.PropertyName #>, "<#= GetAssociationName(property) #>", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.<#= property.PropertyName #>, "<#= GetAssociationName(property) #>")
 <#
         } else {
 #>
-            @Html.LabelFor(model => model.<#= property.PropertyName #>, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.<#= property.PropertyName #>)
 <#
         }
 #>
-            <div class="col-md-10">
-                <div class="ui-widget">         
+            <div class="ui-widget">         
 <#
-        bool isCheckbox = property.TypeName.Equals(boolType);
-        if (property.IsForeignKey) {
-#>
-<# 
-            if (isControlHtmlAttributesSupported) {
-#>
-                    <select id="gender-select" class="ui fluid search selection dropdown" name="<#= property.PropertyName #>">
-                        @foreach (var item in ViewBag.<#= property.PropertyName #>)
-                        {
-                            <option value="@item.Value">@item.Text</option>
-                        }
-                    </select>
-<#
-            } else {
-#>
-                    @Html.DropDownList("<#= property.PropertyName #>", String.Empty)
-<#
-            }
-#>
-<#
-        } else  if (isControlHtmlAttributesSupported) {
-            if (isCheckbox) {
-#>
-                    <div class="checkbox">
-<#
-                PushIndent("    ");
-#>
-                    @Html.EditorFor(model => model.<#= property.PropertyName #>)
-<#
-            } else if (property.IsEnum && !property.IsEnumFlags) {
-#>
-                    @Html.EnumDropDownListFor(model => model.<#= property.PropertyName #>, htmlAttributes: new { @class = "form-control" })
-<#
-            } else {
-#>
-                    @Html.EditorFor(model => model.<#= property.PropertyName #>, new { htmlAttributes = new { @class = "form-control" } })
-<#
-            } 
-        } else {
-#>
-                    @Html.EditorFor(model => model.<#= property.PropertyName #>)
-<#
-        }
+    bool isCheckbox = property.TypeName.Equals(boolType);
+    if (property.IsForeignKey) {
 #>
 <# 
         if (isControlHtmlAttributesSupported) {
 #>
-                    @Html.ValidationMessageFor(model => model.<#= property.PropertyName #>, "", new { @class = "text-danger" })
-<#        
+                <select id="<#= property.PropertyName #>" class="ui fluid search selection dropdown dropDownSelect" name="<#= property.PropertyName #>">
+                    @foreach (var item in ViewBag.<#= property.PropertyName #>)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+<#
         } else {
 #>
-                    @Html.ValidationMessageFor(model => model.<#= property.PropertyName #>)
+                @Html.DropDownList("<#= property.PropertyName #>", String.Empty)
+<#
+        }
+#>
+<#
+    } else  if (isControlHtmlAttributesSupported) {
+        if (isCheckbox) {
+#>
+                <div class="checkbox">
+<#
+            PushIndent("    ");
+#>
+                @Html.EditorFor(model => model.<#= property.PropertyName #>)
+<#
+        } else if (property.IsEnum && !property.IsEnumFlags) {
+#>
+                @Html.EnumDropDownListFor(model => model.<#= property.PropertyName #>, htmlAttributes: new { @class = "form-control" })
+<#
+        } else {
+#>
+                @Html.EditorFor(model => model.<#= property.PropertyName #>, new { htmlAttributes = new { @class = "form-control" } })
+<#
+        } 
+    } else {
+#>
+                @Html.EditorFor(model => model.<#= property.PropertyName #>)
+<#
+    }
+#>
+<# 
+    if (isControlHtmlAttributesSupported) {
+#>
+                @Html.ValidationMessageFor(model => model.<#= property.PropertyName #>, "", new { @class = "text-danger" })
+<#        
+    } else {
+#>
+                @Html.ValidationMessageFor(model => model.<#= property.PropertyName #>)
 <#      
-        }
+    }
 #>
 <#
-        if (isCheckbox && isControlHtmlAttributesSupported) {
-            PopIndent();
-#>
-                    </div>
-<#
-        }
+    if (isCheckbox && isControlHtmlAttributesSupported) {
+        PopIndent();
 #>
                 </div>
-            </div>
+<#
+    }
+#>
+            </div>            
         </div>
-
 <#
     }
 }
 #>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+        <div class="form-group col-md-12">
+            <div class="col-md-offset-2">
                 <input type="submit" value="Salvar" class="btn btn-success" />
             </div>
         </div>

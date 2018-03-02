@@ -1,45 +1,202 @@
-﻿@model IEnumerable<PrismaWEB.Models.Pessoa>
+﻿@model IEnumerable<PrismaWEB.Models.PESSOAS>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="card mb-3">
+    <div class="card-header">
+        <a href="@Url.Action("Create")" class="btn btn-success"><i class="fa fa-plus"></i> Novo</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DataNascimento)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Cpf)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Foto)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DataCriacao)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DataAlteracao)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ativo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TelefoneFixo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TelefoneMovel)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Endereco)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Cep)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Numero)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Complemento)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BAIRROS.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ESTADOS.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LOGRADOUROS.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MUNICIPIOS.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PAISES.Nome)
+                        </th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>                
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataNascimento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cpf)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Foto)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataCriacao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataAlteracao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ativo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TelefoneFixo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TelefoneMovel)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Endereco)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cep)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Numero)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Complemento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BAIRROS.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ESTADOS.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LOGRADOUROS.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MUNICIPIOS.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PAISES.Nome)
+                            </td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" title="Editar">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a>
+                                <a class="btn btn-danger btn-sm delete-prompt" href="javascript:void(0)" id="@item.Id" data-toggle="tooltip" title="Deletar">
+                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
 
-<p>
-    @Html.ActionLink("Nova", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cpf)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataNascimento)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cpf)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataNascimento)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Deletar", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+<!-- modal para deletar -->
+<div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header alert alert-danger">
+                <h5 class="modal-title">Deletar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="success-message">Deseja deletar este item?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success delete-confirm">Deletar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-</table>
+<!--Scrip para deletar-->
+<script src="~/Content/js/helper/DeletePeloModal.js"></script>
+<script>
+        $(document).ready(function () {
+            var pryEmpId;
+            $('.delete-prompt').click(function () {
+                pryEmpId = $(this).attr('id');
+                $('#ModalDelete').modal('show');
+            });
+
+            $('.delete-confirm').click(function () {
+                if (pryEmpId != '') {
+                     var token = '@Html.AntiForgeryToken()';
+                     token = $(token).val();
+                     var url = '@Url.Action("Delete")';
+                     DeletarItem(token, pryEmpId, url)
+                }
+            });
+
+            //function to reset bootstrap modal popups
+            $("#ModalDelete").on("hidden.bs.modal", function () {
+                $(".modal-header").removeClass(' ').addClass('alert-danger');
+                $('.delete-confirm').css('display', 'inline-block');
+                $('.success-message').html('').html('Deseja deletar este item?');
+            });
+        });
+</script>

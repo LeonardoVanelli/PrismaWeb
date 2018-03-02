@@ -12,12 +12,13 @@ namespace PrismaWEB.Controllers
 {
     public class PessoasController : Controller
     {
-        private TesteDBEntities1 db = new TesteDBEntities1();
+        private PrismaEntities db = new PrismaEntities();
 
         // GET: Pessoas
         public ActionResult Index()
         {
-            return View(db.Pessoa.ToList());
+            var pESSOAS = db.PESSOAS.Include(p => p.BAIRROS).Include(p => p.ESTADOS).Include(p => p.LOGRADOUROS).Include(p => p.MUNICIPIOS).Include(p => p.PAISES);
+            return View(pESSOAS.ToList());
         }
 
         // GET: Pessoas/Details/5
@@ -27,17 +28,22 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pessoa pessoa = db.Pessoa.Find(id);
-            if (pessoa == null)
+            PESSOAS pESSOAS = db.PESSOAS.Find(id);
+            if (pESSOAS == null)
             {
                 return HttpNotFound();
             }
-            return View(pessoa);
+            return View(pESSOAS);
         }
 
         // GET: Pessoas/Create
         public ActionResult Create()
         {
+            ViewBag.Bairro_Id = new SelectList(db.BAIRROS, "Id", "Nome");
+            ViewBag.Estado_Id = new SelectList(db.ESTADOS, "Id", "Nome");
+            ViewBag.Logradouro_Id = new SelectList(db.LOGRADOUROS, "Id", "Nome");
+            ViewBag.Municipio_Id = new SelectList(db.MUNICIPIOS, "Id", "Nome");
+            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome");
             return View();
         }
 
@@ -46,16 +52,21 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Cpf,DataNascimento")] Pessoa pessoa)
+        public ActionResult Create([Bind(Include = "Id,nome,DataNascimento,Cpf,Foto,DataCriacao,DataAlteracao,Ativo,Email,TelefoneFixo,TelefoneMovel,Endereco,Pais_Id,Estado_Id,Municipio_Id,Bairro_Id,Logradouro_Id,Cep,Numero,Complemento")] PESSOAS pESSOAS)
         {
             if (ModelState.IsValid)
             {
-                db.Pessoa.Add(pessoa);
+                db.PESSOAS.Add(pESSOAS);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(pessoa);
+            ViewBag.Bairro_Id = new SelectList(db.BAIRROS, "Id", "Nome", pESSOAS.Bairro_Id);
+            ViewBag.Estado_Id = new SelectList(db.ESTADOS, "Id", "Nome", pESSOAS.Estado_Id);
+            ViewBag.Logradouro_Id = new SelectList(db.LOGRADOUROS, "Id", "Nome", pESSOAS.Logradouro_Id);
+            ViewBag.Municipio_Id = new SelectList(db.MUNICIPIOS, "Id", "Nome", pESSOAS.Municipio_Id);
+            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", pESSOAS.Pais_Id);
+            return View(pESSOAS);
         }
 
         // GET: Pessoas/Edit/5
@@ -65,12 +76,17 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pessoa pessoa = db.Pessoa.Find(id);
-            if (pessoa == null)
+            PESSOAS pESSOAS = db.PESSOAS.Find(id);
+            if (pESSOAS == null)
             {
                 return HttpNotFound();
             }
-            return View(pessoa);
+            ViewBag.Bairro_Id = new SelectList(db.BAIRROS, "Id", "Nome", pESSOAS.Bairro_Id);
+            ViewBag.Estado_Id = new SelectList(db.ESTADOS, "Id", "Nome", pESSOAS.Estado_Id);
+            ViewBag.Logradouro_Id = new SelectList(db.LOGRADOUROS, "Id", "Nome", pESSOAS.Logradouro_Id);
+            ViewBag.Municipio_Id = new SelectList(db.MUNICIPIOS, "Id", "Nome", pESSOAS.Municipio_Id);
+            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", pESSOAS.Pais_Id);
+            return View(pESSOAS);
         }
 
         // POST: Pessoas/Edit/5
@@ -78,15 +94,20 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Cpf,DataNascimento")] Pessoa pessoa)
+        public ActionResult Edit([Bind(Include = "Id,nome,DataNascimento,Cpf,Foto,DataCriacao,DataAlteracao,Ativo,Email,TelefoneFixo,TelefoneMovel,Endereco,Pais_Id,Estado_Id,Municipio_Id,Bairro_Id,Logradouro_Id,Cep,Numero,Complemento")] PESSOAS pESSOAS)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pessoa).State = EntityState.Modified;
+                db.Entry(pESSOAS).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(pessoa);
+            ViewBag.Bairro_Id = new SelectList(db.BAIRROS, "Id", "Nome", pESSOAS.Bairro_Id);
+            ViewBag.Estado_Id = new SelectList(db.ESTADOS, "Id", "Nome", pESSOAS.Estado_Id);
+            ViewBag.Logradouro_Id = new SelectList(db.LOGRADOUROS, "Id", "Nome", pESSOAS.Logradouro_Id);
+            ViewBag.Municipio_Id = new SelectList(db.MUNICIPIOS, "Id", "Nome", pESSOAS.Municipio_Id);
+            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", pESSOAS.Pais_Id);
+            return View(pESSOAS);
         }
 
         // GET: Pessoas/Delete/5
@@ -96,12 +117,12 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pessoa pessoa = db.Pessoa.Find(id);
-            if (pessoa == null)
+            PESSOAS pESSOAS = db.PESSOAS.Find(id);
+            if (pESSOAS == null)
             {
                 return HttpNotFound();
             }
-            return View(pessoa);
+            return View(pESSOAS);
         }
 
         // POST: Pessoas/Delete/5
@@ -109,8 +130,8 @@ namespace PrismaWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Pessoa pessoa = db.Pessoa.Find(id);
-            db.Pessoa.Remove(pessoa);
+            PESSOAS pESSOAS = db.PESSOAS.Find(id);
+            db.PESSOAS.Remove(pESSOAS);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

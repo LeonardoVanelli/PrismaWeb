@@ -4,38 +4,45 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="14e6ed9ec7d3406cb385c29335d92c65" Name="Diagram1">
-        <EntityTypeShape EntityType="TesteDBModel.BuildVersion" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.ErrorLog" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.Pessoa" Width="1.5" PointX="8.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.Teste" Width="1.5" PointX="11" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.Address" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.Customer" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.CustomerAddress" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.Product" Width="1.5" PointX="6" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.ProductCategory" Width="1.5" PointX="3.75" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.ProductDescription" Width="1.5" PointX="3.75" PointY="18.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.ProductModel" Width="1.5" PointX="3.75" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.ProductModelProductDescription" Width="1.5" PointX="6" PointY="18.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.SalesOrderDetail" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.SalesOrderHeader" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.vGetAllCategories" Width="1.5" PointX="8.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.vProductAndDescription" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.vProductModelCatalogDescription" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TesteDBModel.database_firewall_rules" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
-        <AssociationConnector Association="TesteDBModel.FK_Teste_Pessoa" ManuallyRouted="false" />
-        <AssociationConnector Association="TesteDBModel.FK_CustomerAddress_Address_AddressID" ManuallyRouted="false" />
-        <AssociationConnector Association="TesteDBModel.FK_SalesOrderHeader_Address_BillTo_AddressID" ManuallyRouted="false" />
-        <AssociationConnector Association="TesteDBModel.FK_SalesOrderHeader_Address_ShipTo_AddressID" ManuallyRouted="false" />
-        <AssociationConnector Association="TesteDBModel.FK_CustomerAddress_Customer_CustomerID" ManuallyRouted="false" />
-        <AssociationConnector Association="TesteDBModel.FK_SalesOrderHeader_Customer_CustomerID" ManuallyRouted="false" />
-        <AssociationConnector Association="TesteDBModel.FK_Product_ProductCategory_ProductCategoryID" ManuallyRouted="false" />
-        <AssociationConnector Association="TesteDBModel.FK_Product_ProductModel_ProductModelID" ManuallyRouted="false" />
-        <AssociationConnector Association="TesteDBModel.FK_SalesOrderDetail_Product_ProductID" ManuallyRouted="false" />
-        <AssociationConnector Association="TesteDBModel.FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID" ManuallyRouted="false" />
-        <AssociationConnector Association="TesteDBModel.FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID" ManuallyRouted="false" />
-        <AssociationConnector Association="TesteDBModel.FK_ProductModelProductDescription_ProductModel_ProductModelID" ManuallyRouted="false" />
-        <AssociationConnector Association="TesteDBModel.FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID" ManuallyRouted="false" />
+      <Diagram DiagramId="bc2f4eafdf714b3288989726e4d53ec9" Name="Diagram1">
+        <EntityTypeShape EntityType="PrismaModel.BAIRROS" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.CANDIDATOCARGO" Width="1.5" PointX="15" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.CARGOS" Width="1.5" PointX="12.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.ESTADOS" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.FAVORIOS" Width="1.5" PointX="15" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.LEIS" Width="1.5" PointX="15.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.LOGRADOUROS" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.MUNICIPIOS" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.PAISES" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.PESSOAS" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.PRESIDENTES" Width="1.5" PointX="15" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.VOTOCANDIDATOLEI" Width="1.5" PointX="18" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.VOTOS" Width="1.5" PointX="15" PointY="20.5" IsExpanded="true" />
+        <AssociationConnector Association="PrismaModel.FK_BAIRROS_ESTADOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_BAIRROS_MUNICIPIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_BAIRROS_PAISES" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_LOGRADOUROS_BAIRROS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_PESSOAS_BAIRROS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_CANDIDATOCARGO_CARGOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_CANDIDATOCARGO_PESSOAS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_ESTADOS_PAISES" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_LOGRADOUROS_ESTADOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_MUNICIPIOS_ESTADOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_PESSOAS_ESTATOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_FAVORIOS_PESSOASCANDIDATO" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_FAVORIOS_PESSOASUSUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_VOTOCANDIDATOLEI_LEIS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_LOGRADOUROS_MUNICIPIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_LOGRADOUROS_PAISES" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_PESSOAS_LOGRADOUROS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_MUNICIPIOS_PAISES" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_PESSOAS_MUNICIPIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_PESSOAS_PAISES" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_PRESIDENTES_PESSOASCANDIDATO" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_PRESIDENTES_PESSOASVICE" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_VOTOCANDIDATOLEI_PESSOAS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_VOTOS_PESSOASCANDIDATO" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_VOTOS_PESSOASUSUARIO" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

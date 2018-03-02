@@ -27,6 +27,6 @@ textarea {
     color: inherit;
 }
 
-.readonly {
-    read
+.form-control {
+    height: 38px;
 }

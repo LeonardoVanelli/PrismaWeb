@@ -1,0 +1,26 @@
+﻿@model PrismaWEB.Models.PAISES
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a href="@Url.Action("Create")" class="btn btn-success">Novo</a>
+            <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-info">Editar</a>
+            <a href="@Url.Action("Delete", new { id = Model.Id })" class="btn btn-danger">Deletar</a>
+        </div>
+    </div>    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nome, "Nome", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>   
+</div>
+
+<p>
+<script src="~/Content/js/helper/DisableCampos.js"></script>
+</p>

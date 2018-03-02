@@ -150,30 +150,35 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AddressesController.cs" />
     <Compile Include="Controllers\CbControllerController.cs" />
+    <Compile Include="Controllers\EstadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MunicipiosController.cs" />
+    <Compile Include="Controllers\PaisesController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
     <Compile Include="Controllers\TestesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Address.cs">
+    <Compile Include="Models\BAIRROS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BuildVersion.cs">
+    <Compile Include="Models\CANDIDATOCARGO.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Customer.cs">
+    <Compile Include="Models\CARGOS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CustomerAddress.cs">
+    <Compile Include="Models\ESTADOS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\database_firewall_rules.cs">
+    <Compile Include="Models\FAVORIOS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ErrorLog.cs">
+    <Compile Include="Models\LEIS.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LOGRADOUROS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
@@ -191,49 +196,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Pessoa.cs">
+    <Compile Include="Models\MUNICIPIOS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Product.cs">
+    <Compile Include="Models\PAISES.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProductCategory.cs">
+    <Compile Include="Models\PESSOAS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProductDescription.cs">
+    <Compile Include="Models\PRESIDENTES.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProductModel.cs">
+    <Compile Include="Models\VOTOCANDIDATOLEI.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProductModelProductDescription.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SalesOrderDetail.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SalesOrderHeader.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Teste.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ufnGetAllCategories_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ufnGetCustomerInformation_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\vGetAllCategories.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\vProductAndDescription.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\vProductModelCatalogDescription.cs">
+    <Compile Include="Models\VOTOS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validacoes\CandidatoValidate.cs" />
+    <Compile Include="Validacoes\MunicipioValidate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -418,6 +401,7 @@
     <Content Include="CodeTemplates\MvcView\Empty.cs.t4" />
     <Content Include="CodeTemplates\MvcView\Imports.include.t4" />
     <Content Include="CodeTemplates\MvcView\ModelMetadataFunctions.cs.include.t4" />
+    <Content Include="CodeTemplates\MvcView\List.cs.t4" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -425,7 +409,6 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="CodeTemplates\MvcView\List.cs.t4" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
@@ -450,24 +433,34 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\CbController\Index.cshtml" />
-    <Content Include="Views\Addresses\Create.cshtml" />
-    <Content Include="Views\Addresses\Delete.cshtml" />
-    <Content Include="Views\Addresses\Details.cshtml" />
-    <Content Include="Views\Addresses\Edit.cshtml" />
-    <Content Include="Views\Addresses\Index.cshtml" />
     <Content Include="web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Pessoas\Create.cshtml" />
-    <Content Include="Views\Pessoas\Delete.cshtml" />
-    <Content Include="Views\Pessoas\Details.cshtml" />
-    <Content Include="Views\Pessoas\Edit.cshtml" />
-    <Content Include="Views\Pessoas\Index.cshtml" />
     <Content Include="Views\Testes\Create.cshtml" />
     <Content Include="Views\Testes\Delete.cshtml" />
     <Content Include="Views\Testes\Details.cshtml" />
     <Content Include="Views\Testes\Edit.cshtml" />
     <Content Include="Views\Testes\Index.cshtml" />
+    <Content Include="Views\Pessoas\Create.cshtml" />
+    <Content Include="Views\Pessoas\Delete.cshtml" />
+    <Content Include="Views\Pessoas\Details.cshtml" />
+    <Content Include="Views\Pessoas\Edit.cshtml" />
+    <Content Include="Views\Pessoas\Index.cshtml" />
+    <Content Include="Views\Paises\Create.cshtml" />
+    <Content Include="Views\Paises\Delete.cshtml" />
+    <Content Include="Views\Paises\Details.cshtml" />
+    <Content Include="Views\Paises\Edit.cshtml" />
+    <Content Include="Views\Paises\Index.cshtml" />
+    <Content Include="Views\Estados\Create.cshtml" />
+    <Content Include="Views\Estados\Delete.cshtml" />
+    <Content Include="Views\Estados\Details.cshtml" />
+    <Content Include="Views\Estados\Edit.cshtml" />
+    <Content Include="Views\Estados\Index.cshtml" />
+    <Content Include="Views\Municipios\Create.cshtml" />
+    <Content Include="Views\Municipios\Delete.cshtml" />
+    <Content Include="Views\Municipios\Details.cshtml" />
+    <Content Include="Views\Municipios\Edit.cshtml" />
+    <Content Include="Views\Municipios\Index.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

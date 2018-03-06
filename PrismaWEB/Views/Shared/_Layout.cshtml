@@ -8,41 +8,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
+    <title>@ViewBag.Title - PrismaWEB</title>
     <!-- Bootstrap core CSS-->
     <link href="~/Content/SB admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
     <link href="~/Content/SB admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
     <link href="~/Content/SB admin/css/sb-admin.css" rel="stylesheet">
+    <!-- DataTables-->
+    <link href="~/Content/SB admin/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
+    <!-- JqueryUi -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- ComboBox -->
+    <script src="~/Content/js/helper/ComboBox.js"></script>
+    <link href="~/Content/css/helper/ComboBox.css" rel="stylesheet" />
+
+    <!-- Semantic UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css" />
+    <!-- Personal style-->
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="~/Home">Prisma WEB</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                <!--ItemLateral-->
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="#">
                         <i class="fa fa-fw fa-dashboard"></i>
-                        <span class="nav-link-text">Dashboard</span>
+                        <span class="nav-link-text">DashBoard</span>
                     </a>
                 </li>
+
+                <!--Pessoas dropdown-->
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-                        <i class="fa fa-fw fa-wrench"></i>
-                        <span class="nav-link-text">Components</span>
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePessoas" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-user"></i>
+                        <span class="nav-link-text">Pessoas</span>
                     </a>
-                    <ul class="sidenav-second-level collapse" id="collapseComponents">
+                    <ul class="sidenav-second-level collapse" id="collapsePessoas">
                         <li>
-                            <a href="navbar.html">Navbar</a>
+                            <a href="~/Candidatos">Candidato</a>
                         </li>
                         <li>
-                            <a href="cards.html">Cards</a>
+                            <a href="#">Usuarios</a>
+                        </li>
+                        <li>
+                            <a href="#">Funcionarios</a>
+                        </li>
+                    </ul>
+                </li>
+                <!--Localização dropdown-->
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseLocalizacao" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-map-marker"></i>
+                        <span class="nav-link-text">Localização</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseLocalizacao">
+                        <li>
+                            <a href="~/Paises">Paises</a>
+                        </li>
+                        <li>
+                            <a href="~/Estados">Estados</a>
+                        </li>
+                        <li>
+                            <a href="~/Municipios">Municipios</a>
+                        </li>
+                        <li>
+                            <a href="~/Bairros">Bairros</a>
+                        </li>
+                        <li>
+                            <a href="~/Logradouros">Logradouros</a>
                         </li>
                     </ul>
                 </li>
@@ -53,9 +98,6 @@
                         <span class="nav-link-text">Menu Levels</span>
                     </a>
                     <ul class="sidenav-second-level collapse" id="collapseMulti">
-                        <li>
-                            <a href="#">Second Level Item</a>
-                        </li>
                         <li>
                             <a href="#">Second Level Item</a>
                         </li>
@@ -172,7 +214,7 @@
                 <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2">
                         <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Search for...">
+                            <input class="form-control" type="text" placeholder="@Url.Action()">
                             <span class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fa fa-search"></i>
@@ -194,9 +236,11 @@
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="index.html">Dashboard</a>
+                    <a href="~/Home" class="removeAzulLink">PrismaWEB</a>
                 </li>
-                <li class="breadcrumb-item active">Blank Page</li>
+                <li class="breadcrumb-item active">
+                    <a href="~/Addresses" class="removeAzulLink">Addresses</a>
+                </li>
             </ol>
             <div class="row">
                 <div class="col-12">
@@ -206,13 +250,13 @@
         </div>
         <!-- /.container-fluid-->
         <!-- /.content-wrapper-->
-        <footer class="sticky-footer">
+        @*<footer class="sticky-footer">
             <div class="container">
                 <div class="text-center">
-                    <small>Copyright © Your Website 2018</small>
+                    <small>Copyright © PrismaWEB 2018</small>
                 </div>
-            </div>
-        </footer>
+            </div>                   Parte inferior que n esta funcionando
+        </footer>*@
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fa fa-angle-up"></i>
@@ -235,14 +279,33 @@
                 </div>
             </div>
         </div>
-        <!-- Bootstrap core JavaScript-->
-        <script src="~/Content/SB admin/vendor/jquery/jquery.min.js"></script>
-    
         <script src="~/Content/SB admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Core plugin JavaScript-->
         <script src="~/Content/SB admin/vendor/jquery-easing/jquery.easing.min.js"></script>
         <!-- Custom scripts for all pages-->
         <script src="~/Content/SB admin/js/sb-admin.min.js"></script>
+
+        <!-- Page level plugin JavaScript-->
+        <script src="~/Content/SB admin/vendor/datatables/jquery.dataTables.js"></script>
+        <script src="~/Content/SB admin/vendor/datatables/dataTables.bootstrap4.js"></script>
+        <script src="~/Content/SB admin/vendor/datatables/TraducaoTabelas.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="~/Content/SB admin/js/sb-admin.min.js"></script>
+        <!-- Custom scripts for this page-->
+        <script src="~/Content/SB admin/js/sb-admin-datatables.min.js"></script>
+        <!-- Semantic UI-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.js"></script>
+        <script>
+            $(".dropDownSelect").dropdown({
+                message: {
+                    addResult: 'Add <b>{term}</b>',
+                    count: '{count} selected',
+                    maxSelections: 'Max {maxCount} selections',
+                    noResults: 'Sem resultados.'
+                }
+            });
+            $('.tabular.menu .item').tab();
+        </script>
     </div>
 </body>
 

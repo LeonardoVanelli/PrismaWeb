@@ -1,0 +1,184 @@
+﻿<#@ template language="C#" HostSpecific="True" #>
+<#@ output extension=".cshtml" #>
+<#@ include file="Imports.include.t4" #>
+@model IEnumerable<#= "<" + ViewDataTypeName + ">" #>
+<#
+// The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
+if(IsPartialView) {
+#>
+
+<#
+} else if(IsLayoutPageSelected) {
+#>
+
+@{
+    ViewBag.Title = "<#= ViewName#>";
+<#
+if (!String.IsNullOrEmpty(LayoutPageFile)) {
+#>
+    Layout = "<#= LayoutPageFile#>";
+<#
+}
+#>
+}
+
+<#
+} else {
+#>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+    <meta name="viewport" content="width=device-width" />
+    <title><#= ViewName #></title>
+<#
+    PushIndent("    ");
+}
+#>
+<div class="card mb-3">
+    <div class="card-header">
+        <a href="@Url.Action("Create")" class="btn btn-success"><i class="fa fa-plus"></i> Novo</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+<#
+IEnumerable<PropertyMetadata> properties = ModelMetadata.Properties;
+foreach (PropertyMetadata property in properties) {
+    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
+#>
+<#
+        // We do not want to show any association properties for which there is
+        // no associated foreign key.
+        if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
+            continue;
+        }
+#>
+                        <th>
+                            @Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)
+                        </th>
+<#
+    }
+}
+#>
+                        <th>Ações</th>
+                    </tr>
+                </thead>                
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+<#
+foreach (PropertyMetadata property in properties) {
+    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
+#>
+<#
+        // We do not want to show any association properties for which there is
+        // no associated foreign key.
+        if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
+            continue;
+        }
+#>
+                            <td>
+                                @Html.DisplayFor(modelItem => <#= "item." + GetValueExpression(property) #>)
+                            </td>
+<#
+    }
+}
+
+string pkName = GetPrimaryKeyName();
+if (pkName != null) {
+#>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", new { id = item.<#= pkName #> })" data-toggle="tooltip" title="Editar">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a>
+                                <a class="btn btn-danger btn-sm delete-prompt" href="javascript:void(0)" id="@item.Id" data-toggle="modal" data-target="#ModalDelete" title="Deletar">
+                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                </a>
+                            </td>
+<#
+} else {
+#>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            </td>
+<#
+}
+#>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+
+
+<!-- modal para deletar -->
+<div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header alert alert-danger">
+                <h5 class="modal-title">Deletar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="success-message">Deseja deletar este item?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success delete-confirm">Deletar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Scrip para deletar-->
+<script src="~/Content/js/helper/DeletePeloModal.js"></script>
+<script>
+        $(document).ready(function () {
+            var pryEmpId;
+            $('.delete-prompt').click(function () {
+                pryEmpId = $(this).attr('id');
+            });
+
+            $('.delete-confirm').click(function () {
+                if (pryEmpId != '') {
+                     var token = '@Html.AntiForgeryToken()';
+                     token = $(token).val();
+                     var url = '@Url.Action("Delete")';
+                     DeletarItem(token, pryEmpId, url)
+                }
+            });
+
+            //function to reset bootstrap modal popups
+            $("#ModalDelete").on("hidden.bs.modal", function () {
+                $(".modal-header").removeClass(' ').addClass('alert-danger');
+                $('.delete-confirm').css('display', 'inline-block');
+                $('.success-message').html('').html('Deseja deletar este item?');
+            });
+        });
+</script>
+<#
+// The following code closes the tag used in the case of a view using a layout page and the body and html tags in the case of a regular view page
+#>
+<#
+if(!IsPartialView && !IsLayoutPageSelected) {
+    ClearIndent();
+#>
+
+<#
+}
+#>
+<#@ include file="ModelMetadataFunctions.cs.include.t4" #>

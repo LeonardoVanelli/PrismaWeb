@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc2f4eafdf714b3288989726e4d53ec9" Name="Diagram1">
+        <EntityTypeShape EntityType="PrismaModel.BAIRROS" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.CANDIDATOCARGO" Width="1.5" PointX="15" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.CARGOS" Width="1.5" PointX="12.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.ESTADOS" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.FAVORIOS" Width="1.5" PointX="15" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.LEIS" Width="1.5" PointX="15.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.LOGRADOUROS" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.MUNICIPIOS" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.PAISES" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.PESSOAS" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.PRESIDENTES" Width="1.5" PointX="15" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.VOTOCANDIDATOLEI" Width="1.5" PointX="18" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrismaModel.VOTOS" Width="1.5" PointX="15" PointY="20.5" IsExpanded="true" />
+        <AssociationConnector Association="PrismaModel.FK_BAIRROS_ESTADOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_BAIRROS_MUNICIPIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_BAIRROS_PAISES" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_LOGRADOUROS_BAIRROS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_PESSOAS_BAIRROS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_CANDIDATOCARGO_CARGOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_CANDIDATOCARGO_PESSOAS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_ESTADOS_PAISES" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_LOGRADOUROS_ESTADOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_MUNICIPIOS_ESTADOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_PESSOAS_ESTATOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_FAVORIOS_PESSOASCANDIDATO" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_FAVORIOS_PESSOASUSUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_VOTOCANDIDATOLEI_LEIS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_LOGRADOUROS_MUNICIPIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_LOGRADOUROS_PAISES" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_PESSOAS_LOGRADOUROS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_MUNICIPIOS_PAISES" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_PESSOAS_MUNICIPIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_PESSOAS_PAISES" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_PRESIDENTES_PESSOASCANDIDATO" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_PRESIDENTES_PESSOASVICE" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_VOTOCANDIDATOLEI_PESSOAS" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_VOTOS_PESSOASCANDIDATO" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaModel.FK_VOTOS_PESSOASUSUARIO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

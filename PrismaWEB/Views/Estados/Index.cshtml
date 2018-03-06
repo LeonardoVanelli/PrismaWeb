@@ -13,7 +13,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>
+                        <th>                            
                             @Html.DisplayNameFor(model => model.Nome)
                         </th>
                         <th>
@@ -27,7 +27,9 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Nome)
+                                <a href="@Url.Action("Details/"+item.Id)" class="removeAzulLink">
+                                    @Html.DisplayFor(modelItem => item.Nome)
+                                </a>
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.PAISES.Nome, "Pais")

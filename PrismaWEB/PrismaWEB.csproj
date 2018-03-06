@@ -150,12 +150,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BairrosController.cs" />
     <Compile Include="Controllers\CbControllerController.cs" />
     <Compile Include="Controllers\EstadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MunicipiosController.cs" />
     <Compile Include="Controllers\PaisesController.cs" />
-    <Compile Include="Controllers\PessoasController.cs" />
+    <Compile Include="Controllers\CandidatosController.cs" />
+    <Compile Include="Controllers\SelectLocalizacaoController.cs" />
     <Compile Include="Controllers\TestesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -222,6 +224,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\helper\ComboBox.css" />
+    <Content Include="Content\js\helper\CarregaLocalizacao.js" />
     <Content Include="Content\js\helper\ComboBox.js" />
     <Content Include="Content\js\helper\DeletePeloModal.js" />
     <Content Include="Content\js\helper\DisableCampos.js" />
@@ -441,11 +444,11 @@
     <Content Include="Views\Testes\Details.cshtml" />
     <Content Include="Views\Testes\Edit.cshtml" />
     <Content Include="Views\Testes\Index.cshtml" />
-    <Content Include="Views\Pessoas\Create.cshtml" />
-    <Content Include="Views\Pessoas\Delete.cshtml" />
-    <Content Include="Views\Pessoas\Details.cshtml" />
-    <Content Include="Views\Pessoas\Edit.cshtml" />
-    <Content Include="Views\Pessoas\Index.cshtml" />
+    <Content Include="Views\Candidatos\Create.cshtml" />
+    <Content Include="Views\Candidatos\Delete.cshtml" />
+    <Content Include="Views\Candidatos\Details.cshtml" />
+    <Content Include="Views\Candidatos\Edit.cshtml" />
+    <Content Include="Views\Candidatos\Index.cshtml" />
     <Content Include="Views\Paises\Create.cshtml" />
     <Content Include="Views\Paises\Delete.cshtml" />
     <Content Include="Views\Paises\Details.cshtml" />
@@ -461,6 +464,13 @@
     <Content Include="Views\Municipios\Details.cshtml" />
     <Content Include="Views\Municipios\Edit.cshtml" />
     <Content Include="Views\Municipios\Index.cshtml" />
+    <Content Include="Views\Bairros\Create.cshtml" />
+    <Content Include="Views\Bairros\Delete.cshtml" />
+    <Content Include="Views\Bairros\Details.cshtml" />
+    <Content Include="Views\Bairros\Edit.cshtml" />
+    <Content Include="Views\Bairros\Index.cshtml" />
+    <Content Include="Views\ViewPage1.cshtml" />
+    <Content Include="Views\CbController\Localizacao.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -470,6 +480,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\SelectLocalizacao\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

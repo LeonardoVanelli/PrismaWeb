@@ -1,4 +1,4 @@
-﻿@model PrismaWEB.Models.MUNICIPIOS
+﻿@model PrismaWEB.Models.BAIRROS
 
 @{
     ViewBag.Title = "Details";
@@ -13,21 +13,24 @@
             <a href="@Url.Action("Delete", new { id = Model.Id })" class="btn btn-danger">Deletar</a>
         </div>
     </div>    
-
     <div class="form-group">
         @Html.LabelFor(model => model.Nome, "Nome", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
         </div>
     </div>   
-
     <div class="form-group">
         @Html.LabelFor(model => model.ESTADOS, "ESTADOS", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.ESTADOS, new { htmlAttributes = new { @class = "form-control" } })
         </div>
-    </div>  
-
+    </div>   
+    <div class="form-group">
+        @Html.LabelFor(model => model.MUNICIPIOS, "MUNICIPIOS", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MUNICIPIOS, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>   
     <div class="form-group">
         @Html.LabelFor(model => model.PAISES, "PAISES", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">

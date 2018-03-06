@@ -1,43 +1,9 @@
-﻿<#@ template language="C#" HostSpecific="True" #>
-<#@ output extension=".cshtml" #>
-<#@ include file="Imports.include.t4" #>
-@model IEnumerable<#= "<" + ViewDataTypeName + ">" #>
-<#
-// The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
-if(IsPartialView) {
-#>
-
-<#
-} else if(IsLayoutPageSelected) {
-#>
+﻿@model IEnumerable<PrismaWEB.Models.BAIRROS>
 
 @{
-    ViewBag.Title = "<#= ViewName#>";
-<#
-if (!String.IsNullOrEmpty(LayoutPageFile)) {
-#>
-    Layout = "<#= LayoutPageFile#>";
-<#
-}
-#>
+    ViewBag.Title = "Index";
 }
 
-<#
-} else {
-#>
-
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-    <meta name="viewport" content="width=device-width" />
-    <title><#= ViewName #></title>
-<#
-    PushIndent("    ");
-}
-#>
 <div class="card mb-3">
     <div class="card-header">
         <a href="@Url.Action("Create")" class="btn btn-success"><i class="fa fa-plus"></i> Novo</a>
@@ -47,25 +13,18 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-<#
-IEnumerable<PropertyMetadata> properties = ModelMetadata.Properties;
-foreach (PropertyMetadata property in properties) {
-    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
-#>
-<#
-        // We do not want to show any association properties for which there is
-        // no associated foreign key.
-        if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
-            continue;
-        }
-#>
                         <th>
-                            @Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)
+                            @Html.DisplayNameFor(model => model.Nome)
                         </th>
-<#
-    }
-}
-#>
+                        <th>
+                            Estado
+                        </th>
+                        <th>
+                            Municipio
+                        </th>
+                        <th>
+                            Pais
+                        </th>
                         <th>Ações</th>
                     </tr>
                 </thead>                
@@ -73,46 +32,26 @@ foreach (PropertyMetadata property in properties) {
                     @foreach (var item in Model)
                     {
                         <tr>
-<#
-foreach (PropertyMetadata property in properties) {
-    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
-#>
-<#
-        // We do not want to show any association properties for which there is
-        // no associated foreign key.
-        if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
-            continue;
-        }
-#>
                             <td>
-                                @Html.DisplayFor(modelItem => <#= "item." + GetValueExpression(property) #>)
+                                @Html.DisplayFor(modelItem => item.Nome)
                             </td>
-<#
-    }
-}
-
-string pkName = GetPrimaryKeyName();
-if (pkName != null) {
-#>
                             <td>
-                                <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", new { id = item.<#= pkName #> })" data-toggle="tooltip" title="Editar">
+                                @Html.DisplayFor(modelItem => item.ESTADOS.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MUNICIPIOS.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PAISES.Nome)
+                            </td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" title="Editar">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </a>
                                 <a class="btn btn-danger btn-sm delete-prompt" href="javascript:void(0)" id="@item.Id" data-toggle="modal" data-target="#ModalDelete" title="Deletar">
                                     <i class="fa fa-minus" aria-hidden="true"></i>
                                 </a>
                             </td>
-<#
-} else {
-#>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                            </td>
-<#
-}
-#>
                         </tr>
                     }
                 </tbody>
@@ -170,15 +109,3 @@ if (pkName != null) {
             });
         });
 </script>
-<#
-// The following code closes the tag used in the case of a view using a layout page and the body and html tags in the case of a regular view page
-#>
-<#
-if(!IsPartialView && !IsLayoutPageSelected) {
-    ClearIndent();
-#>
-
-<#
-}
-#>
-<#@ include file="ModelMetadataFunctions.cs.include.t4" #>

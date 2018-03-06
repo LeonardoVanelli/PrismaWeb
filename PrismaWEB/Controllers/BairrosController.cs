@@ -10,114 +10,122 @@ using PrismaWEB.Models;
 
 namespace PrismaWEB.Controllers
 {
-    public class EstadosController : Controller
+    public class BairrosController : Controller
     {
         private PrismaEntities db = new PrismaEntities();
 
-        // GET: Estados
+        // GET: Bairros
         public ActionResult Index()
         {
-            var eSTADOS = db.ESTADOS.Include(e => e.PAISES);
-            return View(eSTADOS.ToList());
+            var bAIRROS = db.BAIRROS.Include(b => b.ESTADOS).Include(b => b.MUNICIPIOS).Include(b => b.PAISES);
+            return View(bAIRROS.ToList());
         }
 
-        // GET: Estados/Details/5
+        // GET: Bairros/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ESTADOS eSTADOS = db.ESTADOS.Find(id);
-            if (eSTADOS == null)
+            BAIRROS bAIRROS = db.BAIRROS.Find(id);
+            if (bAIRROS == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Municipios = db.MUNICIPIOS.Where(m => m.Estado_Id == eSTADOS.Id);
-            return View(eSTADOS);
+            return View(bAIRROS);
         }
 
-        // GET: Estados/Create
+        // GET: Bairros/Create
         public ActionResult Create()
         {
+            ViewBag.Estado_Id = new SelectList(db.ESTADOS, "Id", "Nome");
+            ViewBag.Municipio_Id = new SelectList(db.MUNICIPIOS, "Id", "Nome");
             ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome");
             return View();
         }
 
-        // POST: Estados/Create
+        // POST: Bairros/Create
         // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Pais_Id")] ESTADOS eSTADOS)
+        public ActionResult Create([Bind(Include = "Id,Nome,Pais_Id,Estado_Id,Municipio_Id")] BAIRROS bAIRROS)
         {
+
             if (ModelState.IsValid)
             {
-                eSTADOS.Id = eSTADOS.GetHashCode();
-                db.ESTADOS.Add(eSTADOS);
+                bAIRROS.Id = bAIRROS.GetHashCode();
+                db.BAIRROS.Add(bAIRROS);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", eSTADOS.Pais_Id);
-            return View(eSTADOS);
+            ViewBag.Estado_Id = new SelectList(db.ESTADOS, "Id", "Nome", bAIRROS.Estado_Id);
+            ViewBag.Municipio_Id = new SelectList(db.MUNICIPIOS, "Id", "Nome", bAIRROS.Municipio_Id);
+            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", bAIRROS.Pais_Id);
+            return View(bAIRROS);
         }
 
-        // GET: Estados/Edit/5
+        // GET: Bairros/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ESTADOS eSTADOS = db.ESTADOS.Find(id);
-            if (eSTADOS == null)
+            BAIRROS bAIRROS = db.BAIRROS.Find(id);
+            if (bAIRROS == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", eSTADOS.Pais_Id);
-            return View(eSTADOS);
+            ViewBag.Estado_Id = new SelectList(db.ESTADOS, "Id", "Nome", bAIRROS.Estado_Id);
+            ViewBag.Municipio_Id = new SelectList(db.MUNICIPIOS, "Id", "Nome", bAIRROS.Municipio_Id);
+            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", bAIRROS.Pais_Id);
+            return View(bAIRROS);
         }
 
-        // POST: Estados/Edit/5
+        // POST: Bairros/Edit/5
         // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Pais_Id")] ESTADOS eSTADOS)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Pais_Id,Estado_Id,Municipio_Id")] BAIRROS bAIRROS)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(eSTADOS).State = EntityState.Modified;
+                db.Entry(bAIRROS).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", eSTADOS.Pais_Id);
-            return View(eSTADOS);
+            ViewBag.Estado_Id = new SelectList(db.ESTADOS, "Id", "Nome", bAIRROS.Estado_Id);
+            ViewBag.Municipio_Id = new SelectList(db.MUNICIPIOS, "Id", "Nome", bAIRROS.Municipio_Id);
+            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", bAIRROS.Pais_Id);
+            return View(bAIRROS);
         }
 
-        // GET: Estados/Delete/5
+        // GET: Bairros/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ESTADOS eSTADOS = db.ESTADOS.Find(id);
-            if (eSTADOS == null)
+            BAIRROS bAIRROS = db.BAIRROS.Find(id);
+            if (bAIRROS == null)
             {
                 return HttpNotFound();
             }
-            return View(eSTADOS);
+            return View(bAIRROS);
         }
 
-        // POST: Estados/Delete/5
+        // POST: Bairros/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ESTADOS eSTADOS = db.ESTADOS.Find(id);
-            db.ESTADOS.Remove(eSTADOS);
+            BAIRROS bAIRROS = db.BAIRROS.Find(id);
+            db.BAIRROS.Remove(bAIRROS);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

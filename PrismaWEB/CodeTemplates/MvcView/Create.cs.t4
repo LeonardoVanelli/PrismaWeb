@@ -116,7 +116,7 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 <# 
         if (isControlHtmlAttributesSupported) {
 #>
-                <select id="<#= property.PropertyName #>" class="ui fluid search selection dropdown dropDownSelect" name="<#= property.PropertyName #>">
+                <select id="<#= property.PropertyName #>" class="ui fluid search selection dropdown dropDownSelect <#= property.PropertyName #>" name="<#= property.PropertyName #>">
                     @foreach (var item in ViewBag.<#= property.PropertyName #>)
                     {
                         <option value="@item.Value">@item.Text</option>
@@ -179,6 +179,7 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
     }
 }
 #>
+
         <div class="form-group col-md-12">
             <div class="col-md-offset-2">
                 <input type="submit" value="Salvar" class="btn btn-success" />

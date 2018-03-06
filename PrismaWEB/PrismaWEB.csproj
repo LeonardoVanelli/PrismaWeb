@@ -158,7 +158,6 @@
     <Compile Include="Controllers\PaisesController.cs" />
     <Compile Include="Controllers\CandidatosController.cs" />
     <Compile Include="Controllers\SelectLocalizacaoController.cs" />
-    <Compile Include="Controllers\TestesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -225,7 +224,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\helper\ComboBox.css" />
     <Content Include="Content\js\helper\CarregaLocalizacao.js" />
-    <Content Include="Content\js\helper\ComboBox.js" />
     <Content Include="Content\js\helper\DeletePeloModal.js" />
     <Content Include="Content\js\helper\DisableCampos.js" />
     <Content Include="Content\SB admin\css\sb-admin.css" />
@@ -430,7 +428,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -439,11 +436,6 @@
     <Content Include="web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Testes\Create.cshtml" />
-    <Content Include="Views\Testes\Delete.cshtml" />
-    <Content Include="Views\Testes\Details.cshtml" />
-    <Content Include="Views\Testes\Edit.cshtml" />
-    <Content Include="Views\Testes\Index.cshtml" />
     <Content Include="Views\Candidatos\Create.cshtml" />
     <Content Include="Views\Candidatos\Delete.cshtml" />
     <Content Include="Views\Candidatos\Details.cshtml" />
@@ -469,8 +461,6 @@
     <Content Include="Views\Bairros\Details.cshtml" />
     <Content Include="Views\Bairros\Edit.cshtml" />
     <Content Include="Views\Bairros\Index.cshtml" />
-    <Content Include="Views\ViewPage1.cshtml" />
-    <Content Include="Views\CbController\Localizacao.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -480,7 +470,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\SelectLocalizacao\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -111,7 +111,7 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 <#
             }
 #>
-            <div class="col-md-10">
+            <div class="ui-widget">
 <#
             bool isCheckbox = property.TypeName.Equals(boolType);
             if (property.IsForeignKey) {

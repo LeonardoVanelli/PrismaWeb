@@ -30,7 +30,9 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.nome)
+                                <a href="@Url.Action("Details/"+item.Id)" class="removeAzulLink">
+                                    @Html.DisplayFor(modelItem => item.nome)
+                                </a>
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.DataNascimento)

@@ -34,6 +34,12 @@ namespace PrismaWEB.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Cargos = db.CARGOS.SqlQuery($@"select * 
+                                                   from CARGOS 
+                                                   where id in (
+                                                        select Cargo_Id 
+                                                        from CANDIDATOCARGO 
+                                                        where Candidato_Id = 0 )");
             return View(pESSOAS);
         }
 
@@ -60,6 +66,7 @@ namespace PrismaWEB.Controllers
             if (ModelState.IsValid && erro == "")
             {
                 Candidato.Id = Candidato.GetHashCode();
+                Candidato.Tipo = 1;
                 db.PESSOAS.Add(Candidato);
                 db.SaveChanges();
                 return RedirectToAction("Index");

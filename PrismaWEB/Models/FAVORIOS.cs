@@ -14,10 +14,10 @@ namespace PrismaWEB.Models
     
     public partial class FAVORIOS
     {
-        public int Id { get; set; }
-        public int Usuario_Id { get; set; }
-        public int Candidato_Id { get; set; }
-        public System.DateTime DataCriacao { get; set; }
+        public int             Id           { get; set; }
+        public int             Usuario_Id   { get; set; }
+        public int             Candidato_Id { get; set; }
+        public System.DateTime DataCriacao  { get; set; }
     
         public virtual PESSOAS PESSOAS { get; set; }
         public virtual PESSOAS PESSOAS1 { get; set; }

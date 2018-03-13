@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PrismaWEB.Models;
+using PrismaWEB.Models.Enumerables;
 using PrismaWEB.Validacoes;
 
 namespace PrismaWEB.Controllers
@@ -18,7 +19,7 @@ namespace PrismaWEB.Controllers
         // GET: Candidatos
         public ActionResult Index()
         {
-            var pESSOAS = db.PESSOAS.Include(p => p.BAIRROS).Include(p => p.ESTADOS).Include(p => p.LOGRADOUROS).Include(p => p.MUNICIPIOS).Include(p => p.PAISES);
+            var pESSOAS = db.PESSOAS.Include(p => p.BAIRROS).Include(p => p.ESTADOS).Include(p => p.LOGRADOUROS).Include(p => p.MUNICIPIOS).Include(p => p.PAISES).Where(m => m.Tipo ==1);
             return View(pESSOAS.ToList());
         }
 
@@ -39,7 +40,7 @@ namespace PrismaWEB.Controllers
                                                    where id in (
                                                         select Cargo_Id 
                                                         from CANDIDATOCARGO 
-                                                        where Candidato_Id = 0 )");
+                                                        where Candidato_Id = {pESSOAS.Id} )");
             return View(pESSOAS);
         }
 
@@ -64,7 +65,7 @@ namespace PrismaWEB.Controllers
             var erro = new CandidatoValidate().Validacao(Candidato);
 
             if (ModelState.IsValid && erro == "")
-            {
+            {                
                 Candidato.Id = Candidato.GetHashCode();
                 Candidato.Tipo = 1;
                 db.PESSOAS.Add(Candidato);

@@ -11,8 +11,7 @@ namespace PrismaWEB.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class PESSOAS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -48,10 +47,8 @@ namespace PrismaWEB.Models
         public string Cep { get; set; }
         public string Numero { get; set; }
         public string Complemento { get; set; }
-
-        public enum EnTipo { Candidato = 1, Funcionario = 2, Usuario = 3 };
-        public int Tipo { get; set; }        
-
+        public Nullable<int> Tipo { get; set; }
+    
         public virtual BAIRROS BAIRROS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CANDIDATOCARGO> CANDIDATOCARGO { get; set; }

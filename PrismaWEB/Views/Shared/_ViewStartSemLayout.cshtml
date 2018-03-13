@@ -1,0 +1,61 @@
+﻿<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title - PrismaWEB</title>
+    <!-- Bootstrap core CSS-->
+    <link href="~/Content/SB admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/SB admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="~/Content/SB admin/css/sb-admin.css" rel="stylesheet">
+    <!-- DataTables-->
+    <link href="~/Content/SB admin/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
+    <!-- JqueryUi -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- ComboBox -->
+    <script src="~/Content/js/helper/ComboBox.js"></script>
+    <link href="~/Content/css/helper/ComboBox.css" rel="stylesheet" />
+
+    <!-- Semantic UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css" />
+    <!-- Personal style-->
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    @RenderBody()
+</body>
+
+<script src="~/Content/SB admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="~/Content/SB admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="~/Content/SB admin/js/sb-admin.min.js"></script>
+
+<!-- Page level plugin JavaScript-->
+<script src="~/Content/SB admin/vendor/datatables/jquery.dataTables.js"></script>
+<script src="~/Content/SB admin/vendor/datatables/dataTables.bootstrap4.js"></script>
+<script src="~/Content/SB admin/vendor/datatables/TraducaoTabelas.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="~/Content/SB admin/js/sb-admin.min.js"></script>
+<!-- Custom scripts for this page-->
+<script src="~/Content/SB admin/js/sb-admin-datatables.min.js"></script>
+<!-- Semantic UI-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.js"></script>
+<script>
+    $(".dropDownSelect").dropdown({
+        message: {
+            addResult: 'Add <b>{term}</b>',
+            count: '{count} selected',
+            maxSelections: 'Max {maxCount} selections',
+            noResults: 'Sem resultados.'
+        }
+    });
+    $('.tabular.menu .item').tab();
+</script>

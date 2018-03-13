@@ -151,6 +151,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BairrosController.cs" />
+    <Compile Include="Controllers\CandidatoCargoController.cs" />
     <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\CbControllerController.cs" />
     <Compile Include="Controllers\EstadosController.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Models\CARGOS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Enumerables\TipoPessoa.cs" />
     <Compile Include="Models\ESTADOS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -467,6 +469,12 @@
     <Content Include="Views\Cargos\Details.cshtml" />
     <Content Include="Views\Cargos\Edit.cshtml" />
     <Content Include="Views\Cargos\Index.cshtml" />
+    <Content Include="Views\CandidatoCargo\Create.cshtml" />
+    <Content Include="Views\CandidatoCargo\Delete.cshtml" />
+    <Content Include="Views\CandidatoCargo\Details.cshtml" />
+    <Content Include="Views\CandidatoCargo\Edit.cshtml" />
+    <Content Include="Views\CandidatoCargo\Index.cshtml" />
+    <Content Include="Views\Shared\_ViewStartSemLayout.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

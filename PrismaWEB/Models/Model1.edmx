@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PrismaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PrismaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BAIRROS">
           <Key>
             <PropertyRef Name="Id" />
@@ -112,6 +112,7 @@
           <Property Name="Cep" Type="nvarchar" MaxLength="8" />
           <Property Name="Numero" Type="nvarchar" MaxLength="8" />
           <Property Name="Complemento" Type="nvarchar" MaxLength="60" />
+          <Property Name="Tipo" Type="int" />
         </EntityType>
         <EntityType Name="PRESIDENTES">
           <Key>
@@ -557,8 +558,7 @@
             <End Role="VOTOS" EntitySet="VOTOS" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PrismaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -713,6 +713,7 @@
           <NavigationProperty Name="VOTOCANDIDATOLEI" Relationship="Self.FK_VOTOCANDIDATOLEI_PESSOAS" FromRole="PESSOAS" ToRole="VOTOCANDIDATOLEI" />
           <NavigationProperty Name="VOTOS" Relationship="Self.FK_VOTOS_PESSOASCANDIDATO" FromRole="PESSOAS" ToRole="VOTOS" />
           <NavigationProperty Name="VOTOS1" Relationship="Self.FK_VOTOS_PESSOASUSUARIO" FromRole="PESSOAS" ToRole="VOTOS" />
+          <Property Name="Tipo" Type="Int32" />
         </EntityType>
         <EntityType Name="PRESIDENTES">
           <Key>
@@ -1265,6 +1266,7 @@
           <EntitySetMapping Name="PESSOAS">
             <EntityTypeMapping TypeName="PrismaModel.PESSOAS">
               <MappingFragment StoreEntitySet="PESSOAS">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />

@@ -12,7 +12,7 @@ namespace PrismaWEB.Controllers
 {
     public class CargosController : Controller
     {
-        private PrismaBDEntities db = new PrismaBDEntities();
+        private PrismaDBEntiti db = new PrismaDBEntiti();
 
         // GET: Cargos
         public ActionResult Index()

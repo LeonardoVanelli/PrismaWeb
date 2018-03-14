@@ -13,10 +13,10 @@ namespace PrismaWEB.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PrismaBDEntities : DbContext
+    public partial class PrismaDBEntiti : DbContext
     {
-        public PrismaBDEntities()
-            : base("name=PrismaBDEntities")
+        public PrismaDBEntiti()
+            : base("name=PrismaDBEntiti")
         {
         }
     

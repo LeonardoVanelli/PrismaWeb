@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PrismaWEBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bairros">
           <Key>
             <PropertyRef Name="Id" />
@@ -366,7 +366,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PrismaWEBModelStoreContainer">
+        <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Bairros" EntityType="Self.Bairros" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Candidatocargo" EntityType="Self.Candidatocargo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cargos" EntityType="Self.Cargos" Schema="dbo" store:Type="Tables" />
@@ -461,7 +461,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="PrismaWEBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Bairros">
           <Key>
             <PropertyRef Name="Id" />
@@ -861,7 +861,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PrismaBDEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PrismaDBEntiti" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bairros" EntityType="Self.Bairros" />
           <EntitySet Name="Candidatocargo" EntityType="Self.Candidatocargo" />
           <EntitySet Name="Cargos" EntityType="Self.Cargos" />
@@ -957,9 +957,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PrismaWEBModelStoreContainer" CdmEntityContainer="PrismaBDEntities">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="PrismaDBEntiti">
           <EntitySetMapping Name="Bairros">
-            <EntityTypeMapping TypeName="PrismaWEBModel.Bairros">
+            <EntityTypeMapping TypeName="Model.Bairros">
               <MappingFragment StoreEntitySet="Bairros">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -968,7 +968,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Candidatocargo">
-            <EntityTypeMapping TypeName="PrismaWEBModel.Candidatocargo">
+            <EntityTypeMapping TypeName="Model.Candidatocargo">
               <MappingFragment StoreEntitySet="Candidatocargo">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
@@ -978,7 +978,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cargos">
-            <EntityTypeMapping TypeName="PrismaWEBModel.Cargos">
+            <EntityTypeMapping TypeName="Model.Cargos">
               <MappingFragment StoreEntitySet="Cargos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -989,7 +989,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cidades">
-            <EntityTypeMapping TypeName="PrismaWEBModel.Cidades">
+            <EntityTypeMapping TypeName="Model.Cidades">
               <MappingFragment StoreEntitySet="Cidades">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -998,7 +998,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Estados">
-            <EntityTypeMapping TypeName="PrismaWEBModel.Estados">
+            <EntityTypeMapping TypeName="Model.Estados">
               <MappingFragment StoreEntitySet="Estados">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -1008,7 +1008,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Favoritos">
-            <EntityTypeMapping TypeName="PrismaWEBModel.Favoritos">
+            <EntityTypeMapping TypeName="Model.Favoritos">
               <MappingFragment StoreEntitySet="Favoritos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
@@ -1018,7 +1018,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Leis">
-            <EntityTypeMapping TypeName="PrismaWEBModel.Leis">
+            <EntityTypeMapping TypeName="Model.Leis">
               <MappingFragment StoreEntitySet="Leis">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Numero" ColumnName="Numero" />
@@ -1028,7 +1028,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Logradouros">
-            <EntityTypeMapping TypeName="PrismaWEBModel.Logradouros">
+            <EntityTypeMapping TypeName="Model.Logradouros">
               <MappingFragment StoreEntitySet="Logradouros">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -1037,7 +1037,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Paises">
-            <EntityTypeMapping TypeName="PrismaWEBModel.Paises">
+            <EntityTypeMapping TypeName="Model.Paises">
               <MappingFragment StoreEntitySet="Paises">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -1046,7 +1046,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Pessoas">
-            <EntityTypeMapping TypeName="PrismaWEBModel.Pessoas">
+            <EntityTypeMapping TypeName="Model.Pessoas">
               <MappingFragment StoreEntitySet="Pessoas">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -1073,7 +1073,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Presidentes">
-            <EntityTypeMapping TypeName="PrismaWEBModel.Presidentes">
+            <EntityTypeMapping TypeName="Model.Presidentes">
               <MappingFragment StoreEntitySet="Presidentes">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
@@ -1084,7 +1084,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Votocandidatolei">
-            <EntityTypeMapping TypeName="PrismaWEBModel.Votocandidatolei">
+            <EntityTypeMapping TypeName="Model.Votocandidatolei">
               <MappingFragment StoreEntitySet="Votocandidatolei">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
@@ -1095,7 +1095,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Votos">
-            <EntityTypeMapping TypeName="PrismaWEBModel.Votos">
+            <EntityTypeMapping TypeName="Model.Votos">
               <MappingFragment StoreEntitySet="Votos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />

@@ -9,7 +9,7 @@ namespace PrismaWEB.Controllers
 {
     public class SelectLocalizacaoController : Controller
     {
-        private PrismaBDEntities db = new PrismaBDEntities();
+        private PrismaDBEntiti db = new PrismaDBEntiti();
         // GET: SelectLocalizacao
         public JsonResult RetornaEstados(int Id)
         {

@@ -4,96 +4,91 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PrismaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="BAIRROS">
+      <Schema Namespace="PrismaWEBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bairros">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Nome" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="Pais_Id" Type="int" Nullable="false" />
-          <Property Name="Estado_Id" Type="int" Nullable="false" />
-          <Property Name="Municipio_Id" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="Cidade" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="CANDIDATOCARGO">
+        <EntityType Name="Candidatocargo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Candidato_Id" Type="int" Nullable="false" />
           <Property Name="Cargo_Id" Type="int" Nullable="false" />
-          <Property Name="DataCriacao" Type="datetime" Nullable="false" />
+          <Property Name="DataCriacao" Type="datetime" />
         </EntityType>
-        <EntityType Name="CARGOS">
+        <EntityType Name="Cargos">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="Descricao" Type="varchar(max)" />
-          <Property Name="DataCraicao" Type="datetime" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="420" Nullable="false" />
+          <Property Name="DataCraicao" Type="datetime" />
           <Property Name="DataAlteracao" Type="datetime" />
         </EntityType>
-        <EntityType Name="ESTADOS">
+        <EntityType Name="Cidades">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Nome" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="Pais_Id" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="120" />
+          <Property Name="Estado" Type="int" />
         </EntityType>
-        <EntityType Name="FAVORIOS">
+        <EntityType Name="Estados">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Usuario_Id" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="75" />
+          <Property Name="Uf" Type="varchar" MaxLength="5" />
+          <Property Name="Pais" Type="int" />
+        </EntityType>
+        <EntityType Name="Favoritos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Usuario_Id" Type="int" />
           <Property Name="Candidato_Id" Type="int" Nullable="false" />
-          <Property Name="DataCriacao" Type="datetime" Nullable="false" />
+          <Property Name="DataCriacao" Type="datetime" />
         </EntityType>
-        <EntityType Name="LEIS">
+        <EntityType Name="Leis">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Numero" Type="varchar" MaxLength="11" />
+          <Property Name="Numero" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Descricao" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Logradouros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="Bairro" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Paises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="60" />
-          <Property Name="Descricao" Type="varchar(max)" />
+          <Property Name="Sigla" Type="varchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="LOGRADOUROS">
+        <EntityType Name="Pessoas">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Nome" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="Pais_Id" Type="int" Nullable="false" />
-          <Property Name="Estado_Id" Type="int" Nullable="false" />
-          <Property Name="Municipio_Id" Type="int" Nullable="false" />
-          <Property Name="Bairro_Id" Type="int" Nullable="false" />
-          <Property Name="Cep" Type="varchar" MaxLength="8" />
-        </EntityType>
-        <EntityType Name="MUNICIPIOS">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Nome" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="Pais_Id" Type="int" Nullable="false" />
-          <Property Name="Estado_Id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PAISES">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Nome" Type="varchar" MaxLength="60" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PESSOAS">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="nome" Type="varchar" MaxLength="60" />
+          <Property Name="Nome" Type="varchar" MaxLength="60" />
           <Property Name="DataNascimento" Type="datetime" />
           <Property Name="Cpf" Type="varchar" MaxLength="11" />
           <Property Name="Foto" Type="varchar(max)" />
@@ -106,25 +101,25 @@
           <Property Name="Endereco" Type="varchar" MaxLength="60" />
           <Property Name="Pais_Id" Type="int" />
           <Property Name="Estado_Id" Type="int" />
-          <Property Name="Municipio_Id" Type="int" />
+          <Property Name="Cidade_Id" Type="int" />
           <Property Name="Bairro_Id" Type="int" />
           <Property Name="Logradouro_Id" Type="int" />
-          <Property Name="Cep" Type="nvarchar" MaxLength="8" />
-          <Property Name="Numero" Type="nvarchar" MaxLength="8" />
-          <Property Name="Complemento" Type="nvarchar" MaxLength="60" />
+          <Property Name="Cep" Type="varchar" MaxLength="8" />
+          <Property Name="Numero" Type="varchar" MaxLength="6" />
+          <Property Name="Complemento" Type="varchar" MaxLength="60" />
           <Property Name="Tipo" Type="int" />
         </EntityType>
-        <EntityType Name="PRESIDENTES">
+        <EntityType Name="Presidentes">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Candidato_Id" Type="int" Nullable="false" />
-          <Property Name="Vice_Id" Type="int" Nullable="false" />
-          <Property Name="DataCriacao" Type="datetime" Nullable="false" />
+          <Property Name="Candidato_Id" Type="int" />
+          <Property Name="Vice_Id" Type="int" />
+          <Property Name="DataCriacao" Type="datetime" />
           <Property Name="DataAlteracao" Type="datetime" />
         </EntityType>
-        <EntityType Name="VOTOCANDIDATOLEI">
+        <EntityType Name="Votocandidatolei">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -132,556 +127,444 @@
           <Property Name="Candidato_Id" Type="int" Nullable="false" />
           <Property Name="Lei_Id" Type="int" Nullable="false" />
           <Property Name="Votou" Type="int" Nullable="false" />
-          <Property Name="DataCriacao" Type="datetime" Nullable="false" />
+          <Property Name="DataCriacao" Type="datetime" />
         </EntityType>
-        <EntityType Name="VOTOS">
+        <EntityType Name="Votos">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Usuario_Id" Type="int" Nullable="false" />
           <Property Name="Candidato_Id" Type="int" Nullable="false" />
-          <Property Name="DataCriacao" Type="datetime" Nullable="false" />
+          <Property Name="DataCriacao" Type="datetime" />
         </EntityType>
-        <Association Name="FK_BAIRROS_ESTADOS">
-          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="1" />
-          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="*" />
+        <Association Name="FK_Bairros_Cidades">
+          <End Role="Cidades" Type="Self.Cidades" Multiplicity="1" />
+          <End Role="Bairros" Type="Self.Bairros" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ESTADOS">
+            <Principal Role="Cidades">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="BAIRROS">
-              <PropertyRef Name="Estado_Id" />
+            <Dependent Role="Bairros">
+              <PropertyRef Name="Cidade" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BAIRROS_MUNICIPIOS">
-          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="1" />
-          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="*" />
+        <Association Name="FK_Candidatocargo_Cargos">
+          <End Role="Cargos" Type="Self.Cargos" Multiplicity="1" />
+          <End Role="Candidatocargo" Type="Self.Candidatocargo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MUNICIPIOS">
+            <Principal Role="Cargos">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="BAIRROS">
-              <PropertyRef Name="Municipio_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BAIRROS_PAISES">
-          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
-          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PAISES">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BAIRROS">
-              <PropertyRef Name="Pais_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CANDIDATOCARGO_CARGOS">
-          <End Role="CARGOS" Type="Self.CARGOS" Multiplicity="1" />
-          <End Role="CANDIDATOCARGO" Type="Self.CANDIDATOCARGO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CARGOS">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CANDIDATOCARGO">
+            <Dependent Role="Candidatocargo">
               <PropertyRef Name="Cargo_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CANDIDATOCARGO_PESSOAS">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="CANDIDATOCARGO" Type="Self.CANDIDATOCARGO" Multiplicity="*" />
+        <Association Name="FK_Candidatocargo_Pessoas">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="1" />
+          <End Role="Candidatocargo" Type="Self.Candidatocargo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PESSOAS">
+            <Principal Role="Pessoas">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="CANDIDATOCARGO">
+            <Dependent Role="Candidatocargo">
               <PropertyRef Name="Candidato_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ESTADOS_PAISES">
-          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
-          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="*" />
+        <Association Name="FK_Cidades_Estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Cidades" Type="Self.Cidades" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PAISES">
+            <Principal Role="Estados">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ESTADOS">
-              <PropertyRef Name="Pais_Id" />
+            <Dependent Role="Cidades">
+              <PropertyRef Name="Estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_FAVORIOS_PESSOASCANDIDATO">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="FAVORIOS" Type="Self.FAVORIOS" Multiplicity="*" />
+        <Association Name="FK_Estados_Paises">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+          <End Role="Estados" Type="Self.Estados" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PESSOAS">
+            <Principal Role="Paises">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="FAVORIOS">
+            <Dependent Role="Estados">
+              <PropertyRef Name="Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favoritos_PessoasCandidato">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="1" />
+          <End Role="Favoritos" Type="Self.Favoritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Favoritos">
               <PropertyRef Name="Candidato_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_FAVORIOS_PESSOASUSUARIO">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="FAVORIOS" Type="Self.FAVORIOS" Multiplicity="*" />
+        <Association Name="FK_Favoritos_PessoasUsuario">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="0..1" />
+          <End Role="Favoritos" Type="Self.Favoritos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PESSOAS">
+            <Principal Role="Pessoas">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="FAVORIOS">
+            <Dependent Role="Favoritos">
               <PropertyRef Name="Usuario_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LOGRADOUROS_BAIRROS">
-          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="1" />
-          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
+        <Association Name="FK_Logradouros_Bairros">
+          <End Role="Bairros" Type="Self.Bairros" Multiplicity="1" />
+          <End Role="Logradouros" Type="Self.Logradouros" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="BAIRROS">
+            <Principal Role="Bairros">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="LOGRADOUROS">
+            <Dependent Role="Logradouros">
+              <PropertyRef Name="Bairro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pessoas_Bairros">
+          <End Role="Bairros" Type="Self.Bairros" Multiplicity="0..1" />
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bairros">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pessoas">
               <PropertyRef Name="Bairro_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LOGRADOUROS_ESTADOS">
-          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="1" />
-          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
+        <Association Name="FK_Pessoas_Cidades">
+          <End Role="Cidades" Type="Self.Cidades" Multiplicity="0..1" />
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ESTADOS">
+            <Principal Role="Cidades">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="LOGRADOUROS">
+            <Dependent Role="Pessoas">
+              <PropertyRef Name="Cidade_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pessoas_Estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pessoas">
               <PropertyRef Name="Estado_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LOGRADOUROS_MUNICIPIOS">
-          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="1" />
-          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
+        <Association Name="FK_Pessoas_Logradouros">
+          <End Role="Logradouros" Type="Self.Logradouros" Multiplicity="0..1" />
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MUNICIPIOS">
+            <Principal Role="Logradouros">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="LOGRADOUROS">
-              <PropertyRef Name="Municipio_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_LOGRADOUROS_PAISES">
-          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
-          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PAISES">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LOGRADOUROS">
-              <PropertyRef Name="Pais_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MUNICIPIOS_ESTADOS">
-          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="1" />
-          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ESTADOS">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MUNICIPIOS">
-              <PropertyRef Name="Estado_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MUNICIPIOS_PAISES">
-          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
-          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PAISES">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MUNICIPIOS">
-              <PropertyRef Name="Pais_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PESSOAS_BAIRROS">
-          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="0..1" />
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BAIRROS">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PESSOAS">
-              <PropertyRef Name="Bairro_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PESSOAS_ESTATOS">
-          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="0..1" />
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ESTADOS">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PESSOAS">
-              <PropertyRef Name="Estado_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PESSOAS_LOGRADOUROS">
-          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="0..1" />
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LOGRADOUROS">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PESSOAS">
+            <Dependent Role="Pessoas">
               <PropertyRef Name="Logradouro_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PESSOAS_MUNICIPIOS">
-          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="0..1" />
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
+        <Association Name="FK_Pessoas_Paises">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MUNICIPIOS">
+            <Principal Role="Paises">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PESSOAS">
-              <PropertyRef Name="Municipio_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PESSOAS_PAISES">
-          <End Role="PAISES" Type="Self.PAISES" Multiplicity="0..1" />
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PAISES">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PESSOAS">
+            <Dependent Role="Pessoas">
               <PropertyRef Name="Pais_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PRESIDENTES_PESSOASCANDIDATO">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="PRESIDENTES" Type="Self.PRESIDENTES" Multiplicity="*" />
+        <Association Name="FK_Presidentes_PessoasCandidato">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="0..1" />
+          <End Role="Presidentes" Type="Self.Presidentes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PESSOAS">
+            <Principal Role="Pessoas">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PRESIDENTES">
+            <Dependent Role="Presidentes">
               <PropertyRef Name="Candidato_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PRESIDENTES_PESSOASVICE">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="PRESIDENTES" Type="Self.PRESIDENTES" Multiplicity="*" />
+        <Association Name="FK_Presidentes_PessoasVice">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="0..1" />
+          <End Role="Presidentes" Type="Self.Presidentes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PESSOAS">
+            <Principal Role="Pessoas">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PRESIDENTES">
+            <Dependent Role="Presidentes">
               <PropertyRef Name="Vice_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VOTOCANDIDATOLEI_LEIS">
-          <End Role="LEIS" Type="Self.LEIS" Multiplicity="1" />
-          <End Role="VOTOCANDIDATOLEI" Type="Self.VOTOCANDIDATOLEI" Multiplicity="*" />
+        <Association Name="FK_Votocandidatolei_Leis">
+          <End Role="Leis" Type="Self.Leis" Multiplicity="1" />
+          <End Role="Votocandidatolei" Type="Self.Votocandidatolei" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LEIS">
+            <Principal Role="Leis">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="VOTOCANDIDATOLEI">
+            <Dependent Role="Votocandidatolei">
               <PropertyRef Name="Lei_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VOTOCANDIDATOLEI_PESSOAS">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="VOTOCANDIDATOLEI" Type="Self.VOTOCANDIDATOLEI" Multiplicity="*" />
+        <Association Name="FK_Votocandidatolei_Pessoas">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="1" />
+          <End Role="Votocandidatolei" Type="Self.Votocandidatolei" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PESSOAS">
+            <Principal Role="Pessoas">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="VOTOCANDIDATOLEI">
+            <Dependent Role="Votocandidatolei">
               <PropertyRef Name="Candidato_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VOTOS_PESSOASCANDIDATO">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="VOTOS" Type="Self.VOTOS" Multiplicity="*" />
+        <Association Name="FK_Votos_PessoasCandidato">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="1" />
+          <End Role="Votos" Type="Self.Votos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PESSOAS">
+            <Principal Role="Pessoas">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="VOTOS">
+            <Dependent Role="Votos">
               <PropertyRef Name="Candidato_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VOTOS_PESSOASUSUARIO">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="VOTOS" Type="Self.VOTOS" Multiplicity="*" />
+        <Association Name="FK_Votos_PessoasUsuario">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="1" />
+          <End Role="Votos" Type="Self.Votos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PESSOAS">
+            <Principal Role="Pessoas">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="VOTOS">
+            <Dependent Role="Votos">
               <PropertyRef Name="Usuario_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PrismaModelStoreContainer">
-          <EntitySet Name="BAIRROS" EntityType="Self.BAIRROS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CANDIDATOCARGO" EntityType="Self.CANDIDATOCARGO" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CARGOS" EntityType="Self.CARGOS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ESTADOS" EntityType="Self.ESTADOS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FAVORIOS" EntityType="Self.FAVORIOS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LEIS" EntityType="Self.LEIS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LOGRADOUROS" EntityType="Self.LOGRADOUROS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MUNICIPIOS" EntityType="Self.MUNICIPIOS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PAISES" EntityType="Self.PAISES" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PESSOAS" EntityType="Self.PESSOAS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PRESIDENTES" EntityType="Self.PRESIDENTES" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VOTOCANDIDATOLEI" EntityType="Self.VOTOCANDIDATOLEI" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VOTOS" EntityType="Self.VOTOS" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_BAIRROS_ESTADOS" Association="Self.FK_BAIRROS_ESTADOS">
-            <End Role="ESTADOS" EntitySet="ESTADOS" />
-            <End Role="BAIRROS" EntitySet="BAIRROS" />
+        <EntityContainer Name="PrismaWEBModelStoreContainer">
+          <EntitySet Name="Bairros" EntityType="Self.Bairros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Candidatocargo" EntityType="Self.Candidatocargo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cargos" EntityType="Self.Cargos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cidades" EntityType="Self.Cidades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Favoritos" EntityType="Self.Favoritos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leis" EntityType="Self.Leis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logradouros" EntityType="Self.Logradouros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pessoas" EntityType="Self.Pessoas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Presidentes" EntityType="Self.Presidentes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Votocandidatolei" EntityType="Self.Votocandidatolei" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Votos" EntityType="Self.Votos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bairros_Cidades" Association="Self.FK_Bairros_Cidades">
+            <End Role="Cidades" EntitySet="Cidades" />
+            <End Role="Bairros" EntitySet="Bairros" />
           </AssociationSet>
-          <AssociationSet Name="FK_BAIRROS_MUNICIPIOS" Association="Self.FK_BAIRROS_MUNICIPIOS">
-            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
-            <End Role="BAIRROS" EntitySet="BAIRROS" />
+          <AssociationSet Name="FK_Candidatocargo_Cargos" Association="Self.FK_Candidatocargo_Cargos">
+            <End Role="Cargos" EntitySet="Cargos" />
+            <End Role="Candidatocargo" EntitySet="Candidatocargo" />
           </AssociationSet>
-          <AssociationSet Name="FK_BAIRROS_PAISES" Association="Self.FK_BAIRROS_PAISES">
-            <End Role="PAISES" EntitySet="PAISES" />
-            <End Role="BAIRROS" EntitySet="BAIRROS" />
+          <AssociationSet Name="FK_Candidatocargo_Pessoas" Association="Self.FK_Candidatocargo_Pessoas">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Candidatocargo" EntitySet="Candidatocargo" />
           </AssociationSet>
-          <AssociationSet Name="FK_CANDIDATOCARGO_CARGOS" Association="Self.FK_CANDIDATOCARGO_CARGOS">
-            <End Role="CARGOS" EntitySet="CARGOS" />
-            <End Role="CANDIDATOCARGO" EntitySet="CANDIDATOCARGO" />
+          <AssociationSet Name="FK_Cidades_Estados" Association="Self.FK_Cidades_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Cidades" EntitySet="Cidades" />
           </AssociationSet>
-          <AssociationSet Name="FK_CANDIDATOCARGO_PESSOAS" Association="Self.FK_CANDIDATOCARGO_PESSOAS">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="CANDIDATOCARGO" EntitySet="CANDIDATOCARGO" />
+          <AssociationSet Name="FK_Estados_Paises" Association="Self.FK_Estados_Paises">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Estados" EntitySet="Estados" />
           </AssociationSet>
-          <AssociationSet Name="FK_ESTADOS_PAISES" Association="Self.FK_ESTADOS_PAISES">
-            <End Role="PAISES" EntitySet="PAISES" />
-            <End Role="ESTADOS" EntitySet="ESTADOS" />
+          <AssociationSet Name="FK_Favoritos_PessoasCandidato" Association="Self.FK_Favoritos_PessoasCandidato">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Favoritos" EntitySet="Favoritos" />
           </AssociationSet>
-          <AssociationSet Name="FK_FAVORIOS_PESSOASCANDIDATO" Association="Self.FK_FAVORIOS_PESSOASCANDIDATO">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="FAVORIOS" EntitySet="FAVORIOS" />
+          <AssociationSet Name="FK_Favoritos_PessoasUsuario" Association="Self.FK_Favoritos_PessoasUsuario">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Favoritos" EntitySet="Favoritos" />
           </AssociationSet>
-          <AssociationSet Name="FK_FAVORIOS_PESSOASUSUARIO" Association="Self.FK_FAVORIOS_PESSOASUSUARIO">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="FAVORIOS" EntitySet="FAVORIOS" />
+          <AssociationSet Name="FK_Logradouros_Bairros" Association="Self.FK_Logradouros_Bairros">
+            <End Role="Bairros" EntitySet="Bairros" />
+            <End Role="Logradouros" EntitySet="Logradouros" />
           </AssociationSet>
-          <AssociationSet Name="FK_LOGRADOUROS_BAIRROS" Association="Self.FK_LOGRADOUROS_BAIRROS">
-            <End Role="BAIRROS" EntitySet="BAIRROS" />
-            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
+          <AssociationSet Name="FK_Pessoas_Bairros" Association="Self.FK_Pessoas_Bairros">
+            <End Role="Bairros" EntitySet="Bairros" />
+            <End Role="Pessoas" EntitySet="Pessoas" />
           </AssociationSet>
-          <AssociationSet Name="FK_LOGRADOUROS_ESTADOS" Association="Self.FK_LOGRADOUROS_ESTADOS">
-            <End Role="ESTADOS" EntitySet="ESTADOS" />
-            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
+          <AssociationSet Name="FK_Pessoas_Cidades" Association="Self.FK_Pessoas_Cidades">
+            <End Role="Cidades" EntitySet="Cidades" />
+            <End Role="Pessoas" EntitySet="Pessoas" />
           </AssociationSet>
-          <AssociationSet Name="FK_LOGRADOUROS_MUNICIPIOS" Association="Self.FK_LOGRADOUROS_MUNICIPIOS">
-            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
-            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
+          <AssociationSet Name="FK_Pessoas_Estados" Association="Self.FK_Pessoas_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Pessoas" EntitySet="Pessoas" />
           </AssociationSet>
-          <AssociationSet Name="FK_LOGRADOUROS_PAISES" Association="Self.FK_LOGRADOUROS_PAISES">
-            <End Role="PAISES" EntitySet="PAISES" />
-            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
+          <AssociationSet Name="FK_Pessoas_Logradouros" Association="Self.FK_Pessoas_Logradouros">
+            <End Role="Logradouros" EntitySet="Logradouros" />
+            <End Role="Pessoas" EntitySet="Pessoas" />
           </AssociationSet>
-          <AssociationSet Name="FK_MUNICIPIOS_ESTADOS" Association="Self.FK_MUNICIPIOS_ESTADOS">
-            <End Role="ESTADOS" EntitySet="ESTADOS" />
-            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+          <AssociationSet Name="FK_Pessoas_Paises" Association="Self.FK_Pessoas_Paises">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Pessoas" EntitySet="Pessoas" />
           </AssociationSet>
-          <AssociationSet Name="FK_MUNICIPIOS_PAISES" Association="Self.FK_MUNICIPIOS_PAISES">
-            <End Role="PAISES" EntitySet="PAISES" />
-            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+          <AssociationSet Name="FK_Presidentes_PessoasCandidato" Association="Self.FK_Presidentes_PessoasCandidato">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Presidentes" EntitySet="Presidentes" />
           </AssociationSet>
-          <AssociationSet Name="FK_PESSOAS_BAIRROS" Association="Self.FK_PESSOAS_BAIRROS">
-            <End Role="BAIRROS" EntitySet="BAIRROS" />
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
+          <AssociationSet Name="FK_Presidentes_PessoasVice" Association="Self.FK_Presidentes_PessoasVice">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Presidentes" EntitySet="Presidentes" />
           </AssociationSet>
-          <AssociationSet Name="FK_PESSOAS_ESTATOS" Association="Self.FK_PESSOAS_ESTATOS">
-            <End Role="ESTADOS" EntitySet="ESTADOS" />
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
+          <AssociationSet Name="FK_Votocandidatolei_Leis" Association="Self.FK_Votocandidatolei_Leis">
+            <End Role="Leis" EntitySet="Leis" />
+            <End Role="Votocandidatolei" EntitySet="Votocandidatolei" />
           </AssociationSet>
-          <AssociationSet Name="FK_PESSOAS_LOGRADOUROS" Association="Self.FK_PESSOAS_LOGRADOUROS">
-            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
+          <AssociationSet Name="FK_Votocandidatolei_Pessoas" Association="Self.FK_Votocandidatolei_Pessoas">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Votocandidatolei" EntitySet="Votocandidatolei" />
           </AssociationSet>
-          <AssociationSet Name="FK_PESSOAS_MUNICIPIOS" Association="Self.FK_PESSOAS_MUNICIPIOS">
-            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
+          <AssociationSet Name="FK_Votos_PessoasCandidato" Association="Self.FK_Votos_PessoasCandidato">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Votos" EntitySet="Votos" />
           </AssociationSet>
-          <AssociationSet Name="FK_PESSOAS_PAISES" Association="Self.FK_PESSOAS_PAISES">
-            <End Role="PAISES" EntitySet="PAISES" />
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRESIDENTES_PESSOASCANDIDATO" Association="Self.FK_PRESIDENTES_PESSOASCANDIDATO">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="PRESIDENTES" EntitySet="PRESIDENTES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRESIDENTES_PESSOASVICE" Association="Self.FK_PRESIDENTES_PESSOASVICE">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="PRESIDENTES" EntitySet="PRESIDENTES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VOTOCANDIDATOLEI_LEIS" Association="Self.FK_VOTOCANDIDATOLEI_LEIS">
-            <End Role="LEIS" EntitySet="LEIS" />
-            <End Role="VOTOCANDIDATOLEI" EntitySet="VOTOCANDIDATOLEI" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VOTOCANDIDATOLEI_PESSOAS" Association="Self.FK_VOTOCANDIDATOLEI_PESSOAS">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="VOTOCANDIDATOLEI" EntitySet="VOTOCANDIDATOLEI" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VOTOS_PESSOASCANDIDATO" Association="Self.FK_VOTOS_PESSOASCANDIDATO">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="VOTOS" EntitySet="VOTOS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VOTOS_PESSOASUSUARIO" Association="Self.FK_VOTOS_PESSOASUSUARIO">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="VOTOS" EntitySet="VOTOS" />
+          <AssociationSet Name="FK_Votos_PessoasUsuario" Association="Self.FK_Votos_PessoasUsuario">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Votos" EntitySet="Votos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="PrismaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="BAIRROS">
+      <Schema Namespace="PrismaWEBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bairros">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Nome" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Pais_Id" Type="Int32" Nullable="false" />
-          <Property Name="Estado_Id" Type="Int32" Nullable="false" />
-          <Property Name="Municipio_Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ESTADOS" Relationship="Self.FK_BAIRROS_ESTADOS" FromRole="BAIRROS" ToRole="ESTADOS" />
-          <NavigationProperty Name="MUNICIPIOS" Relationship="Self.FK_BAIRROS_MUNICIPIOS" FromRole="BAIRROS" ToRole="MUNICIPIOS" />
-          <NavigationProperty Name="PAISES" Relationship="Self.FK_BAIRROS_PAISES" FromRole="BAIRROS" ToRole="PAISES" />
-          <NavigationProperty Name="LOGRADOUROS" Relationship="Self.FK_LOGRADOUROS_BAIRROS" FromRole="BAIRROS" ToRole="LOGRADOUROS" />
-          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_PESSOAS_BAIRROS" FromRole="BAIRROS" ToRole="PESSOAS" />
+          <Property Name="Nome" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cidade" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cidades" Relationship="Self.FK_Bairros_Cidades" FromRole="Bairros" ToRole="Cidades" />
+          <NavigationProperty Name="Logradouros" Relationship="Self.FK_Logradouros_Bairros" FromRole="Bairros" ToRole="Logradouros" />
+          <NavigationProperty Name="Pessoas" Relationship="Self.FK_Pessoas_Bairros" FromRole="Bairros" ToRole="Pessoas" />
         </EntityType>
-        <EntityType Name="CANDIDATOCARGO">
+        <EntityType Name="Candidatocargo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Candidato_Id" Type="Int32" Nullable="false" />
           <Property Name="Cargo_Id" Type="Int32" Nullable="false" />
-          <Property Name="DataCriacao" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="CARGOS" Relationship="Self.FK_CANDIDATOCARGO_CARGOS" FromRole="CANDIDATOCARGO" ToRole="CARGOS" />
-          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_CANDIDATOCARGO_PESSOAS" FromRole="CANDIDATOCARGO" ToRole="PESSOAS" />
+          <Property Name="DataCriacao" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Cargos" Relationship="Self.FK_Candidatocargo_Cargos" FromRole="Candidatocargo" ToRole="Cargos" />
+          <NavigationProperty Name="Pessoas" Relationship="Self.FK_Candidatocargo_Pessoas" FromRole="Candidatocargo" ToRole="Pessoas" />
         </EntityType>
-        <EntityType Name="CARGOS">
+        <EntityType Name="Cargos">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DataCraicao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Descricao" Type="String" MaxLength="420" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DataCraicao" Type="DateTime" Precision="3" />
           <Property Name="DataAlteracao" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CANDIDATOCARGO" Relationship="Self.FK_CANDIDATOCARGO_CARGOS" FromRole="CARGOS" ToRole="CANDIDATOCARGO" />
+          <NavigationProperty Name="Candidatocargo" Relationship="Self.FK_Candidatocargo_Cargos" FromRole="Cargos" ToRole="Candidatocargo" />
         </EntityType>
-        <EntityType Name="ESTADOS">
+        <EntityType Name="Cidades">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Pais_Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="BAIRROS" Relationship="Self.FK_BAIRROS_ESTADOS" FromRole="ESTADOS" ToRole="BAIRROS" />
-          <NavigationProperty Name="PAISES" Relationship="Self.FK_ESTADOS_PAISES" FromRole="ESTADOS" ToRole="PAISES" />
-          <NavigationProperty Name="LOGRADOUROS" Relationship="Self.FK_LOGRADOUROS_ESTADOS" FromRole="ESTADOS" ToRole="LOGRADOUROS" />
-          <NavigationProperty Name="MUNICIPIOS" Relationship="Self.FK_MUNICIPIOS_ESTADOS" FromRole="ESTADOS" ToRole="MUNICIPIOS" />
-          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_PESSOAS_ESTATOS" FromRole="ESTADOS" ToRole="PESSOAS" />
+          <Property Name="Nome" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Int32" />
+          <NavigationProperty Name="Bairros" Relationship="Self.FK_Bairros_Cidades" FromRole="Cidades" ToRole="Bairros" />
+          <NavigationProperty Name="Estados" Relationship="Self.FK_Cidades_Estados" FromRole="Cidades" ToRole="Estados" />
+          <NavigationProperty Name="Pessoas" Relationship="Self.FK_Pessoas_Cidades" FromRole="Cidades" ToRole="Pessoas" />
         </EntityType>
-        <EntityType Name="FAVORIOS">
+        <EntityType Name="Estados">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Usuario_Id" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="Uf" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Pais" Type="Int32" />
+          <NavigationProperty Name="Cidades" Relationship="Self.FK_Cidades_Estados" FromRole="Estados" ToRole="Cidades" />
+          <NavigationProperty Name="Paises" Relationship="Self.FK_Estados_Paises" FromRole="Estados" ToRole="Paises" />
+          <NavigationProperty Name="Pessoas" Relationship="Self.FK_Pessoas_Estados" FromRole="Estados" ToRole="Pessoas" />
+        </EntityType>
+        <EntityType Name="Favoritos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Usuario_Id" Type="Int32" />
           <Property Name="Candidato_Id" Type="Int32" Nullable="false" />
-          <Property Name="DataCriacao" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_FAVORIOS_PESSOASCANDIDATO" FromRole="FAVORIOS" ToRole="PESSOAS" />
-          <NavigationProperty Name="PESSOAS1" Relationship="Self.FK_FAVORIOS_PESSOASUSUARIO" FromRole="FAVORIOS" ToRole="PESSOAS" />
+          <Property Name="DataCriacao" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Pessoas" Relationship="Self.FK_Favoritos_PessoasCandidato" FromRole="Favoritos" ToRole="Pessoas" />
+          <NavigationProperty Name="Pessoas1" Relationship="Self.FK_Favoritos_PessoasUsuario" FromRole="Favoritos" ToRole="Pessoas" />
         </EntityType>
-        <EntityType Name="LEIS">
+        <EntityType Name="Leis">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Numero" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Numero" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Votocandidatolei" Relationship="Self.FK_Votocandidatolei_Leis" FromRole="Leis" ToRole="Votocandidatolei" />
+        </EntityType>
+        <EntityType Name="Logradouros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Bairro" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bairros" Relationship="Self.FK_Logradouros_Bairros" FromRole="Logradouros" ToRole="Bairros" />
+          <NavigationProperty Name="Pessoas" Relationship="Self.FK_Pessoas_Logradouros" FromRole="Logradouros" ToRole="Pessoas" />
+        </EntityType>
+        <EntityType Name="Paises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="VOTOCANDIDATOLEI" Relationship="Self.FK_VOTOCANDIDATOLEI_LEIS" FromRole="LEIS" ToRole="VOTOCANDIDATOLEI" />
+          <Property Name="Sigla" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estados" Relationship="Self.FK_Estados_Paises" FromRole="Paises" ToRole="Estados" />
+          <NavigationProperty Name="Pessoas" Relationship="Self.FK_Pessoas_Paises" FromRole="Paises" ToRole="Pessoas" />
         </EntityType>
-        <EntityType Name="LOGRADOUROS">
+        <EntityType Name="Pessoas">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Pais_Id" Type="Int32" Nullable="false" />
-          <Property Name="Estado_Id" Type="Int32" Nullable="false" />
-          <Property Name="Municipio_Id" Type="Int32" Nullable="false" />
-          <Property Name="Bairro_Id" Type="Int32" Nullable="false" />
-          <Property Name="Cep" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="BAIRROS" Relationship="Self.FK_LOGRADOUROS_BAIRROS" FromRole="LOGRADOUROS" ToRole="BAIRROS" />
-          <NavigationProperty Name="ESTADOS" Relationship="Self.FK_LOGRADOUROS_ESTADOS" FromRole="LOGRADOUROS" ToRole="ESTADOS" />
-          <NavigationProperty Name="MUNICIPIOS" Relationship="Self.FK_LOGRADOUROS_MUNICIPIOS" FromRole="LOGRADOUROS" ToRole="MUNICIPIOS" />
-          <NavigationProperty Name="PAISES" Relationship="Self.FK_LOGRADOUROS_PAISES" FromRole="LOGRADOUROS" ToRole="PAISES" />
-          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_PESSOAS_LOGRADOUROS" FromRole="LOGRADOUROS" ToRole="PESSOAS" />
-        </EntityType>
-        <EntityType Name="MUNICIPIOS">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Pais_Id" Type="Int32" Nullable="false" />
-          <Property Name="Estado_Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="BAIRROS" Relationship="Self.FK_BAIRROS_MUNICIPIOS" FromRole="MUNICIPIOS" ToRole="BAIRROS" />
-          <NavigationProperty Name="ESTADOS" Relationship="Self.FK_MUNICIPIOS_ESTADOS" FromRole="MUNICIPIOS" ToRole="ESTADOS" />
-          <NavigationProperty Name="LOGRADOUROS" Relationship="Self.FK_LOGRADOUROS_MUNICIPIOS" FromRole="MUNICIPIOS" ToRole="LOGRADOUROS" />
-          <NavigationProperty Name="PAISES" Relationship="Self.FK_MUNICIPIOS_PAISES" FromRole="MUNICIPIOS" ToRole="PAISES" />
-          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_PESSOAS_MUNICIPIOS" FromRole="MUNICIPIOS" ToRole="PESSOAS" />
-        </EntityType>
-        <EntityType Name="PAISES">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="BAIRROS" Relationship="Self.FK_BAIRROS_PAISES" FromRole="PAISES" ToRole="BAIRROS" />
-          <NavigationProperty Name="ESTADOS" Relationship="Self.FK_ESTADOS_PAISES" FromRole="PAISES" ToRole="ESTADOS" />
-          <NavigationProperty Name="LOGRADOUROS" Relationship="Self.FK_LOGRADOUROS_PAISES" FromRole="PAISES" ToRole="LOGRADOUROS" />
-          <NavigationProperty Name="MUNICIPIOS" Relationship="Self.FK_MUNICIPIOS_PAISES" FromRole="PAISES" ToRole="MUNICIPIOS" />
-          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_PESSOAS_PAISES" FromRole="PAISES" ToRole="PESSOAS" />
-        </EntityType>
-        <EntityType Name="PESSOAS">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="DataNascimento" Type="DateTime" Precision="3" />
           <Property Name="Cpf" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
           <Property Name="Foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -694,40 +577,40 @@
           <Property Name="Endereco" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="Pais_Id" Type="Int32" />
           <Property Name="Estado_Id" Type="Int32" />
-          <Property Name="Municipio_Id" Type="Int32" />
+          <Property Name="Cidade_Id" Type="Int32" />
           <Property Name="Bairro_Id" Type="Int32" />
           <Property Name="Logradouro_Id" Type="Int32" />
-          <Property Name="Cep" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
-          <Property Name="Numero" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
-          <Property Name="Complemento" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BAIRROS" Relationship="Self.FK_PESSOAS_BAIRROS" FromRole="PESSOAS" ToRole="BAIRROS" />
-          <NavigationProperty Name="CANDIDATOCARGO" Relationship="Self.FK_CANDIDATOCARGO_PESSOAS" FromRole="PESSOAS" ToRole="CANDIDATOCARGO" />
-          <NavigationProperty Name="ESTADOS" Relationship="Self.FK_PESSOAS_ESTATOS" FromRole="PESSOAS" ToRole="ESTADOS" />
-          <NavigationProperty Name="FAVORIOS" Relationship="Self.FK_FAVORIOS_PESSOASCANDIDATO" FromRole="PESSOAS" ToRole="FAVORIOS" />
-          <NavigationProperty Name="FAVORIOS1" Relationship="Self.FK_FAVORIOS_PESSOASUSUARIO" FromRole="PESSOAS" ToRole="FAVORIOS" />
-          <NavigationProperty Name="LOGRADOUROS" Relationship="Self.FK_PESSOAS_LOGRADOUROS" FromRole="PESSOAS" ToRole="LOGRADOUROS" />
-          <NavigationProperty Name="MUNICIPIOS" Relationship="Self.FK_PESSOAS_MUNICIPIOS" FromRole="PESSOAS" ToRole="MUNICIPIOS" />
-          <NavigationProperty Name="PAISES" Relationship="Self.FK_PESSOAS_PAISES" FromRole="PESSOAS" ToRole="PAISES" />
-          <NavigationProperty Name="PRESIDENTES" Relationship="Self.FK_PRESIDENTES_PESSOASCANDIDATO" FromRole="PESSOAS" ToRole="PRESIDENTES" />
-          <NavigationProperty Name="PRESIDENTES1" Relationship="Self.FK_PRESIDENTES_PESSOASVICE" FromRole="PESSOAS" ToRole="PRESIDENTES" />
-          <NavigationProperty Name="VOTOCANDIDATOLEI" Relationship="Self.FK_VOTOCANDIDATOLEI_PESSOAS" FromRole="PESSOAS" ToRole="VOTOCANDIDATOLEI" />
-          <NavigationProperty Name="VOTOS" Relationship="Self.FK_VOTOS_PESSOASCANDIDATO" FromRole="PESSOAS" ToRole="VOTOS" />
-          <NavigationProperty Name="VOTOS1" Relationship="Self.FK_VOTOS_PESSOASUSUARIO" FromRole="PESSOAS" ToRole="VOTOS" />
+          <Property Name="Cep" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Numero" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Complemento" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="Tipo" Type="Int32" />
+          <NavigationProperty Name="Bairros" Relationship="Self.FK_Pessoas_Bairros" FromRole="Pessoas" ToRole="Bairros" />
+          <NavigationProperty Name="Candidatocargo" Relationship="Self.FK_Candidatocargo_Pessoas" FromRole="Pessoas" ToRole="Candidatocargo" />
+          <NavigationProperty Name="Cidades" Relationship="Self.FK_Pessoas_Cidades" FromRole="Pessoas" ToRole="Cidades" />
+          <NavigationProperty Name="Estados" Relationship="Self.FK_Pessoas_Estados" FromRole="Pessoas" ToRole="Estados" />
+          <NavigationProperty Name="Favoritos" Relationship="Self.FK_Favoritos_PessoasCandidato" FromRole="Pessoas" ToRole="Favoritos" />
+          <NavigationProperty Name="Favoritos1" Relationship="Self.FK_Favoritos_PessoasUsuario" FromRole="Pessoas" ToRole="Favoritos" />
+          <NavigationProperty Name="Logradouros" Relationship="Self.FK_Pessoas_Logradouros" FromRole="Pessoas" ToRole="Logradouros" />
+          <NavigationProperty Name="Paises" Relationship="Self.FK_Pessoas_Paises" FromRole="Pessoas" ToRole="Paises" />
+          <NavigationProperty Name="Presidentes" Relationship="Self.FK_Presidentes_PessoasCandidato" FromRole="Pessoas" ToRole="Presidentes" />
+          <NavigationProperty Name="Presidentes1" Relationship="Self.FK_Presidentes_PessoasVice" FromRole="Pessoas" ToRole="Presidentes" />
+          <NavigationProperty Name="Votocandidatolei" Relationship="Self.FK_Votocandidatolei_Pessoas" FromRole="Pessoas" ToRole="Votocandidatolei" />
+          <NavigationProperty Name="Votos" Relationship="Self.FK_Votos_PessoasCandidato" FromRole="Pessoas" ToRole="Votos" />
+          <NavigationProperty Name="Votos1" Relationship="Self.FK_Votos_PessoasUsuario" FromRole="Pessoas" ToRole="Votos" />
         </EntityType>
-        <EntityType Name="PRESIDENTES">
+        <EntityType Name="Presidentes">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Candidato_Id" Type="Int32" Nullable="false" />
-          <Property Name="Vice_Id" Type="Int32" Nullable="false" />
-          <Property Name="DataCriacao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Candidato_Id" Type="Int32" />
+          <Property Name="Vice_Id" Type="Int32" />
+          <Property Name="DataCriacao" Type="DateTime" Precision="3" />
           <Property Name="DataAlteracao" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_PRESIDENTES_PESSOASCANDIDATO" FromRole="PRESIDENTES" ToRole="PESSOAS" />
-          <NavigationProperty Name="PESSOAS1" Relationship="Self.FK_PRESIDENTES_PESSOASVICE" FromRole="PRESIDENTES" ToRole="PESSOAS" />
+          <NavigationProperty Name="Pessoas" Relationship="Self.FK_Presidentes_PessoasCandidato" FromRole="Presidentes" ToRole="Pessoas" />
+          <NavigationProperty Name="Pessoas1" Relationship="Self.FK_Presidentes_PessoasVice" FromRole="Presidentes" ToRole="Pessoas" />
         </EntityType>
-        <EntityType Name="VOTOCANDIDATOLEI">
+        <EntityType Name="Votocandidatolei">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -735,434 +618,338 @@
           <Property Name="Candidato_Id" Type="Int32" Nullable="false" />
           <Property Name="Lei_Id" Type="Int32" Nullable="false" />
           <Property Name="Votou" Type="Int32" Nullable="false" />
-          <Property Name="DataCriacao" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="LEIS" Relationship="Self.FK_VOTOCANDIDATOLEI_LEIS" FromRole="VOTOCANDIDATOLEI" ToRole="LEIS" />
-          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_VOTOCANDIDATOLEI_PESSOAS" FromRole="VOTOCANDIDATOLEI" ToRole="PESSOAS" />
+          <Property Name="DataCriacao" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Leis" Relationship="Self.FK_Votocandidatolei_Leis" FromRole="Votocandidatolei" ToRole="Leis" />
+          <NavigationProperty Name="Pessoas" Relationship="Self.FK_Votocandidatolei_Pessoas" FromRole="Votocandidatolei" ToRole="Pessoas" />
         </EntityType>
-        <EntityType Name="VOTOS">
+        <EntityType Name="Votos">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Usuario_Id" Type="Int32" Nullable="false" />
           <Property Name="Candidato_Id" Type="Int32" Nullable="false" />
-          <Property Name="DataCriacao" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="PESSOAS" Relationship="Self.FK_VOTOS_PESSOASCANDIDATO" FromRole="VOTOS" ToRole="PESSOAS" />
-          <NavigationProperty Name="PESSOAS1" Relationship="Self.FK_VOTOS_PESSOASUSUARIO" FromRole="VOTOS" ToRole="PESSOAS" />
+          <Property Name="DataCriacao" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Pessoas" Relationship="Self.FK_Votos_PessoasCandidato" FromRole="Votos" ToRole="Pessoas" />
+          <NavigationProperty Name="Pessoas1" Relationship="Self.FK_Votos_PessoasUsuario" FromRole="Votos" ToRole="Pessoas" />
         </EntityType>
-        <Association Name="FK_BAIRROS_ESTADOS">
-          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="1" />
-          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="*" />
+        <Association Name="FK_Bairros_Cidades">
+          <End Role="Cidades" Type="Self.Cidades" Multiplicity="1" />
+          <End Role="Bairros" Type="Self.Bairros" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ESTADOS">
+            <Principal Role="Cidades">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="BAIRROS">
-              <PropertyRef Name="Estado_Id" />
+            <Dependent Role="Bairros">
+              <PropertyRef Name="Cidade" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BAIRROS_MUNICIPIOS">
-          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="1" />
-          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="*" />
+        <Association Name="FK_Logradouros_Bairros">
+          <End Role="Bairros" Type="Self.Bairros" Multiplicity="1" />
+          <End Role="Logradouros" Type="Self.Logradouros" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MUNICIPIOS">
+            <Principal Role="Bairros">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="BAIRROS">
-              <PropertyRef Name="Municipio_Id" />
+            <Dependent Role="Logradouros">
+              <PropertyRef Name="Bairro" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BAIRROS_PAISES">
-          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
-          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="*" />
+        <Association Name="FK_Pessoas_Bairros">
+          <End Role="Bairros" Type="Self.Bairros" Multiplicity="0..1" />
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PAISES">
+            <Principal Role="Bairros">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="BAIRROS">
-              <PropertyRef Name="Pais_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_LOGRADOUROS_BAIRROS">
-          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="1" />
-          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BAIRROS">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LOGRADOUROS">
+            <Dependent Role="Pessoas">
               <PropertyRef Name="Bairro_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PESSOAS_BAIRROS">
-          <End Role="BAIRROS" Type="Self.BAIRROS" Multiplicity="0..1" />
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
+        <Association Name="FK_Candidatocargo_Cargos">
+          <End Role="Cargos" Type="Self.Cargos" Multiplicity="1" />
+          <End Role="Candidatocargo" Type="Self.Candidatocargo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="BAIRROS">
+            <Principal Role="Cargos">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PESSOAS">
-              <PropertyRef Name="Bairro_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CANDIDATOCARGO_CARGOS">
-          <End Role="CARGOS" Type="Self.CARGOS" Multiplicity="1" />
-          <End Role="CANDIDATOCARGO" Type="Self.CANDIDATOCARGO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CARGOS">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CANDIDATOCARGO">
+            <Dependent Role="Candidatocargo">
               <PropertyRef Name="Cargo_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CANDIDATOCARGO_PESSOAS">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="CANDIDATOCARGO" Type="Self.CANDIDATOCARGO" Multiplicity="*" />
+        <Association Name="FK_Candidatocargo_Pessoas">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="1" />
+          <End Role="Candidatocargo" Type="Self.Candidatocargo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PESSOAS">
+            <Principal Role="Pessoas">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="CANDIDATOCARGO">
+            <Dependent Role="Candidatocargo">
               <PropertyRef Name="Candidato_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ESTADOS_PAISES">
-          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
-          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="*" />
+        <Association Name="FK_Cidades_Estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Cidades" Type="Self.Cidades" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PAISES">
+            <Principal Role="Estados">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ESTADOS">
-              <PropertyRef Name="Pais_Id" />
+            <Dependent Role="Cidades">
+              <PropertyRef Name="Estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LOGRADOUROS_ESTADOS">
-          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="1" />
-          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
+        <Association Name="FK_Pessoas_Cidades">
+          <End Role="Cidades" Type="Self.Cidades" Multiplicity="0..1" />
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ESTADOS">
+            <Principal Role="Cidades">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="LOGRADOUROS">
+            <Dependent Role="Pessoas">
+              <PropertyRef Name="Cidade_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_Paises">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+          <End Role="Estados" Type="Self.Estados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Estados">
+              <PropertyRef Name="Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pessoas_Estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pessoas">
               <PropertyRef Name="Estado_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MUNICIPIOS_ESTADOS">
-          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="1" />
-          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="*" />
+        <Association Name="FK_Favoritos_PessoasCandidato">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="1" />
+          <End Role="Favoritos" Type="Self.Favoritos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ESTADOS">
+            <Principal Role="Pessoas">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="MUNICIPIOS">
-              <PropertyRef Name="Estado_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PESSOAS_ESTATOS">
-          <End Role="ESTADOS" Type="Self.ESTADOS" Multiplicity="0..1" />
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ESTADOS">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PESSOAS">
-              <PropertyRef Name="Estado_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FAVORIOS_PESSOASCANDIDATO">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="FAVORIOS" Type="Self.FAVORIOS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PESSOAS">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="FAVORIOS">
+            <Dependent Role="Favoritos">
               <PropertyRef Name="Candidato_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_FAVORIOS_PESSOASUSUARIO">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="FAVORIOS" Type="Self.FAVORIOS" Multiplicity="*" />
+        <Association Name="FK_Favoritos_PessoasUsuario">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="0..1" />
+          <End Role="Favoritos" Type="Self.Favoritos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PESSOAS">
+            <Principal Role="Pessoas">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="FAVORIOS">
+            <Dependent Role="Favoritos">
               <PropertyRef Name="Usuario_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VOTOCANDIDATOLEI_LEIS">
-          <End Role="LEIS" Type="Self.LEIS" Multiplicity="1" />
-          <End Role="VOTOCANDIDATOLEI" Type="Self.VOTOCANDIDATOLEI" Multiplicity="*" />
+        <Association Name="FK_Votocandidatolei_Leis">
+          <End Role="Leis" Type="Self.Leis" Multiplicity="1" />
+          <End Role="Votocandidatolei" Type="Self.Votocandidatolei" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LEIS">
+            <Principal Role="Leis">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="VOTOCANDIDATOLEI">
+            <Dependent Role="Votocandidatolei">
               <PropertyRef Name="Lei_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LOGRADOUROS_MUNICIPIOS">
-          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="1" />
-          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
+        <Association Name="FK_Pessoas_Logradouros">
+          <End Role="Logradouros" Type="Self.Logradouros" Multiplicity="0..1" />
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MUNICIPIOS">
+            <Principal Role="Logradouros">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="LOGRADOUROS">
-              <PropertyRef Name="Municipio_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_LOGRADOUROS_PAISES">
-          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
-          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PAISES">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LOGRADOUROS">
-              <PropertyRef Name="Pais_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PESSOAS_LOGRADOUROS">
-          <End Role="LOGRADOUROS" Type="Self.LOGRADOUROS" Multiplicity="0..1" />
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LOGRADOUROS">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PESSOAS">
+            <Dependent Role="Pessoas">
               <PropertyRef Name="Logradouro_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MUNICIPIOS_PAISES">
-          <End Role="PAISES" Type="Self.PAISES" Multiplicity="1" />
-          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="*" />
+        <Association Name="FK_Pessoas_Paises">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PAISES">
+            <Principal Role="Paises">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="MUNICIPIOS">
+            <Dependent Role="Pessoas">
               <PropertyRef Name="Pais_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PESSOAS_MUNICIPIOS">
-          <End Role="MUNICIPIOS" Type="Self.MUNICIPIOS" Multiplicity="0..1" />
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
+        <Association Name="FK_Presidentes_PessoasCandidato">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="0..1" />
+          <End Role="Presidentes" Type="Self.Presidentes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MUNICIPIOS">
+            <Principal Role="Pessoas">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PESSOAS">
-              <PropertyRef Name="Municipio_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PESSOAS_PAISES">
-          <End Role="PAISES" Type="Self.PAISES" Multiplicity="0..1" />
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PAISES">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PESSOAS">
-              <PropertyRef Name="Pais_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRESIDENTES_PESSOASCANDIDATO">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="PRESIDENTES" Type="Self.PRESIDENTES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PESSOAS">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PRESIDENTES">
+            <Dependent Role="Presidentes">
               <PropertyRef Name="Candidato_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PRESIDENTES_PESSOASVICE">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="PRESIDENTES" Type="Self.PRESIDENTES" Multiplicity="*" />
+        <Association Name="FK_Presidentes_PessoasVice">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="0..1" />
+          <End Role="Presidentes" Type="Self.Presidentes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PESSOAS">
+            <Principal Role="Pessoas">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PRESIDENTES">
+            <Dependent Role="Presidentes">
               <PropertyRef Name="Vice_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VOTOCANDIDATOLEI_PESSOAS">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="VOTOCANDIDATOLEI" Type="Self.VOTOCANDIDATOLEI" Multiplicity="*" />
+        <Association Name="FK_Votocandidatolei_Pessoas">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="1" />
+          <End Role="Votocandidatolei" Type="Self.Votocandidatolei" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PESSOAS">
+            <Principal Role="Pessoas">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="VOTOCANDIDATOLEI">
+            <Dependent Role="Votocandidatolei">
               <PropertyRef Name="Candidato_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VOTOS_PESSOASCANDIDATO">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="VOTOS" Type="Self.VOTOS" Multiplicity="*" />
+        <Association Name="FK_Votos_PessoasCandidato">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="1" />
+          <End Role="Votos" Type="Self.Votos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PESSOAS">
+            <Principal Role="Pessoas">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="VOTOS">
+            <Dependent Role="Votos">
               <PropertyRef Name="Candidato_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VOTOS_PESSOASUSUARIO">
-          <End Role="PESSOAS" Type="Self.PESSOAS" Multiplicity="1" />
-          <End Role="VOTOS" Type="Self.VOTOS" Multiplicity="*" />
+        <Association Name="FK_Votos_PessoasUsuario">
+          <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="1" />
+          <End Role="Votos" Type="Self.Votos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PESSOAS">
+            <Principal Role="Pessoas">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="VOTOS">
+            <Dependent Role="Votos">
               <PropertyRef Name="Usuario_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PrismaEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="BAIRROS" EntityType="Self.BAIRROS" />
-          <EntitySet Name="CANDIDATOCARGO" EntityType="Self.CANDIDATOCARGO" />
-          <EntitySet Name="CARGOS" EntityType="Self.CARGOS" />
-          <EntitySet Name="ESTADOS" EntityType="Self.ESTADOS" />
-          <EntitySet Name="FAVORIOS" EntityType="Self.FAVORIOS" />
-          <EntitySet Name="LEIS" EntityType="Self.LEIS" />
-          <EntitySet Name="LOGRADOUROS" EntityType="Self.LOGRADOUROS" />
-          <EntitySet Name="MUNICIPIOS" EntityType="Self.MUNICIPIOS" />
-          <EntitySet Name="PAISES" EntityType="Self.PAISES" />
-          <EntitySet Name="PESSOAS" EntityType="Self.PESSOAS" />
-          <EntitySet Name="PRESIDENTES" EntityType="Self.PRESIDENTES" />
-          <EntitySet Name="VOTOCANDIDATOLEI" EntityType="Self.VOTOCANDIDATOLEI" />
-          <EntitySet Name="VOTOS" EntityType="Self.VOTOS" />
-          <AssociationSet Name="FK_BAIRROS_ESTADOS" Association="Self.FK_BAIRROS_ESTADOS">
-            <End Role="ESTADOS" EntitySet="ESTADOS" />
-            <End Role="BAIRROS" EntitySet="BAIRROS" />
+        <EntityContainer Name="PrismaBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bairros" EntityType="Self.Bairros" />
+          <EntitySet Name="Candidatocargo" EntityType="Self.Candidatocargo" />
+          <EntitySet Name="Cargos" EntityType="Self.Cargos" />
+          <EntitySet Name="Cidades" EntityType="Self.Cidades" />
+          <EntitySet Name="Estados" EntityType="Self.Estados" />
+          <EntitySet Name="Favoritos" EntityType="Self.Favoritos" />
+          <EntitySet Name="Leis" EntityType="Self.Leis" />
+          <EntitySet Name="Logradouros" EntityType="Self.Logradouros" />
+          <EntitySet Name="Paises" EntityType="Self.Paises" />
+          <EntitySet Name="Pessoas" EntityType="Self.Pessoas" />
+          <EntitySet Name="Presidentes" EntityType="Self.Presidentes" />
+          <EntitySet Name="Votocandidatolei" EntityType="Self.Votocandidatolei" />
+          <EntitySet Name="Votos" EntityType="Self.Votos" />
+          <AssociationSet Name="FK_Bairros_Cidades" Association="Self.FK_Bairros_Cidades">
+            <End Role="Cidades" EntitySet="Cidades" />
+            <End Role="Bairros" EntitySet="Bairros" />
           </AssociationSet>
-          <AssociationSet Name="FK_BAIRROS_MUNICIPIOS" Association="Self.FK_BAIRROS_MUNICIPIOS">
-            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
-            <End Role="BAIRROS" EntitySet="BAIRROS" />
+          <AssociationSet Name="FK_Logradouros_Bairros" Association="Self.FK_Logradouros_Bairros">
+            <End Role="Bairros" EntitySet="Bairros" />
+            <End Role="Logradouros" EntitySet="Logradouros" />
           </AssociationSet>
-          <AssociationSet Name="FK_BAIRROS_PAISES" Association="Self.FK_BAIRROS_PAISES">
-            <End Role="PAISES" EntitySet="PAISES" />
-            <End Role="BAIRROS" EntitySet="BAIRROS" />
+          <AssociationSet Name="FK_Pessoas_Bairros" Association="Self.FK_Pessoas_Bairros">
+            <End Role="Bairros" EntitySet="Bairros" />
+            <End Role="Pessoas" EntitySet="Pessoas" />
           </AssociationSet>
-          <AssociationSet Name="FK_LOGRADOUROS_BAIRROS" Association="Self.FK_LOGRADOUROS_BAIRROS">
-            <End Role="BAIRROS" EntitySet="BAIRROS" />
-            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
+          <AssociationSet Name="FK_Candidatocargo_Cargos" Association="Self.FK_Candidatocargo_Cargos">
+            <End Role="Cargos" EntitySet="Cargos" />
+            <End Role="Candidatocargo" EntitySet="Candidatocargo" />
           </AssociationSet>
-          <AssociationSet Name="FK_PESSOAS_BAIRROS" Association="Self.FK_PESSOAS_BAIRROS">
-            <End Role="BAIRROS" EntitySet="BAIRROS" />
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
+          <AssociationSet Name="FK_Candidatocargo_Pessoas" Association="Self.FK_Candidatocargo_Pessoas">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Candidatocargo" EntitySet="Candidatocargo" />
           </AssociationSet>
-          <AssociationSet Name="FK_CANDIDATOCARGO_CARGOS" Association="Self.FK_CANDIDATOCARGO_CARGOS">
-            <End Role="CARGOS" EntitySet="CARGOS" />
-            <End Role="CANDIDATOCARGO" EntitySet="CANDIDATOCARGO" />
+          <AssociationSet Name="FK_Cidades_Estados" Association="Self.FK_Cidades_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Cidades" EntitySet="Cidades" />
           </AssociationSet>
-          <AssociationSet Name="FK_CANDIDATOCARGO_PESSOAS" Association="Self.FK_CANDIDATOCARGO_PESSOAS">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="CANDIDATOCARGO" EntitySet="CANDIDATOCARGO" />
+          <AssociationSet Name="FK_Pessoas_Cidades" Association="Self.FK_Pessoas_Cidades">
+            <End Role="Cidades" EntitySet="Cidades" />
+            <End Role="Pessoas" EntitySet="Pessoas" />
           </AssociationSet>
-          <AssociationSet Name="FK_ESTADOS_PAISES" Association="Self.FK_ESTADOS_PAISES">
-            <End Role="PAISES" EntitySet="PAISES" />
-            <End Role="ESTADOS" EntitySet="ESTADOS" />
+          <AssociationSet Name="FK_Estados_Paises" Association="Self.FK_Estados_Paises">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Estados" EntitySet="Estados" />
           </AssociationSet>
-          <AssociationSet Name="FK_LOGRADOUROS_ESTADOS" Association="Self.FK_LOGRADOUROS_ESTADOS">
-            <End Role="ESTADOS" EntitySet="ESTADOS" />
-            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
+          <AssociationSet Name="FK_Pessoas_Estados" Association="Self.FK_Pessoas_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Pessoas" EntitySet="Pessoas" />
           </AssociationSet>
-          <AssociationSet Name="FK_MUNICIPIOS_ESTADOS" Association="Self.FK_MUNICIPIOS_ESTADOS">
-            <End Role="ESTADOS" EntitySet="ESTADOS" />
-            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+          <AssociationSet Name="FK_Favoritos_PessoasCandidato" Association="Self.FK_Favoritos_PessoasCandidato">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Favoritos" EntitySet="Favoritos" />
           </AssociationSet>
-          <AssociationSet Name="FK_PESSOAS_ESTATOS" Association="Self.FK_PESSOAS_ESTATOS">
-            <End Role="ESTADOS" EntitySet="ESTADOS" />
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
+          <AssociationSet Name="FK_Favoritos_PessoasUsuario" Association="Self.FK_Favoritos_PessoasUsuario">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Favoritos" EntitySet="Favoritos" />
           </AssociationSet>
-          <AssociationSet Name="FK_FAVORIOS_PESSOASCANDIDATO" Association="Self.FK_FAVORIOS_PESSOASCANDIDATO">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="FAVORIOS" EntitySet="FAVORIOS" />
+          <AssociationSet Name="FK_Votocandidatolei_Leis" Association="Self.FK_Votocandidatolei_Leis">
+            <End Role="Leis" EntitySet="Leis" />
+            <End Role="Votocandidatolei" EntitySet="Votocandidatolei" />
           </AssociationSet>
-          <AssociationSet Name="FK_FAVORIOS_PESSOASUSUARIO" Association="Self.FK_FAVORIOS_PESSOASUSUARIO">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="FAVORIOS" EntitySet="FAVORIOS" />
+          <AssociationSet Name="FK_Pessoas_Logradouros" Association="Self.FK_Pessoas_Logradouros">
+            <End Role="Logradouros" EntitySet="Logradouros" />
+            <End Role="Pessoas" EntitySet="Pessoas" />
           </AssociationSet>
-          <AssociationSet Name="FK_VOTOCANDIDATOLEI_LEIS" Association="Self.FK_VOTOCANDIDATOLEI_LEIS">
-            <End Role="LEIS" EntitySet="LEIS" />
-            <End Role="VOTOCANDIDATOLEI" EntitySet="VOTOCANDIDATOLEI" />
+          <AssociationSet Name="FK_Pessoas_Paises" Association="Self.FK_Pessoas_Paises">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Pessoas" EntitySet="Pessoas" />
           </AssociationSet>
-          <AssociationSet Name="FK_LOGRADOUROS_MUNICIPIOS" Association="Self.FK_LOGRADOUROS_MUNICIPIOS">
-            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
-            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
+          <AssociationSet Name="FK_Presidentes_PessoasCandidato" Association="Self.FK_Presidentes_PessoasCandidato">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Presidentes" EntitySet="Presidentes" />
           </AssociationSet>
-          <AssociationSet Name="FK_LOGRADOUROS_PAISES" Association="Self.FK_LOGRADOUROS_PAISES">
-            <End Role="PAISES" EntitySet="PAISES" />
-            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
+          <AssociationSet Name="FK_Presidentes_PessoasVice" Association="Self.FK_Presidentes_PessoasVice">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Presidentes" EntitySet="Presidentes" />
           </AssociationSet>
-          <AssociationSet Name="FK_PESSOAS_LOGRADOUROS" Association="Self.FK_PESSOAS_LOGRADOUROS">
-            <End Role="LOGRADOUROS" EntitySet="LOGRADOUROS" />
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
+          <AssociationSet Name="FK_Votocandidatolei_Pessoas" Association="Self.FK_Votocandidatolei_Pessoas">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Votocandidatolei" EntitySet="Votocandidatolei" />
           </AssociationSet>
-          <AssociationSet Name="FK_MUNICIPIOS_PAISES" Association="Self.FK_MUNICIPIOS_PAISES">
-            <End Role="PAISES" EntitySet="PAISES" />
-            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
+          <AssociationSet Name="FK_Votos_PessoasCandidato" Association="Self.FK_Votos_PessoasCandidato">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Votos" EntitySet="Votos" />
           </AssociationSet>
-          <AssociationSet Name="FK_PESSOAS_MUNICIPIOS" Association="Self.FK_PESSOAS_MUNICIPIOS">
-            <End Role="MUNICIPIOS" EntitySet="MUNICIPIOS" />
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PESSOAS_PAISES" Association="Self.FK_PESSOAS_PAISES">
-            <End Role="PAISES" EntitySet="PAISES" />
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRESIDENTES_PESSOASCANDIDATO" Association="Self.FK_PRESIDENTES_PESSOASCANDIDATO">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="PRESIDENTES" EntitySet="PRESIDENTES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRESIDENTES_PESSOASVICE" Association="Self.FK_PRESIDENTES_PESSOASVICE">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="PRESIDENTES" EntitySet="PRESIDENTES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VOTOCANDIDATOLEI_PESSOAS" Association="Self.FK_VOTOCANDIDATOLEI_PESSOAS">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="VOTOCANDIDATOLEI" EntitySet="VOTOCANDIDATOLEI" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VOTOS_PESSOASCANDIDATO" Association="Self.FK_VOTOS_PESSOASCANDIDATO">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="VOTOS" EntitySet="VOTOS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VOTOS_PESSOASUSUARIO" Association="Self.FK_VOTOS_PESSOASUSUARIO">
-            <End Role="PESSOAS" EntitySet="PESSOAS" />
-            <End Role="VOTOS" EntitySet="VOTOS" />
+          <AssociationSet Name="FK_Votos_PessoasUsuario" Association="Self.FK_Votos_PessoasUsuario">
+            <End Role="Pessoas" EntitySet="Pessoas" />
+            <End Role="Votos" EntitySet="Votos" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1170,21 +957,19 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PrismaModelStoreContainer" CdmEntityContainer="PrismaEntities">
-          <EntitySetMapping Name="BAIRROS">
-            <EntityTypeMapping TypeName="PrismaModel.BAIRROS">
-              <MappingFragment StoreEntitySet="BAIRROS">
+        <EntityContainerMapping StorageEntityContainer="PrismaWEBModelStoreContainer" CdmEntityContainer="PrismaBDEntities">
+          <EntitySetMapping Name="Bairros">
+            <EntityTypeMapping TypeName="PrismaWEBModel.Bairros">
+              <MappingFragment StoreEntitySet="Bairros">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Pais_Id" ColumnName="Pais_Id" />
-                <ScalarProperty Name="Estado_Id" ColumnName="Estado_Id" />
-                <ScalarProperty Name="Municipio_Id" ColumnName="Municipio_Id" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CANDIDATOCARGO">
-            <EntityTypeMapping TypeName="PrismaModel.CANDIDATOCARGO">
-              <MappingFragment StoreEntitySet="CANDIDATOCARGO">
+          <EntitySetMapping Name="Candidatocargo">
+            <EntityTypeMapping TypeName="PrismaWEBModel.Candidatocargo">
+              <MappingFragment StoreEntitySet="Candidatocargo">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
                 <ScalarProperty Name="Cargo_Id" ColumnName="Cargo_Id" />
@@ -1192,9 +977,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CARGOS">
-            <EntityTypeMapping TypeName="PrismaModel.CARGOS">
-              <MappingFragment StoreEntitySet="CARGOS">
+          <EntitySetMapping Name="Cargos">
+            <EntityTypeMapping TypeName="PrismaWEBModel.Cargos">
+              <MappingFragment StoreEntitySet="Cargos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Descricao" ColumnName="Descricao" />
@@ -1203,18 +988,28 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ESTADOS">
-            <EntityTypeMapping TypeName="PrismaModel.ESTADOS">
-              <MappingFragment StoreEntitySet="ESTADOS">
+          <EntitySetMapping Name="Cidades">
+            <EntityTypeMapping TypeName="PrismaWEBModel.Cidades">
+              <MappingFragment StoreEntitySet="Cidades">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Pais_Id" ColumnName="Pais_Id" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FAVORIOS">
-            <EntityTypeMapping TypeName="PrismaModel.FAVORIOS">
-              <MappingFragment StoreEntitySet="FAVORIOS">
+          <EntitySetMapping Name="Estados">
+            <EntityTypeMapping TypeName="PrismaWEBModel.Estados">
+              <MappingFragment StoreEntitySet="Estados">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Uf" ColumnName="Uf" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Favoritos">
+            <EntityTypeMapping TypeName="PrismaWEBModel.Favoritos">
+              <MappingFragment StoreEntitySet="Favoritos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
                 <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
@@ -1222,9 +1017,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LEIS">
-            <EntityTypeMapping TypeName="PrismaModel.LEIS">
-              <MappingFragment StoreEntitySet="LEIS">
+          <EntitySetMapping Name="Leis">
+            <EntityTypeMapping TypeName="PrismaWEBModel.Leis">
+              <MappingFragment StoreEntitySet="Leis">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Numero" ColumnName="Numero" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -1232,43 +1027,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LOGRADOUROS">
-            <EntityTypeMapping TypeName="PrismaModel.LOGRADOUROS">
-              <MappingFragment StoreEntitySet="LOGRADOUROS">
+          <EntitySetMapping Name="Logradouros">
+            <EntityTypeMapping TypeName="PrismaWEBModel.Logradouros">
+              <MappingFragment StoreEntitySet="Logradouros">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Pais_Id" ColumnName="Pais_Id" />
-                <ScalarProperty Name="Estado_Id" ColumnName="Estado_Id" />
-                <ScalarProperty Name="Municipio_Id" ColumnName="Municipio_Id" />
-                <ScalarProperty Name="Bairro_Id" ColumnName="Bairro_Id" />
-                <ScalarProperty Name="Cep" ColumnName="Cep" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MUNICIPIOS">
-            <EntityTypeMapping TypeName="PrismaModel.MUNICIPIOS">
-              <MappingFragment StoreEntitySet="MUNICIPIOS">
+          <EntitySetMapping Name="Paises">
+            <EntityTypeMapping TypeName="PrismaWEBModel.Paises">
+              <MappingFragment StoreEntitySet="Paises">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Pais_Id" ColumnName="Pais_Id" />
-                <ScalarProperty Name="Estado_Id" ColumnName="Estado_Id" />
+                <ScalarProperty Name="Sigla" ColumnName="Sigla" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PAISES">
-            <EntityTypeMapping TypeName="PrismaModel.PAISES">
-              <MappingFragment StoreEntitySet="PAISES">
+          <EntitySetMapping Name="Pessoas">
+            <EntityTypeMapping TypeName="PrismaWEBModel.Pessoas">
+              <MappingFragment StoreEntitySet="Pessoas">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PESSOAS">
-            <EntityTypeMapping TypeName="PrismaModel.PESSOAS">
-              <MappingFragment StoreEntitySet="PESSOAS">
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
                 <ScalarProperty Name="Cpf" ColumnName="Cpf" />
                 <ScalarProperty Name="Foto" ColumnName="Foto" />
@@ -1281,18 +1062,19 @@
                 <ScalarProperty Name="Endereco" ColumnName="Endereco" />
                 <ScalarProperty Name="Pais_Id" ColumnName="Pais_Id" />
                 <ScalarProperty Name="Estado_Id" ColumnName="Estado_Id" />
-                <ScalarProperty Name="Municipio_Id" ColumnName="Municipio_Id" />
+                <ScalarProperty Name="Cidade_Id" ColumnName="Cidade_Id" />
                 <ScalarProperty Name="Bairro_Id" ColumnName="Bairro_Id" />
                 <ScalarProperty Name="Logradouro_Id" ColumnName="Logradouro_Id" />
                 <ScalarProperty Name="Cep" ColumnName="Cep" />
                 <ScalarProperty Name="Numero" ColumnName="Numero" />
                 <ScalarProperty Name="Complemento" ColumnName="Complemento" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PRESIDENTES">
-            <EntityTypeMapping TypeName="PrismaModel.PRESIDENTES">
-              <MappingFragment StoreEntitySet="PRESIDENTES">
+          <EntitySetMapping Name="Presidentes">
+            <EntityTypeMapping TypeName="PrismaWEBModel.Presidentes">
+              <MappingFragment StoreEntitySet="Presidentes">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
                 <ScalarProperty Name="Vice_Id" ColumnName="Vice_Id" />
@@ -1301,9 +1083,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VOTOCANDIDATOLEI">
-            <EntityTypeMapping TypeName="PrismaModel.VOTOCANDIDATOLEI">
-              <MappingFragment StoreEntitySet="VOTOCANDIDATOLEI">
+          <EntitySetMapping Name="Votocandidatolei">
+            <EntityTypeMapping TypeName="PrismaWEBModel.Votocandidatolei">
+              <MappingFragment StoreEntitySet="Votocandidatolei">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
                 <ScalarProperty Name="Lei_Id" ColumnName="Lei_Id" />
@@ -1312,9 +1094,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VOTOS">
-            <EntityTypeMapping TypeName="PrismaModel.VOTOS">
-              <MappingFragment StoreEntitySet="VOTOS">
+          <EntitySetMapping Name="Votos">
+            <EntityTypeMapping TypeName="PrismaWEBModel.Votos">
+              <MappingFragment StoreEntitySet="Votos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
                 <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />

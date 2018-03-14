@@ -12,12 +12,12 @@ namespace PrismaWEB.Controllers
 {
     public class CargosController : Controller
     {
-        private PrismaEntities db = new PrismaEntities();
+        private PrismaBDEntities db = new PrismaBDEntities();
 
         // GET: Cargos
         public ActionResult Index()
         {
-            return View(db.CARGOS.ToList());
+            return View(db.Cargos.ToList());
         }
 
         // GET: Cargos/Details/5
@@ -27,7 +27,7 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CARGOS cARGOS = db.CARGOS.Find(id);
+            Cargos cARGOS = db.Cargos.Find(id);
             if (cARGOS == null)
             {
                 return HttpNotFound();
@@ -46,13 +46,13 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Descricao,DataCraicao,DataAlteracao")] CARGOS cARGOS)
+        public ActionResult Create([Bind(Include = "Id,Nome,Descricao,DataCraicao,DataAlteracao")] Cargos cARGOS)
         {
             cARGOS.Id = cARGOS.GetHashCode();
             cARGOS.DataCraicao = DateTime.Now;
             if (ModelState.IsValid)
             {
-                db.CARGOS.Add(cARGOS);
+                db.Cargos.Add(cARGOS);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -67,7 +67,7 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CARGOS cARGOS = db.CARGOS.Find(id);
+            Cargos cARGOS = db.Cargos.Find(id);
             if (cARGOS == null)
             {
                 return HttpNotFound();
@@ -80,7 +80,7 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CARGOS Cargo)
+        public ActionResult Edit(Cargos Cargo)
         {
             if (ModelState.IsValid)
             {            
@@ -99,7 +99,7 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CARGOS cARGOS = db.CARGOS.Find(id);
+            Cargos cARGOS = db.Cargos.Find(id);
             if (cARGOS == null)
             {
                 return HttpNotFound();
@@ -112,8 +112,8 @@ namespace PrismaWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CARGOS cARGOS = db.CARGOS.Find(id);
-            db.CARGOS.Remove(cARGOS);
+            Cargos cARGOS = db.Cargos.Find(id);
+            db.Cargos.Remove(cARGOS);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

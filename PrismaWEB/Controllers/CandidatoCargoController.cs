@@ -12,12 +12,12 @@ namespace PrismaWEB.Controllers
 {
     public class CandidatoCargoController : Controller
     {
-        private PrismaEntities db = new PrismaEntities();
+        private PrismaBDEntities db = new PrismaBDEntities();
 
         // GET: CandidatoCargo
         public ActionResult Index()
         {
-            var cANDIDATOCARGO = db.CANDIDATOCARGO.Include(c => c.CARGOS).Include(c => c.PESSOAS);
+            var cANDIDATOCARGO = db.Candidatocargo.Include(c => c.Cargos).Include(c => c.Pessoas);
             return View(cANDIDATOCARGO.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CANDIDATOCARGO cANDIDATOCARGO = db.CANDIDATOCARGO.Find(id);
+            Candidatocargo cANDIDATOCARGO = db.Candidatocargo.Find(id);
             if (cANDIDATOCARGO == null)
             {
                 return HttpNotFound();
@@ -39,9 +39,9 @@ namespace PrismaWEB.Controllers
         // GET: CandidatoCargo/Create
         public ActionResult Create(int Id)
         {
-            ViewBag.Candidato_Id = db.PESSOAS.Where(p => p.Id == Id).FirstOrDefault();            
-            ViewBag.Cargo_Id = new SelectList(db.CARGOS, "Id", "Nome");
-            ViewBag.Candidato = new SelectList(db.PESSOAS, "Id", "nome");
+            ViewBag.Candidato_Id = db.Pessoas.Where(p => p.Id == Id).FirstOrDefault();            
+            ViewBag.Cargo_Id = new SelectList(db.Cargos, "Id", "Nome");
+            ViewBag.Candidato = new SelectList(db.Pessoas, "Id", "nome");
             return View();
         }
 
@@ -50,19 +50,19 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Candidato_Id,Cargo_Id,DataCriacao")] CANDIDATOCARGO cANDIDATOCARGO)
+        public ActionResult Create([Bind(Include = "Id,Candidato_Id,Cargo_Id,DataCriacao")] Candidatocargo cANDIDATOCARGO)
         {
             cANDIDATOCARGO.Id = GetHashCode();
             if (ModelState.IsValid)
             {
-                db.CANDIDATOCARGO.Add(cANDIDATOCARGO);                
+                db.Candidatocargo.Add(cANDIDATOCARGO);                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Candidato_Id = cANDIDATOCARGO.PESSOAS;
-            ViewBag.Cargo_Id = new SelectList(db.CARGOS, "Id", "Nome", cANDIDATOCARGO.Cargo_Id);
-            ViewBag.Candidato = new SelectList(db.PESSOAS, "Id", "nome", cANDIDATOCARGO.Candidato_Id);
+            ViewBag.Candidato_Id = cANDIDATOCARGO.Pessoas;
+            ViewBag.Cargo_Id = new SelectList(db.Cargos, "Id", "Nome", cANDIDATOCARGO.Cargo_Id);
+            ViewBag.Candidato = new SelectList(db.Pessoas, "Id", "nome", cANDIDATOCARGO.Candidato_Id);
             return View(cANDIDATOCARGO);
         }
 
@@ -73,13 +73,13 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CANDIDATOCARGO cANDIDATOCARGO = db.CANDIDATOCARGO.Find(id);
+            Candidatocargo cANDIDATOCARGO = db.Candidatocargo.Find(id);
             if (cANDIDATOCARGO == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Cargo_Id = new SelectList(db.CARGOS, "Id", "Nome", cANDIDATOCARGO.Cargo_Id);
-            ViewBag.Candidato_Id = new SelectList(db.PESSOAS, "Id", "nome", cANDIDATOCARGO.Candidato_Id);
+            ViewBag.Cargo_Id = new SelectList(db.Cargos, "Id", "Nome", cANDIDATOCARGO.Cargo_Id);
+            ViewBag.Candidato_Id = new SelectList(db.Pessoas, "Id", "nome", cANDIDATOCARGO.Candidato_Id);
             return View(cANDIDATOCARGO);
         }
 
@@ -88,7 +88,7 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Candidato_Id,Cargo_Id,DataCriacao")] CANDIDATOCARGO cANDIDATOCARGO)
+        public ActionResult Edit([Bind(Include = "Id,Candidato_Id,Cargo_Id,DataCriacao")] Candidatocargo cANDIDATOCARGO)
         {
             if (ModelState.IsValid)
             {
@@ -96,8 +96,8 @@ namespace PrismaWEB.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Cargo_Id = new SelectList(db.CARGOS, "Id", "Nome", cANDIDATOCARGO.Cargo_Id);
-            ViewBag.Candidato_Id = new SelectList(db.PESSOAS, "Id", "nome", cANDIDATOCARGO.Candidato_Id);
+            ViewBag.Cargo_Id = new SelectList(db.Cargos, "Id", "Nome", cANDIDATOCARGO.Cargo_Id);
+            ViewBag.Candidato_Id = new SelectList(db.Pessoas, "Id", "nome", cANDIDATOCARGO.Candidato_Id);
             return View(cANDIDATOCARGO);
         }
 
@@ -108,7 +108,7 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CANDIDATOCARGO cANDIDATOCARGO = db.CANDIDATOCARGO.Find(id);
+            Candidatocargo cANDIDATOCARGO = db.Candidatocargo.Find(id);
             if (cANDIDATOCARGO == null)
             {
                 return HttpNotFound();
@@ -121,8 +121,8 @@ namespace PrismaWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CANDIDATOCARGO cANDIDATOCARGO = db.CANDIDATOCARGO.Find(id);
-            db.CANDIDATOCARGO.Remove(cANDIDATOCARGO);
+            Candidatocargo cANDIDATOCARGO = db.Candidatocargo.Find(id);
+            db.Candidatocargo.Remove(cANDIDATOCARGO);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

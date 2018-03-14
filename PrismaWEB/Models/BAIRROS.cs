@@ -12,27 +12,23 @@ namespace PrismaWEB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class BAIRROS
+    public partial class Bairros
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BAIRROS()
+        public Bairros()
         {
-            this.LOGRADOUROS = new HashSet<LOGRADOUROS>();
-            this.PESSOAS = new HashSet<PESSOAS>();
+            this.Logradouros = new HashSet<Logradouros>();
+            this.Pessoas = new HashSet<Pessoas>();
         }
     
         public int Id { get; set; }
         public string Nome { get; set; }
-        public int Pais_Id { get; set; }
-        public int Estado_Id { get; set; }
-        public int Municipio_Id { get; set; }
+        public int Cidade { get; set; }
     
-        public virtual ESTADOS ESTADOS { get; set; }
-        public virtual MUNICIPIOS MUNICIPIOS { get; set; }
-        public virtual PAISES PAISES { get; set; }
+        public virtual Cidades Cidades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LOGRADOUROS> LOGRADOUROS { get; set; }
+        public virtual ICollection<Logradouros> Logradouros { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PESSOAS> PESSOAS { get; set; }
+        public virtual ICollection<Pessoas> Pessoas { get; set; }
     }
 }

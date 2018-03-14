@@ -8,10 +8,10 @@ namespace PrismaWEB.Validacoes
 {
     public class CandidatoValidate
     {
-        public string Validacao(PESSOAS pessoa /*PRESIDENTES presidente*/)
+        public string Validacao(Pessoas pessoa /*PRESIDENTES presidente*/)
         {
             var error = "";
-            if (pessoa.nome == null)
+            if (pessoa.Nome == null)
             {
                 return "Falta preencher campo NOME";
             }
@@ -56,7 +56,7 @@ namespace PrismaWEB.Validacoes
                 return "Falta preencher campo ESTADO";
             }
 
-            if (pessoa.Municipio_Id == null)
+            if (pessoa.Cidade_Id == null)
             {
                 return "Falta preencher campo MUNICIPIO";
             }

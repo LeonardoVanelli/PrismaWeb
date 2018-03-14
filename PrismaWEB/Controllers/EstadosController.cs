@@ -12,12 +12,12 @@ namespace PrismaWEB.Controllers
 {
     public class EstadosController : Controller
     {
-        private PrismaEntities db = new PrismaEntities();
+        private PrismaBDEntities db = new PrismaBDEntities();
 
         // GET: Estados
         public ActionResult Index()
         {
-            var eSTADOS = db.ESTADOS.Include(e => e.PAISES);
+            var eSTADOS = db.Estados.Include(e => e.Paises);
             return View(eSTADOS.ToList());
         }
 
@@ -28,19 +28,19 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ESTADOS eSTADOS = db.ESTADOS.Find(id);
+            Estados eSTADOS = db.Estados.Find(id);
             if (eSTADOS == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Municipios = db.MUNICIPIOS.Where(m => m.Estado_Id == eSTADOS.Id);
+            ViewBag.Municipios = db.Cidades.Where(m => m.Estado == eSTADOS.Id);
             return View(eSTADOS);
         }
 
         // GET: Estados/Create
         public ActionResult Create()
         {
-            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome");
+            ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome");
             return View();
         }
 
@@ -49,17 +49,17 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Pais_Id")] ESTADOS eSTADOS)
+        public ActionResult Create([Bind(Include = "Id,Nome,Pais_Id")] Estados eSTADOS)
         {
             if (ModelState.IsValid)
             {
                 eSTADOS.Id = eSTADOS.GetHashCode();
-                db.ESTADOS.Add(eSTADOS);
+                db.Estados.Add(eSTADOS);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", eSTADOS.Pais_Id);
+            ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", eSTADOS.Pais);
             return View(eSTADOS);
         }
 
@@ -70,12 +70,12 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ESTADOS eSTADOS = db.ESTADOS.Find(id);
+            Estados eSTADOS = db.Estados.Find(id);
             if (eSTADOS == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", eSTADOS.Pais_Id);
+            ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", eSTADOS.Pais);
             return View(eSTADOS);
         }
 
@@ -84,7 +84,7 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Pais_Id")] ESTADOS eSTADOS)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Pais_Id")] Estados eSTADOS)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace PrismaWEB.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", eSTADOS.Pais_Id);
+            ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", eSTADOS.Pais);
             return View(eSTADOS);
         }
 
@@ -103,7 +103,7 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ESTADOS eSTADOS = db.ESTADOS.Find(id);
+            Estados eSTADOS = db.Estados.Find(id);
             if (eSTADOS == null)
             {
                 return HttpNotFound();
@@ -116,8 +116,8 @@ namespace PrismaWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ESTADOS eSTADOS = db.ESTADOS.Find(id);
-            db.ESTADOS.Remove(eSTADOS);
+            Estados eSTADOS = db.Estados.Find(id);
+            db.Estados.Remove(eSTADOS);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

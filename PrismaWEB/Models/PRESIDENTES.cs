@@ -12,15 +12,15 @@ namespace PrismaWEB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PRESIDENTES
+    public partial class Presidentes
     {
         public int Id { get; set; }
-        public int Candidato_Id { get; set; }
-        public int Vice_Id { get; set; }
-        public System.DateTime DataCriacao { get; set; }
+        public Nullable<int> Candidato_Id { get; set; }
+        public Nullable<int> Vice_Id { get; set; }
+        public Nullable<System.DateTime> DataCriacao { get; set; }
         public Nullable<System.DateTime> DataAlteracao { get; set; }
     
-        public virtual PESSOAS PESSOAS { get; set; }
-        public virtual PESSOAS PESSOAS1 { get; set; }
+        public virtual Pessoas Pessoas { get; set; }
+        public virtual Pessoas Pessoas1 { get; set; }
     }
 }

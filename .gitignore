@@ -74,3 +74,5 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 /.vs/PrismaWEB/v15/Server/sqlite3
+/PrismaWEB/App_Data/PrismaWEBDesenv.mdf
+/PrismaWEB/App_Data/PrismaWEBDesenv_log.ldf

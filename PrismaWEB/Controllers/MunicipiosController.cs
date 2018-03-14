@@ -13,12 +13,12 @@ namespace PrismaWEB.Controllers
 {
     public class MunicipiosController : Controller
     {
-        private PrismaEntities db = new PrismaEntities();
+        private PrismaBDEntities db = new PrismaBDEntities();
 
         // GET: Municipios
         public ActionResult Index()
         {
-            var mUNICIPIOS = db.MUNICIPIOS.Include(m => m.ESTADOS).Include(m => m.PAISES);
+            var mUNICIPIOS = db.Cidades.Include(m => m.Estados);
             return View(mUNICIPIOS.ToList());
         }
 
@@ -29,7 +29,7 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MUNICIPIOS mUNICIPIOS = db.MUNICIPIOS.Find(id);
+            Cidades mUNICIPIOS = db.Cidades.Find(id);
             if (mUNICIPIOS == null)
             {
                 return HttpNotFound();
@@ -40,8 +40,8 @@ namespace PrismaWEB.Controllers
         // GET: Municipios/Create
         public ActionResult Create()
         {
-            ViewBag.Estado_Id = new SelectList(db.ESTADOS, "Id", "Nome");
-            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome");
+            ViewBag.Estado_Id = new SelectList(db.Estados, "Id", "Nome");
+            ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome");
             return View();
         }
 
@@ -50,19 +50,19 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Pais_Id,Estado_Id")] MUNICIPIOS Municipio)
+        public ActionResult Create([Bind(Include = "Id,Nome,Pais_Id,Estado_Id")] Cidades Municipio)
         {
-            var erro = new MunicipioValidate().Validacao(Municipio);
-            if (ModelState.IsValid && erro == "")
+            //var erro = new MunicipioValidate().Validacao(Municipio);
+            if (ModelState.IsValid /*&& erro == ""*/)
             {
-                db.MUNICIPIOS.Add(Municipio);
+                db.Cidades.Add(Municipio);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Error = erro;
-            ViewBag.Estado_Id = new SelectList(db.ESTADOS, "Id", "Nome", Municipio.Estado_Id);
-            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", Municipio.Pais_Id);
+            //ViewBag.Error = erro;
+            ViewBag.Estado_Id = new SelectList(db.Estados, "Id", "Nome", Municipio.Estado);
+            //ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", Municipio.Pais_Id);
             return View(Municipio);
         }
 
@@ -73,13 +73,13 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MUNICIPIOS mUNICIPIOS = db.MUNICIPIOS.Find(id);
+            Cidades mUNICIPIOS = db.Cidades.Find(id);
             if (mUNICIPIOS == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Estado_Id = new SelectList(db.ESTADOS, "Id", "Nome", mUNICIPIOS.Estado_Id);
-            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", mUNICIPIOS.Pais_Id);
+            ViewBag.Estado_Id = new SelectList(db.Estados, "Id", "Nome", mUNICIPIOS.Estado);
+            //ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", mUNICIPIOS.Pais_Id);
             return View(mUNICIPIOS);
         }
 
@@ -88,7 +88,7 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Pais_Id,Estado_Id")] MUNICIPIOS mUNICIPIOS)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Pais_Id,Estado_Id")] Cidades mUNICIPIOS)
         {
             if (ModelState.IsValid)
             {
@@ -96,8 +96,8 @@ namespace PrismaWEB.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Estado_Id = new SelectList(db.ESTADOS, "Id", "Nome", mUNICIPIOS.Estado_Id);
-            ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", mUNICIPIOS.Pais_Id);
+            ViewBag.Estado_Id = new SelectList(db.Estados, "Id", "Nome", mUNICIPIOS.Estados);
+            //ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", mUNICIPIOS.Pais_Id);
             return View(mUNICIPIOS);
         }
 
@@ -108,7 +108,7 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MUNICIPIOS mUNICIPIOS = db.MUNICIPIOS.Find(id);
+            Cidades mUNICIPIOS = db.Cidades.Find(id);
             if (mUNICIPIOS == null)
             {
                 return HttpNotFound();
@@ -121,8 +121,8 @@ namespace PrismaWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            MUNICIPIOS mUNICIPIOS = db.MUNICIPIOS.Find(id);
-            db.MUNICIPIOS.Remove(mUNICIPIOS);
+            Cidades mUNICIPIOS = db.Cidades.Find(id);
+            db.Cidades.Remove(mUNICIPIOS);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

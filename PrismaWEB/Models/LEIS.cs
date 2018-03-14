@@ -12,12 +12,12 @@ namespace PrismaWEB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class LEIS
+    public partial class Leis
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LEIS()
+        public Leis()
         {
-            this.VOTOCANDIDATOLEI = new HashSet<VOTOCANDIDATOLEI>();
+            this.Votocandidatolei = new HashSet<Votocandidatolei>();
         }
     
         public int Id { get; set; }
@@ -26,6 +26,6 @@ namespace PrismaWEB.Models
         public string Descricao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VOTOCANDIDATOLEI> VOTOCANDIDATOLEI { get; set; }
+        public virtual ICollection<Votocandidatolei> Votocandidatolei { get; set; }
     }
 }

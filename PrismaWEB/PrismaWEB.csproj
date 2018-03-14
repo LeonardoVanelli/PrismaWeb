@@ -163,26 +163,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BAIRROS.cs">
+    <Compile Include="Models\Bairros.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CANDIDATOCARGO.cs">
+    <Compile Include="Models\Candidatocargo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CARGOS.cs">
+    <Compile Include="Models\Cargos.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cidades.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Enumerables\TipoPessoa.cs" />
-    <Compile Include="Models\ESTADOS.cs">
+    <Compile Include="Models\Estados.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FAVORIOS.cs">
+    <Compile Include="Models\Favoritos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LEIS.cs">
+    <Compile Include="Models\Leis.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LOGRADOUROS.cs">
+    <Compile Include="Models\Logradouros.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
@@ -200,22 +203,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\MUNICIPIOS.cs">
+    <Compile Include="Models\Paises.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PAISES.cs">
+    <Compile Include="Models\Pessoas.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PESSOAS.cs">
+    <Compile Include="Models\Presidentes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PRESIDENTES.cs">
+    <Compile Include="Models\Votocandidatolei.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VOTOCANDIDATOLEI.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VOTOS.cs">
+    <Compile Include="Models\Votos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -223,6 +223,10 @@
     <Compile Include="Validacoes\MunicipioValidate.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\PrismaWEBDesenv.mdf" />
+    <Content Include="App_Data\PrismaWEBDesenv_log.ldf">
+      <DependentUpon>PrismaWEBDesenv.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\helper\ComboBox.css" />
@@ -482,9 +486,7 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>

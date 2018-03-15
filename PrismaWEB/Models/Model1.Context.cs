@@ -13,10 +13,10 @@ namespace PrismaWEB.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PrismaDBEntiti : DbContext
+    public partial class PrismaDBEntities : DbContext
     {
-        public PrismaDBEntiti()
-            : base("name=PrismaDBEntiti")
+        public PrismaDBEntities()
+            : base("name=PrismaDBEntities")
         {
         }
     
@@ -38,5 +38,6 @@ namespace PrismaWEB.Models
         public virtual DbSet<Presidentes> Presidentes { get; set; }
         public virtual DbSet<Votocandidatolei> Votocandidatolei { get; set; }
         public virtual DbSet<Votos> Votos { get; set; }
+        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     }
 }

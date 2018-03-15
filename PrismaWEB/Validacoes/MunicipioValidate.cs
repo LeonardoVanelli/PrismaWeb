@@ -8,7 +8,7 @@ namespace PrismaWEB.Validacoes
 {
     public class MunicipioValidate
     {
-        private PrismaDBEntiti db = new PrismaDBEntiti();
+        private PrismaDBEntities db = new PrismaDBEntities();
         public string Validacao(Cidades municipio)
         {
             //var erro = "";

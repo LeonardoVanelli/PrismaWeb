@@ -175,6 +175,9 @@
     <Compile Include="Models\Cidades.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\database_firewall_rules.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Enumerables\TipoPessoa.cs" />
     <Compile Include="Models\Estados.cs">
       <DependentUpon>Model1.tt</DependentUpon>

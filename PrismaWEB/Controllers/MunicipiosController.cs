@@ -13,7 +13,7 @@ namespace PrismaWEB.Controllers
 {
     public class MunicipiosController : Controller
     {
-        private PrismaDBEntiti db = new PrismaDBEntiti();
+        private PrismaDBEntities db = new PrismaDBEntities();
 
         // GET: Municipios
         public ActionResult Index()

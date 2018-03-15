@@ -74,3 +74,7 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 /.vs/PrismaWEB/v15/Server/sqlite3
+/.vs/PrismaWEB/v15/sqlite3/storage.ide
+/.vs/PrismaWEB/v15/sqlite3/db.lock
+/.vs/PrismaWEB/v15/sqlite3/storage.ide-wal
+/.vs/PrismaWEB/v15/sqlite3/storage.ide-shm

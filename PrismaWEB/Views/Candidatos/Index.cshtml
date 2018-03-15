@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PrismaWEB.Models.PESSOAS>
+﻿@model IEnumerable<PrismaWEB.Models.Pessoas>
 
 @{
     ViewBag.Title = "Index";
@@ -14,7 +14,7 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.nome)
+                            @Html.DisplayNameFor(model => model.Nome)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.DataNascimento)
@@ -31,7 +31,7 @@
                         <tr>
                             <td>
                                 <a href="@Url.Action("Details/"+item.Id)" class="removeAzulLink">
-                                    @Html.DisplayFor(modelItem => item.nome)
+                                    @Html.DisplayFor(modelItem => item.Nome)
                                 </a>
                             </td>
                             <td>

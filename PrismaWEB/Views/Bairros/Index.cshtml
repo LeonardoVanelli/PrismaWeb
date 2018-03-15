@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PrismaWEB.Models.BAIRROS>
+﻿@model IEnumerable<PrismaWEB.Models.Bairros>
 
 @{
     ViewBag.Title = "Index";
@@ -38,13 +38,13 @@
                                 </a>
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.ESTADOS.Nome)
+                                @Html.DisplayFor(modelItem => item.Estados.Nome)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.MUNICIPIOS.Nome)
+                                @Html.DisplayFor(modelItem => item.Cidades.Nome)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.PAISES.Nome)
+                                @Html.DisplayFor(modelItem => item.Paises.Nome)
                             </td>
                             <td>
                                 <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" title="Editar">

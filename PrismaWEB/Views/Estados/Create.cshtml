@@ -1,4 +1,4 @@
-﻿@model PrismaWEB.Models.ESTADOS
+﻿@model PrismaWEB.Models.Estados
 
 @{
     ViewBag.Title = "Create";
@@ -29,7 +29,7 @@
         </div>
 
         <div class="form-group col-md-3">
-            @Html.LabelFor(model => model.Pais_Id, "Pais_Id")
+            @Html.LabelFor(model => model.Paises_Id, "Pais_Id")
             <div class="ui-widget">         
                 <select id="Pais_Id" class="ui fluid search selection dropdown dropDownSelect" name="Pais_Id">
                     @foreach (var item in ViewBag.Pais_Id)

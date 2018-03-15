@@ -120,15 +120,15 @@
 
 
         <div class="form-group col-md-3">
-            @Html.LabelFor(model => model.Estado_Id, "Municipio")
+            @Html.LabelFor(model => model.Cidade_Id, "Cidade")
             <div class="ui-widget">
-                <select id="gender-select" class="ui fluid search selection dropdown dropDownSelect" name="Estado_Id">
-                    @foreach (var item in ViewBag.Municipio_Id)
+                <select id="gender-select" class="ui fluid search selection dropdown dropDownSelect" name="Cidade_Id">
+                    @foreach (var item in ViewBag.Cidade_Id)
                     {
                         <option value="@item.Value">@item.Text</option>
                     }
                 </select>
-                @Html.ValidationMessageFor(model => model.Estado_Id, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Cidade_Id, "", new { @class = "text-danger" })
             </div>
         </div>
 

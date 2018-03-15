@@ -50,7 +50,7 @@ namespace PrismaWEB.Controllers
             ViewBag.Bairro_Id = new SelectList(db.Bairros, "Id", "Nome");
             ViewBag.Estado_Id = new SelectList(db.Estados, "Id", "Nome");
             ViewBag.Logradouro_Id = new SelectList(db.Logradouros, "Id", "Nome");
-            ViewBag.Municipio_Id = new SelectList(db.Cidades, "Id", "Nome");
+            ViewBag.Cidade_Id = new SelectList(db.Cidades, "Id", "Nome");
             ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome");
             return View();
         }
@@ -60,7 +60,7 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,nome,DataNascimento,Cpf,Foto,DataCriacao,DataAlteracao,Ativo,Email,TelefoneFixo,TelefoneMovel,Endereco,Pais_Id,Estado_Id,Municipio_Id,Bairro_Id,Logradouro_Id,Cep,Numero,Complemento")] Pessoas Candidato)
+        public ActionResult Create([Bind(Include = "Id,nome,DataNascimento,Cpf,Foto,DataCriacao,DataAlteracao,Ativo,Email,TelefoneFixo,TelefoneMovel,Endereco,Pais_Id,Estado_Id,Cidade_Id,Bairro_Id,Logradouro_Id,Cep,Numero,Complemento")] Pessoas Candidato)
         {
             var erro = new CandidatoValidate().Validacao(Candidato);
 
@@ -77,7 +77,7 @@ namespace PrismaWEB.Controllers
             ViewBag.Bairro_Id = new SelectList(db.Bairros, "Id", "Nome", Candidato.Bairro_Id);
             ViewBag.Estado_Id = new SelectList(db.Estados, "Id", "Nome", Candidato.Estado_Id);
             ViewBag.Logradouro_Id = new SelectList(db.Logradouros, "Id", "Nome", Candidato.Logradouro_Id);
-            ViewBag.Municipio_Id = new SelectList(db.Cidades, "Id", "Nome", Candidato.Cidade_Id);
+            ViewBag.Cidade_Id = new SelectList(db.Cidades, "Id", "Nome", Candidato.Cidade_Id);
             ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", Candidato.Pais_Id);
             return View(Candidato);
         }

@@ -1,4 +1,4 @@
-﻿@model PrismaWEB.Models.CANDIDATOCARGO
+﻿@model PrismaWEB.Models.Candidatocargo
 
 @{
     Layout = "~/Views/Shared/_ViewStartSemLayout.cshtml";
@@ -17,16 +17,14 @@
 
         <div class="form-group col-md-12">
             <div class="col-md-offset-2">
-                <input type="submit" value="Salvar" class="btn btn-success" />
-                <input id="SaveAndNew" type="submit" value="Salvar/Novo" class="btn btn-info" />
-                <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+                <a href="@Url.Action("Create", "CandidatoCargo")/@ViewBag.Candidato_Id.Id" class="btn btn-success">Novo</a>     
             </div>
         </div>
 
         <div class="form-group col-md-3">
             @Html.LabelFor(model => model.Candidato_Id, "Candidato")
             <div class="ui-widget">                
-                <input type="text" class="form-control text-box single-line" id="Candidato_Id" name="Candidato_Id" value="@ViewBag.Candidato_Id.nome">
+                <input type="text" class="form-control text-box single-line" id="Candidato_Id" name="Candidato_Id" value="@ViewBag.Candidato_Id.Id">
                 @Html.ValidationMessageFor(model => model.Candidato_Id, "", new { @class = "text-danger" })
             </div>
         </div>

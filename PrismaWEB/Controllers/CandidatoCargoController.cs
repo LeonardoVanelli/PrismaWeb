@@ -15,9 +15,10 @@ namespace PrismaWEB.Controllers
         private PrismaDBEntities db = new PrismaDBEntities();
 
         // GET: CandidatoCargo
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            var cANDIDATOCARGO = db.Candidatocargo.Include(c => c.Cargos).Include(c => c.Pessoas);
+            var cANDIDATOCARGO = db.Candidatocargo.Where(c => c.Candidato_Id == id);
+            ViewBag.Candidato = db.Pessoas.Where(p => p.Id == id).FirstOrDefault();
             return View(cANDIDATOCARGO.ToList());
         }
 
@@ -53,11 +54,12 @@ namespace PrismaWEB.Controllers
         public ActionResult Create([Bind(Include = "Id,Candidato_Id,Cargo_Id,DataCriacao")] Candidatocargo cANDIDATOCARGO)
         {
             cANDIDATOCARGO.Id = GetHashCode();
+            cANDIDATOCARGO.DataCriacao = DateTime.Now;            
             if (ModelState.IsValid)
             {
                 db.Candidatocargo.Add(cANDIDATOCARGO);                
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index/"+cANDIDATOCARGO.Candidato_Id);
             }
 
             ViewBag.Candidato_Id = cANDIDATOCARGO.Pessoas;

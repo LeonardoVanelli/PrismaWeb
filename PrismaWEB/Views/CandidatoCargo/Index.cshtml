@@ -1,42 +1,31 @@
-﻿@model IEnumerable<PrismaWEB.Models.CANDIDATOCARGO>
+﻿@model IEnumerable<PrismaWEB.Models.Candidatocargo>
+
+@{
+    Layout = "~/Views/Shared/_ViewStartSemLayout.cshtml";
+}
 
 @{
     ViewBag.Title = "Index";
 }
 
 <div class="card mb-3">
-    <div class="card-header">
-        <a href="@Url.Action("Create")" class="btn btn-success"><i class="fa fa-plus"></i> Novo</a>
-    </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.DataCriacao)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.CARGOS.Nome)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.PESSOAS.nome)
+                            @Html.DisplayNameFor(model => model.Cargos.Nome)
                         </th>
                         <th>Ações</th>
                     </tr>
-                </thead>                
+                </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.DataCriacao)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CARGOS.Nome)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PESSOAS.nome)
+                                @Html.DisplayFor(modelItem => item.Cargos.Nome)
                             </td>
                             <td>
                                 <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" title="Editar">
@@ -52,7 +41,6 @@
             </table>
         </div>
     </div>
-    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
 
 

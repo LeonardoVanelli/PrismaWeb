@@ -76,3 +76,6 @@ _[Ss]cripts
 /.vs/PrismaWEB/v15/Server/sqlite3
 /PrismaWEB/App_Data/PrismaWEBDesenv.mdf
 /PrismaWEB/App_Data/PrismaWEBDesenv_log.ldf
+/.vs/PrismaWEB/v15/sqlite3/db.lock
+/.vs/PrismaWEB/v15/sqlite3/storage.ide-shm
+/.vs/PrismaWEB/v15/sqlite3/storage.ide-wal

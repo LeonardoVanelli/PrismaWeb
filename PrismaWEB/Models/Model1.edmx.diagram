@@ -38,6 +38,8 @@
         <AssociationConnector Association="PrismaWEBModel.FK_Votocandidatolei_Pessoas" ManuallyRouted="false" />
         <AssociationConnector Association="PrismaWEBModel.FK_Votos_PessoasCandidato" ManuallyRouted="false" />
         <AssociationConnector Association="PrismaWEBModel.FK_Votos_PessoasUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="PrismaWEBModel.FK_Bairros_Estados" />
+        <AssociationConnector Association="PrismaWEBModel.FK_Bairros_Paises" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

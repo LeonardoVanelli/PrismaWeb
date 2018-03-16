@@ -19,6 +19,7 @@ namespace PrismaWEB.Models
         {
             this.Cidades = new HashSet<Cidades>();
             this.Pessoas = new HashSet<Pessoas>();
+            this.Bairros = new HashSet<Bairros>();
         }
     
         public int Id { get; set; }
@@ -31,5 +32,7 @@ namespace PrismaWEB.Models
         public virtual Paises Paises { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pessoas> Pessoas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bairros> Bairros { get; set; }
     }
 }

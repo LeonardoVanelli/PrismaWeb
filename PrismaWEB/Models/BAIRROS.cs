@@ -24,11 +24,15 @@ namespace PrismaWEB.Models
         public int Id { get; set; }
         public string Nome { get; set; }
         public int Cidade { get; set; }
+        public int Estado { get; set; }
+        public int Pais { get; set; }
     
         public virtual Cidades Cidades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Logradouros> Logradouros { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pessoas> Pessoas { get; set; }
+        public virtual Estados Estados { get; set; }
+        public virtual Paises Paises { get; set; }
     }
 }

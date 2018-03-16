@@ -17,8 +17,8 @@ namespace PrismaWEB.Controllers
         // GET: Bairros
         public ActionResult Index()
         {
-            var bAIRROS = db.Bairros.Include(b => b.Cidades);
-            return View(bAIRROS.ToList());
+            var Bairros = db.Bairros.Include(b => b.Cidades);            
+            return View(Bairros.ToList());
         }
 
         // GET: Bairros/Details/5
@@ -79,9 +79,9 @@ namespace PrismaWEB.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.Estado_Id = new SelectList(db.ESTADOS, "Id", "Nome", bAIRROS.Estado_Id);
+            ViewBag.Estado_Id = new SelectList(db.Estados, "Id", "Nome", bAIRROS.Estado);
             ViewBag.Municipio_Id = new SelectList(db.Cidades, "Id", "Nome", bAIRROS.Cidade);
-            //ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", bAIRROS.Pais_Id);
+            ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", bAIRROS.Pais);
             return View(bAIRROS);
         }
 
@@ -90,7 +90,7 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Pais_Id,Estado_Id,Municipio_Id")] Bairros bAIRROS)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Pais,Estado,Cidade")] Bairros bAIRROS)
         {
             if (ModelState.IsValid)
             {
@@ -98,9 +98,9 @@ namespace PrismaWEB.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            //ViewBag.Estado_Id = new SelectList(db.ESTADOS, "Id", "Nome", bAIRROS.Estado_Id);
+            ViewBag.Estado_Id = new SelectList(db.Estados, "Id", "Nome", bAIRROS.Estado);
             ViewBag.Municipio_Id = new SelectList(db.Cidades, "Id", "Nome", bAIRROS.Cidade);
-            //ViewBag.Pais_Id = new SelectList(db.PAISES, "Id", "Nome", bAIRROS.Pais_Id);
+            ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", bAIRROS.Pais);
             return View(bAIRROS);
         }
 

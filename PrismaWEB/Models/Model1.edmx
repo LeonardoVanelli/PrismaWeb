@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PrismaWEBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PrismaWEBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bairros">
           <Key>
             <PropertyRef Name="Id" />
@@ -12,6 +12,8 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="120" Nullable="false" />
           <Property Name="Cidade" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="Pais" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Candidatocargo">
           <Key>
@@ -165,6 +167,30 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
             </Principal>
             <Dependent Role="Bairros">
               <PropertyRef Name="Cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bairros_Estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+          <End Role="Bairros" Type="Self.Bairros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bairros">
+              <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bairros_Paises">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="1" />
+          <End Role="Bairros" Type="Self.Bairros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bairros">
+              <PropertyRef Name="Pais" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -412,6 +438,14 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
             <End Role="Cidades" EntitySet="Cidades" />
             <End Role="Bairros" EntitySet="Bairros" />
           </AssociationSet>
+          <AssociationSet Name="FK_Bairros_Estados" Association="Self.FK_Bairros_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Bairros" EntitySet="Bairros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bairros_Paises" Association="Self.FK_Bairros_Paises">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Bairros" EntitySet="Bairros" />
+          </AssociationSet>
           <AssociationSet Name="FK_Candidatocargo_Cargos" Association="Self.FK_Candidatocargo_Cargos">
             <End Role="Cargos" EntitySet="Cargos" />
             <End Role="Candidatocargo" EntitySet="Candidatocargo" />
@@ -485,8 +519,7 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
             <End Role="Votos" EntitySet="Votos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PrismaWEBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -500,6 +533,10 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
           <NavigationProperty Name="Cidades" Relationship="Self.FK_Bairros_Cidades" FromRole="Bairros" ToRole="Cidades" />
           <NavigationProperty Name="Logradouros" Relationship="Self.FK_Logradouros_Bairros" FromRole="Bairros" ToRole="Logradouros" />
           <NavigationProperty Name="Pessoas" Relationship="Self.FK_Pessoas_Bairros" FromRole="Bairros" ToRole="Pessoas" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="Pais" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Estados" Relationship="PrismaWEBModel.FK_Bairros_Estados" FromRole="Bairros" ToRole="Estados" />
+          <NavigationProperty Name="Paises" Relationship="PrismaWEBModel.FK_Bairros_Paises" FromRole="Bairros" ToRole="Paises" />
         </EntityType>
         <EntityType Name="Candidatocargo">
           <Key>
@@ -545,6 +582,7 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
           <NavigationProperty Name="Cidades" Relationship="Self.FK_Cidades_Estados" FromRole="Estados" ToRole="Cidades" />
           <NavigationProperty Name="Paises" Relationship="Self.FK_Estados_Paises" FromRole="Estados" ToRole="Paises" />
           <NavigationProperty Name="Pessoas" Relationship="Self.FK_Pessoas_Estados" FromRole="Estados" ToRole="Pessoas" />
+          <NavigationProperty Name="Bairros" Relationship="PrismaWEBModel.FK_Bairros_Estados" FromRole="Estados" ToRole="Bairros" />
         </EntityType>
         <EntityType Name="Favoritos">
           <Key>
@@ -586,6 +624,7 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
           <Property Name="Sigla" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Estados" Relationship="Self.FK_Estados_Paises" FromRole="Paises" ToRole="Estados" />
           <NavigationProperty Name="Pessoas" Relationship="Self.FK_Pessoas_Paises" FromRole="Paises" ToRole="Pessoas" />
+          <NavigationProperty Name="Bairros" Relationship="PrismaWEBModel.FK_Bairros_Paises" FromRole="Paises" ToRole="Bairros" />
         </EntityType>
         <EntityType Name="Pessoas">
           <Key>
@@ -996,7 +1035,39 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
             <End Role="Pessoas" EntitySet="Pessoas" />
             <End Role="Votos" EntitySet="Votos" />
           </AssociationSet>
+          <AssociationSet Name="FK_Bairros_Estados" Association="PrismaWEBModel.FK_Bairros_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Bairros" EntitySet="Bairros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bairros_Paises" Association="PrismaWEBModel.FK_Bairros_Paises">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Bairros" EntitySet="Bairros" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Bairros_Estados">
+          <End Type="PrismaWEBModel.Estados" Role="Estados" Multiplicity="1" />
+          <End Type="PrismaWEBModel.Bairros" Role="Bairros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bairros">
+              <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bairros_Paises">
+          <End Type="PrismaWEBModel.Paises" Role="Paises" Multiplicity="1" />
+          <End Type="PrismaWEBModel.Bairros" Role="Bairros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bairros">
+              <PropertyRef Name="Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1006,6 +1077,8 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
           <EntitySetMapping Name="Bairros">
             <EntityTypeMapping TypeName="PrismaWEBModel.Bairros">
               <MappingFragment StoreEntitySet="Bairros">
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Cidade" ColumnName="Cidade" />

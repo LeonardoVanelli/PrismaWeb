@@ -29,7 +29,7 @@
         </div>
 
         <div class="form-group col-md-3">
-            @Html.LabelFor(model => model.PAISES.Nome, "Pais")
+            @Html.LabelFor(model => model.Paises.Nome, "Pais")
             <div class="ui-widget">
                 <select id="Pais_Id" class="ui fluid search selection dropdown dropDownSelect Pais_Id" name="Pais_Id">
                     @foreach (var item in ViewBag.Pais_Id)
@@ -37,25 +37,25 @@
                         <option value="@item.Value">@item.Text</option>
                     }
                 </select>
-                @Html.ValidationMessageFor(model => model.PAISES.Nome, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Paises.Nome, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group col-md-3">
-            @Html.LabelFor(model => model.ESTADOS.Nome, "Estado")
+            @Html.LabelFor(model => model.Estados.Nome, "Estado")
             <div class="ui-widget">
                 <select id="Estado_" class="ui fluid search selection dropdown dropDownSelect Estado_Id"></select>
                 <input class="disabled" id="Estado_Id" name="Estado_Id" TYPE="hidden" value="">
-                @Html.ValidationMessageFor(model => model.PAISES.Nome, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Paises.Nome, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group col-md-3">
-            @Html.LabelFor(model => model.MUNICIPIOS.Nome, "Municipio")
+            @Html.LabelFor(model => model.Cidades.Nome, "Municipio")
             <div class="ui-widget">
                 <select id="Municipio_" class="ui fluid search selection dropdown dropDownSelect Municipio_Id"></select>
                 <input class="disabled" id="Municipio_Id" name="Municipio_Id" TYPE="hidden" value="">
-                @Html.ValidationMessageFor(model => model.PAISES.Nome, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Paises.Nome, "", new { @class = "text-danger" })
             </div>
         </div>
 

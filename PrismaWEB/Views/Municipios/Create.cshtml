@@ -44,7 +44,7 @@
     </div>
 
     <div class="form-group col-md-3">
-        @Html.LabelFor(model => model.Paises_Id, "Pais")
+        @*@Html.LabelFor(model => model.Pais_Id, "Pais")*@
         <div class="ui-widget">
             <select id="Pais_Id" class="ui fluid search selection dropdown dropDownSelect" name="Pais_Id">
                 @foreach (var item in ViewBag.Pais_Id)
@@ -52,12 +52,12 @@
                 <option value="@item.Value">@item.Text</option>
         }
             </select>
-            @Html.ValidationMessageFor(model => model.Paises_Id, "", new { @class = "text-danger" })
+           @* @Html.ValidationMessageFor(model => model.Pais_Id, "", new { @class = "text-danger" })*@
         </div>
     </div>
 
     <div class="form-group col-md-3">
-        @Html.LabelFor(model => model.Estado_Id, "Estado")
+        @Html.LabelFor(model => model.Estado, "Estado")
         <div class="ui-widget">
             <select id="Estado_Id" class="ui fluid search selection dropdown dropDownSelect" name="Estado_Id">
                 @foreach (var item in ViewBag.Estado_Id)
@@ -65,7 +65,7 @@
                     <option value="@item.Value">@item.Text</option>
                 }
             </select>
-            @Html.ValidationMessageFor(model => model.Estado_Id, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group col-md-12">

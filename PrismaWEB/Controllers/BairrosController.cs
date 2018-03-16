@@ -50,7 +50,7 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Pais_Id,Estado_Id,Municipio_Id")] Bairros bAIRROS)
+        public ActionResult Create([Bind(Include = "Id,Nome,Pais,Estado,Cidade_Id")] Bairros bAIRROS)
         {
 
             if (ModelState.IsValid)

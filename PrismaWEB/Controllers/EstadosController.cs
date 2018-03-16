@@ -59,7 +59,7 @@ namespace PrismaWEB.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", eSTADOS.Pais);
+            ViewBag.Pais = new SelectList(db.Paises, "Id", "Nome", eSTADOS.Pais);
             return View(eSTADOS);
         }
 

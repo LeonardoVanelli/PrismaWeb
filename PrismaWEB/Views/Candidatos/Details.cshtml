@@ -156,10 +156,11 @@
 </div>
 
 <!-- TABS -->
-<div class="ui top attached tabular menu">
-    <a class="item active" data-tab="first">Cargos</a>
+<div class="ui tabular menu">
+    <div class="item" data-tab="tab-name">Gargos</div>
+    <div class="item" data-tab="tab-name2">Leis</div>
 </div>
-<div class="ui bottom attached tab segment active" data-tab="first">
+<div class="ui tab" data-tab="tab-name">
     <div class="form-group col-md-12">
         <div class="col-md-offset-2">
             <a href="@Url.Action("Create", "CandidatoCargo")/@Model.Id" class="btn btn-success"><i class="fa fa-plus"></i> Novo</a>
@@ -167,22 +168,9 @@
     </div>
     <IFRAME src="@Url.Action("index", "CandidatoCargo")/Index/@Model.Id" width="1040" height="400" scrolling="yes" frameborder="0" align="center"></IFRAME>
 </div>
+<div class="ui tab" data-tab="tab-name2">
+    Vai aparecer as leis
+</div>
 <!--FIM-->
 
 <script src="~/Content/js/helper/DisableCampos.js"></script>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!--<IFRAME src="@Url.Action("Create", "CandidatoCargo")/@Model.Id" width="400" height="400" scrolling="yes" frameborder="0" align="center"></IFRAME>-->
-            </div>
-        </div>
-    </div>
-</div>

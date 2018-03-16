@@ -156,6 +156,7 @@
     <Compile Include="Controllers\CbControllerController.cs" />
     <Compile Include="Controllers\EstadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeisController.cs" />
     <Compile Include="Controllers\MunicipiosController.cs" />
     <Compile Include="Controllers\PaisesController.cs" />
     <Compile Include="Controllers\CandidatosController.cs" />
@@ -482,6 +483,11 @@
     <Content Include="Views\CandidatoCargo\Edit.cshtml" />
     <Content Include="Views\CandidatoCargo\Index.cshtml" />
     <Content Include="Views\Shared\_ViewStartSemLayout.cshtml" />
+    <Content Include="Views\Leis\Create.cshtml" />
+    <Content Include="Views\Leis\Delete.cshtml" />
+    <Content Include="Views\Leis\Details.cshtml" />
+    <Content Include="Views\Leis\Edit.cshtml" />
+    <Content Include="Views\Leis\Index.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -519,7 +525,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>4285</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

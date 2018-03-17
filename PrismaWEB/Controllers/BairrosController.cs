@@ -50,21 +50,21 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Pais,Estado,Cidade_Id")] Bairros bAIRROS)
+        public ActionResult Create(Bairros bairro)
         {
-
+            bairro.Id = GetHashCode();
             if (ModelState.IsValid)
             {
-                bAIRROS.Id = bAIRROS.GetHashCode();
-                db.Bairros.Add(bAIRROS);
+                bairro.Id = bairro.GetHashCode();
+                db.Bairros.Add(bairro);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.Estado_Id = new SelectList(db.Estados, "Id", "Nome", bAIRROS.Estado_Id);
-            ViewBag.Municipio_Id = new SelectList(db.Cidades, "Id", "Nome", bAIRROS.Cidade);
-            //ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", bAIRROS.Pais_Id);
-            return View(bAIRROS);
+            ViewBag.Estado_Id = new SelectList(db.Estados, "Id", "Nome", bairro.Estado);
+            ViewBag.Municipio_Id = new SelectList(db.Cidades, "Id", "Nome", bairro.Cidade);
+            ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", bairro.Estado);
+            return View(bairro);
         }
 
         // GET: Bairros/Edit/5

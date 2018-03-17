@@ -155,6 +155,7 @@
     <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\CbControllerController.cs" />
     <Compile Include="Controllers\EstadosController.cs" />
+    <Compile Include="Controllers\FuncionariosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeisController.cs" />
     <Compile Include="Controllers\MunicipiosController.cs" />
@@ -488,6 +489,11 @@
     <Content Include="Views\Leis\Details.cshtml" />
     <Content Include="Views\Leis\Edit.cshtml" />
     <Content Include="Views\Leis\Index.cshtml" />
+    <Content Include="Views\Funcionarios\Create.cshtml" />
+    <Content Include="Views\Funcionarios\Delete.cshtml" />
+    <Content Include="Views\Funcionarios\Details.cshtml" />
+    <Content Include="Views\Funcionarios\Edit.cshtml" />
+    <Content Include="Views\Funcionarios\Index.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

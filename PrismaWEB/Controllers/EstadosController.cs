@@ -49,7 +49,7 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Pais_Id")] Estados eSTADOS)
+        public ActionResult Create([Bind(Include = "Id,Nome,Pais")] Estados eSTADOS)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Pais_Id")] Estados eSTADOS)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Pais")] Estados eSTADOS)
         {
             if (ModelState.IsValid)
             {

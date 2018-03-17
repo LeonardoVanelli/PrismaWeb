@@ -41,6 +41,7 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="120" />
           <Property Name="Estado" Type="int" />
+          <Property Name="Pais" Type="int" />
         </EntityType>
         <EntityType Name="Estados">
           <Key>
@@ -227,6 +228,18 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
             </Principal>
             <Dependent Role="Cidades">
               <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cidades_Paises">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+          <End Role="Cidades" Type="Self.Cidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cidades">
+              <PropertyRef Name="Pais" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -458,6 +471,10 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Cidades" EntitySet="Cidades" />
           </AssociationSet>
+          <AssociationSet Name="FK_Cidades_Paises" Association="Self.FK_Cidades_Paises">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Cidades" EntitySet="Cidades" />
+          </AssociationSet>
           <AssociationSet Name="FK_Estados_Paises" Association="Self.FK_Estados_Paises">
             <End Role="Paises" EntitySet="Paises" />
             <End Role="Estados" EntitySet="Estados" />
@@ -570,6 +587,8 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
           <NavigationProperty Name="Bairros" Relationship="Self.FK_Bairros_Cidades" FromRole="Cidades" ToRole="Bairros" />
           <NavigationProperty Name="Estados" Relationship="Self.FK_Cidades_Estados" FromRole="Cidades" ToRole="Estados" />
           <NavigationProperty Name="Pessoas" Relationship="Self.FK_Pessoas_Cidades" FromRole="Cidades" ToRole="Pessoas" />
+          <Property Name="Pais" Type="Int32" />
+          <NavigationProperty Name="Paises" Relationship="PrismaWEBModel.FK_Cidades_Paises" FromRole="Cidades" ToRole="Paises" />
         </EntityType>
         <EntityType Name="Estados">
           <Key>
@@ -625,6 +644,7 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
           <NavigationProperty Name="Estados" Relationship="Self.FK_Estados_Paises" FromRole="Paises" ToRole="Estados" />
           <NavigationProperty Name="Pessoas" Relationship="Self.FK_Pessoas_Paises" FromRole="Paises" ToRole="Pessoas" />
           <NavigationProperty Name="Bairros" Relationship="PrismaWEBModel.FK_Bairros_Paises" FromRole="Paises" ToRole="Bairros" />
+          <NavigationProperty Name="Cidades" Relationship="PrismaWEBModel.FK_Cidades_Paises" FromRole="Paises" ToRole="Cidades" />
         </EntityType>
         <EntityType Name="Pessoas">
           <Key>
@@ -1043,6 +1063,10 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
             <End Role="Paises" EntitySet="Paises" />
             <End Role="Bairros" EntitySet="Bairros" />
           </AssociationSet>
+          <AssociationSet Name="FK_Cidades_Paises" Association="PrismaWEBModel.FK_Cidades_Paises">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Cidades" EntitySet="Cidades" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_Bairros_Estados">
           <End Type="PrismaWEBModel.Estados" Role="Estados" Multiplicity="1" />
@@ -1064,6 +1088,18 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Bairros">
+              <PropertyRef Name="Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cidades_Paises">
+          <End Type="PrismaWEBModel.Paises" Role="Paises" Multiplicity="0..1" />
+          <End Type="PrismaWEBModel.Cidades" Role="Cidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cidades">
               <PropertyRef Name="Pais" />
             </Dependent>
           </ReferentialConstraint>
@@ -1109,6 +1145,7 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
           <EntitySetMapping Name="Cidades">
             <EntityTypeMapping TypeName="PrismaWEBModel.Cidades">
               <MappingFragment StoreEntitySet="Cidades">
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />

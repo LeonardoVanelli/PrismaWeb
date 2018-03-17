@@ -34,7 +34,7 @@
                                 @Html.DisplayFor(modelItem => item.Estados.Nome)
                             </td>
                             <td>
-                                <!--Html.DisplayFor(modelItem => item.Paises.Nome)-->  <!--Falta o arroba, mas assim não da erro-->
+                                @Html.DisplayFor(modelItem => item.Paises.Nome)  
                             </td>
                             <td>
                                 <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" title="Editar">
@@ -101,4 +101,4 @@
                 $('.success-message').html('').html('Deseja deletar este item?');
             });
         });
-</script>
+</script>aasd

@@ -12,28 +12,27 @@ namespace PrismaWEB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Paises
+    public partial class Bairros
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Paises()
+        public Bairros()
         {
-            this.Estados = new HashSet<Estados>();
+            this.Logradouros = new HashSet<Logradouros>();
             this.Pessoas = new HashSet<Pessoas>();
-            this.Bairros = new HashSet<Bairros>();
-            this.Cidades = new HashSet<Cidades>();
         }
     
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Sigla { get; set; }
+        public int Cidade { get; set; }
+        public int Estado { get; set; }
+        public int Pais { get; set; }
     
+        public virtual Cidades Cidades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Estados> Estados { get; set; }
+        public virtual ICollection<Logradouros> Logradouros { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pessoas> Pessoas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bairros> Bairros { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cidades> Cidades { get; set; }
+        public virtual Estados Estados { get; set; }
+        public virtual Paises Paises { get; set; }
     }
 }

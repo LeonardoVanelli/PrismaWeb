@@ -50,7 +50,7 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Pais_Id,Estado_Id")] Cidades Municipio)
+        public ActionResult Create([Bind(Include = "Id,Nome,Pais_Id,Estado")] Cidades Municipio)
         {
             //var erro = new MunicipioValidate().Validacao(Municipio);
             if (ModelState.IsValid /*&& erro == ""*/)
@@ -62,7 +62,7 @@ namespace PrismaWEB.Controllers
 
             //ViewBag.Error = erro;
             ViewBag.Estado_Id = new SelectList(db.Estados, "Id", "Nome", Municipio.Estado);
-            //ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", Municipio.Pais_Id);
+            //ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", Municipio.Pais);
             return View(Municipio);
         }
 

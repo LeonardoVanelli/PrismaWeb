@@ -1,0 +1,45 @@
+﻿@model PrismaWEB.Models.Votocandidatolei
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="form-row">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group col-md-12">
+        <div class="col-md-offset-2">
+            <a href="@Url.Action("Create")" class="btn btn-success">Novo</a>
+            <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-info">Editar</a>
+            <a href="@Url.Action("Delete", new { id = Model.Id })" class="btn btn-danger">Deletar</a>
+            <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </div>    
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Votou, "Votou")
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Votou)
+        </div>
+    </div>   
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.DataCriacao, "DataCriacao")
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.DataCriacao)
+        </div>
+    </div>   
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Leis, "Leis")
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Leis)
+        </div>
+    </div>   
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Pessoas, "Pessoas")
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Pessoas)
+        </div>
+    </div>   
+</div>
+
+<p>
+<script src="~/Content/js/helper/DisableCampos.js"></script>
+</p>

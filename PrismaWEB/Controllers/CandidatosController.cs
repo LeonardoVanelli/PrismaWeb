@@ -63,11 +63,11 @@ namespace PrismaWEB.Controllers
         public ActionResult Create([Bind(Include = "Id,nome,DataNascimento,Cpf,Foto,DataCriacao,DataAlteracao,Ativo,Email,TelefoneFixo,TelefoneMovel,Endereco,Pais_Id,Estado_Id,Cidade_Id,Bairro_Id,Logradouro_Id,Cep,Numero,Complemento")] Pessoas Candidato)
         {
             var erro = new CandidatoValidate().Validacao(Candidato);
-
+            Candidato.Id = Candidato.GetHashCode();
+            Candidato.Tipo = 1;
+            Candidato.DataCriacao = DateTime.Now;
             if (ModelState.IsValid && erro == "")
             {                
-                Candidato.Id = Candidato.GetHashCode();
-                Candidato.Tipo = 1;
                 db.Pessoas.Add(Candidato);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -109,6 +109,7 @@ namespace PrismaWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,nome,DataNascimento,Cpf,Foto,DataCriacao,DataAlteracao,Ativo,Email,TelefoneFixo,TelefoneMovel,Endereco,Pais_Id,Estado_Id,Municipio_Id,Bairro_Id,Logradouro_Id,Cep,Numero,Complemento")] Pessoas Candidato)
         {
+            Candidato.DataAlteracao = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Entry(Candidato).State = EntityState.Modified;

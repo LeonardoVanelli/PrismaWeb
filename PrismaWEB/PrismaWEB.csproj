@@ -162,6 +162,7 @@
     <Compile Include="Controllers\PaisesController.cs" />
     <Compile Include="Controllers\CandidatosController.cs" />
     <Compile Include="Controllers\SelectLocalizacaoController.cs" />
+    <Compile Include="Controllers\VotoCandidatoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -489,6 +490,11 @@
     <Content Include="Views\Leis\Details.cshtml" />
     <Content Include="Views\Leis\Edit.cshtml" />
     <Content Include="Views\Leis\Index.cshtml" />
+    <Content Include="Views\VotoCandidato\Create.cshtml" />
+    <Content Include="Views\VotoCandidato\Delete.cshtml" />
+    <Content Include="Views\VotoCandidato\Details.cshtml" />
+    <Content Include="Views\VotoCandidato\Edit.cshtml" />
+    <Content Include="Views\VotoCandidato\Index.cshtml" />
     <Content Include="Views\Funcionarios\Create.cshtml" />
     <Content Include="Views\Funcionarios\Delete.cshtml" />
     <Content Include="Views\Funcionarios\Details.cshtml" />

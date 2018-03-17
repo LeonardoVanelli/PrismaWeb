@@ -17,14 +17,15 @@
 
         <div class="form-group col-md-12">
             <div class="col-md-offset-2">
-                <a href="@Url.Action("Create", "CandidatoCargo")/@ViewBag.Candidato_Id.Id" class="btn btn-success">Novo</a>     
+                <input type="submit" value="Salvar" class="btn btn-success" />   
             </div>
         </div>
 
         <div class="form-group col-md-3">
             @Html.LabelFor(model => model.Candidato_Id, "Candidato")
-            <div class="ui-widget">                
-                <input type="text" class="form-control text-box single-line" id="Candidato_Id" name="Candidato_Id" value="@ViewBag.Candidato_Id.Id">
+            <div class="ui-widget">             
+                <input class="form-control text-box single-line disable" value="@ViewBag.Candidato_Id.Nome"/>
+                <input type="text" style="display:none" class="form-control text-box single-line" id="Candidato_Id" name="Candidato_Id" value="@ViewBag.Candidato_Id.Id">
                 @Html.ValidationMessageFor(model => model.Candidato_Id, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -57,4 +58,8 @@
         </div>
     </div>
 }
+
+<script>
+    $(".form-control").attr("disabled", "disabled").off('click');
+</script>
 

@@ -157,19 +157,14 @@
 
 <!-- TABS -->
 <div class="ui tabular menu">
-    <div class="item" data-tab="tab-name">Gargos</div>
+    <div class="item" data-tab="tab-name">Cargos</div>
     <div class="item" data-tab="tab-name2">Leis</div>
 </div>
 <div class="ui tab" data-tab="tab-name">
-    <div class="form-group col-md-12">
-        <div class="col-md-offset-2">
-            <a href="@Url.Action("Create", "CandidatoCargo")/@Model.Id" class="btn btn-success"><i class="fa fa-plus"></i> Novo</a>
-        </div>
-    </div>
-    <IFRAME src="@Url.Action("index", "CandidatoCargo")/Index/@Model.Id" width="1040" height="400" scrolling="yes" frameborder="0" align="center"></IFRAME>
+    <IFRAME src="@Url.Action("index", "CandidatoCargo")/index/@Model.Id" width="1040" height="400" scrolling="yes" frameborder="0" ></IFRAME>
 </div>
 <div class="ui tab" data-tab="tab-name2">
-    Vai aparecer as leis
+    <IFRAME src="@Url.Action("index", "VotoCandidato")/index/@Model.Id" width="1040" height="400" scrolling="yes" frameborder="0" ></IFRAME>
 </div>
 <!--FIM-->
 

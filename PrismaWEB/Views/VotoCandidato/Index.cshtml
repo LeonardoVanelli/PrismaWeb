@@ -1,4 +1,8 @@
-﻿@model IEnumerable<PrismaWEB.Models.Estados>
+﻿@model IEnumerable<PrismaWEB.Models.Votocandidatolei>
+
+@{
+    Layout = "~/Views/Shared/_ViewStartSemLayout.cshtml";
+}
 
 @{
     ViewBag.Title = "Index";
@@ -6,43 +10,47 @@
 
 <div class="card mb-3">
     <div class="card-header">
-        <a href="@Url.Action("Create")" class="btn btn-success"><i class="fa fa-plus"></i> Novo</a>
+        <a href="@Url.Action("Create/"+ViewBag.Candidato)" class="btn btn-success"><i class="fa fa-plus"></i> Novo</a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>                            
-                            @Html.DisplayNameFor(model => model.Nome)
+                        <th>
+                            @Html.DisplayNameFor(model => model.Leis.Nome)
                         </th>
                         <th>
-                            <label>País</label>
+                            @Html.DisplayNameFor(model => model.Votou)
+                        </th>
+                        <th>
+                            Data de Cadastro
                         </th>
                         <th>Ações</th>
                     </tr>
-                </thead>                
+                </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                <a href="@Url.Action("Details/"+item.Id)" class="removeAzulLink">
-                                    @Html.DisplayFor(modelItem => item.Nome)
-                                </a>
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Paises.Nome, "Pais")
-                            </td>
-                            <td>
-                                <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" title="Editar">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                                </a>
-                                <a class="btn btn-danger btn-sm delete-prompt" href="javascript:void(0)" id="@item.Id" data-toggle="modal" data-target="#ModalDelete" title="Deletar">
-                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                </a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Leis.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Votou)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataCriacao)
+                        </td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" title="Editar">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            <a class="btn btn-danger btn-sm delete-prompt" href="javascript:void(0)" id="@item.Id" data-toggle="modal" data-target="#ModalDelete" title="Deletar">
+                                <i class="fa fa-minus" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

@@ -12,14 +12,14 @@ namespace PrismaWEB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CANDIDATOCARGO
+    public partial class Candidatocargo
     {
         public int Id { get; set; }
         public int Candidato_Id { get; set; }
         public int Cargo_Id { get; set; }
-        public System.DateTime DataCriacao { get; set; }
+        public Nullable<System.DateTime> DataCriacao { get; set; }
     
-        public virtual CARGOS CARGOS { get; set; }
-        public virtual PESSOAS PESSOAS { get; set; }
+        public virtual Cargos Cargos { get; set; }
+        public virtual Pessoas Pessoas { get; set; }
     }
 }

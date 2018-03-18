@@ -1,0 +1,74 @@
+﻿@model PrismaWEB.Models.Votocandidatolei
+
+@{
+    Layout = "~/Views/Shared/_ViewStartSemLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-row">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group col-md-12">
+        <div class="col-md-offset-2">
+            <input type="submit" value="Salvar" class="btn btn-success" />
+            <input id="SaveAndNew" type="submit" value="Salvar/Novo" class="btn btn-info" />
+            <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </div>
+
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Candidato_Id, "Candidato")
+        <div class="ui-widget">
+            <input type="text" value="@ViewBag.Candidato_Id.Nome" class="form-control" />
+            <input type="text" name="Candidato_Id" id="Candidato_Id" value="@ViewBag.Candidato_Id.Id" class="form-control" style="display:none" />
+            @Html.ValidationMessageFor(model => model.Candidato_Id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Lei_Id, "Lei")
+        <div class="ui-widget">
+            <input type="text" value="@ViewBag.Lei_Id.Nome" class="form-control" />
+            <input type="text" name="Lei_Id" id="Lei_Id" value="@ViewBag.Lei_Id.Id" class="form-control" style="display:none" />
+            @Html.ValidationMessageFor(model => model.Lei_Id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.Votou)
+        <div class="ui-widget">
+            <select id="voto" class="ui fluid search selection dropdown dropDownSelect voto" name="voto">
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.Votou, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-12" style="display:none">
+        @Html.LabelFor(model => model.DataCriacao)
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.DataCriacao, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DataCriacao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-12">
+        <div class="col-md-offset-2">
+            <input type="submit" value="Salvar" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+

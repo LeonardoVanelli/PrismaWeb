@@ -1,0 +1,65 @@
+﻿@model PrismaWEB.Models.Candidatocargo
+
+@{
+    Layout = "~/Views/Shared/_ViewStartSemLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-row">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group col-md-12">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Salvar" class="btn btn-success" />   
+            </div>
+        </div>
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.Candidato_Id, "Candidato")
+            <div class="ui-widget">             
+                <input class="form-control text-box single-line disable" value="@ViewBag.Candidato_Id.Nome"/>
+                <input type="text" style="display:none" class="form-control text-box single-line" id="Candidato_Id" name="Candidato_Id" value="@ViewBag.Candidato_Id.Id">
+                @Html.ValidationMessageFor(model => model.Candidato_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.Cargo_Id, "Cargo")
+            <div class="ui-widget">
+                <select id="Cargo_Id" class="ui fluid search selection dropdown dropDownSelect Cargo_Id" name="Cargo_Id">
+                    @foreach (var item in ViewBag.Cargo_Id)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.Cargo_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-12" style="display:none">
+            @Html.LabelFor(model => model.DataCriacao)
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.DataCriacao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataCriacao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Salvar" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $(".form-control").attr("disabled", "disabled").off('click');
+</script>
+

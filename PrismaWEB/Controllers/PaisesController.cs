@@ -12,12 +12,12 @@ namespace PrismaWEB.Controllers
 {
     public class PaisesController : Controller
     {
-        private PrismaEntities db = new PrismaEntities();
+        private PrismaDBEntities db = new PrismaDBEntities();
 
         // GET: Paises
         public ActionResult Index()
         {
-            return View(db.PAISES.ToList());
+            return View(db.Paises.ToList());
         }
 
         // GET: Paises/Details/5
@@ -27,7 +27,7 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PAISES pAISES = db.PAISES.Find(id);
+            Paises pAISES = db.Paises.Find(id);
             if (pAISES == null)
             {
                 return HttpNotFound();
@@ -46,11 +46,11 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome")] PAISES pAISES)
+        public ActionResult Create([Bind(Include = "Id,Nome")] Paises pAISES)
         {
             if (ModelState.IsValid)
             {
-                db.PAISES.Add(pAISES);
+                db.Paises.Add(pAISES);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PAISES pAISES = db.PAISES.Find(id);
+            Paises pAISES = db.Paises.Find(id);
             if (pAISES == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome")] PAISES pAISES)
+        public ActionResult Edit([Bind(Include = "Id,Nome")] Paises pAISES)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PAISES pAISES = db.PAISES.Find(id);
+            Paises pAISES = db.Paises.Find(id);
             if (pAISES == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace PrismaWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PAISES pAISES = db.PAISES.Find(id);
-            db.PAISES.Remove(pAISES);
+            Paises pAISES = db.Paises.Find(id);
+            db.Paises.Remove(pAISES);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

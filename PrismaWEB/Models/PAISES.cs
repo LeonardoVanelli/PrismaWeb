@@ -12,30 +12,31 @@ namespace PrismaWEB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PAISES
+    public partial class Paises
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PAISES()
+        public Paises()
         {
-            this.BAIRROS = new HashSet<BAIRROS>();
-            this.ESTADOS = new HashSet<ESTADOS>();
-            this.LOGRADOUROS = new HashSet<LOGRADOUROS>();
-            this.MUNICIPIOS = new HashSet<MUNICIPIOS>();
-            this.PESSOAS = new HashSet<PESSOAS>();
+            this.Estados = new HashSet<Estados>();
+            this.Pessoas = new HashSet<Pessoas>();
+            this.Bairros = new HashSet<Bairros>();
+            this.Cidades = new HashSet<Cidades>();
+            this.Logradouros = new HashSet<Logradouros>();
         }
     
         public int Id { get; set; }
         public string Nome { get; set; }
+        public string Sigla { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BAIRROS> BAIRROS { get; set; }
+        public virtual ICollection<Estados> Estados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ESTADOS> ESTADOS { get; set; }
+        public virtual ICollection<Pessoas> Pessoas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LOGRADOUROS> LOGRADOUROS { get; set; }
+        public virtual ICollection<Bairros> Bairros { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MUNICIPIOS> MUNICIPIOS { get; set; }
+        public virtual ICollection<Cidades> Cidades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PESSOAS> PESSOAS { get; set; }
+        public virtual ICollection<Logradouros> Logradouros { get; set; }
     }
 }

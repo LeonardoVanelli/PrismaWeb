@@ -151,36 +151,49 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BairrosController.cs" />
+    <Compile Include="Controllers\CandidatoCargoController.cs" />
     <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\CbControllerController.cs" />
     <Compile Include="Controllers\EstadosController.cs" />
+    <Compile Include="Controllers\FuncionariosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeisController.cs" />
+    <Compile Include="Controllers\LogradourosController.cs" />
     <Compile Include="Controllers\MunicipiosController.cs" />
     <Compile Include="Controllers\PaisesController.cs" />
     <Compile Include="Controllers\CandidatosController.cs" />
     <Compile Include="Controllers\SelectLocalizacaoController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Controllers\VotoCandidatoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BAIRROS.cs">
+    <Compile Include="Models\Bairros.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CANDIDATOCARGO.cs">
+    <Compile Include="Models\Candidatocargo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CARGOS.cs">
+    <Compile Include="Models\Cargos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ESTADOS.cs">
+    <Compile Include="Models\Cidades.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FAVORIOS.cs">
+    <Compile Include="Models\database_firewall_rules.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LEIS.cs">
+    <Compile Include="Models\Enumerables\TipoPessoa.cs" />
+    <Compile Include="Models\Estados.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LOGRADOUROS.cs">
+    <Compile Include="Models\Favoritos.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Leis.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Logradouros.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
@@ -198,22 +211,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\MUNICIPIOS.cs">
+    <Compile Include="Models\Paises.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PAISES.cs">
+    <Compile Include="Models\Pessoas.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PESSOAS.cs">
+    <Compile Include="Models\Presidentes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PRESIDENTES.cs">
+    <Compile Include="Models\Votocandidatolei.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VOTOCANDIDATOLEI.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VOTOS.cs">
+    <Compile Include="Models\Votos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -221,6 +231,10 @@
     <Compile Include="Validacoes\MunicipioValidate.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\PrismaWEBDesenv.mdf" />
+    <Content Include="App_Data\PrismaWEBDesenv_log.ldf">
+      <DependentUpon>PrismaWEBDesenv.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\helper\ComboBox.css" />
@@ -467,6 +481,37 @@
     <Content Include="Views\Cargos\Details.cshtml" />
     <Content Include="Views\Cargos\Edit.cshtml" />
     <Content Include="Views\Cargos\Index.cshtml" />
+    <Content Include="Views\CandidatoCargo\Create.cshtml" />
+    <Content Include="Views\CandidatoCargo\Delete.cshtml" />
+    <Content Include="Views\CandidatoCargo\Details.cshtml" />
+    <Content Include="Views\CandidatoCargo\Edit.cshtml" />
+    <Content Include="Views\CandidatoCargo\Index.cshtml" />
+    <Content Include="Views\Shared\_ViewStartSemLayout.cshtml" />
+    <Content Include="Views\Leis\Create.cshtml" />
+    <Content Include="Views\Leis\Delete.cshtml" />
+    <Content Include="Views\Leis\Details.cshtml" />
+    <Content Include="Views\Leis\Edit.cshtml" />
+    <Content Include="Views\Leis\Index.cshtml" />
+    <Content Include="Views\VotoCandidato\Create.cshtml" />
+    <Content Include="Views\VotoCandidato\Delete.cshtml" />
+    <Content Include="Views\VotoCandidato\Details.cshtml" />
+    <Content Include="Views\VotoCandidato\Edit.cshtml" />
+    <Content Include="Views\VotoCandidato\Index.cshtml" />
+    <Content Include="Views\Funcionarios\Create.cshtml" />
+    <Content Include="Views\Funcionarios\Delete.cshtml" />
+    <Content Include="Views\Funcionarios\Details.cshtml" />
+    <Content Include="Views\Funcionarios\Edit.cshtml" />
+    <Content Include="Views\Funcionarios\Index.cshtml" />
+    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\Delete.cshtml" />
+    <Content Include="Views\Usuarios\Details.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Logradouros\Create.cshtml" />
+    <Content Include="Views\Logradouros\Delete.cshtml" />
+    <Content Include="Views\Logradouros\Details.cshtml" />
+    <Content Include="Views\Logradouros\Edit.cshtml" />
+    <Content Include="Views\Logradouros\Index.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -474,9 +519,7 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
@@ -506,7 +549,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>4285</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

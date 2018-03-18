@@ -12,14 +12,13 @@ namespace PrismaWEB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class FAVORIOS
+    public partial class database_firewall_rules
     {
-        public int Id { get; set; }
-        public int Usuario_Id { get; set; }
-        public int Candidato_Id { get; set; }
-        public System.DateTime DataCriacao { get; set; }
-    
-        public virtual PESSOAS PESSOAS { get; set; }
-        public virtual PESSOAS PESSOAS1 { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string start_ip_address { get; set; }
+        public string end_ip_address { get; set; }
+        public System.DateTime create_date { get; set; }
+        public System.DateTime modify_date { get; set; }
     }
 }

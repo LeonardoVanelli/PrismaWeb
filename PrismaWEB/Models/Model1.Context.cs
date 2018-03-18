@@ -13,10 +13,10 @@ namespace PrismaWEB.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PrismaEntities : DbContext
+    public partial class PrismaDBEntities : DbContext
     {
-        public PrismaEntities()
-            : base("name=PrismaEntities")
+        public PrismaDBEntities()
+            : base("name=PrismaDBEntities")
         {
         }
     
@@ -25,18 +25,19 @@ namespace PrismaWEB.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<BAIRROS> BAIRROS { get; set; }
-        public virtual DbSet<CANDIDATOCARGO> CANDIDATOCARGO { get; set; }
-        public virtual DbSet<CARGOS> CARGOS { get; set; }
-        public virtual DbSet<ESTADOS> ESTADOS { get; set; }
-        public virtual DbSet<FAVORIOS> FAVORIOS { get; set; }
-        public virtual DbSet<LEIS> LEIS { get; set; }
-        public virtual DbSet<LOGRADOUROS> LOGRADOUROS { get; set; }
-        public virtual DbSet<MUNICIPIOS> MUNICIPIOS { get; set; }
-        public virtual DbSet<PAISES> PAISES { get; set; }
-        public virtual DbSet<PESSOAS> PESSOAS { get; set; }
-        public virtual DbSet<PRESIDENTES> PRESIDENTES { get; set; }
-        public virtual DbSet<VOTOCANDIDATOLEI> VOTOCANDIDATOLEI { get; set; }
-        public virtual DbSet<VOTOS> VOTOS { get; set; }
+        public virtual DbSet<Bairros> Bairros { get; set; }
+        public virtual DbSet<Candidatocargo> Candidatocargo { get; set; }
+        public virtual DbSet<Cargos> Cargos { get; set; }
+        public virtual DbSet<Cidades> Cidades { get; set; }
+        public virtual DbSet<Estados> Estados { get; set; }
+        public virtual DbSet<Favoritos> Favoritos { get; set; }
+        public virtual DbSet<Leis> Leis { get; set; }
+        public virtual DbSet<Logradouros> Logradouros { get; set; }
+        public virtual DbSet<Paises> Paises { get; set; }
+        public virtual DbSet<Pessoas> Pessoas { get; set; }
+        public virtual DbSet<Presidentes> Presidentes { get; set; }
+        public virtual DbSet<Votocandidatolei> Votocandidatolei { get; set; }
+        public virtual DbSet<Votos> Votos { get; set; }
+        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     }
 }

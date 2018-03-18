@@ -8,16 +8,16 @@ namespace PrismaWEB.Validacoes
 {
     public class MunicipioValidate
     {
-        private PrismaEntities db = new PrismaEntities();
-        public string Validacao(MUNICIPIOS municipio)
+        private PrismaDBEntities db = new PrismaDBEntities();
+        public string Validacao(Cidades municipio)
         {
-            var erro = "";
-            var queryResult = db.MUNICIPIOS.SqlQuery($"Select * from municipios m where nome = '{municipio.Nome}' and Estado_Id = {municipio.Estado_Id}");
-            if (queryResult.Count() > 0)
-            {
-                erro = "Este Municipio ja esta cadastrado";
-            }
-            return erro;
+            //var erro = "";
+            //var queryResult = db.Cidades.SqlQuery($"Select * from municipios m where nome = '{municipio.Nome}' and Estado_Id = {municipio.Cidad}");
+            //if (queryResult.Count() > 0)
+            //{
+            //    erro = "Este Municipio ja esta cadastrado";
+            //}
+            return "";
         }
     }
 }

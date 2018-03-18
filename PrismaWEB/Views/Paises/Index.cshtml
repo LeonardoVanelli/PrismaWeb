@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PrismaWEB.Models.PAISES>
+﻿@model IEnumerable<PrismaWEB.Models.Paises>
 
 @{
     ViewBag.Title = "Index";
@@ -24,13 +24,16 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Nome)
+                                <a href="@Url.Action("Details/"+item.Id)" class="removeAzulLink">
+                                    @Html.DisplayFor(modelItem => item.Nome)
+                                </a>
+                               
                             </td>
                             <td>
                                 <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" title="Editar">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </a>
-                                <a class="btn btn-danger btn-sm delete-prompt" href="javascript:void(0)" id="@item.Id" data-toggle="tooltip" title="Deletar">
+                                <a class="btn btn-danger btn-sm delete-prompt" href="javascript:void(0)" id="@item.Id" data-toggle="modal" data-target="#ModalDelete" title="Deletar">
                                     <i class="fa fa-minus" aria-hidden="true"></i>
                                 </a>
                             </td>
@@ -72,7 +75,6 @@
             var pryEmpId;
             $('.delete-prompt').click(function () {
                 pryEmpId = $(this).attr('id');
-                $('#ModalDelete').modal('show');
             });
 
             $('.delete-confirm').click(function () {

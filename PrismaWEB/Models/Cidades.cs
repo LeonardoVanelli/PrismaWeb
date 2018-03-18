@@ -12,28 +12,28 @@ namespace PrismaWEB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MUNICIPIOS
+    public partial class Cidades
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MUNICIPIOS()
+        public Cidades()
         {
-            this.BAIRROS = new HashSet<BAIRROS>();
-            this.LOGRADOUROS = new HashSet<LOGRADOUROS>();
-            this.PESSOAS = new HashSet<PESSOAS>();
+            this.Bairros = new HashSet<Bairros>();
+            this.Pessoas = new HashSet<Pessoas>();
+            this.Logradouros = new HashSet<Logradouros>();
         }
     
         public int Id { get; set; }
         public string Nome { get; set; }
-        public int Pais_Id { get; set; }
-        public int Estado_Id { get; set; }
+        public Nullable<int> Estado { get; set; }
+        public Nullable<int> Pais { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BAIRROS> BAIRROS { get; set; }
-        public virtual ESTADOS ESTADOS { get; set; }
+        public virtual ICollection<Bairros> Bairros { get; set; }
+        public virtual Estados Estados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LOGRADOUROS> LOGRADOUROS { get; set; }
-        public virtual PAISES PAISES { get; set; }
+        public virtual ICollection<Pessoas> Pessoas { get; set; }
+        public virtual Paises Paises { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PESSOAS> PESSOAS { get; set; }
+        public virtual ICollection<Logradouros> Logradouros { get; set; }
     }
 }

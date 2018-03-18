@@ -8,10 +8,10 @@ namespace PrismaWEB.Validacoes
 {
     public class CandidatoValidate
     {
-        public string Validacao(PESSOAS pessoa /*PRESIDENTES presidente*/)
+        public string Validacao(Pessoas pessoa /*PRESIDENTES presidente*/)
         {
             var error = "";
-            if (pessoa.nome == null)
+            if (pessoa.Nome == null)
             {
                 return "Falta preencher campo NOME";
             }
@@ -36,15 +36,15 @@ namespace PrismaWEB.Validacoes
                 return "Falta preencher campo ATIVO";
             }
 
-            if (pessoa.TelefoneFixo == null)
-            {
-                return "Falta preencher campo TELEFONE FIXO";
-            }
+            //if (pessoa.TelefoneFixo == null)
+            //{
+            //    return "Falta preencher campo TELEFONE FIXO";
+            //}
 
-            if (pessoa.TelefoneMovel == null)
-            {
-                return "Falta preencher campo TELEFONE MOVEL";
-            }
+            //if (pessoa.TelefoneMovel == null)
+            //{
+            //    return "Falta preencher campo TELEFONE MOVEL";
+            //}
 
             if (pessoa.Pais_Id == null)
             {
@@ -56,7 +56,7 @@ namespace PrismaWEB.Validacoes
                 return "Falta preencher campo ESTADO";
             }
 
-            if (pessoa.Municipio_Id == null)
+            if (pessoa.Cidade_Id == null)
             {
                 return "Falta preencher campo MUNICIPIO";
             }
@@ -66,24 +66,24 @@ namespace PrismaWEB.Validacoes
                 return "Falta preencher campo BAIRRO";
             }
 
-            if (pessoa.Logradouro_Id == null)
-            {
-                return "Falta preencher campo LOGRADOURO";
-            }
+            //if (pessoa.Logradouro_Id == null)
+            //{
+            //    return "Falta preencher campo LOGRADOURO";
+            //}
 
-            if (pessoa.Cep == null)
-            {
-                return "Falta preencher campo CEP";
-            }
+            //if (pessoa.Cep == null)
+            //{
+            //    return "Falta preencher campo CEP";
+            //}
 
-            if (pessoa.Numero == null)
-            {
-                return "Falta preencher campo NUMERO";
-            }
-            if (pessoa.Complemento == null)
-            {
-                return "Falta preencher campo COMPLEMENTO";
-            }
+            //if (pessoa.Numero == null)
+            //{
+            //    return "Falta preencher campo NUMERO";
+            //}
+            //if (pessoa.Complemento == null)
+            //{
+            //    return "Falta preencher campo COMPLEMENTO";
+            //}
             return error;
         }
     }

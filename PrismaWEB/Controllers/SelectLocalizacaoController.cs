@@ -9,11 +9,11 @@ namespace PrismaWEB.Controllers
 {
     public class SelectLocalizacaoController : Controller
     {
-        private PrismaEntities db = new PrismaEntities();
+        private PrismaDBEntities db = new PrismaDBEntities();
         // GET: SelectLocalizacao
         public JsonResult RetornaEstados(int Id)
         {
-            var estados = db.ESTADOS.Where(m => m.Pais_Id == Id).ToList();
+            var estados = db.Estados.Where(m => m.Pais == Id).ToList();
             var obj = new List<object>();
             foreach (var item in estados)
             {
@@ -24,7 +24,7 @@ namespace PrismaWEB.Controllers
 
         public JsonResult RetornaMunicipios(int Id)
         {
-            var municipio = db.MUNICIPIOS.Where(m => m.Estado_Id == Id).ToList();
+            var municipio = db.Cidades.Where(m => m.Estado == Id).ToList();
             var obj = new List<object>();
             foreach (var item in municipio)
             {

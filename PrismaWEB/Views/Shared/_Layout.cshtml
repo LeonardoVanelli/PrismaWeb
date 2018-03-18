@@ -51,8 +51,15 @@
 
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                     <a class="nav-link" href="~/Cargos">
-                        <i class="fa fa-fw fa-dashboard"></i>
+                        <i class="fa fa-fw fa-suitcase"></i>
                         <span class="nav-link-text">Cargos</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <a class="nav-link" href="~/Leis">
+                        <i class="fa fa-fw fa-book"></i>
+                        <span class="nav-link-text">Leis</span>
                     </a>
                 </li>
 
@@ -67,10 +74,10 @@
                             <a href="~/Candidatos">Candidato</a>
                         </li>
                         <li>
-                            <a href="#">Usuarios</a>
+                            <a href="~/Usuarios">Usuarios</a>
                         </li>
                         <li>
-                            <a href="#">Funcionarios</a>
+                            <a href="~/Funcionarios">Funcionarios</a>
                         </li>
                     </ul>
                 </li>
@@ -99,34 +106,6 @@
                     </ul>
                 </li>
 
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-                        <i class="fa fa-fw fa-sitemap"></i>
-                        <span class="nav-link-text">Menu Levels</span>
-                    </a>
-                    <ul class="sidenav-second-level collapse" id="collapseMulti">
-                        <li>
-                            <a href="#">Second Level Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Second Level Item</a>
-                        </li>
-                        <li>
-                            <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
-                            <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                                <li>
-                                    <a href="#">Third Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level Item</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
             </ul>
             <ul class="navbar-nav sidenav-toggler">
                 <li class="nav-item">
@@ -221,7 +200,7 @@
                 <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2">
                         <div class="input-group">
-                            <input class="form-control" type="text" placeholder="@Url.Action()">
+                            <input class="form-control" type="text" placeholder="Pesquisar">
                             <span class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fa fa-search"></i>
@@ -257,13 +236,14 @@
         </div>
         <!-- /.container-fluid-->
         <!-- /.content-wrapper-->
-        <footer class="sticky-footer">
+        <!-- Copyright Comentado-->
+        @*<footer class="sticky-footer">
             <div class="container">
                 <div class="text-center">
                     <small>Copyright © PrismaWEB 2018</small>
                 </div>
-            </div>               
-        </footer>
+            </div>
+        </footer>*@
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fa fa-angle-up"></i>

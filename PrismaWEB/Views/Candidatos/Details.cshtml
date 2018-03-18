@@ -1,134 +1,171 @@
-﻿@model PrismaWEB.Models.PESSOAS
+﻿@model PrismaWEB.Models.Pessoas
 
 @{
     ViewBag.Title = "Details";
 }
 
-<div class="form-horizontal">
+<div class="form-row">
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+    <div class="form-group col-md-12">
+        <div class="col-md-offset-2">
             <a href="@Url.Action("Create")" class="btn btn-success">Novo</a>
             <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-info">Editar</a>
             <a href="@Url.Action("Delete", new { id = Model.Id })" class="btn btn-danger">Deletar</a>
         </div>
-    </div>    
-    <div class="form-group">
-        @Html.LabelFor(model => model.nome, "nome", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group col-md-6">
+        @Html.LabelFor(model => model.Nome, "Nome")
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
         </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.DataNascimento, "DataNascimento", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+    </div>
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.DataNascimento, "Data de Nascimento")
+        <div class="ui-widget">
             @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
         </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.Cpf, "Cpf", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+    </div>
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Cpf, "Cpf")
+        <div class="ui-widget">
             @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control" } })
         </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.Foto, "Foto", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Foto, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.DataCriacao, "DataCriacao", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+    </div>
+
+    <div class="form-group col-md-12" style="display:none">
+        @Html.LabelFor(model => model.DataCriacao)
+        <div class="ui-widget">
             @Html.EditorFor(model => model.DataCriacao, new { htmlAttributes = new { @class = "form-control" } })
         </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.DataAlteracao, "DataAlteracao", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+    </div>
+
+    <div class="form-group col-md-12" style="display:none">
+        @Html.LabelFor(model => model.DataAlteracao)
+        <div class="ui-widget">
             @Html.EditorFor(model => model.DataAlteracao, new { htmlAttributes = new { @class = "form-control" } })
         </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.Ativo, "Ativo", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Ativo, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group col-md-1">
+        @Html.LabelFor(model => model.Ativo, "Ativo")
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Ativo, new { htmlAttributes = new { @class = "form-control", Type = "CheckBox" } })
         </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.Email, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+    </div>
+
+    <div class="form-group col-md-5">
+        @Html.LabelFor(model => model.Email, "Email")
+        <div class="ui-widget">
             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
         </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.TelefoneFixo, "TelefoneFixo", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+    </div>
+
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.TelefoneFixo, "Telefone Fixo")
+        <div class="ui-widget">
             @Html.EditorFor(model => model.TelefoneFixo, new { htmlAttributes = new { @class = "form-control" } })
         </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.TelefoneMovel, "TelefoneMovel", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+    </div>
+
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.TelefoneMovel, "Telefone Movel")
+        <div class="ui-widget">
             @Html.EditorFor(model => model.TelefoneMovel, new { htmlAttributes = new { @class = "form-control" } })
         </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.Endereco, "Endereco", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.Foto, "Foto")
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Foto, new { htmlAttributes = new { @class = "form-control" } })
         </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.Cep, "Cep", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.DataCriacao, "Data de Criação")
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.DataCriacao, new { htmlAttributes = new { @class = "form-control" } })
         </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.Numero, "Numero", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.DataAlteracao, "Data de Alteração")
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.DataAlteracao, new { htmlAttributes = new { @class = "form-control" } })
         </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.Complemento, "Complemento", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Complemento, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.BAIRROS, "BAIRROS", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.BAIRROS, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.ESTADOS, "ESTADOS", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ESTADOS, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.LOGRADOUROS, "LOGRADOUROS", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.LOGRADOUROS, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.MUNICIPIOS, "MUNICIPIOS", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.MUNICIPIOS, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>   
-    <div class="form-group">
-        @Html.LabelFor(model => model.PAISES, "PAISES", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.PAISES, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>   
+    </div>
 </div>
 
-<p>
+<!--Localização-->
+<div class="form-row">
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Bairros.Nome, "Estado")
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Bairros.Nome, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Estados.Nome, "Estado")
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Estados.Nome, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Logradouros.Nome, "Logradouro")
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Logradouros.Nome, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Cidades.Nome, "Municipio")
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Cidades.Nome, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Paises.Nome, "Pais")
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Paises.Nome, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group col-md-2">
+        @Html.LabelFor(model => model.Cep, "Cep")
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group col-md-1">
+        @Html.LabelFor(model => model.Numero)
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Complemento)
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Complemento, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+</div>
+
+<!-- TABS -->
+<div class="ui tabular menu">
+    <div class="item" data-tab="tab-name">Cargos</div>
+    <div class="item" data-tab="tab-name2">Leis</div>
+</div>
+<div class="ui tab" data-tab="tab-name">
+    <IFRAME src="@Url.Action("index", "CandidatoCargo")/index/@Model.Id" width="1040" height="400" scrolling="yes" frameborder="0" ></IFRAME>
+</div>
+<div class="ui tab" data-tab="tab-name2">
+    <IFRAME src="@Url.Action("index", "VotoCandidato")/index/@Model.Id" width="1040" height="400" scrolling="yes" frameborder="0" ></IFRAME>
+</div>
+<!--FIM-->
+
 <script src="~/Content/js/helper/DisableCampos.js"></script>
-</p>

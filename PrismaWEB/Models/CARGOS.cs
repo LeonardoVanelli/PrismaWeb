@@ -12,21 +12,21 @@ namespace PrismaWEB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CARGOS
+    public partial class Cargos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CARGOS()
+        public Cargos()
         {
-            this.CANDIDATOCARGO = new HashSet<CANDIDATOCARGO>();
+            this.Candidatocargo = new HashSet<Candidatocargo>();
         }
     
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
-        public System.DateTime DataCraicao { get; set; }
+        public Nullable<System.DateTime> DataCraicao { get; set; }
         public Nullable<System.DateTime> DataAlteracao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CANDIDATOCARGO> CANDIDATOCARGO { get; set; }
+        public virtual ICollection<Candidatocargo> Candidatocargo { get; set; }
     }
 }

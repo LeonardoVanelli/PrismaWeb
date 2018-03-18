@@ -77,6 +77,9 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="120" Nullable="false" />
           <Property Name="Bairro" Type="int" Nullable="false" />
+          <Property Name="Cidade" Type="int" />
+          <Property Name="Estado" Type="int" />
+          <Property Name="Pais" Type="int" />
         </EntityType>
         <EntityType Name="Paises">
           <Key>
@@ -291,6 +294,42 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Logradouros_Cidades">
+          <End Role="Cidades" Type="Self.Cidades" Multiplicity="0..1" />
+          <End Role="Logradouros" Type="Self.Logradouros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Logradouros">
+              <PropertyRef Name="Cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Logradouros_Estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Logradouros" Type="Self.Logradouros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Logradouros">
+              <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Logradouros_Pais">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+          <End Role="Logradouros" Type="Self.Logradouros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Logradouros">
+              <PropertyRef Name="Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Pessoas_Bairros">
           <End Role="Bairros" Type="Self.Bairros" Multiplicity="0..1" />
           <End Role="Pessoas" Type="Self.Pessoas" Multiplicity="*" />
@@ -491,6 +530,18 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
             <End Role="Bairros" EntitySet="Bairros" />
             <End Role="Logradouros" EntitySet="Logradouros" />
           </AssociationSet>
+          <AssociationSet Name="FK_Logradouros_Cidades" Association="Self.FK_Logradouros_Cidades">
+            <End Role="Cidades" EntitySet="Cidades" />
+            <End Role="Logradouros" EntitySet="Logradouros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Logradouros_Estados" Association="Self.FK_Logradouros_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Logradouros" EntitySet="Logradouros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Logradouros_Pais" Association="Self.FK_Logradouros_Pais">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Logradouros" EntitySet="Logradouros" />
+          </AssociationSet>
           <AssociationSet Name="FK_Pessoas_Bairros" Association="Self.FK_Pessoas_Bairros">
             <End Role="Bairros" EntitySet="Bairros" />
             <End Role="Pessoas" EntitySet="Pessoas" />
@@ -589,6 +640,7 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
           <NavigationProperty Name="Pessoas" Relationship="Self.FK_Pessoas_Cidades" FromRole="Cidades" ToRole="Pessoas" />
           <Property Name="Pais" Type="Int32" />
           <NavigationProperty Name="Paises" Relationship="PrismaWEBModel.FK_Cidades_Paises" FromRole="Cidades" ToRole="Paises" />
+          <NavigationProperty Name="Logradouros" Relationship="PrismaWEBModel.FK_Logradouros_Cidades" FromRole="Cidades" ToRole="Logradouros" />
         </EntityType>
         <EntityType Name="Estados">
           <Key>
@@ -602,6 +654,7 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
           <NavigationProperty Name="Paises" Relationship="Self.FK_Estados_Paises" FromRole="Estados" ToRole="Paises" />
           <NavigationProperty Name="Pessoas" Relationship="Self.FK_Pessoas_Estados" FromRole="Estados" ToRole="Pessoas" />
           <NavigationProperty Name="Bairros" Relationship="PrismaWEBModel.FK_Bairros_Estados" FromRole="Estados" ToRole="Bairros" />
+          <NavigationProperty Name="Logradouros" Relationship="PrismaWEBModel.FK_Logradouros_Estados" FromRole="Estados" ToRole="Logradouros" />
         </EntityType>
         <EntityType Name="Favoritos">
           <Key>
@@ -633,6 +686,12 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
           <Property Name="Bairro" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Bairros" Relationship="Self.FK_Logradouros_Bairros" FromRole="Logradouros" ToRole="Bairros" />
           <NavigationProperty Name="Pessoas" Relationship="Self.FK_Pessoas_Logradouros" FromRole="Logradouros" ToRole="Pessoas" />
+          <Property Name="Cidade" Type="Int32" />
+          <Property Name="Estado" Type="Int32" />
+          <Property Name="Pais" Type="Int32" />
+          <NavigationProperty Name="Cidades" Relationship="PrismaWEBModel.FK_Logradouros_Cidades" FromRole="Logradouros" ToRole="Cidades" />
+          <NavigationProperty Name="Estados" Relationship="PrismaWEBModel.FK_Logradouros_Estados" FromRole="Logradouros" ToRole="Estados" />
+          <NavigationProperty Name="Paises" Relationship="PrismaWEBModel.FK_Logradouros_Pais" FromRole="Logradouros" ToRole="Paises" />
         </EntityType>
         <EntityType Name="Paises">
           <Key>
@@ -645,6 +704,7 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
           <NavigationProperty Name="Pessoas" Relationship="Self.FK_Pessoas_Paises" FromRole="Paises" ToRole="Pessoas" />
           <NavigationProperty Name="Bairros" Relationship="PrismaWEBModel.FK_Bairros_Paises" FromRole="Paises" ToRole="Bairros" />
           <NavigationProperty Name="Cidades" Relationship="PrismaWEBModel.FK_Cidades_Paises" FromRole="Paises" ToRole="Cidades" />
+          <NavigationProperty Name="Logradouros" Relationship="PrismaWEBModel.FK_Logradouros_Pais" FromRole="Paises" ToRole="Logradouros" />
         </EntityType>
         <EntityType Name="Pessoas">
           <Key>
@@ -1067,6 +1127,18 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
             <End Role="Paises" EntitySet="Paises" />
             <End Role="Cidades" EntitySet="Cidades" />
           </AssociationSet>
+          <AssociationSet Name="FK_Logradouros_Cidades" Association="PrismaWEBModel.FK_Logradouros_Cidades">
+            <End Role="Cidades" EntitySet="Cidades" />
+            <End Role="Logradouros" EntitySet="Logradouros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Logradouros_Estados" Association="PrismaWEBModel.FK_Logradouros_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Logradouros" EntitySet="Logradouros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Logradouros_Pais" Association="PrismaWEBModel.FK_Logradouros_Pais">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Logradouros" EntitySet="Logradouros" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_Bairros_Estados">
           <End Type="PrismaWEBModel.Estados" Role="Estados" Multiplicity="1" />
@@ -1100,6 +1172,42 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Cidades">
+              <PropertyRef Name="Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Logradouros_Cidades">
+          <End Type="PrismaWEBModel.Cidades" Role="Cidades" Multiplicity="0..1" />
+          <End Type="PrismaWEBModel.Logradouros" Role="Logradouros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Logradouros">
+              <PropertyRef Name="Cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Logradouros_Estados">
+          <End Type="PrismaWEBModel.Estados" Role="Estados" Multiplicity="0..1" />
+          <End Type="PrismaWEBModel.Logradouros" Role="Logradouros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Logradouros">
+              <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Logradouros_Pais">
+          <End Type="PrismaWEBModel.Paises" Role="Paises" Multiplicity="0..1" />
+          <End Type="PrismaWEBModel.Logradouros" Role="Logradouros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Logradouros">
               <PropertyRef Name="Pais" />
             </Dependent>
           </ReferentialConstraint>
@@ -1185,6 +1293,9 @@ warning 6002: The table/view 'PrismaWEB.sys.database_firewall_rules' does not ha
           <EntitySetMapping Name="Logradouros">
             <EntityTypeMapping TypeName="PrismaWEBModel.Logradouros">
               <MappingFragment StoreEntitySet="Logradouros">
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Bairro" ColumnName="Bairro" />

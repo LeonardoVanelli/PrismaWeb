@@ -158,6 +158,7 @@
     <Compile Include="Controllers\FuncionariosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeisController.cs" />
+    <Compile Include="Controllers\LogradourosController.cs" />
     <Compile Include="Controllers\MunicipiosController.cs" />
     <Compile Include="Controllers\PaisesController.cs" />
     <Compile Include="Controllers\CandidatosController.cs" />
@@ -506,6 +507,11 @@
     <Content Include="Views\Usuarios\Details.cshtml" />
     <Content Include="Views\Usuarios\Edit.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Logradouros\Create.cshtml" />
+    <Content Include="Views\Logradouros\Delete.cshtml" />
+    <Content Include="Views\Logradouros\Details.cshtml" />
+    <Content Include="Views\Logradouros\Edit.cshtml" />
+    <Content Include="Views\Logradouros\Index.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

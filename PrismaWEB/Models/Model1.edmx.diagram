@@ -41,6 +41,12 @@
         <AssociationConnector Association="PrismaWEBModel.FK_Bairros_Estados" />
         <AssociationConnector Association="PrismaWEBModel.FK_Bairros_Paises" />
         <AssociationConnector Association="PrismaWEBModel.FK_Cidades_Paises" />
+        <AssociationConnector Association="PrismaWEBModel.FK_Logradouros_Cidades" />
+        <AssociationConnector Association="PrismaWEBModel.FK_Logradouros_Estados" />
+        <AssociationConnector Association="PrismaWEBModel.FK_Logradouros_Pais" />
+        <AssociationConnector Association="PrismaWEBModel.FK_Logradouros_Cidades" />
+        <AssociationConnector Association="PrismaWEBModel.FK_Logradouros_Estados" />
+        <AssociationConnector Association="PrismaWEBModel.FK_Logradouros_Pais" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

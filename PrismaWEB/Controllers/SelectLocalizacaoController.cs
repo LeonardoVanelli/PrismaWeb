@@ -32,5 +32,16 @@ namespace PrismaWEB.Controllers
             }
             return Json(obj);
         }
+
+        public JsonResult RetornaBairros(int Id)
+        {
+            var bairros = db.Bairros.Where(m => m.Cidade == Id).ToList();
+            var obj = new List<object>();
+            foreach (var item in bairros)
+            {
+                obj.Add(new { name = item.Nome, value = item.Id });
+            }
+            return Json(obj);
+        }
     }
 }

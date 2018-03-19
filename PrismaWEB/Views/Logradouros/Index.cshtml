@@ -17,16 +17,16 @@
                             @Html.DisplayNameFor(model => model.Nome)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Bairros.Nome)
+                            Bairro
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Cidades.Nome)
+                            Cidade
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Estados.Nome)
+                            Estado
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Paises.Nome)
+                            Pais
                         </th>
                         <th>Ações</th>
                     </tr>
@@ -36,7 +36,9 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Nome)
+                                <a href="@Url.Action("Details/"+item.Id)" class="removeAzulLink">
+                                    @Html.DisplayFor(modelItem => item.Nome)
+                                </a>
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Bairros.Nome)

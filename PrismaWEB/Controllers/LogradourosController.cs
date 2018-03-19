@@ -53,6 +53,7 @@ namespace PrismaWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nome,Bairro,Cidade,Estado,Pais")] Logradouros logradouros)
         {
+            logradouros.Id = GetHashCode();
             if (ModelState.IsValid)
             {
                 db.Logradouros.Add(logradouros);
@@ -63,7 +64,7 @@ namespace PrismaWEB.Controllers
             ViewBag.Bairro = new SelectList(db.Bairros, "Id", "Nome", logradouros.Bairro);
             ViewBag.Cidade = new SelectList(db.Cidades, "Id", "Nome", logradouros.Cidade);
             ViewBag.Estado = new SelectList(db.Estados, "Id", "Nome", logradouros.Estado);
-            ViewBag.Pais = new SelectList(db.Paises, "Id", "Nome", logradouros.Pais);
+            ViewBag.Pais   = new SelectList(db.Paises, "Id", "Nome", logradouros.Pais);
             return View(logradouros);
         }
 

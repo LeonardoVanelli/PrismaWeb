@@ -43,12 +43,8 @@
         <div class="form-group col-md-3">
             @Html.LabelFor(model => model.Estado, "Estado")
             <div class="ui-widget">
-                <select id="Estado" class="ui fluid search selection dropdown dropDownSelect Estado" name="Estado">
-                    @foreach (var item in ViewBag.Estado)
-                    {
-                        <option value="@item.Value">@item.Text</option>
-                    }
-                </select>
+                <select id="Estado_" class="ui fluid search selection dropdown dropDownSelect Estado"></select>
+                <input class="disabled" id="Estado" name="Estado" TYPE="hidden" value="">
                 @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -56,12 +52,8 @@
         <div class="form-group col-md-3">
             @Html.LabelFor(model => model.Cidade, "Cidade")
             <div class="ui-widget">
-                <select id="Cidade" class="ui fluid search selection dropdown dropDownSelect Cidade" name="Cidade">
-                    @foreach (var item in ViewBag.Cidade)
-                    {
-                        <option value="@item.Value">@item.Text</option>
-                    }
-                </select>
+                <select id="Cidade_" class="ui fluid search selection dropdown dropDownSelect Cidade"></select>
+                <input class="disabled" id="Cidade" name="Cidade" TYPE="hidden" value="">
                 @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -69,12 +61,8 @@
         <div class="form-group col-md-3">
             @Html.LabelFor(model => model.Bairro, "Bairro")
             <div class="ui-widget">
-                <select id="Bairro" class="ui fluid search selection dropdown dropDownSelect Bairro" name="Bairro">
-                    @foreach (var item in ViewBag.Bairro)
-                    {
-                        <option value="@item.Value">@item.Text</option>
-                    }
-                </select>
+                <select id="Bairro_" class="ui fluid search selection dropdown dropDownSelect Bairro"></select>
+                <input class="disabled" id="Bairro" name="Bairro" TYPE="hidden" value="">
                 @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -91,7 +79,6 @@
 <script>
     $("#Pais").change(function () {
         var id = $("#Pais").val()
-        $(".Estado").addClass("loading")
         CarregaLocalizacao(id, '@Url.Action("RetornaEstados", "SelectLocalizacao")?Id=', "Estado");
     });
 
@@ -99,10 +86,7 @@
         var id = $("#Pais").val()
         CarregaLocalizacao(id, '@Url.Action("RetornaEstados", "SelectLocalizacao")?Id=', "Estado");
         $(".Estado .search").on("blur", function () {
-            console.log("fdasf")
-            $(".Municipio").addClass("loading")
             setTimeout(function () {
-                console.log("fdasf")
                 var id = $('.Estado .menu .selected').data('value');
                 if ($(".Estado .text").text() != "") {
                     $('#Estado').val(id).text($('.Estado .menu .selected').text());
@@ -110,12 +94,29 @@
                 }
         }, 500);
         });
+
+            $(".Cidade .search").on("blur", function () {
+            setTimeout(function () {
+                var id = $('.Cidade .menu .selected').data('value');
+                if ($(".Cidade .text").text() != "") {
+                    $('#Cidade').val(id).text($('.Cidade .menu .selected').text());
+                    CarregaLocalizacao(id, '@Url.Action("RetornaBairros", "SelectLocalizacao")?Id=', "Bairro");
+                }
+        }, 500);
+        });
     })
     //Carregando label invisivel do municipo
-    $("#Municipio_").change(function () {
+    $("#Cidade_").change(function () {
         setTimeout(function () {
             var id = $('.Cidade .menu .selected').data('value');
             $("#Cidade").val(id)
+        }, 500);
+    });
+
+    $("#Bairro_").change(function () {
+        setTimeout(function () {
+            var id = $('.Bairro .menu .selected').data('value');
+            $("#Bairro").val(id)
         }, 500);
     });
 </script>

@@ -231,10 +231,6 @@
     <Compile Include="Validacoes\MunicipioValidate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\PrismaWEBDesenv.mdf" />
-    <Content Include="App_Data\PrismaWEBDesenv_log.ldf">
-      <DependentUpon>PrismaWEBDesenv.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\helper\ComboBox.css" />
@@ -425,6 +421,7 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\PrismaWEBDesenv - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
@@ -519,7 +516,9 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>

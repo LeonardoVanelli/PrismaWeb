@@ -22,8 +22,8 @@ namespace PrismaWEB.Models
         }
         
         public int Id { get; set; }
+        [Display(Name = "Número")]
         [Required]
-        [Range(00000001, 99999999)]
         public string Numero { get; set; }
         [Required]
         [StringLength(60, MinimumLength = 10)]        

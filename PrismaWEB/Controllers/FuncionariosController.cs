@@ -56,6 +56,8 @@ namespace PrismaWEB.Controllers
         {
             pessoas.Id = GetHashCode();
             pessoas.Tipo = 2;
+            pessoas.DataCriacao = DateTime.Now;
+            pessoas.Ativo = 1;
             if (ModelState.IsValid)
             {
                 db.Pessoas.Add(pessoas);
@@ -98,6 +100,7 @@ namespace PrismaWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Nome,DataNascimento,Cpf,Foto,DataCriacao,DataAlteracao,Ativo,Email,TelefoneFixo,TelefoneMovel,Endereco,Pais_Id,Estado_Id,Cidade_Id,Bairro_Id,Logradouro_Id,Cep,Numero,Complemento,Tipo")] Pessoas pessoas)
         {
+            pessoas.DataAlteracao = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Entry(pessoas).State = EntityState.Modified;

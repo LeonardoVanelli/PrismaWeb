@@ -11,7 +11,8 @@ namespace PrismaWEB.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Leis
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,10 +20,16 @@ namespace PrismaWEB.Models
         {
             this.Votocandidatolei = new HashSet<Votocandidatolei>();
         }
-    
+        
         public int Id { get; set; }
+        [Required]
+        [Range(00000001, 99999999)]
         public string Numero { get; set; }
+        [Required]
+        [StringLength(60, MinimumLength = 10)]        
         public string Nome { get; set; }
+        [Required]
+        [MaxLength(215)]
         public string Descricao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

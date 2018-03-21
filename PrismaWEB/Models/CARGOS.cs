@@ -9,10 +9,11 @@
 
 namespace PrismaWEB.Models
 {
+    using PrismaWEB.Dao;
     using System;
     using System.Collections.Generic;
     
-    public partial class Cargos
+    public partial class Cargos : Entidade<Cargos>
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cargos()

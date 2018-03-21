@@ -165,6 +165,8 @@
     <Compile Include="Controllers\SelectLocalizacaoController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\VotoCandidatoController.cs" />
+    <Compile Include="Dao\Entidade.cs" />
+    <Compile Include="Dao\IRepositorio.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

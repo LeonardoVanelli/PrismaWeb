@@ -6,18 +6,20 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PrismaWEB.Dao;
 using PrismaWEB.Models;
 
 namespace PrismaWEB.Controllers
 {
     public class CargosController : Controller
     {
-        private PrismaDBEntities db = new PrismaDBEntities();
+        private readonly Cargos ctx = new Cargos();
 
         // GET: Cargos
         public ActionResult Index()
         {
-            return View(db.Cargos.ToList());
+            var a = View(ctx.Tudo());
+            return a;
         }
 
         // GET: Cargos/Details/5
@@ -27,7 +29,7 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cargos cARGOS = db.Cargos.Find(id);
+            var cARGOS = ctx.BuscaPorId(id);
             if (cARGOS == null)
             {
                 return HttpNotFound();
@@ -49,11 +51,10 @@ namespace PrismaWEB.Controllers
         public ActionResult Create([Bind(Include = "Id,Nome,Descricao,DataCraicao,DataAlteracao")] Cargos cARGOS)
         {
             cARGOS.Id = cARGOS.GetHashCode();
-            cARGOS.DataCraicao = DateTime.Now;
+            cARGOS.DataCraicao = DateTime.Now;            
             if (ModelState.IsValid)
             {
-                db.Cargos.Add(cARGOS);
-                db.SaveChanges();
+                ctx.Adicionar(cARGOS);
                 return RedirectToAction("Index");
             }
 
@@ -67,7 +68,7 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cargos cARGOS = db.Cargos.Find(id);
+            Cargos cARGOS = ctx.BuscaPorId(id);
             if (cARGOS == null)
             {
                 return HttpNotFound();
@@ -83,10 +84,9 @@ namespace PrismaWEB.Controllers
         public ActionResult Edit(Cargos Cargo)
         {
             if (ModelState.IsValid)
-            {            
+            {
                 Cargo.DataAlteracao = DateTime.Now;
-                db.Entry(Cargo).State = EntityState.Modified;
-                db.SaveChanges();
+                ctx.Editar(Cargo);
                 return RedirectToAction("Index");
             }
             return View(Cargo);
@@ -99,7 +99,7 @@ namespace PrismaWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cargos cARGOS = db.Cargos.Find(id);
+            Cargos cARGOS = ctx.BuscaPorId(id);
             if (cARGOS == null)
             {
                 return HttpNotFound();
@@ -112,9 +112,8 @@ namespace PrismaWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cargos cARGOS = db.Cargos.Find(id);
-            db.Cargos.Remove(cARGOS);
-            db.SaveChanges();
+            Cargos cARGOS = ctx.BuscaPorId(id);
+            ctx.Deletar(cARGOS);
             return RedirectToAction("Index");
         }
 
@@ -122,7 +121,7 @@ namespace PrismaWEB.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                ctx.Dispose();
             }
             base.Dispose(disposing);
         }

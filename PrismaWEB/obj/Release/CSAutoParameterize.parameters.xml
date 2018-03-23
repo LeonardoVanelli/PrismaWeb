@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="PrsmaDBEntity-Web.config Connection String" description="PrsmaDBEntity A Cadeia de Conexão usada em web.config pelo aplicativo para acessar o banco de dados." defaultValue="metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(localdb)\MSSQLLocalDB;initial catalog=C:\PRISMA\BANCO\PRISMAWEBDESENV.MDF;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Prisma\\WEB\\PrismaWEB\\obj\\Release\\Package\\PackageTmp\\web\.config$" match="/configuration/connectionStrings/add[@name='PrsmaDBEntity']/@connectionString" />
+  </parameter>
+  <parameter name="PrismaDBEntiti-Web.config Connection String" description="PrismaDBEntiti A Cadeia de Conexão usada em web.config pelo aplicativo para acessar o banco de dados." defaultValue="metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(localdb)\MSSQLLocalDB;initial catalog=C:\PRISMA\WEB\PRISMAWEB\APP_DATA\PRISMAWEBDESENV.MDF;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Prisma\\WEB\\PrismaWEB\\obj\\Release\\Package\\PackageTmp\\web\.config$" match="/configuration/connectionStrings/add[@name='PrismaDBEntiti']/@connectionString" />
+  </parameter>
+  <parameter name="PrismaDBEntities-Web.config Connection String" description="PrismaDBEntities A Cadeia de Conexão usada em web.config pelo aplicativo para acessar o banco de dados." defaultValue="metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=prima-webserver.database.windows.net;initial catalog=PrismaWEB;user id=sysdba;password=Coxinh4@;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Prisma\\WEB\\PrismaWEB\\obj\\Release\\Package\\PackageTmp\\web\.config$" match="/configuration/connectionStrings/add[@name='PrismaDBEntities']/@connectionString" />
+  </parameter>
+</parameters>

@@ -49,17 +49,17 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Pais")] Estados eSTADOS)
+        public ActionResult Create(Estados eSTADOS)
         {
             if (ModelState.IsValid)
             {
-                eSTADOS.Id = eSTADOS.GetHashCode();
+                eSTADOS.Id = GetHashCode();
                 db.Estados.Add(eSTADOS);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Pais = new SelectList(db.Paises, "Id", "Nome", eSTADOS.Pais);
+            ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", eSTADOS.Pais);
             return View(eSTADOS);
         }
 

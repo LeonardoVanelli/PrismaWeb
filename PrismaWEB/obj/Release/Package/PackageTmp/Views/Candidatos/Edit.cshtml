@@ -1,0 +1,208 @@
+﻿@model PrismaWEB.Models.Pessoas
+
+@{
+
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    if (ViewBag.Error != null)
+    {
+        <div class="alert alert-warning" role="alert">
+            @ViewBag.Error
+        </div>
+    }
+
+    <div class="form-row">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group col-md-12">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Salvar" class="btn btn-success" />
+                <input id="SaveAndNew" type="submit" value="Salvar/Novo" class="btn btn-info" />
+                <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Nome, "Nome")
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.DataNascimento, "Data de Nascimento")
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control", Type = "date" } })
+                @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.Cpf)
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group col-md-5">
+            @Html.LabelFor(model => model.Email)
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", Type = "email" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-1">
+            @Html.LabelFor(model => model.Ativo)
+            <div class="col-md-1">
+                <div class="ui-widget">
+                    @Html.EditorFor(model => model.Ativo, new { htmlAttributes = new { @class = "form-control form-check-input", Type = "CheckBox" } })
+                    @Html.ValidationMessageFor(model => model.Ativo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.TelefoneFixo, "Telefone Fixo")
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.TelefoneFixo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TelefoneFixo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.TelefoneMovel, "Telefone Movel")
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.TelefoneMovel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TelefoneMovel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.Pais_Id, "Pais")
+            <div class="ui-widget">
+                <select id="" class="ui fluid search selection dropdown dropDownSelect" name="Pais_Id">
+                    @foreach (var item in ViewBag.Pais_Id)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.Pais_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.Estado_Id, "Estado")
+            <div class="ui-widget">
+                <select id="gender-select" class="ui fluid search selection dropdown dropDownSelect" name="Estado_Id">
+                    @foreach (var item in ViewBag.Estado_Id)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.Estado_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.Cidades, "Municipio")
+            <div class="ui-widget">
+                <select id="gender-select" class="ui fluid search selection dropdown dropDownSelect" name="Municipio_Id">
+                    @foreach (var item in ViewBag.Municipio_Id)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.Cidades, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.Bairro_Id, "Bairro")
+            <div class="ui-widget">
+                <select id="gender-select" class="ui fluid search selection dropdown dropDownSelect" name="Bairro_Id">
+                    @foreach (var item in ViewBag.Bairro_Id)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.Bairro_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.Logradouro_Id, "Logradouro")
+            <div class="ui-widget">
+                <select id="gender-select" class="ui fluid search selection dropdown dropDownSelect" name="Logradouro_Id">
+                    @foreach (var item in ViewBag.Logradouro_Id)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.Logradouro_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-1">
+            @Html.LabelFor(model => model.Cep)
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-1">
+            @Html.LabelFor(model => model.Numero)
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-7">
+            @Html.LabelFor(model => model.Complemento)
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.Complemento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Complemento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-5">
+            @Html.LabelFor(model => model.Foto)
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.Foto, new { htmlAttributes = new { @class = "form-control", Type = "file" } })
+                @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-md-12">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Salvar" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+

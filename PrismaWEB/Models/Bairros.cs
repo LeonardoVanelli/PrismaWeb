@@ -11,7 +11,8 @@ namespace PrismaWEB.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Bairros
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,9 +23,14 @@ namespace PrismaWEB.Models
         }
     
         public int Id { get; set; }
+        [Required]
         public string Nome { get; set; }
+        [Required]
         public int Cidade { get; set; }
+        [Required]
         public int Estado { get; set; }
+        [Required]
+        [Display(Name = "País")]
         public int Pais { get; set; }
     
         public virtual Cidades Cidades { get; set; }

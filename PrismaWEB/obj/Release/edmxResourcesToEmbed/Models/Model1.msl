@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PrismaWEBModelStoreContainer" CdmEntityContainer="PrismaDBEntities">
+    <EntitySetMapping Name="Bairros">
+      <EntityTypeMapping TypeName="PrismaWEBModel.Bairros">
+        <MappingFragment StoreEntitySet="Bairros">
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Candidatocargo">
+      <EntityTypeMapping TypeName="PrismaWEBModel.Candidatocargo">
+        <MappingFragment StoreEntitySet="Candidatocargo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
+          <ScalarProperty Name="Cargo_Id" ColumnName="Cargo_Id" />
+          <ScalarProperty Name="DataCriacao" ColumnName="DataCriacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cargos">
+      <EntityTypeMapping TypeName="PrismaWEBModel.Cargos">
+        <MappingFragment StoreEntitySet="Cargos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="DataCraicao" ColumnName="DataCraicao" />
+          <ScalarProperty Name="DataAlteracao" ColumnName="DataAlteracao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cidades">
+      <EntityTypeMapping TypeName="PrismaWEBModel.Cidades">
+        <MappingFragment StoreEntitySet="Cidades">
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estados">
+      <EntityTypeMapping TypeName="PrismaWEBModel.Estados">
+        <MappingFragment StoreEntitySet="Estados">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Uf" ColumnName="Uf" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Favoritos">
+      <EntityTypeMapping TypeName="PrismaWEBModel.Favoritos">
+        <MappingFragment StoreEntitySet="Favoritos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+          <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
+          <ScalarProperty Name="DataCriacao" ColumnName="DataCriacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Leis">
+      <EntityTypeMapping TypeName="PrismaWEBModel.Leis">
+        <MappingFragment StoreEntitySet="Leis">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logradouros">
+      <EntityTypeMapping TypeName="PrismaWEBModel.Logradouros">
+        <MappingFragment StoreEntitySet="Logradouros">
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paises">
+      <EntityTypeMapping TypeName="PrismaWEBModel.Paises">
+        <MappingFragment StoreEntitySet="Paises">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pessoas">
+      <EntityTypeMapping TypeName="PrismaWEBModel.Pessoas">
+        <MappingFragment StoreEntitySet="Pessoas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+          <ScalarProperty Name="Cpf" ColumnName="Cpf" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="DataCriacao" ColumnName="DataCriacao" />
+          <ScalarProperty Name="DataAlteracao" ColumnName="DataAlteracao" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="TelefoneFixo" ColumnName="TelefoneFixo" />
+          <ScalarProperty Name="TelefoneMovel" ColumnName="TelefoneMovel" />
+          <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+          <ScalarProperty Name="Pais_Id" ColumnName="Pais_Id" />
+          <ScalarProperty Name="Estado_Id" ColumnName="Estado_Id" />
+          <ScalarProperty Name="Cidade_Id" ColumnName="Cidade_Id" />
+          <ScalarProperty Name="Bairro_Id" ColumnName="Bairro_Id" />
+          <ScalarProperty Name="Logradouro_Id" ColumnName="Logradouro_Id" />
+          <ScalarProperty Name="Cep" ColumnName="Cep" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Complemento" ColumnName="Complemento" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Presidentes">
+      <EntityTypeMapping TypeName="PrismaWEBModel.Presidentes">
+        <MappingFragment StoreEntitySet="Presidentes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
+          <ScalarProperty Name="Vice_Id" ColumnName="Vice_Id" />
+          <ScalarProperty Name="DataCriacao" ColumnName="DataCriacao" />
+          <ScalarProperty Name="DataAlteracao" ColumnName="DataAlteracao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Votocandidatolei">
+      <EntityTypeMapping TypeName="PrismaWEBModel.Votocandidatolei">
+        <MappingFragment StoreEntitySet="Votocandidatolei">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
+          <ScalarProperty Name="Lei_Id" ColumnName="Lei_Id" />
+          <ScalarProperty Name="Votou" ColumnName="Votou" />
+          <ScalarProperty Name="DataCriacao" ColumnName="DataCriacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Votos">
+      <EntityTypeMapping TypeName="PrismaWEBModel.Votos">
+        <MappingFragment StoreEntitySet="Votos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+          <ScalarProperty Name="Candidato_Id" ColumnName="Candidato_Id" />
+          <ScalarProperty Name="DataCriacao" ColumnName="DataCriacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="database_firewall_rules">
+      <EntityTypeMapping TypeName="PrismaWEBModel.database_firewall_rules">
+        <MappingFragment StoreEntitySet="database_firewall_rules">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+          <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

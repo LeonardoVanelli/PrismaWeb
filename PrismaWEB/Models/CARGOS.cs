@@ -12,6 +12,9 @@ namespace PrismaWEB.Models
     using PrismaWEB.Dao;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class Cargos
     
     public partial class Cargos : Entidade<Cargos>
     {
@@ -22,9 +25,13 @@ namespace PrismaWEB.Models
         }
     
         public int Id { get; set; }
+        [Required]
         public string Nome { get; set; }
+        [Required]
         public string Descricao { get; set; }
+        [Display(Name = "Data de criação")]
         public Nullable<System.DateTime> DataCraicao { get; set; }
+        [Display(Name = "Data de alteração")]
         public Nullable<System.DateTime> DataAlteracao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

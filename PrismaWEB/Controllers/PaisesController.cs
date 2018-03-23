@@ -48,8 +48,10 @@ namespace PrismaWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nome")] Paises pAISES)
         {
+
             if (ModelState.IsValid)
             {
+                pAISES.Id = pAISES.GetHashCode();
                 db.Paises.Add(pAISES);
                 db.SaveChanges();
                 return RedirectToAction("Index");

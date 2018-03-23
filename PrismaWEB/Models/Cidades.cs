@@ -11,7 +11,8 @@ namespace PrismaWEB.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Cidades
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,8 +24,12 @@ namespace PrismaWEB.Models
         }
     
         public int Id { get; set; }
+        [Required]
         public string Nome { get; set; }
+        [Required]
         public Nullable<int> Estado { get; set; }
+        [Required]
+        [Display(Name = "País")]
         public Nullable<int> Pais { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -11,12 +11,17 @@ namespace PrismaWEB.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Candidatocargo
     {
         public int Id { get; set; }
+        [Required]
         public int Candidato_Id { get; set; }
+        [Required]
         public int Cargo_Id { get; set; }
+        [Required]
+        [Display(Name = "Data de criação")]
         public Nullable<System.DateTime> DataCriacao { get; set; }
     
         public virtual Cargos Cargos { get; set; }

@@ -21,7 +21,7 @@
                     $('.modal-header').removeClass('alert-success').addClass('alert-danger');
                     $('.delete-confirm').css('display', 'none');
                 }
-                $('.success-message').html("Inpossivel deletar pois a referencias a este item");
+                $('.success-message').html("Impossível deletar pois há referências a este item");
             }
         });
     }

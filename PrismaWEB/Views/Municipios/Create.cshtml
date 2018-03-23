@@ -46,7 +46,7 @@
     <div class="form-group col-md-3">
         @Html.LabelFor(model => model.Pais, "Pais")
         <div class="ui-widget">
-            <select id="Pais_Id" class="ui fluid search selection dropdown dropDownSelect" name="Pais">
+            <select id="Pais" class="ui fluid search selection dropdown dropDownSelect" name="Pais">
                 @foreach (var item in ViewBag.Pais_Id)
             {
                 <option value="@item.Value">@item.Text</option>

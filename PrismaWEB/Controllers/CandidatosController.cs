@@ -80,6 +80,7 @@ namespace PrismaWEB.Controllers
             ViewBag.Logradouro_Id = new SelectList(db.Logradouros, "Id", "Nome", Candidato.Logradouro_Id);
             ViewBag.Cidade_Id = new SelectList(db.Cidades, "Id", "Nome", Candidato.Cidade_Id);
             ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", Candidato.Pais_Id);
+            ViewBag.Cargos = new SelectList(db.Cargos, "Id", "Nome");
             return View(Candidato);
         }
 

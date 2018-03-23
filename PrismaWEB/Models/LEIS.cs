@@ -30,6 +30,7 @@ namespace PrismaWEB.Models
         public string Nome { get; set; }
         [Required]
         [MaxLength(215)]
+        [Display(Name = "Descrição")]
         public string Descricao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

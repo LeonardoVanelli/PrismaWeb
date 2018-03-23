@@ -1,0 +1,98 @@
+﻿<#@ template language="C#" HostSpecific="True" #>
+<#@ output extension=".cshtml" #>
+<#@ include file="Imports.include.t4" #>
+@model <#= ViewDataTypeName #>
+<#
+// The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
+if(IsPartialView) {
+#>
+
+<#
+} else if(IsLayoutPageSelected) {
+#>
+
+@{
+    ViewBag.Title = "<#= ViewName#>";
+<#
+if (!String.IsNullOrEmpty(LayoutPageFile)) {
+#>
+    Layout = "<#= LayoutPageFile#>";
+<#
+}
+#>
+}
+
+<#
+} else {
+#>
+
+@{
+    Layout = null;
+}
+
+    <meta name="viewport" content="width=device-width" />
+    <title><#= ViewName #></title>
+
+<#
+    PushIndent("    ");
+}
+#>
+<div class="form-row">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group col-md-12">
+        <div class="col-md-offset-2">
+            <a href="@Url.Action("Create")" class="btn btn-success">Novo</a>
+            <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-info">Editar</a>
+            <a href="@Url.Action("Delete", new { id = Model.Id })" class="btn btn-danger">Deletar</a>
+            <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </div>    
+<#
+foreach (PropertyMetadata property in ModelMetadata.Properties) {
+    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
+#>
+<#
+        // We do not want to show any association properties for which there is
+        // no associated foreign key.
+        if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
+            continue;
+        }
+#>
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.<#= property.PropertyName #>, "<#= GetAssociationName(property) #>", htmlAttributes: new { @class = "form-control" })
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.<#= property.PropertyName #>, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>   
+<#
+    }
+}
+#>
+</div>
+
+<p>
+<#
+string pkName = GetPrimaryKeyName();
+if (pkName != null) {
+#>
+<script src="~/Content/js/helper/DisableCampos.js"></script>
+<#
+} else {
+#>
+<script src="~/Content/js/helper/DisableCampos.js"></script>
+<#
+}
+#>
+</p>
+<#
+// The following code closes the tag used in the case of a view using a layout page and the body and html tags in the case of a regular view page
+#>
+<#
+if(!IsPartialView && !IsLayoutPageSelected) {
+    ClearIndent();
+#>
+
+<#
+}
+#>
+<#@ include file="ModelMetadataFunctions.cs.include.t4" #>

@@ -50,11 +50,12 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Pais_Id,Estado")] Cidades Municipio)
+        public ActionResult Create(Cidades Municipio)
         {
             //var erro = new MunicipioValidate().Validacao(Municipio);
             if (ModelState.IsValid /*&& erro == ""*/)
             {
+                Municipio.Id = GetHashCode();
                 db.Cidades.Add(Municipio);
                 db.SaveChanges();
                 return RedirectToAction("Index");

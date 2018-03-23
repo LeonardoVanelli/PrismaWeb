@@ -11,14 +11,15 @@ namespace PrismaWEB.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Votos
     {
         public int Id { get; set; }
         public int Usuario_Id { get; set; }
         public int Candidato_Id { get; set; }
+        [Display(Name = "Data de criação")]
         public Nullable<System.DateTime> DataCriacao { get; set; }
-    
         public virtual Pessoas Pessoas { get; set; }
         public virtual Pessoas Pessoas1 { get; set; }
     }

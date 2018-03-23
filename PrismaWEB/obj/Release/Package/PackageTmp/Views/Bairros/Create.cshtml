@@ -1,0 +1,101 @@
+﻿@model PrismaWEB.Models.Bairros
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-row">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group col-md-12">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Salvar" class="btn btn-success" />
+                <input id="SaveAndNew" type="submit" value="Salvar/Novo" class="btn btn-info" />
+                <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </div>
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.Nome)
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.Paises.Nome, "Pais")
+            <div class="ui-widget">
+                <select id="Pais" class="ui fluid search selection dropdown dropDownSelect Pais" name="Pais">
+                    @foreach (var item in ViewBag.Pais_Id)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.Paises.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.Estados.Nome, "Estado")
+            <div class="ui-widget">
+                <select id="Estado_" class="ui fluid search selection dropdown dropDownSelect Estado"></select>
+                <input class="disabled" id="Estado" name="Estado" TYPE="hidden" value="">
+                @Html.ValidationMessageFor(model => model.Paises.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.Cidades.Nome, "Municipio")
+            <div class="ui-widget">
+                <select id="Municipio_" class="ui fluid search selection dropdown dropDownSelect Cidade"></select>
+                <input class="disabled" id="Cidade" name="Cidade" TYPE="hidden" value="">
+                @Html.ValidationMessageFor(model => model.Paises.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Salvar" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<script src="~/Content/js/helper/CarregaLocalizacao.js"></script>
+<script>
+    $("#Pais").change(function () {
+        var id = $("#Pais").val()
+        $(".Estado").addClass("loading")
+        CarregaLocalizacao(id, '@Url.Action("RetornaEstados", "SelectLocalizacao")?Id=', "Estado");
+    });
+
+    $(function () {
+        var id = $("#Pais").val()
+        CarregaLocalizacao(id, '@Url.Action("RetornaEstados", "SelectLocalizacao")?Id=', "Estado");
+        $(".Estado .search").on("blur", function () {
+            console.log("fdasf")
+            $(".Municipio").addClass("loading")
+            setTimeout(function () {
+                console.log("fdasf")
+                var id = $('.Estado .menu .selected').data('value');
+                if ($(".Estado .text").text() != "") {
+                    $('#Estado').val(id).text($('.Estado .menu .selected').text());
+                    CarregaLocalizacao(id, '@Url.Action("RetornaMunicipios", "SelectLocalizacao")?Id=', "Cidade");          
+                }
+        }, 500);
+        });
+    })
+    //Carregando label invisivel do municipo
+    $("#Municipio_").change(function () {
+        setTimeout(function () {
+            var id = $('.Cidade .menu .selected').data('value');
+            $("#Cidade").val(id)
+        }, 500);
+    });
+</script>

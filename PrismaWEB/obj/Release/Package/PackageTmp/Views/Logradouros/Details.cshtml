@@ -1,0 +1,51 @@
+﻿@model PrismaWEB.Models.Logradouros
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="form-row">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group col-md-12">
+        <div class="col-md-offset-2">
+            <a href="@Url.Action("Create")" class="btn btn-success">Novo</a>
+            <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-info">Editar</a>
+            <a href="@Url.Action("Delete", new { id = Model.Id })" class="btn btn-danger">Deletar</a>
+            <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </div>    
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Nome, "Nome", htmlAttributes: new { @class = "form-control" })
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Nome, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>   
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Bairros, "Bairros", htmlAttributes: new { @class = "form-control" })
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Bairros, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>   
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Cidades, "Cidades", htmlAttributes: new { @class = "form-control" })
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Cidades, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>   
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Estados, "Estados", htmlAttributes: new { @class = "form-control" })
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Estados, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>   
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Paises, "Paises", htmlAttributes: new { @class = "form-control" })
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.Paises, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>   
+</div>
+
+<p>
+<script src="~/Content/js/helper/DisableCampos.js"></script>
+</p>

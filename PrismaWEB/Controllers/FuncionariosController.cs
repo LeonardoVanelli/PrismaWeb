@@ -52,25 +52,25 @@ namespace PrismaWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,DataNascimento,Cpf,Foto,DataCriacao,DataAlteracao,Ativo,Email,TelefoneFixo,TelefoneMovel,Endereco,Pais_Id,Estado_Id,Cidade_Id,Bairro_Id,Logradouro_Id,Cep,Numero,Complemento,Tipo")] Pessoas pessoas)
+        public ActionResult Create([Bind(Include = "Id,Nome,DataNascimento,Cpf,Foto,DataCriacao,DataAlteracao,Ativo,Email,TelefoneFixo,TelefoneMovel,Endereco,Pais_Id,Estado_Id,Cidade_Id,Bairro_Id,Logradouro_Id,Cep,Numero,Complemento,Tipo")] Pessoas Funcionario)
         {
-            pessoas.Id = GetHashCode();
-            pessoas.Tipo = 2;
-            pessoas.DataCriacao = DateTime.Now;
-            pessoas.Ativo = 1;
+            Funcionario.Id = GetHashCode();
+            Funcionario.Tipo = 2;
+            Funcionario.DataCriacao = DateTime.Now;
+            Funcionario.Ativo = 1;
             if (ModelState.IsValid)
             {
-                db.Pessoas.Add(pessoas);
+                db.Pessoas.Add(Funcionario);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Bairro_Id = new SelectList(db.Bairros, "Id", "Nome", pessoas.Bairro_Id);
-            ViewBag.Cidade_Id = new SelectList(db.Cidades, "Id", "Nome", pessoas.Cidade_Id);
-            ViewBag.Estado_Id = new SelectList(db.Estados, "Id", "Nome", pessoas.Estado_Id);
-            ViewBag.Logradouro_Id = new SelectList(db.Logradouros, "Id", "Nome", pessoas.Logradouro_Id);
-            ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", pessoas.Pais_Id);
-            return View(pessoas);
+            ViewBag.Bairro_Id = new SelectList(db.Bairros, "Id", "Nome", Funcionario.Bairro_Id);
+            ViewBag.Cidade_Id = new SelectList(db.Cidades, "Id", "Nome", Funcionario.Cidade_Id);
+            ViewBag.Estado_Id = new SelectList(db.Estados, "Id", "Nome", Funcionario.Estado_Id);
+            ViewBag.Logradouro_Id = new SelectList(db.Logradouros, "Id", "Nome", Funcionario.Logradouro_Id);
+            ViewBag.Pais_Id = new SelectList(db.Paises, "Id", "Nome", Funcionario.Pais_Id);
+            return View(Funcionario);
         }
 
         // GET: Funcionarios/Edit/5
